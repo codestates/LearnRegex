@@ -17,6 +17,6 @@ app.use(
   })
 );
 app.get('/', (req, res) => {
-  res.status(200).send('success');
+  res.status(200).cookie('test', 'test').send('success');
 });
 app.listen(4000, () => console.log('📚📚📚📚 LearnRegex server started ☁️  http://localhost:4000'));
