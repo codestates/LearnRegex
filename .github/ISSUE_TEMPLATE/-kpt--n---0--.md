@@ -1,7 +1,7 @@
 ---
 name: "[KPT] N주차 0요일"
 about: Keep, Problem, Try 방식으로 기록하는 프로젝트 회고 템플릿입니다.
-title: ''
+title: "[KPT] N주차 0요일"
 labels: KPT
 assignees: ''
 

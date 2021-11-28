@@ -1,7 +1,7 @@
 ---
 name: Question
 about: "[Client] Question/ 제목"
-title: ''
+title: "[Client] Question/ 제목"
 labels: Question
 assignees: ''
 
