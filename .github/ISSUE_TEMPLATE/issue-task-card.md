@@ -1,6 +1,6 @@
 ---
 name: issue-task-card
-about: ex) [Client] Feature/ 설명
+about: ex) [Client] Feature/ 제목
 title: ''
 labels: ''
 assignees: ''
@@ -8,9 +8,11 @@ assignees: ''
 ---
 
 ### ISSUE
-* Group:  `Client`, `Server`, `SR`, `DevOps`
+* Group:  `Client`, `Server`, `DevOps`,  `SR`
 * Type: `Feature`, `Bugfix`, `Test`
-* Detail: ex) 회원가입 구현
+* Detail: 제목
+### 내용
+
 
 ### TODO
 1. [ ]  Job1
