@@ -19,5 +19,4 @@ app.use(
 );
 
 app.use('/', router);
-
 app.listen(4000, () => console.log('📚📚📚📚 LearnRegex server started ☁️  http://localhost:4000'));
