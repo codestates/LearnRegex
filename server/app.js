@@ -3,6 +3,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const router = require('./router');
+const models = require('./models');
 
 const app = express();
 
@@ -19,4 +20,6 @@ app.use(
 );
 
 app.use('/', router);
+models.sequelize.sync({ force: false });
+
 app.listen(4000, () => console.log('📚📚📚📚 LearnRegex server started ☁️  http://localhost:4000'));
