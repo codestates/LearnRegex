@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 // TODO Userinfo DevCode
 import SignIn from './components/userinfo/signin';
 import SolveQuiz from './pages/SolveQuiz';
+import InputQuiz from './components/InputQuiz';
 
 function App() {
   return (
@@ -11,6 +12,8 @@ function App() {
       <SignIn />
       <hr />
       <SolveQuiz />
+      <hr />
+      <InputQuiz />
     </>
   );
 }
