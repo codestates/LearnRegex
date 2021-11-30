@@ -5,7 +5,6 @@ module.exports = {
     const user1 = await queryInterface.bulkInsert('users', [
       {
         id: 1,
-        tutorialId: 1,
         email: 'kimcoding@test.com',
         nickname: '코딩이',
         password: '12345678@',
@@ -17,7 +16,6 @@ module.exports = {
     const user2 = await queryInterface.bulkInsert('users', [
       {
         id: 2,
-        tutorialId: 1,
         email: 'parkhacker@test.com',
         nickname: '해킹이',
         password: '87654321@',
@@ -29,7 +27,6 @@ module.exports = {
     const user3 = await queryInterface.bulkInsert('users', [
       {
         id: 3,
-        tutorialId: 1,
         email: 'gurl97@test.com',
         nickname: '지녁이',
         password: '12345678@',
