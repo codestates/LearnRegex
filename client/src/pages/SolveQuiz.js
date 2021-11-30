@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { getQuiz } from '../modules/quiz';
 import QuizForm from '../components/QuizForm';
 import { ImArrowLeft2 } from 'react-icons/im';
@@ -25,11 +25,17 @@ function SolveQuiz() {
     isMade: true,
   };
 
+  const deleteQuiz = () => {
+    // TODO: 삭제 text 클릭시 퀴즈 삭제 요청
+  };
+
   return (
     <>
       <div>
         <div>
-          <ImArrowLeft2 size="50" />
+          <Link to="/quizlist">
+            <ImArrowLeft2 size="50" />
+          </Link>
         </div>
         <div>
           <div>
@@ -37,8 +43,11 @@ function SolveQuiz() {
             <div>닉네임: {dummyData.nickname}</div>
             {dummyData.isMade ? (
               <div>
-                <span>수정</span>
-                <span>삭제</span>
+                {/* 수정 text 클릭시 EditQuiz 페이지로 이동 */}
+                <Link to="editquiz">
+                  <span>수정</span>
+                </Link>
+                <span onClick={deleteQuiz}>삭제</span>
               </div>
             ) : (
               ''
