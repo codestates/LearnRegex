@@ -15,10 +15,6 @@ module.exports = (sequelize, DataTypes) => {
   }
   users.init(
     {
-      tutorialId: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
       email: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -28,14 +24,6 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       password: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      createdAt: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      updatedAt: {
         type: DataTypes.STRING,
         allowNull: false,
       },
