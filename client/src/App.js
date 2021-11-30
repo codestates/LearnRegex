@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import SignIn from './components/userinfo/SignIn';
 import SignUp from './components/userinfo/SignUp';
 import QuizForm from './components/QuizForm';
+import SolveQuiz from './pages/SolveQuiz';
 dotenv.config();
 
 function App() {
@@ -13,9 +14,10 @@ function App() {
     <>
       {/* <SignIn /> */}
       {/* <hr /> */}
-      <SignUp />
-      <hr />
+      {/* <SignUp /> */}
+      {/* <hr /> */}
       {/* <QuizForm /> */}
+      {/* <SolveQuiz /> */}
     </>
   );
 }

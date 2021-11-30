@@ -14,15 +14,10 @@ function QuizForm({ testCase, testCaseTarget, answer, page = 'solve' }) {
         <div>
           <h2>Test Case</h2>
           <div>
-            <span>
-              {testCase} 예시: I don’t want a lot for Christmas There’s just one thing I need I don’t care about the presents Underneath the Christmas tree I just want you for my own More than you
-              could ever know Make my wish come true... shleecloud@gmail.com All I want for Christmas Is you... I don’t want a lot for Christmas There is just one thing I need And I don’t care about
-              presents Underneath the Christmas tree I don’t need to hang my stocking There upon the fireplace Santa Claus won’t make me happy With a toy on Christmas day I just want you for my own
-              More than you could ever know Make my wish come true All I want for Christmas is you...
-            </span>
+            <span>예시: {testCase}</span>
           </div>
           <div>
-            <span>{testCaseTarget} 예시: shleecloud@gmail.com</span>
+            <span>예시: {testCaseTarget}</span>
             <div>❌ | ✅</div>
           </div>
         </div>
