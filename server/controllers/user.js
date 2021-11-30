@@ -1,6 +1,6 @@
 module.exports = {
   signin: async (req, res) => {
-    res.send('signin');
+    res.send({ message: 'signin' });
   },
 
   signout: async (req, res) => {
