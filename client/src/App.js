@@ -3,14 +3,14 @@ import { Routes, Route } from 'react-router-dom';
 
 // TODO Userinfo DevCode
 import SignIn from './components/userinfo/signin';
-import QuizForm from './components/QuizForm';
+import SolveQuiz from './pages/SolveQuiz';
 
 function App() {
   return (
     <>
       <SignIn />
       <hr />
-      <QuizForm />
+      <SolveQuiz />
     </>
   );
 }

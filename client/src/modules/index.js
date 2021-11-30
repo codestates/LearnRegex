@@ -4,6 +4,7 @@ import storage from 'redux-persist/lib/storage';
 // import storageSession from 'redux-persist/lib/storage/session';
 
 import quizzes from './quizzes';
+import quiz from './quiz';
 
 const persistConfig = {
   key: 'root', // localStorage에 저장합니다.
@@ -11,6 +12,6 @@ const persistConfig = {
   whitelist: [''], // blacklist -> 그것만 제외합니다.
 };
 
-const rootReducer = combineReducers({ quizzes });
+const rootReducer = combineReducers({ quizzes, quiz });
 export default persistReducer(persistConfig, rootReducer);
 // export default rootReducer;
