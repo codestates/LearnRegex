@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
-import { signIn } from '../../lib/userInfo';
+import { signInRequest } from '../../lib/userInfoFunction';
 
 export const SignIn = () => {
   const [signInInfo, setSignInInfo] = useState({
@@ -37,7 +36,7 @@ export const SignIn = () => {
     if (Object.values(errorResult).find((el) => el !== '')) return;
 
     // 서버 통신
-    const serverResult = signIn();
+    const serverResult = signInRequest();
     if (serverResult) console.log('hi!');
     else console.log('error!');
   };
@@ -48,13 +47,11 @@ export const SignIn = () => {
         <h1>SignIn</h1>
         <h2>email</h2>
         <input type="text" onChange={handleInputValue('email')} onKeyUp={handleKeyUp}></input>
-        <div>
-          <p>{errorMessage.email}&nbsp;</p>
-        </div>
+        <p>{errorMessage.email}&nbsp;</p>
         <h2>password</h2>
         <input type="text" onChange={handleInputValue('password')} onKeyUp={handleKeyUp}></input>
-        <input type="button" onClick={handleSignIn} value="SignIn" />
         <p>{errorMessage.password}&nbsp;</p>
+        <input type="button" onClick={handleSignIn} value="SignIn" />
       </div>
     </>
   );
