@@ -2,9 +2,8 @@ const { users } = require('../models');
 const { validation, confliction } = require('./inspectfunction');
 const { getToken } = require('./tokenfunction');
 const bcrypt = require('bcryptjs');
-// const dotenv = require('dotenv');
-// dotenv.config();
-require('dotenv').config();
+const dotenv = require('dotenv');
+dotenv.config();
 
 module.exports = {
   // 로그인

@@ -1,5 +1,6 @@
-require('dotenv').config();
 const { sign, verify } = require('jsonwebtoken');
+const dotenv = require('dotenv');
+dotenv.config();
 
 module.exports = {
   //todo: Token 생성 함수 만들기
