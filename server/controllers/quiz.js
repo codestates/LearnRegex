@@ -16,6 +16,7 @@ module.exports = {
   },
 
   clearquiz: async (req, res) => {
+    //! 비로그인 유저라면 그냥 무시!
     res.send('clear quiz');
   },
 
