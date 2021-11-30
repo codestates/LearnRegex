@@ -1,14 +1,16 @@
 import React from 'react';
 
-import QuizList from './pages/QuizList';
+// import QuizList from './pages/QuizList'; // 확인을 위해 넣어둔 코드임! 삭제해도 괜찮음
 
 function App() {
   return (
     <div>
       HelloWorld
-      <QuizList />
+      {/* <QuizList /> // 확인을 위해서 넣어둔 코드임! 삭제해도 괜찮음 */}
     </div>
   );
 }
 
 export default App;
+
+// TODO: 각 페이지 route 연결
