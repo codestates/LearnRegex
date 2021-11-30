@@ -1,12 +1,12 @@
 import React from 'react';
 
-import QuizListContainer from './containers/QuizListContainer';
+import QuizList from './pages/QuizList';
 
 function App() {
   return (
     <div>
       HelloWorld
-      <QuizListContainer />
+      <QuizList />
     </div>
   );
 }

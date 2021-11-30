@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import QuizList from '../pages/QuizList';
 import { getQuizzes } from '../modules/quizzes';
+import QuizList from '../pages/QuizList';
 
 function QuizListContainer() {
-  const { data } = useSelector((state) => state.quizzes);
+  const { data } = useSelector((state) => state.quizzes.list);
   const dispatch = useDispatch();
 
   useEffect(() => {
