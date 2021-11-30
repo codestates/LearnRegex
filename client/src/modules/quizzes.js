@@ -7,7 +7,7 @@ const GET_QUIZZES_ERROR = 'GET_QUIZZES_ERROR';
 export const getQuizzes = () => async (dispatch) => {
   dispatch({ type: GET_QUIZZES });
   try {
-    const list = await axios.get(`http://localhost:4000/quiz`);
+    const list = await axios.get(`${process.env.REACT_APP_SERVER_ADDR}/quiz`);
     // TODO: get 요청으로 받아온 data를 이쁘게 배열 형식으로 list에 할당하기!
     dispatch({ type: GET_QUIZZES_SUCCESS, list });
   } catch (e) {
