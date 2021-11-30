@@ -1,22 +1,12 @@
 import axios from 'axios';
 axios.defaults.withCredentials = true;
 
-const isConflict = async (values) => {
+const isConflict = async (values, myinfo) => {
   const conflictMsg = {};
-  if (!!values.username) {
-    await axios
-      .post(`${process.env.REACT_APP_SERVER_ADDR}/user/isValid`, { username: values.username })
-      .then((res) => {
-        conflictMsg.username = '';
-      })
-      .catch((err) => {
-        conflictMsg.username = '사용중인 아이디입니다.';
-      });
-  }
 
   // !----------------------------------------------------------------!
-
-  if (!!values.email) {
+  if (!!values.email && myinfo.email === values.email) {
+  } else if (!!values.email) {
     await axios
       .post(`${process.env.REACT_APP_SERVER_ADDR}/user/isValid`, { email: values.email })
       .then((res) => {
@@ -29,8 +19,8 @@ const isConflict = async (values) => {
   }
 
   // !----------------------------------------------------------------!
-
-  if (!!values.nickname) {
+  if (!!values.nickname && myinfo.nickname === values.nickname) {
+  } else if (!!values.nickname) {
     await axios
       .post(`${process.env.REACT_APP_SERVER_ADDR}/user/isValid`, { nickname: values.nickname })
       .then((res) => {
