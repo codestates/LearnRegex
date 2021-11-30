@@ -6,7 +6,7 @@ import Dropdown from './Dropdown';
 //! Styled ----------------------------------------------------------------
 
 export const Navbar = styled.div`
-  background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+  background: green;
   height: 80px;
   display: flex;
   justify-content: center;
@@ -23,8 +23,8 @@ export const SignInButton = styled.button`
   border-radius: 4px;
   outline: none;
   border: none;
-  font-size: 18px;
-  color: #fff;
+  font-size: 20px;
+  color: black;
   cursor: pointer;
   //background-color: black;
 `;
