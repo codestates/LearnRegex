@@ -12,7 +12,7 @@ function QuizForm({ testCase, testCaseTarget, answer, page = 'solve' }) {
     <>
       <div>
         <div>
-          <p>Test Case</p>
+          <h2>Test Case</h2>
           <div>
             <span>
               {testCase} 예시: I don’t want a lot for Christmas There’s just one thing I need I don’t care about the presents Underneath the Christmas tree I just want you for my own More than you
@@ -23,11 +23,11 @@ function QuizForm({ testCase, testCaseTarget, answer, page = 'solve' }) {
           </div>
           <div>
             <span>{testCaseTarget} 예시: shleecloud@gmail.com</span>
-            <div>❎ | ✅</div>
+            <div>❌ | ✅</div>
           </div>
         </div>
         <div>
-          <p>My Regexp</p>
+          <h2>My Regexp</h2>
           <div>
             <span>입력한 정규표현식을 Test Case에 적용한 걸 실시간으로 보여주는 곳</span>
           </div>
