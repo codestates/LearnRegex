@@ -16,9 +16,11 @@ export const getQuiz = (id) => async (dispatch) => {
 };
 
 const initialState = {
-  loading: false,
-  data: null,
-  error: null,
+  quiz: {
+    loading: false,
+    data: null,
+    error: null,
+  },
 };
 
 export default function quiz(state = initialState, action) {

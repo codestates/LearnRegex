@@ -7,7 +7,8 @@ import BackButton from '../components/BackButton';
 
 function SolveQuiz() {
   const { id } = useParams('id');
-  const { data } = useSelector((state) => state.quiz);
+  const { data } = useSelector((state) => state.quiz.quiz);
+  // console.log('SolveQuiz');
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -43,8 +44,7 @@ function SolveQuiz() {
             <div>닉네임: {dummyData.nickname}</div>
             {dummyData.isMade ? (
               <div>
-                {/* 수정 text 클릭시 EditQuiz 페이지로 이동 */}
-                <Link to="editquiz">
+                <Link to="/editquiz">
                   <span>수정</span>
                 </Link>
                 <span onClick={deleteQuiz}>삭제</span>
@@ -54,7 +54,7 @@ function SolveQuiz() {
             )}
           </div>
           <div>
-            <QuizForm testCase={dummyData.testCase} testCaseTarget={dummyData.testCaseTarget} answer={dummyData.answer} page={'solve'} />
+            <QuizForm testCase={dummyData.testCase} testCaseTarget={dummyData.testCaseTarget} answer={dummyData.answer} explanation={dummyData.explanation} page={'solve'} />
           </div>
         </div>
       </div>
