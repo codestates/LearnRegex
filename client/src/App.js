@@ -15,8 +15,8 @@ dotenv.config();
 function App() {
   return (
     <>
-      {/* <SignIn /> */}
-      {/* <hr /> */}
+      <SignIn />
+      <hr />
       <EditUserInfo />
       <hr />
       <EditUserPassword />
