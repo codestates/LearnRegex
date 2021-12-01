@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import BackButton from '../components/BackButton';
 import { submitQuiz } from '../lib/submitQuiz';
+import { limitChar } from '../lib/limitChar';
 
 function InputQuiz({ data }) {
   const [content, setContent] = useState({ title: '', testCase: '', testCaseTarget: '', answer: '', explanation: '' });
 
   const handleInputValue = (key) => (e) => {
-    setContent({ ...content, [key]: e.target.value });
+    // console.log(e.target.maxLength);
+    // console.log(e.target.value.length);
+    let result = limitChar(e.target.value.length, e.target.maxLength);
+    if (!!result) setContent({ ...content, [key]: e.target.value });
   };
 
   useEffect(() => {
@@ -24,12 +28,12 @@ function InputQuiz({ data }) {
         </div>
         <form onSubmit={(e) => e.preventDefault()}>
           <div>
-            <input type="text" value={content.title} placeholder="제목을 입력하세요" onChange={handleInputValue('title')} />
+            <input type="text" value={content.title} placeholder="제목을 입력하세요" maxLength="20" onChange={handleInputValue('title')} />
           </div>
           <div>
             <h2>Test Case</h2>
             <div>
-              <textarea value={content.testCase} placeholder="testCase를 입력하세요" onChange={handleInputValue('testCase')} />
+              <textarea value={content.testCase} placeholder="testCase를 입력하세요" maxLength="400" onChange={handleInputValue('testCase')} />
             </div>
             <div>
               <textarea value={content.testCaseTarget} placeholder="testCaseTarget을 입력하세요" onChange={handleInputValue('testCaseTarget')} />
@@ -41,7 +45,7 @@ function InputQuiz({ data }) {
               <input type="text" value={content.answer} placeholder="정답을 쓰세요" onChange={handleInputValue('answer')} />
             </div>
             <div>
-              <textarea type="text" value={content.explanation} placeholder="해설을 쓰세요" onChange={handleInputValue('explanation')} />
+              <textarea type="text" value={content.explanation} placeholder="해설을 쓰세요" maxLength="400" onChange={handleInputValue('explanation')} />
             </div>
           </div>
           <div>
