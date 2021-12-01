@@ -25,21 +25,31 @@ module.exports = {
     }
     return result;
   },
-  confliction: async ({ email, nickname }) => {
+  confliction: async ({ id, email, nickname }) => {
     // 들어온게 있다면 실행하도록
     const result = {};
+
+    const emailQuery = { email };
+    if (id) emailQuery[Op.not] = { id };
+
+    const nicknameQuery = { nickname };
+    if (id) nicknameQuery[Op.not] = { id };
 
     let isConflict;
 
     if (email) {
-      isConflict = await users.findOne({ where: { [Op.not]: { id: req.userId } } });
+      isConflict = await users.findOne({
+        where: emailQuery,
+      });
       if (isConflict) {
         result.isConflictEmail = false;
       }
     }
 
     if (nickname) {
-      isConflict = await users.findOne({ where: { nickname } });
+      isConflict = await users.findOne({
+        where: nicknameQuery,
+      });
       if (isConflict) {
         result.isConflictNickname = false;
       }
