@@ -11,7 +11,7 @@ function Home() {
   };
   return (
     <>
-      <Navbar toggle={toggle} />
+      {/* <Navbar toggle={toggle} /> */}
       {/* <Sidebar isOpen={isOpen} toggle={toggle} /> */}
       {/* <Footer /> */}
     </>
