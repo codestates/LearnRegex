@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { getQuiz } from '../modules/quiz';
 import QuizForm from '../components/QuizForm';
-import { ImArrowLeft2 } from 'react-icons/im';
+import { BackButton } from '../components/BackButton';
 
 function SolveQuiz() {
   const { id } = useParams('id');
@@ -35,9 +35,7 @@ function SolveQuiz() {
     <>
       <div>
         <div>
-          <Link to="/quizlist">
-            <ImArrowLeft2 size="50" />
-          </Link>
+          <BackButton />
         </div>
         <div>
           <div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { ImArrowLeft2 } from 'react-icons/im';
+import { BackButton } from '../components/BackButton';
 
-function InputQuiz({ data = !null, page = 'make' }) {
+function InputQuiz({ data, page }) {
   const [content, setContent] = useState({ title: '', testCase: '', testCaseTarget: '', answer: '', explanation: '' });
 
   const handleInputValue = (key) => (e) => {
@@ -23,6 +23,7 @@ function InputQuiz({ data = !null, page = 'make' }) {
 
   // TODO: 상속 받은 data가 null이 아니라면 content 상태가 변화되어야 함
   if (data) {
+    console.log('나오니?');
     // for (let key in dummyData) {
     //   console.log(dummyData[key]);
     //   setContent({ ...content, [key]: dummyData[key] }); // 상태가 바뀌기 때문에 무한랜더링에 빠짐..
@@ -34,7 +35,7 @@ function InputQuiz({ data = !null, page = 'make' }) {
     <>
       <div>
         <div>
-          <ImArrowLeft2 size="50" />
+          <BackButton />
         </div>
         <form onSubmit={(e) => e.preventDefault()}>
           <div>
