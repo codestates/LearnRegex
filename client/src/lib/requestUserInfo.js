@@ -13,7 +13,7 @@ export const requestSignIn = async (userInfo) => {
     console.log(result);
     return true;
   } catch (error) {
-    console.log(error);
+    console.log(error.response.data.message);
     return false;
   }
 };
@@ -29,7 +29,7 @@ export const requestSignUp = async (userInfo) => {
     console.log(result);
     return true;
   } catch (error) {
-    console.log(error);
+    console.log(error.response.data.message);
     return false;
   }
 };
@@ -46,22 +46,22 @@ export const requestEditUserInfo = async (userInfo) => {
     console.log(result);
     return true;
   } catch (error) {
-    console.log(error);
+    console.log(error.response.data.message);
     return false;
   }
 };
 
 export const requestEditUserPassword = async (userInfo) => {
-  const { email, nickname } = userInfo;
+  const { oldPassword, newPassword } = userInfo;
   try {
     const result = await axios.patch(
-      `${process.env.REACT_APP_SERVER_ADDR}/myinfo`, //client
-      { email, nickname }
+      `${process.env.REACT_APP_SERVER_ADDR}/myinfo/password`, //client
+      { oldPassword, newPassword }
     );
     console.log(result);
     return true;
   } catch (error) {
-    console.log(error);
+    console.log(error.response.data.message);
     return false;
   }
 };
@@ -76,7 +76,7 @@ export const requestDeleteUserInfo = async (userInfo) => {
     console.log(result);
     return true;
   } catch (error) {
-    console.log(error);
+    console.log(error.response.data.message);
     return false;
   }
 };
@@ -89,7 +89,7 @@ export const requestSignOut = async () => {
     console.log(result);
     return true;
   } catch (error) {
-    console.log(error);
+    console.log(error.response.data.message);
     return false;
   }
 };
@@ -99,10 +99,10 @@ export const requestGetMyInfo = async () => {
     const result = await axios.get(
       `${process.env.REACT_APP_SERVER_ADDR}/myinfo` //
     );
-    console.log(result);
-    return true;
+    // console.log(result);
+    return result;
   } catch (error) {
-    console.log(error);
+    console.log(error.response.data.message);
     return false;
   }
 };
@@ -115,7 +115,7 @@ export const requestSetNewPassword = async () => {
   //   console.log(result);
   //   return true;
   // } catch (error) {
-  //   console.log(error);
+  //   console.log(error.response.data.message);
   //   return false;
   // }
   console.log('WIP! 😅');
@@ -130,7 +130,7 @@ export const requestFindPassword = async () => {
   //   console.log(result);
   //   return true;
   // } catch (error) {
-  //   console.log(error);
+  //   console.log(error.response.data.message);
   //   return false;
   // }
   console.log('WIP! 😅');

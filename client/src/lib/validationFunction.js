@@ -108,10 +108,12 @@ const isUniqueEmail = async (email) => {
   return await axios
     .post(`${process.env.REACT_APP_SERVER_ADDR}/user/validinfo`, { email: email })
     .then((res) => {
-      return false;
+      console.log(res);
+      return true;
     })
     .catch((err) => {
-      return true;
+      console.log(err);
+      return false;
     });
 };
 
@@ -120,9 +122,11 @@ const isUniqueNickname = async (nickname) => {
   return await axios
     .post(`${process.env.REACT_APP_SERVER_ADDR}/user/validinfo`, { nickname: nickname })
     .then((res) => {
-      return false;
+      console.log(res);
+      return true;
     })
     .catch((err) => {
-      return true;
+      console.log(err);
+      return false;
     });
 };

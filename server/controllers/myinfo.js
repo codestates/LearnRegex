@@ -46,6 +46,7 @@ module.exports = {
 
       // 유효성, 중복 검사 중 하나라도 검증이 안된 경우
       if (Object.keys(isValid).length || Object.keys(isConflict).length) {
+        console.log(Object.keys(isValid).length, Object.keys(isConflict).length);
         return res.status(406).send({ data: { isValid, isConflict } });
       }
 
