@@ -1,4 +1,5 @@
 import axios from 'axios';
+axios.defaults.withCredentials = true;
 
 const GET_QUIZ = 'GET_QUIZ';
 const GET_QUIZ_SUCCESS = 'GET_QUIZ_SUCCESS';
@@ -16,9 +17,11 @@ export const getQuiz = (id) => async (dispatch) => {
 };
 
 const initialState = {
-  loading: false,
-  data: null,
-  error: null,
+  quiz: {
+    loading: false,
+    data: null,
+    error: null,
+  },
 };
 
 export default function quiz(state = initialState, action) {

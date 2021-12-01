@@ -1,19 +1,9 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
-import { getQuiz } from '../modules/quiz';
-import QuizForm from '../components/QuizForm';
-import BackButton from '../components/BackButton';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import InputQuiz from '../components/InputQuiz';
 
-function SolveQuiz() {
-  const { id } = useParams('id');
+function EditQuiz() {
   const { data } = useSelector((state) => state.quiz.quiz);
-  // console.log('SolveQuiz');
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getQuiz(id));
-  }, [id, dispatch]);
 
   const dummyData = {
     id: 1,
@@ -25,41 +15,14 @@ function SolveQuiz() {
     answer: '/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i',
     explanation:
       'Santa tell me if youre really there Don`t make me fall in love again If he won`t be here next year Santa tell me if he really cares Cause I can`t give it all away If he won`t be here next year Feeling Christmas all around And I`m trying to play it cool But it`s hard to focus When I see him walking cross the room Let it snow, is blasting now But I won`t get it in the mood I`m avoiding every mistletoe Until I know its true love That he thinks of So next Christmas I`m not all alone boy',
-    isMade: true,
-  };
-
-  const deleteQuiz = () => {
-    // TODO: 삭제 text 클릭시 퀴즈 삭제 요청
+    isMade: false,
   };
 
   return (
     <>
-      <div>
-        <div>
-          <BackButton />
-        </div>
-        <div>
-          <div>
-            <div>제목: {dummyData.title}</div>
-            <div>닉네임: {dummyData.nickname}</div>
-            {dummyData.isMade ? (
-              <div>
-                <Link to="/editquiz">
-                  <span>수정</span>
-                </Link>
-                <span onClick={deleteQuiz}>삭제</span>
-              </div>
-            ) : (
-              ''
-            )}
-          </div>
-          <div>
-            <QuizForm testCase={dummyData.testCase} testCaseTarget={dummyData.testCaseTarget} answer={dummyData.answer} explanation={dummyData.explanation} page={'solve'} />
-          </div>
-        </div>
-      </div>
+      <InputQuiz data={dummyData} />
     </>
   );
 }
 
-export default SolveQuiz;
+export default EditQuiz;
