@@ -1,11 +1,11 @@
 import React from 'react';
 
-function QuizForm({ testCase, testCaseTarget, answer, page = 'solve' }) {
+function QuizForm({ testCase, testCaseTarget, answer, explanation, page = 'solve' }) {
   // ! page = "solve"인 이유: SolvePage로부터 받아와졌다고 가정하고 구현
   // TODO: Tutorial, SolveQuiz 페이지 구현 후 page = "solve"에서 page로 수정
 
   const handleModal = () => {
-    // TODO: button 클릭시 QuizAnswerModal에게 상속 받은 answer를 props로 전달
+    // TODO: button 클릭시 QuizAnswerModal에게 상속 받은 answer, explanation를 props로 전달
   };
 
   return (
