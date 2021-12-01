@@ -1,23 +1,16 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-//import SignIn from './pages/SignIn';
-
-//import QuizForm from './components/QuizForm';
-
-// TODO Userinfo DevCode
-//import SignIn from './components/userinfo/signin';
+import './App.css';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" exact element={<Navbar />} />
       </Routes>
     </>
   );
 }
 
 export default App;
-
-// TODO: 각 페이지 route 연결
