@@ -3,7 +3,6 @@ const { isVerify } = require('../tokenfunction');
 
 module.exports = {
   isAuth: async (req, res, next) => {
-    console.log(req.cookies.token);
     // 토큰이 담겨있는지 확인
     if (!req.cookies.token) {
       res.header({ isLogin: false });

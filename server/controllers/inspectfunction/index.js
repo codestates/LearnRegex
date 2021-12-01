@@ -21,7 +21,7 @@ module.exports = {
     }
 
     if (password) {
-      if (!/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/g.test(password)) {
+      if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d$@$!%*#?&]{8,16}$/g.test(password)) {
         result.isValidPassword = false;
       }
     }
