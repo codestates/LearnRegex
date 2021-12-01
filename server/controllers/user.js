@@ -87,7 +87,7 @@ module.exports = {
       }
 
       // 데이터베이스에 저장하기 전 비밀번호 암호화
-      const salt = bcrypt.genSaltSync(Number(process.env.HASH_NUMBER));
+      const salt = bcrypt.genSaltSync(parseInt(Math.random() * 10));
       const hashPassword = bcrypt.hashSync(password, salt);
 
       await users.create({ email, nickname, password: hashPassword });
