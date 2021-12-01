@@ -1,7 +1,7 @@
 import React from 'react';
 import InputQuiz from '../components/InputQuiz';
 
-function MakeQuiz() {
+function EditQuiz() {
   return (
     <>
       <InputQuiz data={null} />
@@ -9,4 +9,4 @@ function MakeQuiz() {
   );
 }
 
-export default MakeQuiz;
+export default EditQuiz;

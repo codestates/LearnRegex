@@ -5,8 +5,7 @@ import dotenv from 'dotenv';
 // TODO Userinfo DevCode
 
 import SignIn from './components/userinfo/SignIn';
-import SolveQuiz from './pages/SolveQuiz';
-import MakeQuiz from './pages/MakeQuiz';
+import EditQuiz from './pages/EditQuiz';
 dotenv.config();
 
 function App() {
@@ -14,7 +13,7 @@ function App() {
     <>
       <SignIn />
       <hr />
-      <MakeQuiz />
+      <EditQuiz />
       {/* <SignIn /> */}
       {/* <hr /> */}
       {/* <SignUp /> */}
