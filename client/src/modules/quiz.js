@@ -1,4 +1,5 @@
 import axios from 'axios';
+axios.defaults.withCredentials = true;
 
 const GET_QUIZ = 'GET_QUIZ';
 const GET_QUIZ_SUCCESS = 'GET_QUIZ_SUCCESS';
