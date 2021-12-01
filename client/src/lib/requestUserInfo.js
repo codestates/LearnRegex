@@ -94,7 +94,7 @@ export const requestSignOut = async () => {
   }
 };
 
-export const requestMyInfo = async () => {
+export const requestGetMyInfo = async () => {
   try {
     const result = await axios.get(
       `${process.env.REACT_APP_SERVER_ADDR}/myinfo` //

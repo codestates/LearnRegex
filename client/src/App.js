@@ -8,6 +8,7 @@ import SignIn from './components/user/SignIn';
 import SignUp from './components/user/SignUp';
 import EditUserInfo from './pages/myinfo/EditUserInfo';
 import EditUserPassword from './pages/myinfo/EditUserPassword';
+import GetMyInfo from './pages/myinfo/GetMyInfo';
 import QuizForm from './components/QuizForm';
 import SolveQuiz from './pages/SolveQuiz';
 dotenv.config();
@@ -15,13 +16,14 @@ dotenv.config();
 function App() {
   return (
     <>
-      <SignIn />
-      <hr />
+      {/* <GetMyInfo /> */}
+      {/* <SignIn /> */}
+      {/* <hr />
       <EditUserInfo />
       <hr />
       <EditUserPassword />
       <hr />
-      <SignUp />
+      <SignUp /> */}
       {/* <QuizForm /> */}
       {/* <SolveQuiz /> */}
     </>
