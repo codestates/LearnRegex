@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import { Link, useNavigate } from 'react-router-dom';
 
-import { requestSignIn } from '../../lib/requestUserInfo';
+import { requestSignIn, requestSignOut } from '../../lib/requestUserInfo';
 
 export const SignIn = () => {
   const [inputUserInfo, setInputUserInfo] = useState({
@@ -12,6 +12,7 @@ export const SignIn = () => {
     email: '',
     password: '',
   });
+  const [saveEmail, setSaveEmail] = useState(false);
 
   const handleInputValue = (key) => (e) => {
     setInputUserInfo({ ...inputUserInfo, [key]: e.target.value });
@@ -21,6 +22,10 @@ export const SignIn = () => {
     if (e.key === 'Enter') {
       handleSubmit();
     }
+  };
+
+  const handleSaveEmail = (e) => {
+    setSaveEmail(!saveEmail);
   };
 
   const handleSubmit = async () => {
@@ -35,9 +40,19 @@ export const SignIn = () => {
 
     // 서버 통신
     const serverResult = await requestSignIn(inputUserInfo);
-    if (serverResult) console.log('hi!');
+    if (serverResult) console.log('SignIn');
     else console.log('error!');
   };
+
+  const handleSignOut = async () => {
+    const serverResult = await requestSignOut(inputUserInfo);
+    if (serverResult) console.log('SignOut');
+    else console.log('error!');
+  };
+
+  const handleOAuthKakao = () => {};
+  const handleOAuthGoogle = () => {};
+  const handleOAuthGithub = () => {};
 
   return (
     <>
@@ -49,7 +64,17 @@ export const SignIn = () => {
         <h2>password</h2>
         <input type="text" onChange={handleInputValue('password')} onKeyUp={handleKeyUp}></input>
         <p>{errorMessage.password}&nbsp;</p>
-        <input type="button" onClick={handleSubmit} value="SignIn" />
+        <input type="checkbox" onChange={handleSaveEmail} value={saveEmail} />
+        <span>이메일 저장</span>
+        <div>
+          <input type="button" onClick={handleSubmit} value="SignIn" />
+          <input type="button" onClick={handleSignOut} value="SignOut" />
+        </div>
+        <div>
+          <input type="button" onClick={handleOAuthKakao} value="OAuth Kakao" />
+          <input type="button" onClick={handleOAuthGoogle} value="OAuth Google" />
+          <input type="button" onClick={handleOAuthGithub} value="OAuth Github" />
+        </div>
       </div>
     </>
   );
