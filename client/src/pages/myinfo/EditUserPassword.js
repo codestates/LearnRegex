@@ -46,7 +46,7 @@ export const EditUserPassword = () => {
     if (Object.values(errorResult).find((el) => el !== '')) return;
 
     // * 서버 통신
-    const serverResult = await requestEditUserPassword();
+    const serverResult = await requestEditUserPassword(inputUserInfo);
     if (serverResult) console.log('hi!');
     else console.log('error!');
   };

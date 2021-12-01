@@ -4,10 +4,10 @@ import dotenv from 'dotenv';
 
 // TODO Userinfo DevCode
 
-import SignIn from './components/userinfo/SignIn';
-import SignUp from './components/userinfo/SignUp';
-import EditUserInfo from './components/userinfo/EditUserInfo';
-import EditUserPassword from './components/userinfo/EditUserPassword';
+import SignIn from './components/user/SignIn';
+import SignUp from './components/user/SignUp';
+import EditUserInfo from './pages/myinfo/EditUserInfo';
+import EditUserPassword from './pages/myinfo/EditUserPassword';
 import QuizForm from './components/QuizForm';
 import SolveQuiz from './pages/SolveQuiz';
 dotenv.config();

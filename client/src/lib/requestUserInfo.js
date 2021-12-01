@@ -36,6 +36,8 @@ export const requestSignUp = async (userInfo) => {
 
 export const requestEditUserInfo = async (userInfo) => {
   const { email, nickname } = userInfo;
+  axios.defaults['withCredentials'] = true;
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
   try {
     const result = await axios.patch(
       `${process.env.REACT_APP_SERVER_ADDR}/myinfo`, //client
@@ -67,7 +69,7 @@ export const requestEditUserPassword = async (userInfo) => {
 export const requestDeleteUserInfo = async (userInfo) => {
   const { oldPassword, newPassword } = userInfo;
   try {
-    const result = await axios.patch(
+    const result = await axios.delete(
       `${process.env.REACT_APP_SERVER_ADDR}/myinfo`, //client
       { oldPassword, newPassword }
     );
@@ -83,6 +85,19 @@ export const requestSignOut = async () => {
   try {
     const result = await axios.get(
       `${process.env.REACT_APP_SERVER_ADDR}/user/signout` //
+    );
+    console.log(result);
+    return true;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+};
+
+export const requestMyInfo = async () => {
+  try {
+    const result = await axios.get(
+      `${process.env.REACT_APP_SERVER_ADDR}/myinfo` //
     );
     console.log(result);
     return true;
