@@ -7,7 +7,7 @@ export const isValidSignUp = async (values) => {
     email: await isValidEmail(values.email),
     nickname: await isValidNickname(values.nickname),
     password: isValidPassword(values.password),
-    confirm: isValidPasswordConfirm(values.confirm),
+    confirm: isValidPasswordConfirm(values.password, values.confirm),
   };
   return validResult;
 };
@@ -24,10 +24,20 @@ export const isValidEditUserPassword = async (values) => {
   const validResult = {
     oldPassword: isValidPassword(values.oldPassword),
     newPassword: isValidPassword(values.newPassword),
-    confirm: isValidPasswordConfirm(values.confirm),
+    confirm: isValidPasswordConfirm(values.newPassword, values.confirm),
   };
   return validResult;
 };
+
+export const isValidSetNewPassword = async (values) => {
+  const validResult = {
+    newPassword: isValidPassword(values.newPassword),
+    confirm: isValidPasswordConfirm(values.newPassword, values.confirm),
+  };
+  return validResult;
+};
+
+// !----------------------------------------------------------------!
 
 export const isValidEmail = async (email) => {
   if (!email) {

@@ -83,7 +83,7 @@ export const requestDeleteUserInfo = async (userInfo) => {
 
 export const requestSignOut = async () => {
   try {
-    const result = await axios.get(
+    const result = await axios.post(
       `${process.env.REACT_APP_SERVER_ADDR}/user/signout` //
     );
     console.log(result);
@@ -105,4 +105,19 @@ export const requestGetMyInfo = async () => {
     console.log(error);
     return false;
   }
+};
+
+export const requestSetNewPassword = async () => {
+  // try {
+  //   const result = await axios.get(
+  //     `${process.env.REACT_APP_SERVER_ADDR}/myinfo` //
+  //   );
+  //   console.log(result);
+  //   return true;
+  // } catch (error) {
+  //   console.log(error);
+  //   return false;
+  // }
+  console.log('WIP! 😅');
+  return true;
 };

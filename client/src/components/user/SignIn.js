@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import { Link, useNavigate } from 'react-router-dom';
 
-import { requestSignIn } from '../../lib/requestUserInfo';
+import { requestSignIn, requestSignOut } from '../../lib/requestUserInfo';
 
 export const SignIn = () => {
   const [inputUserInfo, setInputUserInfo] = useState({
@@ -35,7 +35,13 @@ export const SignIn = () => {
 
     // 서버 통신
     const serverResult = await requestSignIn(inputUserInfo);
-    if (serverResult) console.log('hi!');
+    if (serverResult) console.log('SignIn');
+    else console.log('error!');
+  };
+
+  const handleSignOut = async () => {
+    const serverResult = await requestSignOut(inputUserInfo);
+    if (serverResult) console.log('SignOut');
     else console.log('error!');
   };
 
@@ -50,6 +56,7 @@ export const SignIn = () => {
         <input type="text" onChange={handleInputValue('password')} onKeyUp={handleKeyUp}></input>
         <p>{errorMessage.password}&nbsp;</p>
         <input type="button" onClick={handleSubmit} value="SignIn" />
+        <input type="button" onClick={handleSignOut} value="SignOut" />
       </div>
     </>
   );
