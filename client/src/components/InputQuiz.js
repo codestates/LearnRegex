@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { BackButton } from '../components/BackButton';
+import BackButton from '../components/BackButton';
+import { submitQuiz } from '../lib/submitQuiz';
 
 function InputQuiz({ data, page }) {
   const [content, setContent] = useState({ title: '', testCase: '', testCaseTarget: '', answer: '', explanation: '' });
@@ -60,7 +61,9 @@ function InputQuiz({ data, page }) {
             </div>
           </div>
           <div>
-            <button type="submit">{page === 'make' ? '퀴즈 업로드' : '수정 완료'}</button>
+            <button type="submit" onClick={submitQuiz(data)}>
+              {page === 'make' ? '퀴즈 업로드' : '수정 완료'}
+            </button>
           </div>
         </form>
       </div>

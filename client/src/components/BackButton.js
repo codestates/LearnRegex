@@ -1,6 +1,6 @@
 import { ImArrowLeft2 } from 'react-icons/im';
 
-export function BackButton() {
+export default function BackButton() {
   const historyBack = () => {
     window.history.back();
   };
