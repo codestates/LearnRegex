@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import BackButton from '../components/BackButton';
 import { submitQuiz } from '../lib/submitQuiz';
 
-function InputQuiz({ data, page }) {
+function InputQuiz({ data }) {
   const [content, setContent] = useState({ title: '', testCase: '', testCaseTarget: '', answer: '', explanation: '' });
 
   const handleInputValue = (key) => (e) => {
@@ -61,8 +61,8 @@ function InputQuiz({ data, page }) {
             </div>
           </div>
           <div>
-            <button type="submit" onClick={submitQuiz(data)}>
-              {page === 'make' ? '퀴즈 업로드' : '수정 완료'}
+            <button type="submit" onClick={submitQuiz(data, content)}>
+              {!!data ? '수정 완료' : '퀴즈 업로드'}
             </button>
           </div>
         </form>
