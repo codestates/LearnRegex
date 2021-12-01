@@ -39,9 +39,9 @@ module.exports = {
       const token = getToken(tokenData);
 
       return res
-        .header({ isLogin: true })
         .cookie('token', token, {
-          sameSite: 'Strict',
+          sameSite: 'None',
+          secure: true,
           httpOnly: true,
           expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
         })
@@ -56,7 +56,7 @@ module.exports = {
   // 로그아웃
   signout: async (req, res) => {
     try {
-      res.header({ isLogin: false }).clearCookie('token').status(200).send({ message: 'success' });
+      res.clearCookie('token').status(200).send({ message: 'success' });
     } catch (err) {
       console.log(err);
       return res.status(500).send({ message: 'server error' });
@@ -87,7 +87,7 @@ module.exports = {
       }
 
       // 데이터베이스에 저장하기 전 비밀번호 암호화
-      const salt = bcrypt.genSaltSync(parseInt(Math.random() * 10));
+      const salt = bcrypt.genSaltSync(Number(process.env.HASH_NUMBER));
       const hashPassword = bcrypt.hashSync(password, salt);
 
       await users.create({ email, nickname, password: hashPassword });

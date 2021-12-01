@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+// import { Link, useNavigate } from 'react-router-dom';
 
-import { signInRequest } from '../../lib/userInfoFunction';
+import { requestSignIn } from '../../lib/requestUserInfo';
 
 export const SignIn = () => {
-  const [signInInfo, setSignInInfo] = useState({
+  const [inputUserInfo, setInputUserInfo] = useState({
     email: '',
     password: '',
   });
@@ -13,20 +13,18 @@ export const SignIn = () => {
     password: '',
   });
 
-  // TODO 키 입력
   const handleInputValue = (key) => (e) => {
-    setSignInInfo({ ...signInInfo, [key]: e.target.value });
+    setInputUserInfo({ ...inputUserInfo, [key]: e.target.value });
   };
 
-  // TODO 엔터키
   const handleKeyUp = (e) => {
     if (e.key === 'Enter') {
-      handleSignIn();
+      handleSubmit();
     }
   };
 
-  const handleSignIn = async () => {
-    const { email, password } = signInInfo;
+  const handleSubmit = async () => {
+    const { email, password } = inputUserInfo;
 
     // 빈칸 예외 처리
     const errorResult = { email: '', password: '' };
@@ -36,7 +34,7 @@ export const SignIn = () => {
     if (Object.values(errorResult).find((el) => el !== '')) return;
 
     // 서버 통신
-    const serverResult = signInRequest();
+    const serverResult = await requestSignIn(inputUserInfo);
     if (serverResult) console.log('hi!');
     else console.log('error!');
   };
@@ -51,7 +49,7 @@ export const SignIn = () => {
         <h2>password</h2>
         <input type="text" onChange={handleInputValue('password')} onKeyUp={handleKeyUp}></input>
         <p>{errorMessage.password}&nbsp;</p>
-        <input type="button" onClick={handleSignIn} value="SignIn" />
+        <input type="button" onClick={handleSubmit} value="SignIn" />
       </div>
     </>
   );
