@@ -5,14 +5,16 @@ import dotenv from 'dotenv';
 // TODO Userinfo DevCode
 
 import SignIn from './components/userinfo/SignIn';
-import SignUp from './components/userinfo/SignUp';
-import QuizForm from './components/QuizForm';
 import SolveQuiz from './pages/SolveQuiz';
+import MakeQuiz from './pages/MakeQuiz';
 dotenv.config();
 
 function App() {
   return (
     <>
+      <SignIn />
+      <hr />
+      <MakeQuiz />
       {/* <SignIn /> */}
       {/* <hr /> */}
       {/* <SignUp /> */}
