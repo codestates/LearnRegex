@@ -1,10 +1,4 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import SignUp from './components/user/SignUp';
-import EditUserInfo from './pages/myinfo/EditUserInfo';
-import EditUserPassword from './pages/myinfo/EditUserPassword';
-import GetMyInfo from './pages/myinfo/GetMyInfo';
-import QuizForm from './components/QuizForm';
 import './App.css';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
@@ -19,13 +13,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 function App() {
-  return (
-    <>
-      <SignIn />
-      <SetNewPassword />
-      <FindPassword />
-    </>
-  );
+  return <></>;
 }
 
 export default App;
