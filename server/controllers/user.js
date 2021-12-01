@@ -2,9 +2,8 @@ const { users } = require('../models');
 const { validation, confliction } = require('./inspectfunction');
 const { getToken } = require('./tokenfunction');
 const bcrypt = require('bcryptjs');
-// const dotenv = require('dotenv');
-// dotenv.config();
-require('dotenv').config();
+const dotenv = require('dotenv');
+dotenv.config();
 
 module.exports = {
   // 로그인
@@ -88,7 +87,7 @@ module.exports = {
       }
 
       // 데이터베이스에 저장하기 전 비밀번호 암호화
-      const salt = bcrypt.genSaltSync(Number(process.env.HASH_NUMBER));
+      const salt = bcrypt.genSaltSync(parseInt(Math.random() * 10));
       const hashPassword = bcrypt.hashSync(password, salt);
 
       await users.create({ email, nickname, password: hashPassword });
