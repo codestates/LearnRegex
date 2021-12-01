@@ -7,8 +7,8 @@ import Sidebar from './components/Sidebar';
 function App() {
   return (
     <Routes>
-      {/* <Route path="/" element={<Navbar />} /> */}
-      <Route path="/" element={<Sidebar />} />
+      <Route path="/" element={<Navbar />} />
+      {/* <Route path="/" element={<Sidebar />} /> */}
     </Routes>
   );
 }
