@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const { isAuth } = require('../controllers/authfunction');
 
 const user = require('../controllers/user');
 
