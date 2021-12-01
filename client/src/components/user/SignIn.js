@@ -12,6 +12,7 @@ export const SignIn = () => {
     email: '',
     password: '',
   });
+  const [saveEmail, setSaveEmail] = useState(false);
 
   const handleInputValue = (key) => (e) => {
     setInputUserInfo({ ...inputUserInfo, [key]: e.target.value });
@@ -21,6 +22,10 @@ export const SignIn = () => {
     if (e.key === 'Enter') {
       handleSubmit();
     }
+  };
+
+  const handleSaveEmail = (e) => {
+    setSaveEmail(!saveEmail);
   };
 
   const handleSubmit = async () => {
@@ -45,6 +50,10 @@ export const SignIn = () => {
     else console.log('error!');
   };
 
+  const handleOAuthKakao = () => {};
+  const handleOAuthGoogle = () => {};
+  const handleOAuthGithub = () => {};
+
   return (
     <>
       <div>
@@ -55,8 +64,17 @@ export const SignIn = () => {
         <h2>password</h2>
         <input type="text" onChange={handleInputValue('password')} onKeyUp={handleKeyUp}></input>
         <p>{errorMessage.password}&nbsp;</p>
-        <input type="button" onClick={handleSubmit} value="SignIn" />
-        <input type="button" onClick={handleSignOut} value="SignOut" />
+        <input type="checkbox" onChange={handleSaveEmail} value={saveEmail} />
+        <span>이메일 저장</span>
+        <div>
+          <input type="button" onClick={handleSubmit} value="SignIn" />
+          <input type="button" onClick={handleSignOut} value="SignOut" />
+        </div>
+        <div>
+          <input type="button" onClick={handleOAuthKakao} value="OAuth Kakao" />
+          <input type="button" onClick={handleOAuthGoogle} value="OAuth Google" />
+          <input type="button" onClick={handleOAuthGithub} value="OAuth Github" />
+        </div>
       </div>
     </>
   );

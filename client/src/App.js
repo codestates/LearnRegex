@@ -9,6 +9,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import SignIn from './components/user/SignIn';
+import FindPassword from './components/user/FindPassword';
 import SetNewPassword from './pages/myinfo/SetNewPassword';
 import QuizList from './pages/QuizList';
 import SolveQuiz from './pages/SolveQuiz';
@@ -22,6 +23,7 @@ function App() {
     <>
       <SignIn />
       <SetNewPassword />
+      <FindPassword />
     </>
   );
 }

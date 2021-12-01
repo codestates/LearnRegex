@@ -121,3 +121,18 @@ export const requestSetNewPassword = async () => {
   console.log('WIP! 😅');
   return true;
 };
+
+export const requestFindPassword = async () => {
+  // try {
+  //   const result = await axios.get(
+  //     `${process.env.REACT_APP_SERVER_ADDR}/myinfo` //
+  //   );
+  //   console.log(result);
+  //   return true;
+  // } catch (error) {
+  //   console.log(error);
+  //   return false;
+  // }
+  console.log('WIP! 😅');
+  return true;
+};
