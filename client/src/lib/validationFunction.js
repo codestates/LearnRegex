@@ -2,11 +2,28 @@ import axios from 'axios';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const isValid = async (values) => {
+export const isValidSignUp = async (values) => {
   const validResult = {
     email: await isValidEmail(values.email),
     nickname: await isValidNickname(values.nickname),
     password: isValidPassword(values.password),
+    confirm: isValidPasswordConfirm(values.confirm),
+  };
+  return validResult;
+};
+
+export const isValidEditUserInfo = async (values) => {
+  const validResult = {
+    email: await isValidEmail(values.email),
+    nickname: await isValidNickname(values.nickname),
+  };
+  return validResult;
+};
+
+export const isValidEditUserPassword = async (values) => {
+  const validResult = {
+    oldPassword: isValidPassword(values.oldPassword),
+    newPassword: isValidPassword(values.newPassword),
     confirm: isValidPasswordConfirm(values.confirm),
   };
   return validResult;
@@ -81,5 +98,3 @@ const isConflictNickname = async (nickname) => {
       return true;
     });
 };
-
-export default isValid;

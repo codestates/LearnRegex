@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+// import { Link, useNavigate } from 'react-router-dom';
 
-import { signInRequest } from '../../lib/userInfoFunction';
+import { requestSignIn } from '../../lib/requestUserInfo';
 
 export const SignIn = () => {
   const [signInInfo, setSignInInfo] = useState({
@@ -13,12 +13,10 @@ export const SignIn = () => {
     password: '',
   });
 
-  // TODO 키 입력
   const handleInputValue = (key) => (e) => {
     setSignInInfo({ ...signInInfo, [key]: e.target.value });
   };
 
-  // TODO 엔터키
   const handleKeyUp = (e) => {
     if (e.key === 'Enter') {
       handleSignIn();
@@ -36,7 +34,7 @@ export const SignIn = () => {
     if (Object.values(errorResult).find((el) => el !== '')) return;
 
     // 서버 통신
-    const serverResult = signInRequest();
+    const serverResult = requestSignIn();
     if (serverResult) console.log('hi!');
     else console.log('error!');
   };

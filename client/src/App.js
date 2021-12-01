@@ -6,6 +6,8 @@ import dotenv from 'dotenv';
 
 import SignIn from './components/userinfo/SignIn';
 import SignUp from './components/userinfo/SignUp';
+import EditUserInfo from './components/userinfo/EditUserInfo';
+import EditUserPassword from './components/userinfo/EditUserPassword';
 import QuizForm from './components/QuizForm';
 import SolveQuiz from './pages/SolveQuiz';
 dotenv.config();
@@ -15,8 +17,11 @@ function App() {
     <>
       {/* <SignIn /> */}
       {/* <hr /> */}
-      {/* <SignUp /> */}
-      {/* <hr /> */}
+      <EditUserInfo />
+      <hr />
+      <EditUserPassword />
+      <hr />
+      <SignUp />
       {/* <QuizForm /> */}
       {/* <SolveQuiz /> */}
     </>
