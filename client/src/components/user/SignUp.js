@@ -1,12 +1,12 @@
 import React, { useState, useRef } from 'react';
 // import { Link, useNavigate } from 'react-router-dom';
-import { signUpRequest } from '../../lib/userInfoFunction';
-import isValid, { isValidEmail, isValidNickname, isValidPassword, isValidPasswordConfirm } from '../../lib/validationFunction';
+import { requestSignUp } from '../../lib/requestUserInfo';
+import { isValidSignUp, isValidEmail, isValidNickname, isValidPassword, isValidPasswordConfirm } from '../../lib/validationFunction';
 import dotenv from 'dotenv';
 dotenv.config();
 
 export const SignUp = () => {
-  const [SignUpInfo, setSignUpInfo] = useState({
+  const [inputUserInfo, setSignUpInfo] = useState({
     email: '',
     nickname: '',
     password: '',
@@ -23,34 +23,32 @@ export const SignUp = () => {
   const timeWait = useRef();
   const handleInputValue = (key) => (e) => {
     const inputKey = e.target.value;
-    setSignUpInfo({ ...SignUpInfo, [key]: inputKey });
+    setSignUpInfo({ ...inputUserInfo, [key]: inputKey });
     clearTimeout(timeWait.current);
     timeWait.current = setTimeout(async () => {
       if (key === 'email') setErrorMessage({ ...errorMessage, email: await isValidEmail(inputKey) });
       else if (key === 'nickname') setErrorMessage({ ...errorMessage, nickname: await isValidNickname(inputKey) });
       else if (key === 'password') setErrorMessage({ ...errorMessage, password: isValidPassword(inputKey) });
-      else if (key === 'confirm') setErrorMessage({ ...errorMessage, confirm: isValidPasswordConfirm(SignUpInfo.password, inputKey) });
+      else if (key === 'confirm') setErrorMessage({ ...errorMessage, confirm: isValidPasswordConfirm(inputUserInfo.password, inputKey) });
     }, 500);
   };
 
   // * 엔터키 동작
   const handleKeyUp = (e) => {
     if (e.key === 'Enter') {
-      handleSignUp();
+      handleSubmit();
     }
   };
 
   // * Submit 버튼 클릭
-  const handleSignUp = async () => {
-    const { email, nickname, password, confirm } = SignUpInfo;
-
+  const handleSubmit = async () => {
     // * 유효성 처리
-    const errorResult = await isValid(SignUpInfo);
+    const errorResult = await isValidSignUp(inputUserInfo);
     setErrorMessage(errorResult);
+    if (Object.values(errorResult).find((el) => el !== '')) return;
 
     // * 서버 통신
-    // console.log(SignUpInfo);
-    const serverResult = await signUpRequest();
+    const serverResult = await requestSignUp(inputUserInfo);
     if (serverResult) console.log('hi!');
     else console.log('error!');
   };
@@ -75,7 +73,7 @@ export const SignUp = () => {
         <input type="text" onChange={handleInputValue('confirm')} onKeyUp={handleKeyUp}></input>
         <p>{errorMessage.confirm}&nbsp;</p>
 
-        <input type="button" onClick={handleSignUp} value="SignUp" />
+        <input type="button" onClick={handleSubmit} value="Submit" />
       </div>
     </>
   );
