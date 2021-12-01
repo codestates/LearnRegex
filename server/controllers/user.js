@@ -39,9 +39,9 @@ module.exports = {
       const token = getToken(tokenData);
 
       return res
+        .header({ isLogin: true })
         .cookie('token', token, {
-          sameSite: 'None',
-          secure: false,
+          sameSite: 'Strict',
           httpOnly: true,
           expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
         })
@@ -56,7 +56,7 @@ module.exports = {
   // 로그아웃
   signout: async (req, res) => {
     try {
-      res.clearCookie('token').status(200).send({ message: 'success' });
+      res.header({ isLogin: false }).clearCookie('token').status(200).send({ message: 'success' });
     } catch (err) {
       console.log(err);
       return res.status(500).send({ message: 'server error' });
