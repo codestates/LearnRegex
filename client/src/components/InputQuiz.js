@@ -9,7 +9,7 @@ function InputQuiz({ data }) {
   const handleInputValue = (key) => (e) => {
     // console.log(e.target.maxLength);
     // console.log(e.target.value.length);
-    let result = limitChar(e.target.value.length, e.target.maxLength);
+    let result = e.target.maxLength > 0 ? limitChar(e.target.value.length, e.target.maxLength) : true;
     if (!!result) setContent({ ...content, [key]: e.target.value });
   };
 
