@@ -14,12 +14,20 @@ export const GetMyInfo = () => {
     clearQuiz: 0,
   });
   useEffect(() => {
-    // setMyInfo(resultMyInfo);
+    const getMyInfo = async () => {
+      const resultMyInfo = await requestGetMyInfo();
+      if (!resultMyInfo) return;
+      console.log(resultMyInfo.data.data);
+      setMyInfo(resultMyInfo.data.data);
+    };
+    getMyInfo();
   }, []);
 
-  const handleSubmit = () => {
-    const resultMyInfo = requestGetMyInfo();
-    console.log('resultMyInfo');
+  const handleSubmit = async () => {
+    const resultMyInfo = await requestGetMyInfo();
+    if (!resultMyInfo) return;
+    console.log(resultMyInfo.data.data);
+    setMyInfo(resultMyInfo.data.data);
   };
   return (
     <>
