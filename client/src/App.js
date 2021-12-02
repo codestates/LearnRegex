@@ -1,30 +1,38 @@
 import React from 'react';
-import './App.css';
-import Navbar from './components/Navbar';
-import Sidebar from './components/Sidebar';
-import SignIn from './components/user/SignIn'; // it works
-import SignUp from './components/user/SignUp'; // it works
-import FindPassword from './components/user/FindPassword';
-import DeleteConfirm from './components/user/DeleteConfirm';
-import GetMyInfo from './pages/myinfo/GetMyInfo';
-import SetNewPassword from './pages/myinfo/SetNewPassword';
-import EditUserInfo from './pages/myinfo/EditUserInfo'; // it works
-import EditUserPassword from './pages/myinfo/EditUserPassword'; // it works
+import { Routes, Route } from 'react-router-dom';
+import Navigation from './components/navigation';
+import Home from './pages/Home';
+import Tutorial from './pages/Tutorial';
 import QuizList from './pages/QuizList';
+import CheatSheet from './pages/CheatSheet';
+import GetMyInfo from './pages/myinfo/GetMyInfo';
+import EditUserInfo from './pages/myinfo/EditUserInfo';
+import EditUserPassword from './pages/myinfo/EditUserPassword.js';
+import SetNewPassword from './pages/myinfo/SetNewPassword.js';
 import SolveQuiz from './pages/SolveQuiz';
-import EditQuiz from './pages/EditQuiz';
-import MakeQuiz from './pages/MakeQuiz';
+import MakeQuiz from './pages/MakeQuiz.js';
+import EditQuiz from './pages/EditQuiz.js';
 import dotenv from 'dotenv';
+import './App.css';
 dotenv.config();
 
 function App() {
   return (
     <>
-      <SignIn />
-      <hr />
-      <SignUp />
-      <hr />
-      <DeleteConfirm />
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/tutorial" element={<Tutorial />} />
+        <Route path="/cheatsheet" element={<CheatSheet />} />
+        <Route path="/myinfo" element={<GetMyInfo />} />
+        <Route path="/editinfo" element={<EditUserInfo />} />
+        <Route path="/quizlist" element={<QuizList />} />
+        <Route path="/editpw" element={<EditUserPassword />} />
+        <Route path="/newpw" element={<SetNewPassword />} />
+        <Route path="/quiz/:id" element={<SolveQuiz />} />
+        <Route path="/makequiz" element={<MakeQuiz />} />
+        <Route path="/editquiz" element={<EditQuiz />} />
+      </Routes>
     </>
   );
 }
