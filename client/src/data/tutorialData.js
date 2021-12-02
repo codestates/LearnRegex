@@ -9,7 +9,7 @@ export const dummyData = [
     answer: '/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i',
     explanation:
       'Santa tell me if youre really there Don`t make me fall in love again If he won`t be here next year Santa tell me if he really cares Cause I can`t give it all away If he won`t be here next year Feeling Christmas all around And I`m trying to play it cool But it`s hard to focus When I see him walking cross the room Let it snow, is blasting now But I won`t get it in the mood',
-    tip: 'CharacterSet [a-z] 머리부터 발끝까지 핫이슈 내모든것 하나하나 핫이슈 머리부터 발끝까지 핫이슈 내모든것 하나하나 핫이슈 머리부터 발끝까지 핫이슈 내모든것 하나하나 핫이슈',
+    hint: 'CharacterSet [a-z] 머리부터 발끝까지 핫이슈 내모든것 하나하나 핫이슈 머리부터 발끝까지 핫이슈 내모든것 하나하나 핫이슈 머리부터 발끝까지 핫이슈 내모든것 하나하나 핫이슈',
   },
   {
     id: 2,
@@ -19,6 +19,6 @@ export const dummyData = [
     testCaseTarget: '010-1234-5678',
     answer: '/^[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}$/',
     explanation: 'Last Christmas I gave you my heart But the very next day you gave it away This year to save me from tears I ll give it to someone special',
-    tip: 'CharacterSet [0-9] 머리부터 발끝까지 핫이슈 내모든것 하나하나 핫이슈 머리부터 발끝까지 핫이슈 내모든것 하나하나 핫이슈 머리부터 발끝까지 핫이슈 내모든것 하나하나 핫이슈',
+    hint: 'CharacterSet [0-9] 머리부터 발끝까지 핫이슈 내모든것 하나하나 핫이슈 머리부터 발끝까지 핫이슈 내모든것 하나하나 핫이슈 머리부터 발끝까지 핫이슈 내모든것 하나하나 핫이슈',
   },
 ];
