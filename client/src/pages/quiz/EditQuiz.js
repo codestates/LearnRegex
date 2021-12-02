@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import InputQuiz from '../components/InputQuiz';
+import InputQuiz from '../../components/InputQuiz';
 
 function EditQuiz() {
   const { data } = useSelector((state) => state.quiz.quiz);

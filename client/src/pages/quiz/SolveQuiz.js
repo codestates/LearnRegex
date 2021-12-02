@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import { getQuiz } from '../modules/quiz';
-import QuizForm from '../components/QuizForm';
-import BackButton from '../components/BackButton';
+import { getQuiz } from '../../modules/quiz';
+import QuizForm from '../../components/QuizForm';
+import BackButton from '../../components/BackButton';
 
 function SolveQuiz() {
   const { id } = useParams('id');

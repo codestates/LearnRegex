@@ -1,5 +1,5 @@
 import React from 'react';
-import InputQuiz from '../components/InputQuiz';
+import InputQuiz from '../../components/InputQuiz';
 
 function MakeQuiz() {
   return (
