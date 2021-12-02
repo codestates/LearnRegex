@@ -7,7 +7,7 @@ import { BsPencilSquare } from 'react-icons/bs';
 
 function QuizList() {
   const { data } = useSelector((state) => state.quizzes.list);
-  console.log(data);
+  // console.log(data);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,7 +22,7 @@ function QuizList() {
         <BsPencilSquare size="50" />
       </Link>
       {data.map((el) => (
-        <QuizListElement key={el.id} data={data} />
+        <QuizListElement key={el.id} data={el} />
       ))}
     </>
   );

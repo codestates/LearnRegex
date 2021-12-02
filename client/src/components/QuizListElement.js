@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 function QuizListElement({ data }) {
   // TODO: isClear의 값에 따라 button props 다르게 전달하기 -> 도전하기 색상 변경
   // TODO: button 클릭 시 QuizSolve 페이지로 이동 -> id props로 전달
+  // console.log(data);
 
   return (
     <>
