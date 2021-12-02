@@ -7,14 +7,21 @@ module.exports = {
   // 유저 정보 조회
   getmyinfo: async (req, res) => {
     try {
+      const userId = req.userId;
+
       // 유저 이메일, 닉네임 조회
-      const userInfo = await users.findOne({ where: { id: req.userId }, attributes: ['email', 'nickname'], raw: true });
+      const userInfo = await users.findOne({ where: { id: userId }, attributes: ['email', 'nickname'], raw: true });
+
+      // 로그인 한 유저가 db에 존재하는지 확인
+      if (!userInfo) {
+        return res.status(404).send({ message: 'not found user' });
+      }
 
       // 유저가 만든 퀴즈 갯수 조회
-      const makeQuiz = (await quiz.findAndCountAll({ where: { userId: req.userId } })).count;
+      const makeQuiz = (await quiz.findAndCountAll({ where: { userId: userId } })).count;
 
       // 유저가 클리어한 퀴즈 갯수 조회
-      const clearQuiz = (await db.sequelize.models.users_quiz.findAndCountAll({ where: { userId: req.userId } })).count;
+      const clearQuiz = (await db.sequelize.models.users_quiz.findAndCountAll({ where: { userId: userId } })).count;
 
       // 조회 정보 합쳐서 응답
       const data = { ...userInfo, makeQuiz, clearQuiz };
@@ -30,13 +37,22 @@ module.exports = {
   editmyinfo: async (req, res) => {
     try {
       const { email, nickname } = req.body;
-      const id = req.userId;
       const data = { id, email, nickname };
 
       // 들어온 요청이 없는 경우
       if (!(email && nickname)) {
         return res.status(400).send({ message: 'empty information' });
       }
+
+      const userId = req.userId;
+
+      // 로그인 한 유저가 db에 존재하는지 확인
+      const userInfo = await users.findOne({ where: { id: userId } });
+
+      if (!userInfo) {
+        return res.status(404).send({ message: 'not found user' });
+      }
+
       // 수정 내용 유효성 검사
       const isValid = validation(req.body);
 
@@ -50,8 +66,9 @@ module.exports = {
       }
 
       // 수정 내용 적용
-      await users.update({ email, nickname }, { where: { id } });
-      res.status(200).send({ message: 'success' });
+      await users.update({ email, nickname }, { where: { id: userId } });
+
+      return res.status(200).send({ message: 'success' });
     } catch (err) {
       console.log(err);
       return res.status(500).send({ message: 'server error' });
@@ -74,7 +91,13 @@ module.exports = {
       }
 
       // 변경할 유저 정보 조회
-      const userInfo = await users.findOne({ where: { id: req.userId }, raw: true });
+      const userId = req.userId;
+      const userInfo = await users.findOne({ where: { id: userId }, raw: true });
+
+      // 로그인 한 유저가 db에 존재하는지 확인
+      if (!userInfo) {
+        return res.status(404).send({ message: 'not found user' });
+      }
 
       // oldPassword와 현재 비밀번호가 일치하지 않은 경우
       if (!bcrypt.compareSync(oldPassword, userInfo.password)) {
@@ -105,11 +128,20 @@ module.exports = {
   // 회원 탈퇴
   deletemyinfo: async (req, res) => {
     try {
+      const userId = req.userId;
+
+      // 삭제하려는 유저가 db에 존재하는지 확인
+      const userInfo = await users.findOne({ where: { id: userId } });
+
+      if (!userInfo) {
+        return res.status(404).send({ message: 'not found user' });
+      }
+
       // 유저 정보 삭제
       await users
         .header({ isLogin: false })
         .clearCookie('token')
-        .destroy({ where: { id: req.userId } });
+        .destroy({ where: { id: userId } });
 
       return res.status(200).send({ message: 'success' });
     } catch (err) {
