@@ -32,7 +32,7 @@ module.exports = {
       res.header({ isLogin: true });
       req.userId = isUser.id;
 
-      return next();
+      next();
     } catch (err) {
       console.log(err);
       return res.status(500).send({ message: 'server error' });
