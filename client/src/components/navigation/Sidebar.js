@@ -10,7 +10,7 @@ const Sidebar = ({ isOpen, toggle }) => {
       <SidebarWrapper>
         <SidebarMenu>
           <SidebarLink to="/tutorial">학습하기</SidebarLink>
-          <SidebarLink to="/quizzes">퀴즈</SidebarLink>
+          <SidebarLink to="/quizlist">퀴즈</SidebarLink>
           <SidebarLink to="/cheatsheet">자습서</SidebarLink>
           <SidebarBtnWrap>
             <SidebarBtn to="/signin">로그인</SidebarBtn>
