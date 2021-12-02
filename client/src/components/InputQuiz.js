@@ -15,7 +15,7 @@ function InputQuiz({ data }) {
 
   useEffect(() => {
     if (!!data) {
-      console.log('EditQuiz가 존재하면 뜨는 로그');
+      // console.log('EditQuiz가 존재하면 뜨는 로그');
       setContent({ ...content, title: data.title, testCase: data.testCase, testCaseTarget: data.testCaseTarget, answer: data.answer, explanation: data.explanation });
     }
   }, []);

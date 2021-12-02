@@ -13,7 +13,7 @@ function SolveQuiz() {
 
   useEffect(() => {
     dispatch(getQuiz(id));
-  }, [id, dispatch]);
+  }, [id]);
 
   if (!data) return <div>loading....</div>;
 
@@ -33,7 +33,7 @@ function SolveQuiz() {
             <div>닉네임: {data.nickname}</div>
             {data.isMade ? (
               <div>
-                <Link to="/editquiz">
+                <Link to={`/editquiz/${data.id}`}>
                   <span>수정</span>
                 </Link>
                 <span onClick={deleteQuiz}>삭제</span>

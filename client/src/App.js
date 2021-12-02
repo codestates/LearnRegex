@@ -31,7 +31,7 @@ function App() {
         <Route path="/newpw" element={<SetNewPassword />} />
         <Route path="/quiz/:id" element={<SolveQuiz />} />
         <Route path="/makequiz" element={<MakeQuiz />} />
-        <Route path="/editquiz" element={<EditQuiz />} />
+        <Route path="/editquiz/:id" element={<EditQuiz />} />
       </Routes>
     </>
   );
