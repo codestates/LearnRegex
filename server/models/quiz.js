@@ -8,9 +8,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      models.quiz.belongsToMany(models.users, { through: 'users_quiz', foreignKey: 'quizId', sourceKey: 'id' });
-
-      models.quiz.belongsTo(models.users, { foreignKey: 'userId', sourceKey: 'id', onDelete: 'cascade' });
+      quiz.hasMany(models.users_quiz, { foreignKey: 'quizId', sourceKey: 'id', onDelete: 'cascade' });
+      quiz.belongsTo(models.users, { foreignKey: 'userId', sourceKey: 'id', onDelete: 'cascade' });
     }
   }
   quiz.init(
@@ -37,6 +36,14 @@ module.exports = (sequelize, DataTypes) => {
       },
       count: {
         type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      isClear: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+      },
+      isMade: {
+        type: DataTypes.BOOLEAN,
         allowNull: false,
       },
     },
