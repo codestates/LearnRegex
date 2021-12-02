@@ -5,14 +5,20 @@ import Sidebar from './Sidebar';
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggle = () => {
+  const openSidebar = () => {
     setIsOpen(!isOpen);
+  };
+
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(!showModal);
   };
 
   return (
     <>
-      <Navbar toggle={toggle} />
-      <Sidebar isOpen={isOpen} toggle={toggle} />
+      <Navbar openSidebar={openSidebar} sho />
+      <Sidebar isOpen={isOpen} openSidebar={openSidebar} />
     </>
   );
 };
