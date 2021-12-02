@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { getQuiz } from '../modules/quiz';
-import { saveAnswer } from '../modules/answer';
 import QuizForm from '../components/QuizForm';
 import BackButton from '../components/BackButton';
 
@@ -11,8 +10,6 @@ function SolveQuiz() {
   const { data } = useSelector((state) => state.quiz.quiz);
   // console.log('SolveQuiz');
   const dispatch = useDispatch();
-
-  const saveLocal = (text) => dispatch(saveAnswer(text));
 
   useEffect(() => {
     dispatch(getQuiz(id));
@@ -57,7 +54,7 @@ function SolveQuiz() {
             )}
           </div>
           <div>
-            <QuizForm saveLocal={saveLocal} testCase={dummyData.testCase} testCaseTarget={dummyData.testCaseTarget} answer={dummyData.answer} explanation={dummyData.explanation} page={'solve'} />
+            <QuizForm testCase={dummyData.testCase} testCaseTarget={dummyData.testCaseTarget} answer={dummyData.answer} explanation={dummyData.explanation} page={'solve'} />
           </div>
         </div>
       </div>

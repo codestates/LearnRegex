@@ -10,8 +10,14 @@ import EditUserInfo from './pages/myinfo/EditUserInfo';
 import EditUserPassword from './pages/myinfo/EditUserPassword.js';
 import SetNewPassword from './pages/myinfo/SetNewPassword.js';
 import SolveQuiz from './pages/SolveQuiz';
+<<<<<<< Updated upstream
 import MakeQuiz from './pages/MakeQuiz.js';
 import EditQuiz from './pages/EditQuiz.js';
+=======
+import EditQuiz from './pages/EditQuiz';
+import MakeQuiz from './pages/MakeQuiz';
+import Tutorial from './pages/Tutorial';
+>>>>>>> Stashed changes
 import dotenv from 'dotenv';
 import './App.css';
 dotenv.config();
@@ -19,6 +25,7 @@ dotenv.config();
 function App() {
   return (
     <>
+<<<<<<< Updated upstream
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -33,6 +40,9 @@ function App() {
         <Route path="/makequiz" element={<MakeQuiz />} />
         <Route path="/editquiz" element={<EditQuiz />} />
       </Routes>
+=======
+      <Tutorial />
+>>>>>>> Stashed changes
     </>
   );
 }
