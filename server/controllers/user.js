@@ -2,8 +2,6 @@ const { users } = require('../models');
 const { validation, confliction } = require('./inspectfunction');
 const { getToken } = require('./tokenfunction');
 const bcrypt = require('bcryptjs');
-const dotenv = require('dotenv');
-dotenv.config();
 
 module.exports = {
   // 로그인
@@ -75,14 +73,12 @@ module.exports = {
 
       // 서버 자체적 검증(유효성)
       const isValid = validation(req.body);
-      const { isValidEmail, isValidNickname, isValidPassword } = isValid;
 
       // 서버 자체적 검증(중복)
       const isConflict = await confliction(req.body);
-      const { isConflictEmail, isConflictNickname } = isConflict;
 
       // 유효성, 중복 검사 중 하나라도 검증이 안된 경우
-      if (!(isValidEmail && isValidNickname && isValidPassword) || !(isConflictEmail && isConflictNickname)) {
+      if (Object.keys(isValid).length || Object.keys(isConflict).length) {
         return res.status(406).send({ data: { isValid, isConflict } });
       }
 

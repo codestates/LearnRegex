@@ -16,6 +16,7 @@ app.use(
     origin: true,
     credentials: true,
     methods: ['GET', 'POST', 'DELETE', 'PATCH', 'OPTIONS'],
+    exposedHeaders: 'isLogin',
   })
 );
 

@@ -1,12 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
 
-function QuizForm({ testCase, testCaseTarget, answer, explanation, page = 'solve' }) {
-  // ! page = "solve"인 이유: SolvePage로부터 받아와졌다고 가정하고 구현
-  // TODO: Tutorial, SolveQuiz 페이지 구현 후 page = "solve"에서 page로 수정
+// ! page = "solve"인 이유: SolvePage로부터 받아와졌다고 가정하고 구현
+// TODO: Tutorial, SolveQuiz 페이지 구현 후 page = "solve"에서 page로 수정
+function QuizForm({ saveLocal, testCase, testCaseTarget, answer, explanation, page = 'solve' }) {
+  const { text } = useSelector((state) => state.answer);
+  const [result, setResult] = useState(text);
+
+  const handleAnswer = (e) => {
+    setResult(e.target.value);
+  };
 
   const handleModal = () => {
     // TODO: button 클릭시 QuizAnswerModal에게 상속 받은 answer, explanation를 props로 전달
   };
+
+  const timeWait = useRef();
+  useEffect(() => {
+    clearTimeout(timeWait.current);
+    timeWait.current = setTimeout(() => {
+      saveLocal(result);
+    }, 2000);
+  }, [result]);
 
   return (
     <>
@@ -27,7 +42,7 @@ function QuizForm({ testCase, testCaseTarget, answer, explanation, page = 'solve
             <span>입력한 정규표현식을 Test Case에 적용한 걸 실시간으로 보여주는 곳</span>
           </div>
           <div>
-            <input type="text" placeholder="정규표현식을 입력하세요!" />
+            <input type="text" value={result} placeholder="정규표현식을 입력하세요!" onChange={handleAnswer} />
           </div>
         </div>
         <div>

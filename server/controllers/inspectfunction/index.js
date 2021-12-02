@@ -1,12 +1,10 @@
 const { users } = require('../../models');
+const sequelize = require('sequelize');
+const Op = sequelize.Op;
 
 module.exports = {
   validation: ({ email, nickname, password }) => {
-    const result = {
-      isValidEmail: true,
-      isValidNickname: true,
-      isValidPassword: true,
-    };
+    const result = {};
 
     if (email) {
       if (!/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/g.test(email)) {
@@ -27,24 +25,31 @@ module.exports = {
     }
     return result;
   },
-  confliction: async ({ email, nickname }) => {
+  confliction: async ({ id, email, nickname }) => {
     // 들어온게 있다면 실행하도록
-    const result = {
-      isConflictEmail: true,
-      isConflictNickname: true,
-    };
+    const result = {};
+
+    const emailQuery = { email };
+    if (id) emailQuery[Op.not] = { id };
+
+    const nicknameQuery = { nickname };
+    if (id) nicknameQuery[Op.not] = { id };
 
     let isConflict;
 
     if (email) {
-      isConflict = await users.findOne({ where: { email } });
+      isConflict = await users.findOne({
+        where: emailQuery,
+      });
       if (isConflict) {
         result.isConflictEmail = false;
       }
     }
 
     if (nickname) {
-      isConflict = await users.findOne({ where: { nickname } });
+      isConflict = await users.findOne({
+        where: nicknameQuery,
+      });
       if (isConflict) {
         result.isConflictNickname = false;
       }
