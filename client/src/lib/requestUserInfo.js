@@ -66,12 +66,12 @@ export const requestEditUserPassword = async (userInfo) => {
   }
 };
 
-export const requestDeleteUserInfo = async (userInfo) => {
-  const { oldPassword, newPassword } = userInfo;
+export const requestDeleteUserInfo = async () => {
+  // const { oldPassword, newPassword } = userInfo;
   try {
     const result = await axios.delete(
-      `${process.env.REACT_APP_SERVER_ADDR}/myinfo`, //client
-      { oldPassword, newPassword }
+      `${process.env.REACT_APP_SERVER_ADDR}/myinfo` //client
+      // { oldPassword, newPassword }
     );
     console.log(result);
     return true;

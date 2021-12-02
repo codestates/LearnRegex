@@ -3,7 +3,9 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import SignIn from './components/user/SignIn'; // it works
+import SignUp from './components/user/SignUp'; // it works
 import FindPassword from './components/user/FindPassword';
+import DeleteConfirm from './components/user/DeleteConfirm';
 import GetMyInfo from './pages/myinfo/GetMyInfo';
 import SetNewPassword from './pages/myinfo/SetNewPassword';
 import EditUserInfo from './pages/myinfo/EditUserInfo'; // it works
@@ -20,8 +22,9 @@ function App() {
     <>
       <SignIn />
       <hr />
-      <GetMyInfo />
+      <SignUp />
       <hr />
+      <DeleteConfirm />
     </>
   );
 }
