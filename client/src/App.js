@@ -13,7 +13,11 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <SolveQuiz />
+    </>
+  );
 }
 
 export default App;

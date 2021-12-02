@@ -42,7 +42,7 @@ function QuizForm({ saveLocal, testCase, testCaseTarget, answer, explanation, pa
             <span>입력한 정규표현식을 Test Case에 적용한 걸 실시간으로 보여주는 곳</span>
           </div>
           <div>
-            <input type="text" value={result} placeholder="정규표현식을 입력하세요!" onChange={handleAnswer} />
+            <input type="text" value={result || ''} placeholder="정규표현식을 입력하세요!" onChange={handleAnswer} />
           </div>
         </div>
         <div>
