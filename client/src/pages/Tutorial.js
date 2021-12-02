@@ -5,18 +5,19 @@ import { dummyData } from '../data/tutorialData';
 
 function Tutorial() {
   const [list, setList] = useState(dummyData);
-  console.log(list[0]);
+  const [current, setCurrent] = useState(0);
+
   return (
     <>
       <div>
         <div>
-          <div>제목</div>
+          <div>제목: {list[current].title}</div>
           <div>
-            <QuizForm data={list[0]} />
+            <QuizForm data={list[current]} />
           </div>
         </div>
         <div>
-          <TutorialSide />
+          <TutorialSide tip={list[current].tip} />
         </div>
       </div>
     </>

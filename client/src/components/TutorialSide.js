@@ -1,9 +1,12 @@
 import React from 'react';
 
-function TutorialSide() {
+function TutorialSide({ tip }) {
   return (
     <>
-      <div>해설 보여주는 곳</div>
+      <div>
+        <div></div>
+        <div>해설: {tip}</div>
+      </div>
     </>
   );
 }
