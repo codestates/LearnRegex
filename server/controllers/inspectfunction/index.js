@@ -5,6 +5,11 @@ const Op = sequelize.Op;
 module.exports = {
   validation: ({ email, nickname, password }) => {
     const result = {};
+    const getByte = (str) => {
+      let byte = 0;
+      for (let i = 0; i < str.length; ++i) str.charCodeAt(i) > 127 ? (byte += 2) : byte++;
+      return byte;
+    };
 
     if (email) {
       if (!/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/g.test(email)) {
@@ -13,16 +18,18 @@ module.exports = {
     }
 
     if (nickname) {
-      if (!/^[가-힣a-zA-Z0-9]{2,10}$/g.test(nickname)) {
+      const strByte = getByte(nickname);
+      if (!/^[가-힣a-zA-Z0-9]{2,12}$/g.test(nickname) || !(strByte < 13 && strByte > 3)) {
         result.isValidNickname = false;
       }
     }
 
     if (password) {
-      if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d$@$!%*#?&]{8,16}$/g.test(password)) {
+      if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d$@$!%*#?&]{8,32}$/g.test(password)) {
         result.isValidPassword = false;
       }
     }
+    console.log(result);
     return result;
   },
   confliction: async ({ id, email, nickname }) => {

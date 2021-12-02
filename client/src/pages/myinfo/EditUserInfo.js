@@ -37,10 +37,10 @@ export const EditUserInfo = () => {
   // * Submit 버튼 클릭
   const handleSubmit = async () => {
     // * 유효성 처리
-    const errorResult = await isValidEditUserInfo(inputUserInfo);
-    setErrorMessage(errorResult);
-    console.log(errorResult);
-    if (Object.values(errorResult).find((el) => el !== '')) return;
+    // const errorResult = await isValidEditUserInfo(inputUserInfo);
+    // setErrorMessage(errorResult);
+    // console.log(errorResult);
+    // if (Object.values(errorResult).find((el) => el !== '')) return;
 
     // * 서버 통신
     const serverResult = await requestEditUserInfo(inputUserInfo);

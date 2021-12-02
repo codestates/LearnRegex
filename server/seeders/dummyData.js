@@ -45,6 +45,8 @@ module.exports = {
         answer: 'a',
         explanation: '블라블라',
         count: 3,
+        isClear: false,
+        isMade: false,
         createdAt: new Date(Date.now()),
         updatedAt: new Date(Date.now()),
       },
@@ -60,6 +62,8 @@ module.exports = {
         answer: 'b',
         explanation: '어쩌구저쩌구',
         count: 1,
+        isClear: false,
+        isMade: false,
         createdAt: new Date(Date.now()),
         updatedAt: new Date(Date.now()),
       },
@@ -75,24 +79,29 @@ module.exports = {
         answer: 'E',
         explanation: '저쩌구어쩌구',
         count: 7,
+        isClear: false,
+        isMade: false,
         createdAt: new Date(Date.now()),
         updatedAt: new Date(Date.now()),
       },
     ]);
     await queryInterface.bulkInsert('users_quiz', [
       {
+        id: 1,
         quizId: quiz2,
         userId: user1,
         createdAt: new Date(Date.now()),
         updatedAt: new Date(Date.now()),
       },
       {
+        id: 2,
         quizId: quiz1,
         userId: user1,
         createdAt: new Date(Date.now()),
         updatedAt: new Date(Date.now()),
       },
       {
+        id: 3,
         quizId: quiz2,
         userId: user2,
         createdAt: new Date(Date.now()),
@@ -110,5 +119,6 @@ module.exports = {
   down: async (queryInterface, Sequelize) => {
     await queryInterface.bulkDelete('users', null, {});
     await queryInterface.bulkDelete('quiz', null, {});
+    await queryInterface.bulkDelete('users_quiz', null, {});
   },
 };

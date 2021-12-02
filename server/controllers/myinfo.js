@@ -1,7 +1,5 @@
 const { users, quiz } = require('../models');
 const db = require('../models');
-const sequelize = require('sequelize');
-const Op = sequelize.Op;
 const { validation, confliction } = require('./inspectfunction');
 const bcrypt = require('bcryptjs');
 
@@ -46,6 +44,7 @@ module.exports = {
 
       // 유효성, 중복 검사 중 하나라도 검증이 안된 경우
       if (Object.keys(isValid).length || Object.keys(isConflict).length) {
+        console.log(Object.keys(isValid).length, Object.keys(isConflict).length);
         return res.status(406).send({ data: { isValid, isConflict } });
       }
 
@@ -104,23 +103,11 @@ module.exports = {
   // 회원 탈퇴
   deletemyinfo: async (req, res) => {
     try {
-      const { oldPassword } = req.body;
-
-      // 비밀번호를 입력하지 않은 경우
-      if (!oldPassword) {
-        return res.status(400).send({ message: 'empty oldpassword' });
-      }
-
-      // 탈퇴 할 유저 정보 조회
-      const userInfo = await users.findOne({ where: { id: req.userId }, raw: true });
-
-      // oldPassword와 현재 비밀번호가 일치하지 않은 경우
-      if (!bcrypt.compareSync(oldPassword, userInfo.password)) {
-        return res.status(406).send({ message: 'invalid oldPassword' });
-      }
-
       // 유저 정보 삭제
-      await users.destroy({ where: { id: req.userId } });
+      await users
+        .header({ isLogin: false })
+        .clearCookie('token')
+        .destroy({ where: { id: req.userId } });
       res.status(200).send({ message: 'success' });
     } catch (err) {
       console.log(err);

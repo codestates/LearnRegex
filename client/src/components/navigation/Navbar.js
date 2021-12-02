@@ -2,13 +2,13 @@ import React from 'react';
 import { FaBars } from 'react-icons/fa';
 import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtn, NavBtnLink } from './NavbarElements';
 
-const Navbar = () => {
+const Navbar = ({ toggle }) => {
   return (
     <>
       <Nav>
         <NavbarContainer>
           <NavLogo to="/">LearnRegex</NavLogo>
-          <MobileIcon>
+          <MobileIcon onClick={toggle}>
             <FaBars />
           </MobileIcon>
           <NavMenu>
@@ -16,7 +16,7 @@ const Navbar = () => {
               <NavLinks to="/tutorial">학습하기</NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to="/quizzes">퀴즈</NavLinks>
+              <NavLinks to="/quizlist">퀴즈</NavLinks>
             </NavItem>
             <NavItem>
               <NavLinks to="/cheatsheet">자습서</NavLinks>

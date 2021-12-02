@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getQuizzes } from '../modules/quizzes';
-import QuizListElement from '../components/QuizListElement';
+import { getQuizzes } from '../../modules/quizzes';
+import QuizListElement from '../../components/QuizListElement';
 import { Link } from 'react-router-dom';
 import { BsPencilSquare } from 'react-icons/bs';
 
