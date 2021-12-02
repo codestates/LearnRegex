@@ -16,7 +16,7 @@ const Navbar = ({ toggle }) => {
               <NavLinks to="/tutorial">학습하기</NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to="/quizlist">퀴즈</NavLinks>
+              <NavLinks to="/quizzlist">퀴즈</NavLinks>
             </NavItem>
             <NavItem>
               <NavLinks to="/cheatsheet">자습서</NavLinks>
