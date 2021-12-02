@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ChallengeButton } from '../styled/button/ChallengeButton.styled';
 
 function QuizListElement({ data }) {
   // TODO: isClear의 값에 따라 button props 다르게 전달하기 -> 도전하기 색상 변경
   // TODO: button 클릭 시 QuizSolve 페이지로 이동 -> id props로 전달
   // console.log(data);
+  console.log(data.id, data.isClear);
 
   return (
     <>
@@ -15,9 +17,9 @@ function QuizListElement({ data }) {
           <div>이 퀴즈를 {data.count} 명이 풀었습니다!</div>
         </div>
         <div>
-          <button>
+          <ChallengeButton isClear={data.isClear}>
             <Link to={`/quiz/${data.id}`}>도전하기</Link>
-          </button>
+          </ChallengeButton>
         </div>
       </div>
     </>
