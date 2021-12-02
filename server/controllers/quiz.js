@@ -60,9 +60,6 @@ module.exports = {
         include: [{ model: users, attributes: ['nickname'] }],
       });
 
-      // 퀴즈 카운트 증가
-      await quiz.update({ count: quizInfo.count + 1 }, { where: { id: req.query.quizId } });
-
       // 응답을 보내기 위한 코드 작업
       quizInfo = quizInfo.get({ plain: true });
       quizInfo.nickname = quizInfo.user.nickname;
@@ -83,6 +80,7 @@ module.exports = {
         quizInfo.isMade = true;
       }
 
+      delete quizInfo.userId;
       res.status(200).send({ quiz: quizInfo });
     } catch (err) {
       console.log(err);
