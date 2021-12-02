@@ -18,6 +18,7 @@ module.exports = {
 
       // 조회 정보 합쳐서 응답
       const data = { ...userInfo, makeQuiz, clearQuiz };
+
       return res.status(200).send({ data });
     } catch (err) {
       console.log(err);
@@ -93,7 +94,8 @@ module.exports = {
       const hashPassword = bcrypt.hashSync(password, salt);
 
       await users.update({ password: hashPassword }, { where: { id: req.userId } });
-      res.status(200).send({ message: 'success' });
+
+      return res.status(200).send({ message: 'success' });
     } catch (err) {
       console.log(err);
       return res.status(500).send({ message: 'server error' });
@@ -108,7 +110,8 @@ module.exports = {
         .header({ isLogin: false })
         .clearCookie('token')
         .destroy({ where: { id: req.userId } });
-      res.status(200).send({ message: 'success' });
+
+      return res.status(200).send({ message: 'success' });
     } catch (err) {
       console.log(err);
       return res.status(500).send({ message: 'server error' });

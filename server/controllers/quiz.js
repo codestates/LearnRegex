@@ -44,7 +44,7 @@ module.exports = {
         });
       });
 
-      res.status(200).send({ quizs: quizList });
+      return res.status(200).send({ quizs: quizList });
     } catch (err) {
       console.log(err);
       return res.status(500).send({ message: 'server error' });
@@ -81,7 +81,8 @@ module.exports = {
       }
 
       delete quizInfo.userId;
-      res.status(200).send({ quiz: quizInfo });
+
+      return res.status(200).send({ quiz: quizInfo });
     } catch (err) {
       console.log(err);
       return res.status(500).send({ message: 'server error' });
@@ -89,11 +90,40 @@ module.exports = {
   },
 
   addquiz: async (req, res) => {
-    res.send('add quiz');
+    try {
+      const { title, testCase, testCaseTarget, answer, explanation } = req.body;
+      const userId = req.userId;
+
+      // 추가해야 하는 정보가 하나라도 빠졌을 경우
+      if (!(title && testCase && testCaseTarget && answer && explanation)) {
+        return res.status(400).send({ message: 'empty information' });
+      }
+
+      await quiz.create({ userId, title, testCase, testCaseTarget, answer, explanation, count: 0, isClear: false, isMade: false });
+
+      return res.status(200).send({ message: 'success' });
+    } catch (err) {
+      console.log(err);
+      return res.status(500).send({ message: 'server error' });
+    }
   },
 
   editquiz: async (req, res) => {
-    res.send('edit quiz');
+    try {
+      const { title, testCase, testCaseTarget, answer, explanation } = req.body;
+
+      // 추가해야 하는 정보가 하나라도 빠졌을 경우
+      if (!(title && testCase && testCaseTarget && answer && explanation)) {
+        return res.status(400).send({ message: 'empty information' });
+      }
+
+      await quiz.update({ title, testCase, testCaseTarget, answer, explanation }, { where: { id: req.query.quizId } });
+
+      return res.status(200).send({ message: 'success' });
+    } catch (err) {
+      console.log(err);
+      return res.status(500).send({ message: 'server error' });
+    }
   },
 
   clearquiz: async (req, res) => {
