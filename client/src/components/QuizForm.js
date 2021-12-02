@@ -2,9 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { saveAnswer } from '../modules/answer';
 
-// ! page = "solve"인 이유: SolvePage로부터 받아와졌다고 가정하고 구현
-// TODO: Tutorial, SolveQuiz 페이지 구현 후 page = "solve"에서 page로 수정
-function QuizForm({ testCase, testCaseTarget, answer, explanation, page }) {
+function QuizForm({ data, page }) {
   const { text } = useSelector((state) => state.answer);
   const [result, setResult] = useState(text);
   const dispatch = useDispatch();
@@ -16,7 +14,7 @@ function QuizForm({ testCase, testCaseTarget, answer, explanation, page }) {
   };
 
   const handleModal = () => {
-    // TODO: button 클릭시 QuizAnswerModal에게 상속 받은 answer, explanation를 props로 전달
+    // TODO: button 클릭시 QuizAnswerModal에게 상속 받은 data.answer, data.explanation를 props로 전달
   };
 
   const timeWait = useRef();
@@ -33,10 +31,10 @@ function QuizForm({ testCase, testCaseTarget, answer, explanation, page }) {
         <div>
           <h2>Test Case</h2>
           <div>
-            <span>예시: {testCase}</span>
+            <span>예시: {data.testCase}</span>
           </div>
           <div>
-            <span>예시: {testCaseTarget}</span>
+            <span>예시: {data.testCaseTarget}</span>
             <div>❌ | ✅</div>
           </div>
         </div>

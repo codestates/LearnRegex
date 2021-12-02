@@ -4,14 +4,15 @@ import QuizForm from '../components/QuizForm';
 import { dummyData } from '../data/tutorialData';
 
 function Tutorial() {
-  console.log(dummyData);
+  const [list, setList] = useState(dummyData);
+  console.log(list[0]);
   return (
     <>
       <div>
         <div>
           <div>제목</div>
           <div>
-            <QuizForm />
+            <QuizForm data={list[0]} />
           </div>
         </div>
         <div>
