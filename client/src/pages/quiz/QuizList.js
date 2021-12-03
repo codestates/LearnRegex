@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getQuizzes } from '../../modules/quizzes';
+import { getQuizzes } from '../../modules/quiz/getquizzes';
 import QuizListElement from '../../components/QuizListElement';
 import { Link } from 'react-router-dom';
 import { BsPencilSquare } from 'react-icons/bs';

@@ -3,8 +3,8 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 // import storageSession from 'redux-persist/lib/storage/session';
 
-import quizzes from './quizzes';
-import quiz from './quiz';
+import quizzes from './quiz/getquizzes';
+import quiz from './quiz/getquiz';
 import answer from './answer';
 
 const persistConfig = {
