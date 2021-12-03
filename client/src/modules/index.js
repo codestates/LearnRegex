@@ -3,8 +3,8 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 // import storageSession from 'redux-persist/lib/storage/session';
 
-import quizzes from './quiz/getquizzes';
-import quiz from './quiz/getquiz';
+import getquizzes from './quiz/getquizzes';
+import getquiz from './quiz/getquiz';
 import answer from './answer';
 
 const persistConfig = {
@@ -13,6 +13,6 @@ const persistConfig = {
   whitelist: ['answer'], // blacklist -> 그것만 제외합니다.
 };
 
-const rootReducer = combineReducers({ quizzes, quiz, answer });
+const rootReducer = combineReducers({ getquizzes, getquiz, answer });
 export default persistReducer(persistConfig, rootReducer);
 // export default rootReducer;

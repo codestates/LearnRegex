@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { BsPencilSquare } from 'react-icons/bs';
 
 function QuizList() {
-  const { data } = useSelector((state) => state.quizzes.list);
+  const { data } = useSelector((state) => state.getquizzes.list);
   // console.log(data);
   const dispatch = useDispatch();
 

@@ -7,7 +7,7 @@ import BackButton from '../../components/BackButton';
 
 function SolveQuiz() {
   const { id } = useParams('id');
-  const { data } = useSelector((state) => state.quiz.quiz);
+  const { data } = useSelector((state) => state.getquiz.quiz);
   // console.log(data);
   const dispatch = useDispatch();
 

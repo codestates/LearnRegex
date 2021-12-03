@@ -6,7 +6,7 @@ import { getQuiz } from '../../modules/quiz/getquiz';
 
 function EditQuiz() {
   const { id } = useParams('id');
-  const { data } = useSelector((state) => state.quiz.quiz);
+  const { data } = useSelector((state) => state.getquiz.quiz);
   // console.log('---EDITQUIZ---');
   // console.log(data);
 
