@@ -7,6 +7,7 @@ export function deleteQuiz(id) {
   axios
     .delete(`http://localhost:4000/quiz?quizId=${id}`)
     .then((res) => {
+      alert('퀴즈 삭제되었습니다!');
       document.location.href = `/quizlist`;
     })
     .catch((err) => {
