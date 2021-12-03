@@ -3,6 +3,9 @@ axios.defaults.withCredentials = true;
 
 export function submitQuiz(data, content) {
   // TODO: 한 칸이라도 비워져있으면 빨간 테두리 + 살짝 진동 애니메이션
+  const isValid = (content) => content.title !== '' && content.testCase !== '' && content.testCaseTarget !== '' && content.answer !== '' && content.explanation !== '';
+  // console.log(isValid(content));
+  if (!isValid(content)) return alert('모든 항목에 입력하세요!!');
   if (!!data) {
     // TODO: PATCH 요청 보내기 - http://localhost:4000/quiz/edit
     console.log('----- PATCH 요청 -----');
