@@ -54,7 +54,7 @@ function SolveQuiz() {
             )}
           </div>
           <div>
-            <QuizForm data={dummyData} page={'solve'} />
+            <QuizForm data={dummyData} orderPage={'quizList'} />
           </div>
         </div>
       </div>
