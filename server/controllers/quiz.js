@@ -44,7 +44,7 @@ module.exports = {
         });
       });
 
-      res.status(200).send({ quizs: quizList });
+      return res.status(200).send({ quizs: quizList });
     } catch (err) {
       console.log(err);
       return res.status(500).send({ message: 'server error' });
@@ -81,7 +81,8 @@ module.exports = {
       }
 
       delete quizInfo.userId;
-      res.status(200).send({ quiz: quizInfo });
+
+      return res.status(200).send({ quiz: quizInfo });
     } catch (err) {
       console.log(err);
       return res.status(500).send({ message: 'server error' });
@@ -89,19 +90,108 @@ module.exports = {
   },
 
   addquiz: async (req, res) => {
-    res.send('add quiz');
+    try {
+      const { title, testCase, testCaseTarget, answer, explanation } = req.body;
+      const userId = req.userId;
+
+      // 추가해야 하는 정보가 하나라도 빠졌을 경우
+      if (!(title && testCase && testCaseTarget && answer && explanation)) {
+        return res.status(400).send({ message: 'empty information' });
+      }
+
+      await quiz.create({ userId, title, testCase, testCaseTarget, answer, explanation, count: 0, isClear: false, isMade: false });
+
+      return res.status(200).send({ message: 'success' });
+    } catch (err) {
+      console.log(err);
+      return res.status(500).send({ message: 'server error' });
+    }
   },
 
   editquiz: async (req, res) => {
-    res.send('edit quiz');
+    try {
+      const { title, testCase, testCaseTarget, answer, explanation } = req.body;
+
+      // 수정해야 하는 정보가 하나라도 빠졌을 경우
+      if (!(title && testCase && testCaseTarget && answer && explanation)) {
+        return res.status(400).send({ message: 'empty information' });
+      }
+
+      const quizInfo = await quiz.findOne({ where: { id: req.query.quizId } });
+
+      // 수정해야 할 퀴즈가 db에 존재하는지 확인
+      if (!quizInfo) {
+        return res.status(404).send({ message: 'not found quiz' });
+      }
+
+      await quiz.update({ title, testCase, testCaseTarget, answer, explanation }, { where: { id: req.query.quizId } });
+
+      return res.status(200).send({ message: 'success' });
+    } catch (err) {
+      console.log(err);
+      return res.status(500).send({ message: 'server error' });
+    }
   },
 
   clearquiz: async (req, res) => {
-    //! 비로그인 유저라면 그냥 무시!
-    res.send('clear quiz');
+    try {
+      //! 비로그인 유저라면 그냥 무시!
+      if (!req.cookies.token) {
+        return res.header({ isLogin: false }).status(200).send({ message: 'success' });
+      }
+
+      // 유저 확인
+      await isAuth(req, res, () => {});
+      const userId = req.userId;
+
+      const quizId = req.query.quizId;
+      const quizInfo = await quiz.findOne({ where: { id: quizId } });
+
+      // 유저가 해결한 문제가 db에 존재하는지 확인
+      if (!quizInfo) {
+        return res.status(404).send({ message: 'not found quiz' });
+      }
+
+      // 유저가 이미 해결한 문제인 경우
+      const isClear = await users_quiz.findOne({ where: { userId, quizId } });
+
+      // 응답만 보내주기
+      if (isClear) {
+        return res.status(200).send({ message: 'already solve quiz' });
+      }
+
+      await users_quiz.create({ userId, quizId });
+
+      return res.status(200).send('success');
+    } catch (err) {
+      console.log(err);
+      return res.status(500).send({ message: 'server error' });
+    }
   },
 
   deletequiz: async (req, res) => {
-    res.send('delete quiz');
+    try {
+      const userId = req.userId;
+      const quizId = req.query.quizId;
+
+      const quizInfo = await quiz.findOne({ where: { id: quizId } });
+
+      // 삭제하려는 퀴즈가 db에 존재하는지 확인
+      if (!quizInfo) {
+        return res.status(404).send({ message: 'not found quiz' });
+      }
+
+      // 삭제하려는 퀴즈가 내가 만든 퀴즈가 아닌 경우
+      if (userId !== quizInfo.userId) {
+        return res.status(406).send({ message: 'not user quiz' });
+      }
+
+      await quiz.destroy({ where: { id: quizId } });
+
+      return res.status(200).send('success');
+    } catch (err) {
+      console.log(err);
+      return res.status(500).send({ message: 'server error' });
+    }
   },
 };
