@@ -54,7 +54,7 @@ module.exports = {
   // 로그아웃
   signout: async (req, res) => {
     try {
-      res.header({ isLogin: false }).clearCookie('token').status(200).send({ message: 'success' });
+      return res.header({ isLogin: false }).clearCookie('token').status(200).send({ message: 'success' });
     } catch (err) {
       console.log(err);
       return res.status(500).send({ message: 'server error' });
@@ -87,6 +87,7 @@ module.exports = {
       const hashPassword = bcrypt.hashSync(password, salt);
 
       await users.create({ email, nickname, password: hashPassword });
+
       return res.status(200).send({ message: 'success' });
     } catch (err) {
       console.log(err);
