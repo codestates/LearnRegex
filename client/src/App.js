@@ -13,6 +13,7 @@ import SolveQuiz from './pages/quiz/SolveQuiz';
 import EditQuiz from './pages/quiz/EditQuiz';
 import MakeQuiz from './pages/quiz/MakeQuiz';
 import Footer from './components/footer/Footer';
+import SingIn from './components/user/SignIn';
 import dotenv from 'dotenv';
 import './App.css';
 dotenv.config();
@@ -21,6 +22,7 @@ function App() {
   return (
     <>
       <Navigation />
+      <SingIn />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/tutorial" element={<Tutorial />} />
@@ -32,7 +34,7 @@ function App() {
         <Route path="/newpw" element={<SetNewPassword />} />
         <Route path="/quiz/:id" element={<SolveQuiz />} />
         <Route path="/makequiz" element={<MakeQuiz />} />
-        <Route path="/editquiz" element={<EditQuiz />} />
+        <Route path="/editquiz/:id" element={<EditQuiz />} />
       </Routes>
       <Footer />
     </>
