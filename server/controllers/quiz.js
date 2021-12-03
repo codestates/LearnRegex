@@ -75,6 +75,13 @@ module.exports = {
       // 유저 확인
       await isAuth(req, res, () => {});
 
+      const userInfo = await users.findOne({ where: { id: req.userId } });
+
+      // 로그인 한 유저가 db에 존재하는지 확인
+      if (!userInfo) {
+        return res.status(404).send({ message: 'not found user' });
+      }
+
       // 본인이 만든 퀴즈인 경우
       if (quizInfo.userId === req.userId) {
         quizInfo.isMade = true;
@@ -97,6 +104,13 @@ module.exports = {
       // 추가해야 하는 정보가 하나라도 빠졌을 경우
       if (!(title && testCase && testCaseTarget && answer && explanation)) {
         return res.status(400).send({ message: 'empty information' });
+      }
+
+      const userInfo = await users.findOne({ where: { id: userId } });
+
+      // 로그인 한 유저가 db에 존재하는지 확인
+      if (!userInfo) {
+        return res.status(404).send({ message: 'not found user' });
       }
 
       await quiz.create({ userId, title, testCase, testCaseTarget, answer, explanation, count: 0, isClear: false, isMade: false });
