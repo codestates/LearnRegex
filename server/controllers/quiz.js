@@ -117,13 +117,6 @@ module.exports = {
         return res.status(400).send({ message: 'empty information' });
       }
 
-      const userInfo = await users.findOne({ where: { id: req.userId } });
-
-      // 로그인 한 유저가 db에 존재하는지 확인
-      if (!userInfo) {
-        return res.status(404).send({ message: 'not found user' });
-      }
-
       const quizInfo = await quiz.findOne({ where: { id: req.query.quizId } });
 
       // 수정해야 할 퀴즈가 db에 존재하는지 확인
@@ -150,13 +143,6 @@ module.exports = {
       // 유저 확인
       await isAuth(req, res, () => {});
       const userId = req.userId;
-
-      const userInfo = await users.findOne({ where: { id: userId } });
-
-      // 로그인 한 유저가 db에 존재하는지 확인
-      if (!userInfo) {
-        return res.status(404).send({ message: 'not found user' });
-      }
 
       const quizId = req.query.quizId;
       const quizInfo = await quiz.findOne({ where: { id: quizId } });
@@ -186,15 +172,8 @@ module.exports = {
   deletequiz: async (req, res) => {
     try {
       const userId = req.userId;
-
-      const userInfo = await users.findOne({ where: { id: userId } });
-
-      // 로그인 한 유저가 db에 존재하는지 확인
-      if (!userInfo) {
-        return res.status(404).send({ message: 'not found user' });
-      }
-
       const quizId = req.query.quizId;
+
       const quizInfo = await quiz.findOne({ where: { id: quizId } });
 
       // 삭제하려는 퀴즈가 db에 존재하는지 확인

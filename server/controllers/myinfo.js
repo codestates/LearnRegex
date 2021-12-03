@@ -12,11 +12,6 @@ module.exports = {
       // 유저 이메일, 닉네임 조회
       const userInfo = await users.findOne({ where: { id: userId }, attributes: ['email', 'nickname'], raw: true });
 
-      // 로그인 한 유저가 db에 존재하는지 확인
-      if (!userInfo) {
-        return res.status(404).send({ message: 'not found user' });
-      }
-
       // 유저가 만든 퀴즈 갯수 조회
       const makeQuiz = (await quiz.findAndCountAll({ where: { userId: userId } })).count;
 
@@ -46,13 +41,6 @@ module.exports = {
 
       const userId = req.userId;
 
-      // 로그인 한 유저가 db에 존재하는지 확인
-      const userInfo = await users.findOne({ where: { id: userId } });
-
-      if (!userInfo) {
-        return res.status(404).send({ message: 'not found user' });
-      }
-
       // 수정 내용 유효성 검사
       const isValid = validation(req.body);
 
@@ -61,7 +49,6 @@ module.exports = {
 
       // 유효성, 중복 검사 중 하나라도 검증이 안된 경우
       if (Object.keys(isValid).length || Object.keys(isConflict).length) {
-        console.log(Object.keys(isValid).length, Object.keys(isConflict).length);
         return res.status(406).send({ data: { isValid, isConflict } });
       }
 
@@ -94,11 +81,6 @@ module.exports = {
       const userId = req.userId;
       const userInfo = await users.findOne({ where: { id: userId }, raw: true });
 
-      // 로그인 한 유저가 db에 존재하는지 확인
-      if (!userInfo) {
-        return res.status(404).send({ message: 'not found user' });
-      }
-
       // oldPassword와 현재 비밀번호가 일치하지 않은 경우
       if (!bcrypt.compareSync(oldPassword, userInfo.password)) {
         return res.status(406).send({ message: 'invalid oldPassword' });
@@ -129,13 +111,6 @@ module.exports = {
   deletemyinfo: async (req, res) => {
     try {
       const userId = req.userId;
-
-      // 삭제하려는 유저가 db에 존재하는지 확인
-      const userInfo = await users.findOne({ where: { id: userId } });
-
-      if (!userInfo) {
-        return res.status(404).send({ message: 'not found user' });
-      }
 
       // 유저 정보 삭제
       await users
