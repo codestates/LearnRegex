@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { getQuiz } from '../../modules/quiz/getquiz';
+import { deleteQuiz } from '../../lib/deleteQuiz';
 import QuizForm from '../../components/QuizForm';
 import BackButton from '../../components/BackButton';
 
@@ -17,8 +18,8 @@ function SolveQuiz() {
 
   if (!data) return <div>loading....</div>;
 
-  const deleteQuiz = () => {
-    // TODO: 삭제 text 클릭시 퀴즈 삭제 요청
+  const handleDelete = () => {
+    deleteQuiz(id);
   };
 
   return (
@@ -34,9 +35,9 @@ function SolveQuiz() {
             {data.isMade ? (
               <div>
                 <Link to={`/editquiz/${data.id}`}>
-                  <span>수정</span>
+                  <button>수정</button>
                 </Link>
-                <span onClick={deleteQuiz}>삭제</span>
+                <button onClick={handleDelete}>삭제</button>
               </div>
             ) : (
               ''
