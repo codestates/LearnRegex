@@ -6,7 +6,7 @@ export function deleteQuiz(id) {
   // console.log('deleteQuiz 함수당');
   // console.log(id);
   axios
-    .delete(`http://localhost:4000/quiz?quizId=${id}`)
+    .delete(`${process.env.REACT_APP_SERVER_ADDR}/quiz?quizId=${id}`)
     .then((res) => {
       alert('퀴즈 삭제되었습니다!');
       document.location.href = `/quizlist`;
@@ -28,7 +28,7 @@ export function submitQuiz(data, content) {
   // 퀴즈 수정 요청
   if (!!data) {
     axios
-      .patch(`http://localhost:4000/quiz?quizId=${data.id}`, content)
+      .patch(`${process.env.REACT_APP_SERVER_ADDR}/quiz?quizId=${data.id}`, content)
       .then((res) => {
         console.log('patch 요청 성공');
         alert('퀴즈 수정 되었습니다!');
@@ -41,7 +41,7 @@ export function submitQuiz(data, content) {
   // 퀴즈 등록 요청
   else {
     axios
-      .post(`http://localhost:4000/quiz`, content)
+      .post(`${process.env.REACT_APP_SERVER_ADDR}/quiz`, content)
       .then((res) => {
         console.log('post 요청 성공');
         alert('퀴즈 등록 되었습니다!');
