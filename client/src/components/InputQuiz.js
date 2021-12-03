@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import BackButton from '../components/BackButton';
-import { submitQuiz } from '../lib/submitQuiz';
+import { submitQuiz } from '../lib/requestQuiz';
 import { limitChar } from '../lib/limitChar';
 
 function InputQuiz({ data }) {
