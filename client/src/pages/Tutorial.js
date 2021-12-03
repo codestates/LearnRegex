@@ -21,7 +21,7 @@ function Tutorial() {
           </div>
         </div>
         <div>
-          <TutorialSide list={list} current={current} />
+          <TutorialSide list={list} orderPage={'tutorial'} current={current} />
         </div>
       </div>
     </>
