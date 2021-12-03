@@ -19,30 +19,48 @@ function QuizForm({ data, orderPage }) {
   };
 
   // * 정규표현식 분류
-  // let isCorrectReg;
+  let highlightedTestCase = '<pre>{`';
   const getRegExp = (testCase) => {
     // 잘못된 정규표현식이 들어오면 빈 문자열 반환
     try {
       // flag와 pattern 분리
       // replace 함수 두 번째 인자로 '$1' 값을 부여해서 소괄호로 묶인 첫 번째 그룹을 가져올 수 있다.
-      const flags = inputRegex.replace(/.*\/([gimy]*)$/, '$1');
+      // const flags = inputRegex.replace(/.*\/([gimy]*)$/, '$1');
+      const flags = 'g';
       // replace 함수 안에서 flags 변수를 합쳐서 정규표현식을 만듦
       // 방금 만든 정규표현식으로 inputRegex 내부 패턴값을 소괄호로 묶어서 추출
-      const pattern = inputRegex.replace(new RegExp('^/(.*?)/' + flags + '$'), '$1');
+      // const pattern = inputRegex.replace(new RegExp('^/(.*?)/' + flags + '$'), '$1');
+      const pattern = inputRegex;
       const myRegex = new RegExp(pattern, flags);
-      const myRegexExec = myRegex.exec(testCase);
-      return myRegexExec;
+      console.log(myRegex);
+
+      let matchArray;
+      let startIndex = 0;
+      let lastIndex = 0;
+      while ((matchArray = myRegex.exec(testCase)) !== null) {
+        lastIndex = matchArray.index;
+        highlightedTestCase += data.testCase.substring(startIndex, lastIndex);
+        highlightedTestCase += "<span class='found'>" + matchArray[0] + '</span>';
+        startIndex = myRegex.lastIndex;
+      }
+      highlightedTestCase += data.testCase.substring(startIndex, data.testCase.length);
+      highlightedTestCase += '`}</pre>';
+      // const myRegexExec = myRegex.exec(testCase);
+      // console.log(myRegexExec);
+      // console.log(myRegex.lastIndex);
+      // return myRegexExec;
     } catch (e) {
       console.log(e);
       return '';
     }
   };
+  // * 정규표현식 적용 결과
   let regExpResult = getRegExp(data.testCase);
   if (Array.isArray(regExpResult)) {
     regExpResult = regExpResult[0];
   }
 
-  let isCorrectReg = regExpResult !== data.testCaseTarget;
+  let isCorrectReg = regExpResult === data.testCaseTarget;
   const timeWait = useRef();
   useEffect(() => {
     clearTimeout(timeWait.current);
@@ -58,12 +76,12 @@ function QuizForm({ data, orderPage }) {
         <div>
           <h2>Test Case</h2>
           <div>
-            <span>{data.testCase}</span>
+            <span>{highlightedTestCase}</span>
           </div>
           <h2>Test Case Target</h2>
           <div>
-            <span>{data.testCaseTarget}</span>
-            <div>{isCorrectReg ? '❌' : '✅'}</div>
+            data.testCaseTarget
+            <div>{isCorrectReg ? '✅' : '❌'}</div>
           </div>
         </div>
         <div>
