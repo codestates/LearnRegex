@@ -43,7 +43,6 @@ function QuizForm({ data, orderPage }) {
   }
 
   let isCorrectReg = regExpResult !== data.testCaseTarget;
-  ///shleecloud@gmail.com/
   const timeWait = useRef();
   useEffect(() => {
     clearTimeout(timeWait.current);
