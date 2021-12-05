@@ -1,15 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import TutorialSide from '../components/tutorialSide';
 import QuizForm from '../components/QuizForm';
+import { saveBookmark } from '../modules/bookmark';
 import { dummyData } from '../data/tutorialData';
 
-// TODO: SideHint 컴포넌트의 화살표를 클릭하면 이전 혹은 이후 리스트 이동 - current 상태 변경
 // TODO: SideList 컴포넌트의 목차를 클릭하면 맞게 리스트 이동 - current 상태 변경
 
 // 학습하기 페이지
 function Tutorial() {
-  const [list, setList] = useState(dummyData); // /data/tutorialData의 dummyData를 list 상태 초기값으로 할당
-  const [current, setCurrent] = useState(0); // TODO: current 상태의 초기값은 로컬스토리지에 저장한 북마크로 수정해야함!
+  const { index } = useSelector((state) => state.bookmark);
+  // console.log(index);
+  const [list, setList] = useState(dummyData);
+  const [current, setCurrent] = useState(index);
+  const dispatch = useDispatch();
+
+  const movePrev = () => {
+    current === 0 ? alert('첫번째 문제입니다!') : setCurrent(current - 1);
+  };
+
+  const moveNext = () => {
+    current === list.length - 1 ? alert('마지막 문제입니다!') : setCurrent(current + 1);
+  };
+
+  const moveIndex = (id) => {
+    setCurrent(id - 1);
+  };
+
+  useEffect(() => {
+    // console.log(current);
+    dispatch(saveBookmark(current));
+  }, [current]);
 
   return (
     <>
@@ -17,11 +38,11 @@ function Tutorial() {
         <div>
           <div>제목: {list[current].title}</div>
           <div>
-            <QuizForm data={list[current]} />
+            <QuizForm data={list[current]} orderPage={'tutorial'} />
           </div>
         </div>
         <div>
-          <TutorialSide list={list} orderPage={'tutorial'} current={current} />
+          <TutorialSide list={list} current={current} movePrev={movePrev} moveNext={moveNext} moveIndex={moveIndex} />
         </div>
       </div>
     </>
