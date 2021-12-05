@@ -26,6 +26,14 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      socialType: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      verifyEmail: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+      },
     },
     {
       sequelize,
