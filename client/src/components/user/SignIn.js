@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import { Link, useNavigate } from 'react-router-dom';
 
 import { requestSignIn, requestSignOut } from '../../lib/requestUserInfo';
+import { googleLogin, googleCallback } from '../../lib/oauthGoogle';
 
 export const SignIn = () => {
   const [inputUserInfo, setInputUserInfo] = useState({
@@ -51,8 +52,15 @@ export const SignIn = () => {
   };
 
   const handleOAuthKakao = () => {};
-  const handleOAuthGoogle = () => {};
+  const handleOAuthGoogle = () => {
+    googleLogin();
+  };
   const handleOAuthGithub = () => {};
+
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    googleCallback(url);
+  }, []);
 
   return (
     <>
