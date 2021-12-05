@@ -28,7 +28,6 @@ const Modal = ({ openModal, setOpenModal }) => {
       {openModal ? (
         <Background>
           <ModalWrapper openModal={openModal}>
-            <ModalImg />
             <ModalContent>
               <SignIn />
             </ModalContent>
