@@ -23,6 +23,10 @@ function Tutorial() {
     current === list.length - 1 ? alert('마지막 문제입니다!') : setCurrent(current + 1);
   };
 
+  const moveIndex = (id) => {
+    setCurrent(id - 1);
+  };
+
   useEffect(() => {
     // console.log(current);
     dispatch(saveBookmark(current));
@@ -38,7 +42,7 @@ function Tutorial() {
           </div>
         </div>
         <div>
-          <TutorialSide list={list} current={current} movePrev={movePrev} moveNext={moveNext} />
+          <TutorialSide list={list} current={current} movePrev={movePrev} moveNext={moveNext} moveIndex={moveIndex} />
         </div>
       </div>
     </>

@@ -2,7 +2,7 @@ import React from 'react';
 import { MdCancel } from 'react-icons/md';
 
 // SideHint의 목차 아이콘 클릭시 보여지는 튜토리얼 목차 컴포넌트
-function SideList({ list }) {
+function SideList({ list, moveIndex }) {
   return (
     <>
       <div>
@@ -15,7 +15,14 @@ function SideList({ list }) {
           <ol>
             {/* list 배열 각 요소의 title을 li 태그를 통해 보여줌 */}
             {list.map((el) => (
-              <li key={el.id}>{el.title}</li>
+              <li
+                key={el.id}
+                onClick={() => {
+                  moveIndex(el.id);
+                }}
+              >
+                {el.title}
+              </li>
             ))}
           </ol>
         </div>
