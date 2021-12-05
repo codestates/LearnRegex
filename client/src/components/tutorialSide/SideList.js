@@ -1,5 +1,7 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { saveAnswer } from '../../modules/answer';
 import { MdCancel } from 'react-icons/md';
 
 export const Container = styled.div`
@@ -8,6 +10,16 @@ export const Container = styled.div`
 
 // SideHint의 목차 아이콘 클릭시 보여지는 튜토리얼 목차 컴포넌트
 function SideList({ list, moveIndex, isOpen, toggle }) {
+  const dispatch = useDispatch();
+
+  const handleResetAnswer = () => {
+    alert('모든 정답을 초기화했습니다.');
+    moveIndex(1);
+    toggle();
+    dispatch(saveAnswer(''));
+    window.location.replace('/tutorial');
+  };
+
   return (
     <>
       <Container isOpen={isOpen}>
@@ -39,7 +51,7 @@ function SideList({ list, moveIndex, isOpen, toggle }) {
         </div>
         <div>
           {/* 초기화 버튼 - 클릭하면 로컬 스토리지에 저장된 튜토리얼 정답 삭제 */}
-          <button>초기화</button>
+          <button onClick={handleResetAnswer}>초기화</button>
         </div>
       </Container>
     </>
