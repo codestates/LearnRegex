@@ -16,11 +16,11 @@ function Tutorial() {
   const dispatch = useDispatch();
 
   const movePrev = () => {
-    setCurrent(current - 1);
+    current === 0 ? alert('첫번째 문제입니다!') : setCurrent(current - 1);
   };
 
   const moveNext = () => {
-    setCurrent(current + 1);
+    current === list.length - 1 ? alert('마지막 문제입니다!') : setCurrent(current + 1);
   };
 
   useEffect(() => {
