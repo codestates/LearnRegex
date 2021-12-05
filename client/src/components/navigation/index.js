@@ -3,16 +3,26 @@ import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 
 const Navigation = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  //! Sidebar 상태
+  const [openSidebar, setOpenSidebar] = useState(false);
 
-  const toggle = () => {
-    setIsOpen(!isOpen);
+  //! Sidebar 상태 변경 함수
+  const handleSidebar = () => {
+    setOpenSidebar(!openSidebar);
+  };
+
+  //! Modal 상태
+  const [openModal, setOpenModal] = useState(false);
+
+  //! Modal 상태 변경 함수
+  const handleModal = () => {
+    setOpenModal(!openModal);
   };
 
   return (
     <>
-      <Navbar toggle={toggle} />
-      <Sidebar isOpen={isOpen} toggle={toggle} />
+      <Navbar handleSidebar={handleSidebar} handleModal={handleModal} openModal={openModal} setOpenModal={setOpenModal} />
+      <Sidebar openSidebar={openSidebar} handleSidebar={handleSidebar} openModal={openModal} setOpenModal={setOpenModal} />
     </>
   );
 };

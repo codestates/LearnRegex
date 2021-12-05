@@ -1,10 +1,11 @@
 import React from 'react';
 import { SidebarContainer, Icon, CloseIcon, SidebarWrapper, SidebarMenu, SidebarLink, SidebarBtnWrap, SidebarBtn } from './SidebarElements';
+import Modal from '../modal/Modal';
 
-const Sidebar = ({ isOpen, toggle }) => {
+const Sidebar = ({ openSidebar, handleSidebar, handleModal, openModal, setOpenModal }) => {
   return (
-    <SidebarContainer isOpen={isOpen} onClick={toggle}>
-      <Icon onClick={toggle}>
+    <SidebarContainer openSidebar={openSidebar} onClick={handleSidebar}>
+      <Icon onClick={handleSidebar}>
         <CloseIcon />
       </Icon>
       <SidebarWrapper>
@@ -13,7 +14,8 @@ const Sidebar = ({ isOpen, toggle }) => {
           <SidebarLink to="/quizlist">퀴즈</SidebarLink>
           <SidebarLink to="/cheatsheet">자습서</SidebarLink>
           <SidebarBtnWrap>
-            <SidebarBtn to="/signin">로그인</SidebarBtn>
+            <SidebarBtn onClick={handleModal}>로그인</SidebarBtn>
+            {openModal ? <Modal openModal={openModal} setOpenModal={setOpenModal} /> : null}
           </SidebarBtnWrap>
         </SidebarMenu>
       </SidebarWrapper>
