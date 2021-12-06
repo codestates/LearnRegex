@@ -8,17 +8,19 @@ function QuizForm({ data, orderPage }) {
   const { text } = useSelector((state) => state.answer);
   const [inputRegex, setInputRegex] = useState(text);
   const dispatch = useDispatch();
-
-  const saveLocal = (text) => dispatch(saveAnswer(text));
-
-  const handleAnswer = (e) => {
-    setInputRegex(e.target.value);
-  };
+  console.log(text);
 
   const handleModal = () => {
     // TODO: button 클릭시 QuizAnswerModal에게 상속 받은 data.answer, data.explanation를 props로 전달
   };
 
+  const saveLocal = (regex) => dispatch(saveAnswer(regex));
+
+  const handleAnswer = (e) => {
+    setInputRegex(e.target.value);
+  };
+
+  //! ------------------------ 정규표현식 실시간 적용 ------------------------
   // * 정규표현식 분류
   // let isCorrectReg;
   const getRegExp = (testCase) => {
@@ -51,8 +53,13 @@ function QuizForm({ data, orderPage }) {
       saveLocal(inputRegex);
       if (orderPage === 'quizList' && isCorrectReg) requestQuizClear(data.id);
     }, 2000);
-    if (orderPage === 'tutorial' && isCorrectReg) dispatch(clearList(data.id - 1));
   }, [inputRegex]);
+  //! ------------------------ 정규표현식 실시간 적용 ------------------------
+
+  useEffect(() => {
+    // console.log(isCorrectReg);
+    if (orderPage === 'tutorial' && isCorrectReg) dispatch(clearList(data.id - 1));
+  }, [isCorrectReg]);
 
   return (
     <>
