@@ -18,7 +18,7 @@ module.exports = {
     return res
       .header({ isLogin: true })
       .cookie('token', token, {
-        sameSite: 'Strict',
+        // sameSite: 'Strict',
         httpOnly: true,
         expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
       })
