@@ -1,10 +1,7 @@
 const SAVE_ANSWER = 'SAVE_ANSWER';
 const RESET_ANSWER = 'RESET_ANSWER';
 
-export const saveAnswer = (text) => ({
-  type: SAVE_ANSWER,
-  text,
-});
+export const saveAnswer = (text) => ({ type: SAVE_ANSWER, text });
 
 export const resetAnswer = () => ({ type: RESET_ANSWER });
 

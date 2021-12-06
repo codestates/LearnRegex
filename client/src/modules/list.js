@@ -3,9 +3,9 @@ import { dummyData } from '../data/tutorialData';
 const CLEAR_LIST = 'CLEAR_LIST';
 const RESET_LIST = 'RESET_LIST';
 
-export const clearList = (index) => ({ type: 'CLEAR_LIST', index });
+export const clearList = (index) => ({ type: CLEAR_LIST, index });
 
-export const resetList = () => ({ type: 'RESET_LIST' });
+export const resetList = () => ({ type: RESET_LIST });
 
 const initialState = new Array(dummyData.length).fill(false);
 

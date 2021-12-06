@@ -51,13 +51,13 @@ function QuizForm({ data, orderPage }) {
     clearTimeout(timeWait.current);
     timeWait.current = setTimeout(() => {
       saveLocal(inputRegex);
-      if (orderPage === 'quizList' && isCorrectReg) requestQuizClear(data.id);
-    }, 2000);
+    }, 1000);
   }, [inputRegex]);
   //! ------------------------ 정규표현식 실시간 적용 ------------------------
 
   useEffect(() => {
     // console.log(isCorrectReg);
+    if (orderPage === 'quizList' && isCorrectReg) requestQuizClear(data.id);
     if (orderPage === 'tutorial' && isCorrectReg) dispatch(clearList(data.id - 1));
   }, [isCorrectReg]);
 
@@ -81,7 +81,7 @@ function QuizForm({ data, orderPage }) {
             <span>{regExpResult}</span>
           </div>
           <div>
-            <input type="text" value={inputRegex || ''} placeholder="정규표현식을 입력하세요!" onChange={handleAnswer} size="100" />
+            <input type="text" value={inputRegex} placeholder="정규표현식을 입력하세요!" onChange={handleAnswer} size="100" />
           </div>
         </div>
         <div>

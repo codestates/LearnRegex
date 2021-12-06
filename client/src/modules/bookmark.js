@@ -1,9 +1,9 @@
 const SAVE_BOOKMARK = 'SAVE_BOOKMARK';
 const RESET_BOOKMARK = 'RESET_BOOKMARK';
 
-export const saveBookmark = (index) => ({ type: 'SAVE_BOOKMARK', index });
+export const saveBookmark = (index) => ({ type: SAVE_BOOKMARK, index });
 
-export const resetBookmark = () => ({ type: 'RESET_BOOKMARK' });
+export const resetBookmark = () => ({ type: RESET_BOOKMARK });
 
 const initialState = { index: 0 };
 

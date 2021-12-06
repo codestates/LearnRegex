@@ -22,7 +22,8 @@ function SideList({ list, moveIndex, isOpen, toggle }) {
     dispatch(resetAnswer());
     dispatch(resetBookmark());
     dispatch(resetList());
-    window.location.assign('/tutorial');
+    localStorage.clear();
+    window.location.replace('/tutorial');
   };
 
   return (
