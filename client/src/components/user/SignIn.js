@@ -57,11 +57,6 @@ export const SignIn = () => {
   };
   const handleOAuthGithub = () => {};
 
-  useEffect(() => {
-    const url = new URL(window.location.href);
-    googleCallback(url);
-  }, []);
-
   return (
     <>
       <div>
