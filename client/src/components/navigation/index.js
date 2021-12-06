@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import Modal from '../modal/Modal';
+import { googleCallback } from '../../lib/oauthGoogle';
 
 const Navigation = () => {
   //! Sidebar 상태
@@ -20,6 +21,11 @@ const Navigation = () => {
   const handleModal = (boolean) => {
     setOpenModal(boolean);
   };
+
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    googleCallback(url);
+  }, []);
 
   return (
     <>
