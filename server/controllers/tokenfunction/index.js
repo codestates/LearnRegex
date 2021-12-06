@@ -22,6 +22,7 @@ module.exports = {
         secure: true,
         httpOnly: true,
         expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
+        domain: '.learnregex.net',
       })
       .status(200)
       .send({ message: 'success' });
