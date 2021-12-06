@@ -5,16 +5,13 @@ import QuizForm from '../components/QuizForm';
 import { saveBookmark } from '../modules/bookmark';
 import { dummyData } from '../data/tutorialData';
 
-// TODO: SideList 컴포넌트의 목차를 클릭하면 맞게 리스트 이동 - current 상태 변경
-
-// 학습하기 페이지
 function Tutorial() {
   const { index } = useSelector((state) => state.bookmark);
-  // console.log(index);
-  const [list, setList] = useState(dummyData);
   const [current, setCurrent] = useState(index);
+  const [list, setList] = useState(dummyData);
   const dispatch = useDispatch();
 
+  //! ------------------------ 리스트 이동 함수 ------------------------
   const movePrev = () => {
     current === 0 ? alert('첫번째 문제입니다!') : setCurrent(current - 1);
   };
@@ -26,9 +23,11 @@ function Tutorial() {
   const moveIndex = (id) => {
     setCurrent(id - 1);
   };
+  //! ------------------------ 리스트 이동 함수 ------------------------
 
   useEffect(() => {
     // console.log(current);
+    // console.log('튜토리얼!');
     dispatch(saveBookmark(current));
   }, [current]);
 
@@ -42,7 +41,7 @@ function Tutorial() {
           </div>
         </div>
         <div>
-          <TutorialSide list={list} current={current} movePrev={movePrev} moveNext={moveNext} moveIndex={moveIndex} />
+          <TutorialSide list={list} movePrev={movePrev} moveNext={moveNext} moveIndex={moveIndex} />
         </div>
       </div>
     </>
