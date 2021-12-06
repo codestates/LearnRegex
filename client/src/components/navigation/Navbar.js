@@ -1,15 +1,14 @@
 import React from 'react';
 import { FaBars } from 'react-icons/fa';
 import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtn, NavSignInBtn } from './NavbarElements';
-import Modal from '../modal/Modal';
 
-const Navbar = ({ handleSidebar, handleModal, openModal, setOpenModal }) => {
+const Navbar = ({ handleSidebar, handleModal }) => {
   return (
     <>
       <Nav>
         <NavbarContainer>
           <NavLogo to="/">LearnRegex</NavLogo>
-          <MobileIcon onClick={handleSidebar}>
+          <MobileIcon onClick={() => handleSidebar(true)}>
             <FaBars />
           </MobileIcon>
           <NavMenu>
@@ -23,8 +22,7 @@ const Navbar = ({ handleSidebar, handleModal, openModal, setOpenModal }) => {
               <NavLinks to="/cheatsheet">자습서</NavLinks>
             </NavItem>
             <NavBtn>
-              <NavSignInBtn onClick={handleModal}>로그인</NavSignInBtn>
-              {openModal ? <Modal openModal={openModal} setOpenModal={setOpenModal} /> : null}
+              <NavSignInBtn onClick={() => handleModal(true)}>로그인</NavSignInBtn>
             </NavBtn>
           </NavMenu>
         </NavbarContainer>
