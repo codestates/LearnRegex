@@ -8,7 +8,7 @@ const GET_QUIZ_ERROR = 'GET_QUIZ_ERROR';
 export const getQuiz = (id) => async (dispatch) => {
   dispatch({ type: GET_QUIZ });
   try {
-    const quiz = await (await axios.get(`http://localhost:4000/quiz/info?quizId=${id}`)).data.quiz;
+    const quiz = await (await axios.get(`${process.env.REACT_APP_SERVER_ADDR}/quiz/info?quizId=${id}`)).data.quiz;
     // console.log(quiz);
     dispatch({ type: GET_QUIZ_SUCCESS, quiz });
   } catch (e) {

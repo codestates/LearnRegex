@@ -1,5 +1,4 @@
-const { users, quiz } = require('../models');
-const db = require('../models');
+const { users, quiz, users_quiz } = require('../models');
 const { validation, confliction } = require('./inspectfunction');
 const bcrypt = require('bcryptjs');
 
@@ -16,7 +15,7 @@ module.exports = {
       const makeQuiz = (await quiz.findAndCountAll({ where: { userId: userId } })).count;
 
       // 유저가 클리어한 퀴즈 갯수 조회
-      const clearQuiz = (await db.sequelize.models.users_quiz.findAndCountAll({ where: { userId: userId } })).count;
+      const clearQuiz = (await users_quiz.findAndCountAll({ where: { userId: userId } })).count;
 
       // 조회 정보 합쳐서 응답
       const data = { ...userInfo, makeQuiz, clearQuiz };
@@ -32,7 +31,6 @@ module.exports = {
   editmyinfo: async (req, res) => {
     try {
       const { email, nickname } = req.body;
-      const data = { id, email, nickname };
 
       // 들어온 요청이 없는 경우
       if (!(email && nickname)) {
@@ -40,6 +38,7 @@ module.exports = {
       }
 
       const userId = req.userId;
+      const data = { userId, email, nickname };
 
       // 수정 내용 유효성 검사
       const isValid = validation(req.body);
@@ -52,7 +51,22 @@ module.exports = {
         return res.status(406).send({ data: { isValid, isConflict } });
       }
 
-      // 수정 내용 적용
+      // 유저 정보 조회
+      const userInfo = await users.findOne({ where: { id: userId }, raw: true });
+
+      // 이메일 변경을 하려는데 socialType이 local이 아닌 경우
+      if (userInfo.socialType !== 'local' && userInfo.email !== email) {
+        return res.status(403).send({ message: 'socialType is not local' });
+      }
+
+      // 기존 이메일을 변경한 경우(이메일 인증을 다시 해야함 -> 로그아웃 처리)
+      if (userInfo.email !== email) {
+        await users.update({ email, nickname, verifyEmail: false }, { where: { id: userId } });
+
+        return res.header({ isLogin: false }).clearCookie('token').status(200).send({ message: 'success' });
+      }
+
+      // 수정 내용 적용(닉네임만 바꾼 경우)
       await users.update({ email, nickname }, { where: { id: userId } });
 
       return res.status(200).send({ message: 'success' });
@@ -65,6 +79,14 @@ module.exports = {
   // 유저 패스워드 수정
   editpassword: async (req, res) => {
     try {
+      const userId = req.userId;
+      // 변경할 유저 정보 조회
+      const userInfo = await users.findOne({ where: { id: userId }, raw: true });
+
+      // socialType이 local이 아닌 경우
+      if (userInfo.socialType !== 'local') {
+        return res.status(403).send({ message: 'socialType is not local' });
+      }
       const { oldPassword, newPassword } = req.body;
 
       // 현재 비밀번호를 입력하지 않은 경우
@@ -76,10 +98,6 @@ module.exports = {
       if (!newPassword) {
         return res.status(400).send({ message: 'empty newpassword' });
       }
-
-      // 변경할 유저 정보 조회
-      const userId = req.userId;
-      const userInfo = await users.findOne({ where: { id: userId }, raw: true });
 
       // oldPassword와 현재 비밀번호가 일치하지 않은 경우
       if (!bcrypt.compareSync(oldPassword, userInfo.password)) {

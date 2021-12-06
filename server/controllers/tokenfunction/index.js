@@ -13,4 +13,16 @@ module.exports = {
       else return result;
     });
   },
+
+  sendToken: (res, token) => {
+    return res
+      .header({ isLogin: true })
+      .cookie('token', token, {
+        sameSite: 'Strict',
+        httpOnly: true,
+        expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
+      })
+      .status(200)
+      .send({ message: 'success' });
+  },
 };

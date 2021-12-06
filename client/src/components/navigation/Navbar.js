@@ -1,14 +1,14 @@
 import React from 'react';
 import { FaBars } from 'react-icons/fa';
-import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtn, NavBtnLink } from './NavbarElements';
+import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtn, NavSignInBtn } from './NavbarElements';
 
-const Navbar = ({ toggle }) => {
+const Navbar = ({ handleSidebar, handleModal }) => {
   return (
     <>
       <Nav>
         <NavbarContainer>
           <NavLogo to="/">LearnRegex</NavLogo>
-          <MobileIcon onClick={toggle}>
+          <MobileIcon onClick={() => handleSidebar(true)}>
             <FaBars />
           </MobileIcon>
           <NavMenu>
@@ -22,7 +22,7 @@ const Navbar = ({ toggle }) => {
               <NavLinks to="/cheatsheet">자습서</NavLinks>
             </NavItem>
             <NavBtn>
-              <NavBtnLink to="/signin">로그인</NavBtnLink>
+              <NavSignInBtn onClick={() => handleModal(true)}>로그인</NavSignInBtn>
             </NavBtn>
           </NavMenu>
         </NavbarContainer>

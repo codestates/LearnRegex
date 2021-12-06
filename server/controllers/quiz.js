@@ -56,7 +56,7 @@ module.exports = {
       // 퀴즈 상세 정보 조회
       let quizInfo = await quiz.findOne({
         where: { id: req.query.quizId },
-        attributes: ['id', 'userId', 'title', 'testCase', 'testCaseTarget', 'answer', 'explanation', 'count', 'isMade'],
+        attributes: ['id', 'userId', 'title', 'testCase', 'testCaseTarget', 'answer', 'explanation', 'count', 'isMade', 'isClear'],
         include: [{ model: users, attributes: ['nickname'] }],
       });
 
@@ -78,6 +78,13 @@ module.exports = {
       // 본인이 만든 퀴즈인 경우
       if (quizInfo.userId === req.userId) {
         quizInfo.isMade = true;
+      }
+
+      // 이미 해결한 문제일 경우
+      const isClear = await users_quiz.findOne({ where: { userId: req.userId, quizId: quizInfo.id } });
+
+      if (isClear) {
+        quizInfo.isClear = true;
       }
 
       delete quizInfo.userId;
