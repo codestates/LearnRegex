@@ -13,8 +13,8 @@ function TutorialSide({ list, current, movePrev, moveNext, moveIndex }) {
 
   return (
     <>
-      <SideHint level={current + 1} hint={list[current].hint} movePrev={movePrev} moveNext={moveNext} toggle={toggle} />
-      <SideList list={list} moveIndex={moveIndex} isOpen={isOpen} toggle={toggle} />
+      <SideHint current={current} hint={list[current].hint} movePrev={movePrev} moveNext={moveNext} toggle={toggle} />
+      <SideList list={list} current={current} moveIndex={moveIndex} isOpen={isOpen} toggle={toggle} />
     </>
   );
 }

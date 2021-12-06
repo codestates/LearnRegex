@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { saveAnswer } from '../modules/answer';
+import { clearList } from '../modules/list';
 import requestQuizClear from '../lib/requestQuizClear';
 
 function QuizForm({ data, orderPage }) {
@@ -42,7 +43,7 @@ function QuizForm({ data, orderPage }) {
     regExpResult = regExpResult[0];
   }
 
-  let isCorrectReg = regExpResult !== data.testCaseTarget;
+  let isCorrectReg = regExpResult === data.testCaseTarget;
   const timeWait = useRef();
   useEffect(() => {
     clearTimeout(timeWait.current);
@@ -50,6 +51,7 @@ function QuizForm({ data, orderPage }) {
       saveLocal(inputRegex);
       if (orderPage === 'quizList' && isCorrectReg) requestQuizClear(data.id);
     }, 2000);
+    if (orderPage === 'tutorial' && isCorrectReg) dispatch(clearList(data.id - 1));
   }, [inputRegex]);
 
   return (
@@ -63,7 +65,7 @@ function QuizForm({ data, orderPage }) {
           <h2>Test Case Target</h2>
           <div>
             <span>{data.testCaseTarget}</span>
-            <div>{isCorrectReg ? '❌' : '✅'}</div>
+            <div>{isCorrectReg ? '✅' : '❌'}</div>
           </div>
         </div>
         <div>

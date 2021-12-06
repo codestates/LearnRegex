@@ -10,9 +10,8 @@ import { dummyData } from '../data/tutorialData';
 // 학습하기 페이지
 function Tutorial() {
   const { index } = useSelector((state) => state.bookmark);
-  // console.log(index);
-  const [list, setList] = useState(dummyData);
   const [current, setCurrent] = useState(index);
+  const [list, setList] = useState(dummyData);
   const dispatch = useDispatch();
 
   const movePrev = () => {

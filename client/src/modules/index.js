@@ -7,6 +7,7 @@ import getquizzes from './quiz/getquizzes';
 import getquiz from './quiz/getquiz';
 import answer from './answer';
 import bookmark from './bookmark';
+import list from './list';
 
 const persistConfig = {
   key: 'root', // localStorage에 저장합니다.
@@ -14,6 +15,6 @@ const persistConfig = {
   whitelist: ['answer', 'bookmark'], // blacklist -> 그것만 제외합니다.
 };
 
-const rootReducer = combineReducers({ getquizzes, getquiz, answer, bookmark });
+const rootReducer = combineReducers({ getquizzes, getquiz, answer, bookmark, list });
 export default persistReducer(persistConfig, rootReducer);
 // export default rootReducer;
