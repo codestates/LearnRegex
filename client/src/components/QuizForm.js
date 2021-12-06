@@ -34,6 +34,7 @@ function QuizForm({ data, orderPage }) {
       const myRegex = new RegExp(pattern, flags);
       console.log(myRegex);
 
+      // * Realtime CSS
       let matchArray;
       let startIndex = 0;
       let lastIndex = 0;
@@ -42,13 +43,15 @@ function QuizForm({ data, orderPage }) {
         highlightedTestCase += data.testCase.substring(startIndex, lastIndex);
         highlightedTestCase += "<span class='found'>" + matchArray[0] + '</span>';
         startIndex = myRegex.lastIndex;
+        console.log(matchArray);
       }
+      console.log('shleedev', matchArray);
       highlightedTestCase += data.testCase.substring(startIndex, data.testCase.length);
       highlightedTestCase += '`}</pre>';
+      // * Just Print
       // const myRegexExec = myRegex.exec(testCase);
       // console.log(myRegexExec);
-      // console.log(myRegex.lastIndex);
-      // return myRegexExec;
+      // highlightedTestCase = myRegexExec;
     } catch (e) {
       console.log(e);
       return '';
@@ -70,6 +73,10 @@ function QuizForm({ data, orderPage }) {
     }, 2000);
   }, [inputRegex]);
 
+  const handleDevPatch = () => {
+    // console.log(myRegex.exec(testCase));
+  };
+
   return (
     <>
       <div>
@@ -86,9 +93,7 @@ function QuizForm({ data, orderPage }) {
         </div>
         <div>
           <h2>My Regexp</h2>
-          <div>
-            <span>{regExpResult}</span>
-          </div>
+          <div>{/* <span>{regExpResult}</span> */}</div>
           <div>
             <input type="text" value={inputRegex || ''} placeholder="정규표현식을 입력하세요!" onChange={handleAnswer} size="100" />
           </div>

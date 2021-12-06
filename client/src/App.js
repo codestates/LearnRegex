@@ -22,7 +22,7 @@ function App() {
   return (
     <>
       <Navigation />
-      <SingIn />
+      {/* <SingIn /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/tutorial" element={<Tutorial />} />
