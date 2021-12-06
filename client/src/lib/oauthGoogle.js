@@ -9,6 +9,6 @@ export const googleCallback = async (url) => {
   if (url.search) {
     const authorizationCode = url.search.split('=')[1].split('&')[0];
     await axios.post(`${process.env.REACT_APP_SERVER_ADDR}/oauth/google`, { authorizationCode });
-    // window.location.replace('/');
+    window.location.replace('/');
   }
 };

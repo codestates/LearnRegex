@@ -15,16 +15,13 @@ module.exports = {
   },
 
   sendToken: (res, token) => {
-    return res
-      .header({ isLogin: true })
-      .cookie('token', token, {
-        sameSite: 'None',
-        secure: true,
-        httpOnly: true,
-        expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
-        domain: '.learnregex.net',
-      })
-      .status(200)
-      .send({ message: 'success' });
+    const cookieOption = {
+      sameSite: 'Strict',
+      httpOnly: true,
+      expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
+    };
+    if (process.env.DOMAIN_NAME) cookieOption.domain = process.env.DOMAIN_NAME;
+
+    return res.header({ isLogin: true }).cookie('token', token, cookieOption).status(200).send({ message: 'success' });
   },
 };
