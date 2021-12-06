@@ -31,6 +31,11 @@ module.exports = {
         return res.status(406).send({ message: ' invalid password' });
       }
 
+      // 이메일 인증을 하지 않은 경우
+      if (!userInfo.verifyEmail) {
+        return res.status(401).send({ message: 'not verify email' });
+      }
+
       const { id, email, nickname, socialType, verifyEmail } = userInfo;
       const tokenData = { id, email, nickname, socialType, verifyEmail };
 
