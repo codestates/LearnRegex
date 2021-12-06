@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import BackButton from '../components/BackButton';
-import { submitQuiz } from '../lib/submitQuiz';
+import { submitQuiz } from '../lib/requestQuiz';
 import { limitChar } from '../lib/limitChar';
 
 function InputQuiz({ data }) {
@@ -9,13 +9,13 @@ function InputQuiz({ data }) {
   const handleInputValue = (key) => (e) => {
     // console.log(e.target.maxLength);
     // console.log(e.target.value.length);
-    let result = limitChar(e.target.value.length, e.target.maxLength);
+    let result = e.target.maxLength > 0 ? limitChar(e.target.value.length, e.target.maxLength) : true;
     if (!!result) setContent({ ...content, [key]: e.target.value });
   };
 
   useEffect(() => {
     if (!!data) {
-      console.log('EditQuiz가 존재하면 뜨는 로그');
+      // console.log('EditQuiz가 존재하면 뜨는 로그');
       setContent({ ...content, title: data.title, testCase: data.testCase, testCaseTarget: data.testCaseTarget, answer: data.answer, explanation: data.explanation });
     }
   }, []);

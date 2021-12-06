@@ -1,0 +1,73 @@
+const { users } = require('../models');
+const { getToken, sendToken } = require('./tokenfunction');
+const axios = require('axios');
+
+module.exports = {
+  oauthGoogle: async (req, res) => {
+    try {
+      const code = req.body.authorizationCode;
+
+      const result = await axios.post(
+        // authorization code를 이용해서 access token 요청
+        `https://oauth2.googleapis.com/token?code=${code}&client_id=${process.env.GOOGLE_CLIENT_ID}&client_secret=${process.env.GOOGLE_CLIENT_SECRET}&redirect_uri=${process.env.GOOGLE_REDIRECT_URI}&grant_type=authorization_code`,
+        {},
+        {
+          headers: { accept: 'application/json' },
+        }
+      );
+
+      const googleUserInfo = await axios.get(
+        // access token으로 유저정보 요청
+        `https://www.googleapis.com/oauth2/v2/userinfo?access_token=${result.data.access_token}`,
+        {
+          headers: {
+            Authorization: `Bearer ${result.data.access_token}`,
+          },
+        }
+      );
+
+      const userInfo = await users.findOrCreate({
+        where: {
+          email: googleUserInfo.data.email,
+          socialType: 'google',
+        },
+        defaults: {
+          email: googleUserInfo.data.email,
+          nickname: googleUserInfo.data.name,
+          password: '',
+          socialType: 'google',
+          verifyEmail: true,
+        },
+        raw: true,
+      });
+
+      const { id, email, nickname, socialType, verifyEmail } = userInfo;
+      const tokenData = { id, email, nickname, socialType, verifyEmail };
+
+      const token = getToken(tokenData);
+
+      sendToken(res, token);
+    } catch (err) {
+      console.log(err);
+      return res.status(500).send({ message: 'server error' });
+    }
+  },
+
+  oauthKakao: async (req, res) => {
+    try {
+      res.send('kakao');
+    } catch (err) {
+      console.log(err);
+      return res.status(500).send({ message: 'server error' });
+    }
+  },
+
+  oauthGithub: async (req, res) => {
+    try {
+      res.send('github');
+    } catch (err) {
+      console.log(err);
+      return res.status(500).send({ message: 'server error' });
+    }
+  },
+};

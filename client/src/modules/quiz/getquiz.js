@@ -8,8 +8,8 @@ const GET_QUIZ_ERROR = 'GET_QUIZ_ERROR';
 export const getQuiz = (id) => async (dispatch) => {
   dispatch({ type: GET_QUIZ });
   try {
-    const quiz = await axios.get(`http://localhost:4000/quiz/info?quizId=${id}`);
-    // TODO: quiz에 getQuiz 응답 받은 데이터 예쁘게 할당하기!!
+    const quiz = await (await axios.get(`${process.env.REACT_APP_SERVER_ADDR}/quiz/info?quizId=${id}`)).data.quiz;
+    // console.log(quiz);
     dispatch({ type: GET_QUIZ_SUCCESS, quiz });
   } catch (e) {
     dispatch({ type: GET_QUIZ_ERROR, error: e });

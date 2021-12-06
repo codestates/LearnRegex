@@ -106,7 +106,7 @@ export const NavBtn = styled.nav`
   }
 `;
 
-export const NavBtnLink = styled(LinkR)`
+export const NavSignInBtn = styled.button`
   border-radius: 20px;
   background: #fff;
   color: #000;
