@@ -4,6 +4,7 @@ import Sidebar from './Sidebar';
 import Modal from '../modal/Modal';
 import { googleCallback } from '../../lib/oauthGoogle';
 import { kakaoCallback } from '../../lib/oauthKakao';
+import { githubCallback } from '../../lib/oauthGithub';
 
 const Navigation = () => {
   //! Sidebar 상태
@@ -35,6 +36,7 @@ const Navigation = () => {
       } else if (socialType === 'google') {
         googleCallback(url);
       } else if (socialType === 'github') {
+        githubCallback(url);
       }
     }
   }, []);
