@@ -1,3 +1,4 @@
+import { checkIsLogin } from '../lib/checkIsLogin';
 import axios from 'axios';
 axios.defaults.withCredentials = true;
 
@@ -8,7 +9,8 @@ export const kakaoLogin = () => {
 export const kakaoCallback = async (url) => {
   if (url.search) {
     const authorizationCode = url.search.split('=')[1].split('&')[0];
-    await axios.post(`${process.env.REACT_APP_SERVER_ADDR}/oauth/kakao`, { authorizationCode });
+    const result = await axios.post(`${process.env.REACT_APP_SERVER_ADDR}/oauth/kakao`, { authorizationCode });
+    checkIsLogin(result);
     window.location.replace('/');
   }
 };
