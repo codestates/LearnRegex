@@ -9,7 +9,7 @@ module.exports = {
       const userId = req.userId;
 
       // 유저 이메일, 닉네임 조회
-      const userInfo = await users.findOne({ where: { id: userId }, attributes: ['email', 'nickname'], raw: true });
+      const userInfo = await users.findOne({ where: { id: userId }, attributes: ['email', 'nickname', 'socialType'], raw: true });
 
       // 유저가 만든 퀴즈 갯수 조회
       const makeQuiz = (await quiz.findAndCountAll({ where: { userId: userId } })).count;
