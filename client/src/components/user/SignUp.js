@@ -49,7 +49,7 @@ export const SignUp = ({ setModalState }) => {
 
     // * 서버 통신
     const serverResult = await requestSignUp(inputUserInfo);
-    if (serverResult) console.log('hi!');
+    if (serverResult) return setModalState('signUpAlert');
     else console.log('error!');
   };
 

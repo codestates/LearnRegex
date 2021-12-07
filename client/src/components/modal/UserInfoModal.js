@@ -10,7 +10,7 @@ const UserInfoModal = ({ openModal, setOpenModal }) => {
   const SetContent = () => {
     if (modalState === 'signIn') return <SignIn setModalState={setModalState} />;
     else if (modalState === 'signUp') return <SignUp setModalState={setModalState} />;
-    else if (modalState === 'signUpAlert') return <AlertModal />;
+    else if (modalState === 'signUpAlert') return <AlertModal setModalState={setModalState} />;
   };
 
   return (
