@@ -1,3 +1,4 @@
+import { checkIsLogin } from '../../lib/checkIsLogin';
 import axios from 'axios';
 axios.defaults.withCredentials = true;
 
@@ -8,11 +9,14 @@ const GET_QUIZZES_ERROR = 'GET_QUIZZES_ERROR';
 export const getQuizzes = () => async (dispatch) => {
   dispatch({ type: GET_QUIZZES });
   try {
-    const list = await (await axios.get(`${process.env.REACT_APP_SERVER_ADDR}/quiz`)).data.quizs;
+    const result = await axios.get(`${process.env.REACT_APP_SERVER_ADDR}/quiz`);
+    const list = result.data.quizs;
+    checkIsLogin(result);
     // console.log(list);
     dispatch({ type: GET_QUIZZES_SUCCESS, list });
-  } catch (e) {
-    dispatch({ type: GET_QUIZZES_ERROR, error: e });
+  } catch (error) {
+    checkIsLogin(error);
+    dispatch({ type: GET_QUIZZES_ERROR, error });
   }
 };
 

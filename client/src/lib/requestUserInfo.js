@@ -1,8 +1,10 @@
+import { checkIsLogin } from '../lib/checkIsLogin';
 import axios from 'axios';
 axios.defaults['withCredentials'] = true;
 axios.defaults.headers.common['Content-Type'] = 'application/json';
 
 export const requestSignIn = async (userInfo) => {
+  // const dispatch = useDispatch();
   const { email, password } = userInfo;
   if (!email || !password) return '아이디와 비밀번호를 입력하세요';
   try {
@@ -11,9 +13,11 @@ export const requestSignIn = async (userInfo) => {
       { email, password }
     );
     console.log(result);
+    checkIsLogin(result);
     return true;
   } catch (error) {
     console.log(error.response.data.message);
+    checkIsLogin(error);
     return false;
   }
 };
@@ -44,9 +48,11 @@ export const requestEditUserInfo = async (userInfo) => {
       { email, nickname }
     );
     console.log(result);
+    checkIsLogin(result);
     return true;
   } catch (error) {
     console.log(error.response.data.message);
+    checkIsLogin(error);
     return false;
   }
 };
@@ -59,9 +65,11 @@ export const requestEditUserPassword = async (userInfo) => {
       { oldPassword, newPassword }
     );
     console.log(result);
+    checkIsLogin(result);
     return true;
   } catch (error) {
     console.log(error.response.data.message);
+    checkIsLogin(error);
     return false;
   }
 };
@@ -74,9 +82,11 @@ export const requestDeleteUserInfo = async () => {
       // { oldPassword, newPassword }
     );
     console.log(result);
+    checkIsLogin(result);
     return true;
   } catch (error) {
     console.log(error.response.data.message);
+    checkIsLogin(error);
     return false;
   }
 };
@@ -87,9 +97,11 @@ export const requestSignOut = async () => {
       `${process.env.REACT_APP_SERVER_ADDR}/user/signout` //
     );
     console.log(result);
+    checkIsLogin(result);
     return true;
   } catch (error) {
     console.log(error.response.data.message);
+    checkIsLogin(error);
     return false;
   }
 };
@@ -100,9 +112,11 @@ export const requestGetMyInfo = async () => {
       `${process.env.REACT_APP_SERVER_ADDR}/myinfo` //
     );
     // console.log(result);
+    checkIsLogin(result);
     return result;
   } catch (error) {
     console.log(error.response.data.message);
+    checkIsLogin(error);
     return false;
   }
 };
