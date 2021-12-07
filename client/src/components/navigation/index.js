@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import Modal from '../modal/Modal';
 import { googleCallback } from '../../lib/oauthGoogle';
+import { kakaoCallback } from '../../lib/oauthKakao';
 
 const Navigation = () => {
   //! Sidebar 상태
@@ -24,7 +25,18 @@ const Navigation = () => {
 
   useEffect(() => {
     const url = new URL(window.location.href);
-    googleCallback(url);
+    const urlParserReg = /(?<=state=)([a-z]+)/;
+
+    if (urlParserReg.test(url.search)) {
+      const socialType = urlParserReg.exec(url.search)[0];
+
+      if (socialType === 'kakao') {
+        kakaoCallback(url);
+      } else if (socialType === 'google') {
+        googleCallback(url);
+      } else if (socialType === 'github') {
+      }
+    }
   }, []);
 
   return (
