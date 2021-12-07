@@ -5,6 +5,7 @@ import style from './devQuizFormStyle.css';
 import { saveAnswer } from '../modules/answer';
 import { clearList } from '../modules/list';
 import requestQuizClear from '../lib/requestQuizClear';
+import QuizAnswerModal from '../components/modal/QuizAnswerModal';
 
 function QuizForm({ data, orderPage }) {
   const { text } = useSelector((state) => state.answer);
@@ -12,14 +13,18 @@ function QuizForm({ data, orderPage }) {
   const dispatch = useDispatch();
   console.log(text);
 
-  const handleModal = () => {
-    // TODO: button 클릭시 QuizAnswerModal에게 상속 받은 data.answer, data.explanation를 props로 전달
-  };
-
   const saveLocal = (regex) => dispatch(saveAnswer(regex));
 
   const handleAnswer = (e) => {
     setInputRegex(e.target.value);
+  };
+
+  //! Modal 상태
+  const [openModal, setOpenModal] = useState(false);
+
+  //! Modal 상태 변경 함수
+  const handleModal = (boolean) => {
+    setOpenModal(boolean);
   };
 
   //! ------------------------ 정규표현식 실시간 적용 ------------------------
@@ -96,7 +101,8 @@ function QuizForm({ data, orderPage }) {
           </div>
         </div>
         <div>
-          <button onClick={handleModal}>{orderPage === 'quizList' ? '정답 확인하기' : '도움이 필요합니다'}</button>
+          <button onClick={() => handleModal(true)}>{orderPage === 'quizList' ? '정답 확인하기' : '도움이 필요합니다'}</button>
+          {openModal ? <QuizAnswerModal openModal={openModal} setOpenModal={setOpenModal} answer={data.answer} explanation={data.explanation} /> : null}
         </div>
       </div>
     </>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Background, ModalWrapper, ModalContent, CloseModalButton } from './UserInfoModalElements';
 
-const QuizAnswerModal = ({ openModal, setOpenModal, answer, explanation }) => {
+const AlertModal = ({ openModal, setOpenModal }) => {
   return (
     <>
       {openModal ? (
@@ -9,8 +9,7 @@ const QuizAnswerModal = ({ openModal, setOpenModal, answer, explanation }) => {
           <ModalWrapper>
             <ModalContent>
               <CloseModalButton onClick={() => setOpenModal(false)} />
-              <div>{answer}</div>
-              <div>{explanation}</div>
+              <div>Hello Alert Modal!</div>
             </ModalContent>
           </ModalWrapper>
         </Background>
@@ -19,4 +18,4 @@ const QuizAnswerModal = ({ openModal, setOpenModal, answer, explanation }) => {
   );
 };
 
-export default QuizAnswerModal;
+export default AlertModal;

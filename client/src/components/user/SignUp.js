@@ -5,7 +5,7 @@ import { isValidSignUp, isValidEmail, isValidNickname, isValidPassword, isValidP
 import dotenv from 'dotenv';
 dotenv.config();
 
-export const SignUp = () => {
+export const SignUp = ({ setModalState }) => {
   const [inputUserInfo, setSignUpInfo] = useState({
     email: '',
     nickname: '',
@@ -53,27 +53,32 @@ export const SignUp = () => {
     else console.log('error!');
   };
 
+  // onClick={() => setModalState('signUpAlert')}
+
   return (
     <>
       <div>
-        <h1>SignUp</h1>
-        <h2>Email</h2>
+        <h2>SignUp</h2>
+        <h3>Email</h3>
         <input type="text" onChange={handleInputValue('email')} onKeyUp={handleKeyUp}></input>
         <p>{errorMessage.email}&nbsp;</p>
 
-        <h2>Nickname</h2>
+        <h3>Nickname</h3>
         <input type="text" onChange={handleInputValue('nickname')} onKeyUp={handleKeyUp}></input>
         <p>{errorMessage.nickname}&nbsp;</p>
 
-        <h2>Password</h2>
+        <h3>Password</h3>
         <input type="text" onChange={handleInputValue('password')} onKeyUp={handleKeyUp}></input>
         <p>{errorMessage.password}&nbsp;</p>
 
-        <h2>Password Confirm</h2>
+        <h3>Password Confirm</h3>
         <input type="text" onChange={handleInputValue('confirm')} onKeyUp={handleKeyUp}></input>
         <p>{errorMessage.confirm}&nbsp;</p>
 
-        <input type="button" onClick={handleSubmit} value="Submit" />
+        <input type="button" onClick={handleSubmit} value="회원가입" />
+
+        <div>이미 가입하셨나요?</div>
+        <button onClick={() => setModalState('signIn')}>로그인 하기</button>
       </div>
     </>
   );

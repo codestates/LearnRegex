@@ -84,7 +84,7 @@ export const SignIn = ({ setModalState }) => {
         <div>아직 계정이 없으신가요?</div>
         <div>
           <button type="button" onClick={() => setModalState('signUp')}>
-            Sign Up
+            가입하기
           </button>
         </div>
       </div>
