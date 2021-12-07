@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { requestSignIn, requestSignOut } from '../../lib/requestUserInfo';
 import { googleLogin } from '../../lib/oauthGoogle';
 import { kakaoLogin } from '../../lib/oauthKakao';
+import { githubLogin } from '../../lib/oauthGithub';
 
 export const SignIn = () => {
   const [inputUserInfo, setInputUserInfo] = useState({
@@ -58,7 +59,9 @@ export const SignIn = () => {
   const handleOAuthGoogle = () => {
     googleLogin();
   };
-  const handleOAuthGithub = () => {};
+  const handleOAuthGithub = () => {
+    githubLogin();
+  };
 
   return (
     <>

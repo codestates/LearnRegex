@@ -9,7 +9,6 @@ export const googleLogin = () => {
 export const googleCallback = async (url) => {
   if (url.search) {
     const authorizationCode = url.search.split('=')[2].split('&')[0];
-    console.log(authorizationCode);
     const result = await axios.post(`${process.env.REACT_APP_SERVER_ADDR}/oauth/google`, { authorizationCode });
     checkIsLogin(result);
     window.location.replace('/');
