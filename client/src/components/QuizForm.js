@@ -2,21 +2,26 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Interweave from 'interweave';
 import style from './devQuizFormStyle.css';
-import { saveAnswer } from '../modules/answer';
+import { saveAnswerTutorial, saveAnswerQuiz } from '../modules/answer';
 import { clearList } from '../modules/list';
 import requestQuizClear from '../lib/requestQuizClear';
 
 function QuizForm({ data, orderPage }) {
-  const { text } = useSelector((state) => state.answer);
-  const [inputRegex, setInputRegex] = useState(text);
+  const text = useSelector((state) => (orderPage === 'tutorial' ? state.answer.tutorial[data.id] : state.answer.quiz[data.id]));
+  const [inputRegex, setInputRegex] = useState(text || '');
   const dispatch = useDispatch();
-  console.log(text);
+
+  useEffect(() => {
+    setInputRegex(text || '');
+  }, [data]);
 
   const handleModal = () => {
     // TODO: button 클릭시 QuizAnswerModal에게 상속 받은 data.answer, data.explanation를 props로 전달
   };
 
-  const saveLocal = (regex) => dispatch(saveAnswer(regex));
+  const saveLocal = (text) => {
+    orderPage === 'tutorial' ? dispatch(saveAnswerTutorial(data.id, text)) : dispatch(saveAnswerQuiz(data.id, text));
+  };
 
   const handleAnswer = (e) => {
     setInputRegex(e.target.value);
@@ -67,7 +72,6 @@ function QuizForm({ data, orderPage }) {
   //! ------------------------ 정규표현식 실시간 적용 ------------------------
 
   useEffect(() => {
-    // console.log(isCorrectReg);
     if (orderPage === 'quizList' && isCorrectReg) requestQuizClear(data.id);
     if (orderPage === 'tutorial' && isCorrectReg) dispatch(clearList(data.id - 1));
   }, [isCorrectReg]);
