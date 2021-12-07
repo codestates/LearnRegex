@@ -10,12 +10,12 @@ module.exports = {
 
     // 이메일을 입력하지 않은 경우
     if (!email) {
-      return res.status(400).send({ message: 'empty email' });
+      return res.header({ isLogin: false }).status(400).send({ message: 'empty email' });
     }
 
     // 비밀번호를 입력하지 않은 경우
     if (!password) {
-      return res.status(400).send({ message: 'empty password' });
+      return res.header({ isLogin: false }).status(400).send({ message: 'empty password' });
     }
 
     const userInfo = await users.findOne({ where: { email }, raw: true });
@@ -23,17 +23,17 @@ module.exports = {
     try {
       // 이메일과 일치하는 유저가 없는 경우
       if (!userInfo) {
-        return res.status(406).send({ message: 'invalid email' });
+        return res.header({ isLogin: false }).status(406).send({ message: 'invalid email' });
       }
 
       // 입력한 비밀번호가 맞지 않는 경우
       if (!bcrypt.compareSync(password, userInfo.password)) {
-        return res.status(406).send({ message: ' invalid password' });
+        return res.header({ isLogin: false }).status(406).send({ message: ' invalid password' });
       }
 
       // 이메일 인증을 하지 않은 경우
       if (!userInfo.verifyEmail) {
-        return res.status(401).send({ message: 'not verify email' });
+        return res.header({ isLogin: false }).status(401).send({ message: 'not verify email' });
       }
 
       const { id, email, nickname, socialType, verifyEmail } = userInfo;
