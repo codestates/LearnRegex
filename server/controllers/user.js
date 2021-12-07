@@ -1,6 +1,6 @@
 const { users } = require('../models');
 const { validation, confliction } = require('./inspectfunction');
-const { getToken } = require('./tokenfunction');
+const { getToken, sendToken } = require('./tokenfunction');
 const bcrypt = require('bcryptjs');
 
 module.exports = {
@@ -31,20 +31,17 @@ module.exports = {
         return res.status(406).send({ message: ' invalid password' });
       }
 
-      const { id, email, nickname } = userInfo;
-      const tokenData = { id, email, nickname };
+      // 이메일 인증을 하지 않은 경우
+      if (!userInfo.verifyEmail) {
+        return res.status(401).send({ message: 'not verify email' });
+      }
+
+      const { id, email, nickname, socialType, verifyEmail } = userInfo;
+      const tokenData = { id, email, nickname, socialType, verifyEmail };
 
       const token = getToken(tokenData);
 
-      return res
-        .header({ isLogin: true })
-        .cookie('token', token, {
-          sameSite: 'Strict',
-          httpOnly: true,
-          expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
-        })
-        .status(200)
-        .send({ message: 'success' });
+      sendToken(res, token);
     } catch (err) {
       console.log(err);
       return res.status(500).send({ message: 'server error' });
@@ -86,7 +83,7 @@ module.exports = {
       const salt = bcrypt.genSaltSync(parseInt(Math.random() * 10));
       const hashPassword = bcrypt.hashSync(password, salt);
 
-      await users.create({ email, nickname, password: hashPassword });
+      await users.create({ email, nickname, password: hashPassword, socialType: 'local', verifyEmail: true });
 
       return res.status(200).send({ message: 'success' });
     } catch (err) {

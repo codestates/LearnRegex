@@ -13,4 +13,15 @@ module.exports = {
       else return result;
     });
   },
+
+  sendToken: (res, token) => {
+    const cookieOption = {
+      sameSite: 'Strict',
+      httpOnly: true,
+      expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
+    };
+    if (process.env.DOMAIN_NAME) cookieOption.domain = process.env.DOMAIN_NAME;
+
+    return res.header({ isLogin: true }).cookie('token', token, cookieOption).status(200).send({ message: 'success' });
+  },
 };

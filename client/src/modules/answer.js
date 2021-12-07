@@ -1,16 +1,29 @@
-const SAVE_ANSWER = 'SAVE_ANSWER';
+const SAVE_ANSWER_TUTORIAL = 'SAVE_ANSWER_TUTORIAL';
+const SAVE_ANSWER_QUIZ = 'SAVE_ANSWER_QUIZ';
 
-export const saveAnswer = (text) => ({
-  type: SAVE_ANSWER,
-  text,
-});
+export const saveAnswerTutorial = (id, text) => ({ type: SAVE_ANSWER_TUTORIAL, payload: { [id]: text } });
+export const saveAnswerQuiz = (id, text) => ({ type: SAVE_ANSWER_QUIZ, payload: { [id]: text } });
 
-export default function answer(state = {}, action) {
+//! const initialState = { tutorial: {1: "qwer", 10: "asdf"}, quiz: {1: "qwer", 2: "1234"} };
+
+const initialState = { tutorial: {}, quiz: {} };
+
+export default function answer(state = initialState, action) {
+  // console.log('answer reducer');
+  // console.log(state.tutorial);
+  let targetId = '';
+  if (Object.prototype.toString.call(action.payload) === '[object Object]') targetId = Object.keys(action.payload)[0];
+  // console.log(targetId);
   switch (action.type) {
-    case SAVE_ANSWER:
+    case SAVE_ANSWER_TUTORIAL:
       return {
         ...state,
-        text: action.text,
+        tutorial: { ...state.tutorial, [targetId]: action.payload[targetId] },
+      };
+    case SAVE_ANSWER_QUIZ:
+      return {
+        ...state,
+        quiz: { ...state.quiz, [targetId]: action.payload[targetId] },
       };
     default:
       return state;

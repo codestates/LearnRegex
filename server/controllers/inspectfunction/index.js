@@ -32,15 +32,15 @@ module.exports = {
     console.log(result);
     return result;
   },
-  confliction: async ({ id, email, nickname }) => {
+  confliction: async ({ userId, email, nickname }) => {
     // 들어온게 있다면 실행하도록
     const result = {};
 
     const emailQuery = { email };
-    if (id) emailQuery[Op.not] = { id };
+    if (userId) emailQuery[Op.not] = { id: userId };
 
     const nicknameQuery = { nickname };
-    if (id) nicknameQuery[Op.not] = { id };
+    if (userId) nicknameQuery[Op.not] = { id: userId };
 
     let isConflict;
 

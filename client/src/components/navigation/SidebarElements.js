@@ -21,8 +21,8 @@ export const SidebarContainer = styled.aside`
   top: 0;
   left: 0;
   transition: 0.3s ease-in-out;
-  opacity: ${({ isOpen }) => (isOpen ? '100%' : '0')};
-  top: ${({ isOpen }) => (isOpen ? '0' : '-100%')};
+  opacity: ${({ openSidebar }) => (openSidebar ? '100%' : '0')};
+  top: ${({ openSidebar }) => (openSidebar ? '0' : '-100%')};
   /* top: 0; */
 `;
 
@@ -79,7 +79,7 @@ export const SidebarBtnWrap = styled.div`
   justify-content: center;
 `;
 
-export const SidebarBtn = styled(LinkR)`
+export const SidebarBtn = styled.button`
   border-radius: 40px;
   background: #fff;
   white-space: nowrap;

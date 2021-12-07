@@ -1,56 +1,80 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { saveAnswer } from '../modules/answer';
+import Interweave from 'interweave';
+import style from './devQuizFormStyle.css';
+import { saveAnswerTutorial, saveAnswerQuiz } from '../modules/answer';
+import { clearList } from '../modules/list';
 import requestQuizClear from '../lib/requestQuizClear';
 
 function QuizForm({ data, orderPage }) {
-  const { text } = useSelector((state) => state.answer);
-  const [inputRegex, setInputRegex] = useState(text);
+  const text = useSelector((state) => (orderPage === 'tutorial' ? state.answer.tutorial[data.id] : state.answer.quiz[data.id]));
+  const [inputRegex, setInputRegex] = useState(text || '');
   const dispatch = useDispatch();
 
-  const saveLocal = (text) => dispatch(saveAnswer(text));
-
-  const handleAnswer = (e) => {
-    setInputRegex(e.target.value);
-  };
+  useEffect(() => {
+    setInputRegex(text || '');
+  }, [data]);
 
   const handleModal = () => {
     // TODO: button 클릭시 QuizAnswerModal에게 상속 받은 data.answer, data.explanation를 props로 전달
   };
 
+  const saveLocal = (text) => {
+    orderPage === 'tutorial' ? dispatch(saveAnswerTutorial(data.id, text)) : dispatch(saveAnswerQuiz(data.id, text));
+  };
+
+  const handleAnswer = (e) => {
+    setInputRegex(e.target.value);
+  };
+
+  //! ------------------------ 정규표현식 실시간 적용 ------------------------
   // * 정규표현식 분류
-  // let isCorrectReg;
+  let highlightedTestCase = '';
   const getRegExp = (testCase) => {
-    // 잘못된 정규표현식이 들어오면 빈 문자열 반환
+    // * 정규표현식 만들기
+    let myRegex = '';
     try {
-      // flag와 pattern 분리
-      // replace 함수 두 번째 인자로 '$1' 값을 부여해서 소괄호로 묶인 첫 번째 그룹을 가져올 수 있다.
-      const flags = inputRegex.replace(/.*\/([gimy]*)$/, '$1');
-      // replace 함수 안에서 flags 변수를 합쳐서 정규표현식을 만듦
-      // 방금 만든 정규표현식으로 inputRegex 내부 패턴값을 소괄호로 묶어서 추출
-      const pattern = inputRegex.replace(new RegExp('^/(.*?)/' + flags + '$'), '$1');
-      const myRegex = new RegExp(pattern, flags);
-      const myRegexExec = myRegex.exec(testCase);
-      return myRegexExec;
+      const flags = 'g';
+      const pattern = inputRegex || '^$';
+      myRegex = new RegExp(pattern, flags);
     } catch (e) {
       console.log(e);
-      return '';
+      myRegex = new RegExp('^$', 'g');
     }
-  };
-  let regExpResult = getRegExp(data.testCase);
-  if (Array.isArray(regExpResult)) {
-    regExpResult = regExpResult[0];
-  }
+    console.log('myRegex:', myRegex);
 
-  let isCorrectReg = regExpResult !== data.testCaseTarget;
+    // * Realtime CSS
+    let matchArray;
+    let startIndex = 0;
+    let lastIndex = 0;
+    let result = '';
+    if ((matchArray = myRegex.exec(testCase)) !== null) {
+      lastIndex = matchArray.index;
+      highlightedTestCase += data.testCase.substring(startIndex, lastIndex);
+      highlightedTestCase += "<span class='found'>" + matchArray[0] + '</span>';
+      startIndex = myRegex.lastIndex;
+      result = matchArray[0];
+    }
+    highlightedTestCase += data.testCase.substring(startIndex, data.testCase.length);
+    return result;
+  };
+  // * 정규표현식 적용 결과
+  let regExpResult = getRegExp(data.testCase);
+
+  let isCorrectReg = regExpResult === data.testCaseTarget;
   const timeWait = useRef();
   useEffect(() => {
     clearTimeout(timeWait.current);
     timeWait.current = setTimeout(() => {
       saveLocal(inputRegex);
-      if (orderPage === 'quizList' && isCorrectReg) requestQuizClear(data.id);
-    }, 2000);
+    }, 1000);
   }, [inputRegex]);
+  //! ------------------------ 정규표현식 실시간 적용 ------------------------
+
+  useEffect(() => {
+    if (orderPage === 'quizList' && isCorrectReg) requestQuizClear(data.id);
+    if (orderPage === 'tutorial' && isCorrectReg) dispatch(clearList(data.id - 1));
+  }, [isCorrectReg]);
 
   return (
     <>
@@ -58,12 +82,12 @@ function QuizForm({ data, orderPage }) {
         <div>
           <h2>Test Case</h2>
           <div>
-            <span>{data.testCase}</span>
+            <Interweave content={highlightedTestCase} />
           </div>
           <h2>Test Case Target</h2>
           <div>
             <span>{data.testCaseTarget}</span>
-            <div>{isCorrectReg ? '❌' : '✅'}</div>
+            <div>{isCorrectReg ? '✅' : '❌'}</div>
           </div>
         </div>
         <div>
@@ -72,7 +96,7 @@ function QuizForm({ data, orderPage }) {
             <span>{regExpResult}</span>
           </div>
           <div>
-            <input type="text" value={inputRegex || ''} placeholder="정규표현식을 입력하세요!" onChange={handleAnswer} size="100" />
+            <input type="text" value={inputRegex} placeholder="정규표현식을 입력하세요!" onChange={handleAnswer} size="100" />
           </div>
         </div>
         <div>
