@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
-import Modal from '../modal/Modal';
+import Modal from '../modal/UserInfoModal';
 import { googleCallback } from '../../lib/oauthGoogle';
 import { kakaoCallback } from '../../lib/oauthKakao';
 

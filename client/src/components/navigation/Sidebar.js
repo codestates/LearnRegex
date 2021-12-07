@@ -10,7 +10,7 @@ const Sidebar = ({ openSidebar, handleSidebar, handleModal }) => {
         <CloseIcon onClick={() => handleSidebar(false)} />
       </Icon>
       <SidebarWrapper>
-        <SidebarMenu>
+        <SidebarMenu onClick={() => handleSidebar(false)}>
           <SidebarLink to="/tutorial">학습하기</SidebarLink>
           <SidebarLink to="/quizlist">퀴즈</SidebarLink>
           <SidebarLink to="/cheatsheet">자습서</SidebarLink>

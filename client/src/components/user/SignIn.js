@@ -5,7 +5,7 @@ import { requestSignIn, requestSignOut } from '../../lib/requestUserInfo';
 import { googleLogin } from '../../lib/oauthGoogle';
 import { kakaoLogin } from '../../lib/oauthKakao';
 
-export const SignIn = () => {
+export const SignIn = ({ setModalState }) => {
   const [inputUserInfo, setInputUserInfo] = useState({
     email: '',
     password: '',
@@ -80,6 +80,12 @@ export const SignIn = () => {
           <input type="button" onClick={handleOAuthKakao} value="OAuth Kakao" />
           <input type="button" onClick={handleOAuthGoogle} value="OAuth Google" />
           <input type="button" onClick={handleOAuthGithub} value="OAuth Github" />
+        </div>
+        <div>아직 계정이 없으신가요?</div>
+        <div>
+          <button type="button" onClick={() => setModalState('signUp')}>
+            Sign Up
+          </button>
         </div>
       </div>
     </>
