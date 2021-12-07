@@ -70,8 +70,16 @@ export const SignIn = ({ setModalState }) => {
         <h2>password</h2>
         <input type="text" onChange={handleInputValue('password')} onKeyUp={handleKeyUp}></input>
         <p>{errorMessage.password}&nbsp;</p>
-        <input type="checkbox" onChange={handleSaveEmail} value={saveEmail} />
-        <span>이메일 저장</span>
+
+        <div>
+          <input type="checkbox" onChange={handleSaveEmail} value={saveEmail} />
+          <span>이메일 저장</span>
+        </div>
+
+        <div>
+          <button onClick={() => setModalState('signUpAlert')}>비밀번호를 잊으셨나요 ?</button>
+        </div>
+
         <div>
           <input type="button" onClick={handleSubmit} value="SignIn" />
           <input type="button" onClick={handleSignOut} value="SignOut" />

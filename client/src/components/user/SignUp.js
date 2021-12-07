@@ -49,11 +49,9 @@ export const SignUp = ({ setModalState }) => {
 
     // * 서버 통신
     const serverResult = await requestSignUp(inputUserInfo);
-    if (serverResult) return setModalState('signUpAlert');
+    if (serverResult) return setModalState('emailCertAlert');
     else console.log('error!');
   };
-
-  // onClick={() => setModalState('signUpAlert')}
 
   return (
     <>

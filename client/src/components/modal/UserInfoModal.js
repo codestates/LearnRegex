@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Background, ModalWrapper, ModalContent, CloseModalButton } from './UserInfoModalElements';
 import SignIn from '../user/SignIn';
 import SignUp from '../user/SignUp';
-import AlertModal from './AlertModal';
+import FindPasswordModal from './FindPasswordModal';
+import EmailCertModal from './EmailCertModal';
 
 const UserInfoModal = ({ openModal, setOpenModal }) => {
   const [modalState, setModalState] = useState('signIn');
@@ -10,7 +11,8 @@ const UserInfoModal = ({ openModal, setOpenModal }) => {
   const SetContent = () => {
     if (modalState === 'signIn') return <SignIn setModalState={setModalState} />;
     else if (modalState === 'signUp') return <SignUp setModalState={setModalState} />;
-    else if (modalState === 'signUpAlert') return <AlertModal setModalState={setModalState} />;
+    else if (modalState === 'signUpAlert') return <FindPasswordModal setModalState={setModalState} />;
+    else if (modalState === 'emailCertAlert') return <EmailCertModal setModalState={setModalState} />;
   };
 
   return (
