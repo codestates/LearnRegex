@@ -11,6 +11,10 @@ function QuizForm({ data, orderPage }) {
   const [inputRegex, setInputRegex] = useState(text || '');
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    setInputRegex(text || '');
+  }, [data]);
+
   const handleModal = () => {
     // TODO: button 클릭시 QuizAnswerModal에게 상속 받은 data.answer, data.explanation를 props로 전달
   };
