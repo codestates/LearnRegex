@@ -46,6 +46,7 @@ export const SignIn = () => {
     if (serverResult) {
       console.log('hi');
       dispatch(setModal('close'));
+      window.location.reload();
     } else console.log('error!');
   };
 
