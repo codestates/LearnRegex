@@ -5,6 +5,7 @@ import Modal from '../modal/Modal';
 import { googleCallback } from '../../lib/oauthGoogle';
 import { kakaoCallback } from '../../lib/oauthKakao';
 import { githubCallback } from '../../lib/oauthGithub';
+import { verifyEmail } from '../../lib/requestEmailConfirm';
 
 const Navigation = () => {
   //! Sidebar 상태
@@ -29,14 +30,17 @@ const Navigation = () => {
     const urlParserReg = /(?<=state=)([a-z]+)/;
 
     if (urlParserReg.test(url.search)) {
-      const socialType = urlParserReg.exec(url.search)[0];
+      const state = urlParserReg.exec(url.search)[0];
 
-      if (socialType === 'kakao') {
+      if (state === 'kakao') {
         kakaoCallback(url);
-      } else if (socialType === 'google') {
+      } else if (state === 'google') {
         googleCallback(url);
-      } else if (socialType === 'github') {
+      } else if (state === 'github') {
         githubCallback(url);
+      } else if (state === 'signup' || state === 'editinfo') {
+        verifyEmail(url);
+      } else if (state === 'editpassword') {
       }
     }
   }, []);
