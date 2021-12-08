@@ -43,7 +43,7 @@ const Navigation = () => {
     <>
       <Navbar handleSidebar={handleSidebar} handleModal={handleModal} openModal={openModal} setOpenModal={setOpenModal} />
       <Sidebar openSidebar={openSidebar} handleSidebar={handleSidebar} handleModal={handleModal} openModal={openModal} setOpenModal={setOpenModal} />
-      {openModal ? <UserInfoModal openModal={openModal} setOpenModal={setOpenModal} /> : null}
+      {openModal ? <UserInfoModal handleModal={handleModal} openModal={openModal} setOpenModal={setOpenModal} /> : null}
     </>
   );
 };

@@ -5,7 +5,7 @@ import { requestSignIn, requestSignOut } from '../../lib/requestUserInfo';
 import { googleLogin } from '../../lib/oauthGoogle';
 import { kakaoLogin } from '../../lib/oauthKakao';
 
-export const SignIn = ({ setModalState }) => {
+export const SignIn = ({ setModalState, handleModal }) => {
   const [inputUserInfo, setInputUserInfo] = useState({
     email: '',
     password: '',
@@ -14,7 +14,6 @@ export const SignIn = ({ setModalState }) => {
     email: '',
     password: '',
   });
-  const [saveEmail, setSaveEmail] = useState(false);
 
   const handleInputValue = (key) => (e) => {
     setInputUserInfo({ ...inputUserInfo, [key]: e.target.value });
@@ -24,10 +23,6 @@ export const SignIn = ({ setModalState }) => {
     if (e.key === 'Enter') {
       handleSubmit();
     }
-  };
-
-  const handleSaveEmail = (e) => {
-    setSaveEmail(!saveEmail);
   };
 
   const handleSubmit = async () => {
@@ -42,7 +37,8 @@ export const SignIn = ({ setModalState }) => {
 
     // 서버 통신
     const serverResult = await requestSignIn(inputUserInfo);
-    if (serverResult) console.log('SignIn');
+    //TODO: 모달 닫히게 하기
+    if (serverResult) return handleModal(false);
     else console.log('error!');
   };
 
@@ -72,12 +68,7 @@ export const SignIn = ({ setModalState }) => {
         <p>{errorMessage.password}&nbsp;</p>
 
         <div>
-          <input type="checkbox" onChange={handleSaveEmail} value={saveEmail} />
-          <span>이메일 저장</span>
-        </div>
-
-        <div>
-          <button onClick={() => setModalState('signUpAlert')}>비밀번호를 잊으셨나요 ?</button>
+          <button onClick={() => setModalState('findPassword')}>비밀번호를 잊으셨나요 ?</button>
         </div>
 
         <div>

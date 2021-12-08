@@ -21,7 +21,7 @@ function App() {
   return (
     <>
       <Navigation />
-      <EditUserInfo />
+      {/* <EditUserInfo /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/tutorial" element={<Tutorial />} />
@@ -29,7 +29,7 @@ function App() {
         <Route path="/myinfo" element={<GetMyInfo />} />
         {/* <Route path="/editinfo" element={<EditUserInfo />} /> */}
         <Route path="/quizlist" element={<QuizList />} />
-        <Route path="/editpw" element={<EditUserPassword />} />
+        {/* <Route path="/editpw" element={<EditUserPassword />} /> */}
         <Route path="/newpw" element={<SetNewPassword />} />
         <Route path="/quiz/:id" element={<SolveQuiz />} />
         <Route path="/makequiz" element={<MakeQuiz />} />

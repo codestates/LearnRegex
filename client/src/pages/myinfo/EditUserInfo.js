@@ -5,7 +5,7 @@ import { isValidEditUserInfo, isValidEmail, isValidNickname } from '../../lib/va
 import dotenv from 'dotenv';
 dotenv.config();
 
-export const EditUserInfo = () => {
+export const EditUserInfo = ({ setModalState }) => {
   const [inputUserInfo, setInputUserInfo] = useState({
     email: '',
     nickname: '',
@@ -44,7 +44,8 @@ export const EditUserInfo = () => {
 
     // * 서버 통신
     const serverResult = await requestEditUserInfo(inputUserInfo);
-    if (serverResult) console.log('hi!');
+    if (serverResult) console.log('hi');
+    // return setModalState('alert');
     else console.log('error!');
   };
 
