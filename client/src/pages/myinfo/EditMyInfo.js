@@ -1,15 +1,22 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setModal } from '../../modules/modal';
+// import { Link, useNavigate } from 'react-router-dom';
 import { requestEditUserInfo } from '../../lib/requestUserInfo';
 import { isValidEditUserInfo, isValidEmail, isValidNickname } from '../../lib/validationFunction';
 import dotenv from 'dotenv';
 dotenv.config();
 
 export const EditMyInfo = ({ myInfo }) => {
+  const dispatch = useDispatch();
+
+  // export const EditUserInfo = () => {
   const [inputUserInfo, setInputUserInfo] = useState({
     email: myInfo.email,
     nickname: myInfo.nickname,
   });
+
   const [errorMessage, setErrorMessage] = useState({
     email: '',
     nickname: '',
@@ -45,7 +52,7 @@ export const EditMyInfo = ({ myInfo }) => {
 
     // * 서버 통신
     const serverResult = await requestEditUserInfo(inputUserInfo);
-    if (serverResult) console.log('hi!');
+    if (serverResult) dispatch(setModal('emailCert'));
     else console.log('error!');
   };
 
@@ -64,7 +71,6 @@ export const EditMyInfo = ({ myInfo }) => {
         <h2>Nickname</h2>
         <input type="text" onChange={handleInputValue('nickname')} value={inputUserInfo.nickname} onKeyUp={handleKeyUp}></input>
         <p>{errorMessage.nickname}&nbsp;</p>
-
         <input type="button" onClick={handleSubmit} value="Submit" />
         <input type="button" onClick={() => navigate('/myinfo')} value="Cancel" />
       </div>

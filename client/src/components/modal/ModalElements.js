@@ -26,13 +26,6 @@ export const ModalWrapper = styled.div`
   position: relative;
 `;
 
-// export const ModalImg = styled.img`
-//   width: 100%;
-//   height: 79%;
-//   border-radius: 10px 0 0 10px;
-//   background: #000;
-// `;
-
 export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;

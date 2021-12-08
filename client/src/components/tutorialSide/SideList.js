@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { setModal } from '../../modules/modal';
 import styled from 'styled-components';
 import { MdCancel } from 'react-icons/md';
 import { BsCheckSquare } from 'react-icons/bs';
@@ -10,14 +11,8 @@ export const Container = styled.div`
 `;
 
 function SideList({ list, moveIndex, isOpen, toggle }) {
+  const dispatch = useDispatch();
   const clearList = useSelector((state) => state.list);
-
-  const handleResetAnswer = () => {
-    alert('모든 정답을 초기화했습니다.');
-    toggle(false);
-    localStorage.clear();
-    window.location.replace('/tutorial');
-  };
 
   return (
     <>
@@ -49,7 +44,7 @@ function SideList({ list, moveIndex, isOpen, toggle }) {
           </div>
         </div>
         <div>
-          <button onClick={handleResetAnswer}>초기화</button>
+          <button onClick={() => dispatch(setModal('DeleteAnswerConfirm'))}>초기화</button>
         </div>
       </Container>
     </>

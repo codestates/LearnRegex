@@ -58,15 +58,15 @@ export const isValidEmail = async (email, myInfoEmail) => {
   }
 };
 
-// export const isValidOnlyEmail = async (email) => {
-//   if (!email) {
-//     return '이메일을 입력해주세요.';
-//   } else if (!/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/g.test(email)) {
-//     return '올바른 이메일 형식이 아닙니다.';
-//   } else {
-//     return '';
-//   }
-// };
+export const isValidOnlyEmail = async (email) => {
+  if (!email) {
+    return '이메일을 입력해주세요.';
+  } else if (!/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/g.test(email)) {
+    return '올바른 이메일 형식이 아닙니다.';
+  } else {
+    return '';
+  }
+};
 
 export const isValidNickname = async (nickname, myInfoNickname) => {
   console.log(nickname, myInfoNickname);

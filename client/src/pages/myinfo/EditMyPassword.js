@@ -49,6 +49,7 @@ export const EditMyPassword = () => {
     // * 서버 통신
     const serverResult = await requestEditUserPassword(inputUserInfo);
     if (serverResult) console.log('hi!');
+    // return setModalState('alert')
     else console.log('error!');
   };
 
