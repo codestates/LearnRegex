@@ -41,8 +41,8 @@ const FindPassword = () => {
 
   return (
     <>
-      <h1>FindPassword</h1>
-      <input type="text" onChange={handleInputValue('email')} onKeyUp={handleKeyUp}></input>
+      <h3>비밀번호 찾기</h3>
+      <input type="text" placeholder="이메일을 입력하세요." onChange={handleInputValue('email')} onKeyUp={handleKeyUp}></input>
       <p>{errorMessage.email}&nbsp;</p>
       <input type="button" onClick={handleSubmit} value="FindPassword" />
     </>

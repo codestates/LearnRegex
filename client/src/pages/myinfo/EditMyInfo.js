@@ -71,8 +71,8 @@ export const EditMyInfo = ({ myInfo }) => {
         <h2>Nickname</h2>
         <input type="text" onChange={handleInputValue('nickname')} value={inputUserInfo.nickname} onKeyUp={handleKeyUp}></input>
         <p>{errorMessage.nickname}&nbsp;</p>
-        <input type="button" onClick={handleSubmit} value="Submit" />
-        <input type="button" onClick={() => navigate('/myinfo')} value="Cancel" />
+        <input type="button" onClick={handleSubmit} value="수정 완료" />
+        <input type="button" onClick={() => navigate('/myinfo')} value="취소" />
       </div>
     </>
   );

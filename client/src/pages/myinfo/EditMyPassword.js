@@ -1,11 +1,15 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setModal } from '../../modules/modal';
 import { requestEditUserPassword } from '../../lib/requestUserInfo';
 import { isValidEditUserPassword, isValidPassword, isValidPasswordConfirm } from '../../lib/validationFunction';
 import dotenv from 'dotenv';
 dotenv.config();
 
 export const EditMyPassword = () => {
+  const dispatch = useDispatch();
+
   const [inputUserInfo, setInputUserInfo] = useState({
     oldPassword: '',
     newPassword: '',
@@ -48,8 +52,7 @@ export const EditMyPassword = () => {
 
     // * 서버 통신
     const serverResult = await requestEditUserPassword(inputUserInfo);
-    if (serverResult) console.log('hi!');
-    // return setModalState('alert')
+    if (serverResult) dispatch(setModal('alert'));
     else console.log('error!');
   };
 
@@ -69,8 +72,8 @@ export const EditMyPassword = () => {
         <input type="text" onChange={handleInputValue('confirm')} onKeyUp={handleKeyUp}></input>
         <p>{errorMessage.confirm}&nbsp;</p>
 
-        <input type="button" onClick={handleSubmit} value="Submit" />
-        <input type="button" onClick={() => navigate('/myinfo')} value="Cancel" />
+        <input type="button" onClick={handleSubmit} value="비밀번호 수정" />
+        <input type="button" onClick={() => navigate('/myinfo')} value="취소" />
       </div>
     </>
   );
