@@ -6,6 +6,7 @@ import style from './devQuizFormStyle.css';
 import { saveAnswerTutorial, saveAnswerQuiz } from '../modules/answer';
 import { clearList } from '../modules/list';
 import { requestQuizClear } from '../lib/requestQuiz';
+import QuizAnswer from '../components/modal/QuizAnswer';
 
 function QuizForm({ data, orderPage }) {
   const text = useSelector((state) => (orderPage === 'tutorial' ? state.answer.tutorial[data.id] : state.answer.quiz[data.id]));
@@ -101,7 +102,13 @@ function QuizForm({ data, orderPage }) {
           </div>
         </div>
         <div>
-          <button onClick={() => dispatch(setModal('quizAnswer'))}>{orderPage === 'quizList' ? '정답 확인하기' : '도움이 필요합니다'}</button>
+          <button
+            onClick={() => {
+              orderPage === 'quizList' ? dispatch(setModal('quizAnswer')) : dispatch(setModal('tutorialAnswer'));
+            }}
+          >
+            {orderPage === 'quizList' ? '정답 확인하기' : '도움이 필요합니다'}
+          </button>
         </div>
       </div>
     </>

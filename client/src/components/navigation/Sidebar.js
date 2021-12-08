@@ -1,8 +1,10 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { setModal } from '../../modules/modal';
 import { SidebarContainer, Icon, CloseIcon, SidebarWrapper, SidebarMenu, SidebarLink, SidebarBtnWrap, SidebarBtn } from './SidebarElements';
 
-const Sidebar = ({ openSidebar, handleSidebar, handleModal }) => {
-  // TODO:
+const Sidebar = ({ openSidebar, handleSidebar }) => {
+  const dispatch = useDispatch();
 
   return (
     <SidebarContainer openSidebar={openSidebar}>
@@ -18,7 +20,7 @@ const Sidebar = ({ openSidebar, handleSidebar, handleModal }) => {
             <SidebarBtn
               onClick={() => {
                 handleSidebar(false);
-                handleModal(true);
+                dispatch(setModal('signIn'));
               }}
             >
               로그인

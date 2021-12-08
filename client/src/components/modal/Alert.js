@@ -1,11 +1,14 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { setModal } from '../../modules/modal';
 
 const Alert = () => {
+  const dispatch = useDispatch();
+
   return (
     <>
-      <div>Hello Alert Modal !</div>
-      <div>이것은 기본 안내 모달</div>
-      <button>확인</button>
+      <h3>정보가 수정되었습니다.</h3>
+      <button onClick={() => dispatch(setModal('close'))}>확인</button>
     </>
   );
 };

@@ -26,6 +26,7 @@ const Modal = () => {
     else if (modalType === 'findPassword') return <FindPassword />;
     else if (modalType === 'deleteUserConfirm') return <DeleteUserConfirm />;
     else if (modalType === 'DeleteAnswerConfirm') return <DeleteAnswerConfirm />;
+    else if (modalType === 'tutorialAnswer') return <QuizAnswer />;
   };
 
   return (
