@@ -70,7 +70,7 @@ module.exports = {
         const html = `<img width="350" alt="learnregex-logo" src="https://user-images.githubusercontent.com/62797565/143479379-106673e5-05e7-4447-9138-979457152e54.png"/>
                     <h3> 안녕하세요 Learn Regex 인증 메일입니다. </h3>
                     <h3> 아래 버튼을 눌러 이메일 인증을 완료해주세요! </h3>
-                    <button style="background-color:white"><a style="text-decoration:none; color:black;" href='http://localhost:3000?token=${token}&state=editinfo'>Learn Regex 시작하기!</a></button>`;
+                    <button style="background-color:white"><a style="text-decoration:none; color:black;" href='${process.env.REDIRECT_URI}?token=${token}&state=editinfo'>Learn Regex 시작하기!</a></button>`;
 
         sendemail(email, html);
 
@@ -134,6 +134,27 @@ module.exports = {
       console.log(err);
       return res.status(500).send({ message: 'server error' });
     }
+  },
+
+  // 비밀번호 찾기
+  findpassword: async (req, res) => {
+    if (!req.body.email) {
+      return res.status(400).send({ message: 'empty eamil' });
+    }
+    const email = req.body.email;
+
+    const userInfo = await users.findOne({ where: { email, socialType: 'local' }, attributes: ['id'], raw: true });
+
+    const token = getToken({ id: userInfo.id });
+
+    const html = `<img width="350" alt="learnregex-logo" src="https://user-images.githubusercontent.com/62797565/143479379-106673e5-05e7-4447-9138-979457152e54.png"/>
+                    <h3> 안녕하세요 Learn Regex 입니다. </h3>
+                    <h3> 아래 버튼을 눌러 새로운 비밀번호를 설정해주세요! </h3>
+                    <button style="background-color:white"><a style="text-decoration:none; color:black;" href='${process.env.REDIRECT_URI}/newpw?token=${token}&state=findpassword'>비밀번호 재설정</a></button>`;
+
+    sendemail(email, html);
+
+    res.status(200).send({ message: 'success' });
   },
 
   // 회원 탈퇴

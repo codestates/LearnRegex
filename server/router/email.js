@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { isAuth } = require('../controllers/authfunction');
 
 const email = require('../controllers/email');
 
-router.post('/', email.verifyEmail);
+router.post('/verify', email.verifyEmail);
+router.post('/resetpassword', email.resetPassword);
 
 module.exports = router;
