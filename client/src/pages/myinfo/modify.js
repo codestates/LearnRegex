@@ -36,8 +36,7 @@ const MyInfo = () => {
   };
 
   const handleDeleteMyInfo = () => {
-    //TODO 모달을 띄워주세요!
-    console.log('모달을 띄워주세요!');
+    dispatch(setModal('deleteUserConfirm'));
   };
 
   const PrintModifyPages = () => {
