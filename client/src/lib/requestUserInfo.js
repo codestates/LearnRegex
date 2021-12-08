@@ -113,30 +113,44 @@ export const requestGetMyInfo = async () => {
   }
 };
 
-export const requestSetNewPassword = async () => {
-  // try {
-  //   const result = await axios.get(
-  //     `${process.env.REACT_APP_SERVER_ADDR}/myinfo` //
-  //   );
-  //   console.log(result);
-  //   return true;
-  // } catch (error) {
-  //   return false;
-  // }
-  console.log('WIP! 😅');
-  return true;
+export const requestSetNewPassword = async (userInfo) => {
+  const { newPassword } = userInfo;
+  const url = new URL(window.location.href);
+  const urlParserReg = /(?<=state=)([a-z]+)/;
+
+  try {
+    if (urlParserReg.test(url.search)) {
+      const state = urlParserReg.exec(url.search)[0];
+
+      if (state === 'findpassword') {
+        const token = url.search.split('=')[1].split('&')[0];
+
+        const result = await axios.post(
+          `${process.env.REACT_APP_SERVER_ADDR}/email/resetpassword`,
+          { newPassword, token } //
+        );
+        console.log(result);
+        return true;
+      }
+    }
+    return false;
+  } catch (error) {
+    console.log(error.response.data.message);
+    return false;
+  }
 };
 
-export const requestFindPassword = async () => {
-  // try {
-  //   const result = await axios.get(
-  //     `${process.env.REACT_APP_SERVER_ADDR}/myinfo` //
-  //   );
-  //   console.log(result);
-  //   return true;
-  // } catch (error) {
-  //   return false;
-  // }
-  console.log('WIP! 😅');
-  return true;
+export const requestFindPassword = async (userInfo) => {
+  const { email } = userInfo;
+  try {
+    const result = await axios.post(
+      `${process.env.REACT_APP_SERVER_ADDR}/myinfo`,
+      { email } //
+    );
+    console.log(result);
+    return true;
+  } catch (error) {
+    console.log(error.response.data.message);
+    return false;
+  }
 };
