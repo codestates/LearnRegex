@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setModal } from '../../modules/modal';
-// import { Link, useNavigate } from 'react-router-dom';
 import { requestEditUserInfo } from '../../lib/requestUserInfo';
 import { isValidEditUserInfo, isValidEmail, isValidNickname } from '../../lib/validationFunction';
 import dotenv from 'dotenv';
@@ -52,8 +51,10 @@ export const EditMyInfo = ({ myInfo }) => {
 
     // * 서버 통신
     const serverResult = await requestEditUserInfo(inputUserInfo);
-    if (serverResult) dispatch(setModal('emailCert'));
-    else console.log('error!');
+    if (serverResult) {
+      navigate('/myinfo');
+      if (myInfo.email !== inputUserInfo.email) dispatch(setModal('emailCert'));
+    } else console.log('error!');
   };
 
   return (

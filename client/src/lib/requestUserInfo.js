@@ -16,7 +16,6 @@ export const requestSignIn = async (userInfo) => {
     checkIsLogin(result);
     return true;
   } catch (error) {
-    console.log(error.response.data.message);
     checkIsLogin(error);
     return false;
   }
@@ -33,7 +32,6 @@ export const requestSignUp = async (userInfo) => {
     console.log(result);
     return true;
   } catch (error) {
-    console.log(error.response.data.message);
     return false;
   }
 };
@@ -51,7 +49,6 @@ export const requestEditUserInfo = async (userInfo) => {
     checkIsLogin(result);
     return true;
   } catch (error) {
-    console.log(error.response.data.message);
     checkIsLogin(error);
     return false;
   }
@@ -68,7 +65,6 @@ export const requestEditUserPassword = async (userInfo) => {
     checkIsLogin(result);
     return true;
   } catch (error) {
-    console.log(error.response.data.message);
     checkIsLogin(error);
     return false;
   }
@@ -85,7 +81,6 @@ export const requestDeleteUserInfo = async () => {
     checkIsLogin(result);
     return true;
   } catch (error) {
-    console.log(error.response.data.message);
     checkIsLogin(error);
     return false;
   }
@@ -100,7 +95,6 @@ export const requestSignOut = async () => {
     checkIsLogin(result);
     return true;
   } catch (error) {
-    console.log(error.response.data.message);
     checkIsLogin(error);
     return false;
   }
@@ -111,11 +105,9 @@ export const requestGetMyInfo = async () => {
     const result = await axios.get(
       `${process.env.REACT_APP_SERVER_ADDR}/myinfo` //
     );
-    // console.log(result);
     checkIsLogin(result);
     return result;
   } catch (error) {
-    console.log(error.response.data.message);
     checkIsLogin(error);
     return false;
   }
@@ -129,7 +121,6 @@ export const requestSetNewPassword = async () => {
   //   console.log(result);
   //   return true;
   // } catch (error) {
-  //   console.log(error.response.data.message);
   //   return false;
   // }
   console.log('WIP! 😅');
@@ -144,7 +135,6 @@ export const requestFindPassword = async () => {
   //   console.log(result);
   //   return true;
   // } catch (error) {
-  //   console.log(error.response.data.message);
   //   return false;
   // }
   console.log('WIP! 😅');
