@@ -40,7 +40,7 @@ const Navigation = () => {
         githubCallback(url);
       } else if (state === 'signup' || state === 'editinfo') {
         verifyEmail(url);
-      } else if (state === 'editpassword') {
+      } else if (state === 'findpassword') {
       }
     }
   }, []);

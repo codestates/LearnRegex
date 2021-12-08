@@ -104,7 +104,7 @@ module.exports = {
       const html = `<img width="350" alt="learnregex-logo" src="https://user-images.githubusercontent.com/62797565/143479379-106673e5-05e7-4447-9138-979457152e54.png"/>
                     <h3> 안녕하세요 Learn Regex 인증 메일입니다. </h3>
                     <h3> 아래 버튼을 눌러 이메일 인증을 완료해주세요! </h3>
-                    <button style="background-color:white"><a style="text-decoration:none; color:black;" href='http://localhost:3000?token=${token}&state=signup'>Learn Regex 시작하기!</a></button>`;
+                    <button style="background-color:white"><a style="text-decoration:none; color:black;" href='${process.env.REDIRECT_URI}?token=${token}&state=signup'>Learn Regex 시작하기!</a></button>`;
       sendemail(email, html);
       return res.status(200).send({ message: 'success' });
     } catch (err) {
