@@ -4,35 +4,45 @@ import { submitQuiz } from '../lib/requestQuiz';
 import { limitChar } from '../lib/limitChar';
 import styled from 'styled-components';
 
-export const Div = styled.div`
+export const Input = styled.input.attrs({})`
+  outline: none;
+  border: 1px solid ${({ isEmpty }) => (isEmpty ? 'red' : 'black')};
+`;
+
+export const Textarea = styled.textarea.attrs({})`
+  outline: none;
   border: 1px solid ${({ isEmpty }) => (isEmpty ? 'red' : 'black')};
 `;
 
 function InputQuiz({ data }) {
   const [content, setContent] = useState({ title: '', testCase: '', testCaseTarget: '', answer: '', explanation: '' });
-  const isEmpty = false;
+  const [isEmpty, setIsEmpty] = useState({ title: false, testCase: false, testCaseTarget: false, answer: false, explanation: false });
 
   const handleInputValue = (key) => (e) => {
+    if (isEmpty[key] === true) setIsEmpty({ ...isEmpty, [key]: false }); // 빈 칸이었다가 무언가 입력 시  빨간 테두리 사라짐
+
     let result = limitChar(e.target.value.length, e.target.maxLength);
     if (!!result) setContent({ ...content, [key]: e.target.value });
   };
 
-  // * 빈 칸인지 확인
+  // * --------- 빈 칸인지 확인 ---------
   const handleSubmitQuiz = () => {
-    const contentKeys = Object.keys(content).slice(); // content의 key들만 담은 배열 = [title, testCase, testCaseTarget, answer, explanation]
+    const result = {
+      title: content.title === '',
+      testCase: content.testCase === '',
+      testCaseTarget: content.testCaseTarget === '',
+      answer: content.answer === '',
+      explanation: content.explanation === '',
+    };
+    setIsEmpty({ ...result });
 
-    const result = contentKeys.reduce((acc, cur) => {
-      // content[key]의 값이 빈 문자열인 것만 담은 배열
-      if (content[cur] === '') return acc.concat(cur);
-      else return acc;
-    }, []);
-    console.log(result);
-    // submitQuiz(data, content)
+    if (Object.values(result).indexOf(true) === -1) submitQuiz(data, content);
+    else alert('모든 칸을 채워주세요!');
   };
+  // * --------- 빈 칸인지 확인 ---------
 
   useEffect(() => {
     if (!!data) {
-      // console.log('EditQuiz가 존재하면 뜨는 로그');
       setContent({ ...content, title: data.title, testCase: data.testCase, testCaseTarget: data.testCaseTarget, answer: data.answer, explanation: data.explanation });
     }
   }, []);
@@ -44,26 +54,26 @@ function InputQuiz({ data }) {
           <BackButton />
         </div>
         <form onSubmit={(e) => e.preventDefault()}>
-          <Div isEmpty={isEmpty === true}>
-            <input type="text" value={content.title} placeholder="제목을 입력하세요" maxLength="20" onChange={handleInputValue('title')} />
-          </Div>
+          <div>
+            <Input isEmpty={isEmpty.title} type="text" value={content.title} placeholder="제목을 입력하세요" maxLength="20" onChange={handleInputValue('title')} />
+          </div>
           <div>
             <h2>Test Case</h2>
-            <Div isEmpty={isEmpty === false}>
-              <textarea value={content.testCase} placeholder="testCase를 입력하세요" maxLength="400" onChange={handleInputValue('testCase')} />
-            </Div>
-            <Div isEmpty={isEmpty}>
-              <textarea value={content.testCaseTarget} placeholder="testCaseTarget을 입력하세요" maxLength="400" onChange={handleInputValue('testCaseTarget')} />
-            </Div>
+            <div>
+              <Textarea isEmpty={isEmpty.testCase} value={content.testCase} placeholder="testCase를 입력하세요" maxLength="400" onChange={handleInputValue('testCase')} />
+            </div>
+            <div>
+              <Textarea isEmpty={isEmpty.testCaseTarget} value={content.testCaseTarget} placeholder="testCaseTarget을 입력하세요" maxLength="400" onChange={handleInputValue('testCaseTarget')} />
+            </div>
           </div>
           <div>
             <h2>정답 / 해설</h2>
-            <Div isEmpty={isEmpty}>
-              <input type="text" value={content.answer} placeholder="정답을 쓰세요" maxLength="100" onChange={handleInputValue('answer')} />
-            </Div>
-            <Div isEmpty={isEmpty}>
-              <textarea type="text" value={content.explanation} placeholder="해설을 쓰세요" maxLength="400" onChange={handleInputValue('explanation')} />
-            </Div>
+            <div>
+              <Input isEmpty={isEmpty.answer} type="text" value={content.answer} placeholder="정답을 쓰세요" maxLength="100" onChange={handleInputValue('answer')} />
+            </div>
+            <div>
+              <Textarea isEmpty={isEmpty.explanation} type="text" value={content.explanation} placeholder="해설을 쓰세요" maxLength="400" onChange={handleInputValue('explanation')} />
+            </div>
           </div>
           <div>
             <button type="submit" onClick={() => handleSubmitQuiz()}>
