@@ -1,6 +1,8 @@
 const { users, quiz, users_quiz } = require('../models');
 const { validation, confliction } = require('./inspectfunction');
 const bcrypt = require('bcryptjs');
+const { sendemail } = require('./mailfunction');
+const { getToken } = require('./tokenfunction');
 
 module.exports = {
   // 유저 정보 조회
@@ -62,6 +64,15 @@ module.exports = {
       // 기존 이메일을 변경한 경우(이메일 인증을 다시 해야함 -> 로그아웃 처리)
       if (userInfo.email !== email) {
         await users.update({ email, nickname, verifyEmail: false }, { where: { id: userId } });
+
+        const token = getToken({ id: userInfo.id });
+
+        const html = `<img width="350" alt="learnregex-logo" src="https://user-images.githubusercontent.com/62797565/143479379-106673e5-05e7-4447-9138-979457152e54.png"/>
+                    <h3> 안녕하세요 Learn Regex 인증 메일입니다. </h3>
+                    <h3> 아래 버튼을 눌러 이메일 인증을 완료해주세요! </h3>
+                    <button style="background-color:white"><a style="text-decoration:none; color:black;" href='http://localhost:3000?token=${token}&state=editinfo'>Learn Regex 시작하기!</a></button>`;
+
+        sendemail(email, html);
 
         return res.header({ isLogin: false }).clearCookie('token').status(200).send({ message: 'success' });
       }
