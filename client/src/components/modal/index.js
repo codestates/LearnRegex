@@ -6,7 +6,7 @@ import SignUp from '../user/SignUp';
 import Alert from './Alert';
 import QuizAnswer from './QuizAnswer';
 import EmailCert from './EmailCert';
-import FindPassword from './FindPassword';
+import FindPassword from '../user/FindPassword';
 import DeleteUserConfirm from './DeleteUserConfirm';
 import DeleteAnswerConfirm from './DeleteAnswerConfirm';
 

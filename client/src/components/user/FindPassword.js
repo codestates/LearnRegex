@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { requestFindPassword } from '../../lib/requestUserInfo';
 import { isValidOnlyEmail } from '../../lib/validationFunction';
+import { useDispatch } from 'react-redux';
+import { setModal } from '../../modules/modal';
 
 const FindPassword = () => {
+  const dispatch = useDispatch();
+
   const [inputUserInfo, setInputUserInfo] = useState({
     email: '',
   });
@@ -31,7 +35,7 @@ const FindPassword = () => {
 
     // 서버 통신
     const serverResult = await requestFindPassword(inputUserInfo);
-    if (serverResult) console.log('FindPassword');
+    if (serverResult) dispatch(setModal('emailCert'));
     else console.log('error!');
   };
 
