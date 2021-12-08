@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setModal } from '../../modules/modal';
 import { requestSignIn, requestSignOut } from '../../lib/requestUserInfo';
@@ -8,6 +9,7 @@ import { githubLogin } from '../../lib/oauthGithub';
 
 export const SignIn = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [inputUserInfo, setInputUserInfo] = useState({
     email: '',
@@ -49,8 +51,10 @@ export const SignIn = () => {
 
   const handleSignOut = async () => {
     const serverResult = await requestSignOut(inputUserInfo);
-    if (serverResult) console.log('SignOut');
-    else console.log('error!');
+    if (serverResult) {
+      navigate('/');
+      dispatch(setModal('close'));
+    } else console.log('error!');
   };
 
   const handleOAuthKakao = () => {

@@ -61,7 +61,6 @@ export const requestQuizClear = async (quizId) => {
     return true;
   } catch (error) {
     checkIsLogin(error);
-    console.log(error.response.data.message);
     return false;
   }
 };

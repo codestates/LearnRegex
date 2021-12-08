@@ -15,8 +15,7 @@ const MyInfo = () => {
   useEffect(() => {
     const getMyInfo = async () => {
       const resultMyInfo = await requestGetMyInfo();
-      console.log(resultMyInfo.data.data);
-      if (resultMyInfo) setMyInfo(resultMyInfo.data.data);
+      if (resultMyInfo !== false) setMyInfo(resultMyInfo.data.data);
     };
     getMyInfo();
   }, []);
