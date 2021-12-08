@@ -12,15 +12,7 @@ export const Container = styled.div`
 
 function SideList({ list, moveIndex, isOpen, toggle }) {
   const dispatch = useDispatch();
-
   const clearList = useSelector((state) => state.list);
-
-  const handleResetAnswer = () => {
-    alert('모든 정답을 초기화했습니다.');
-    toggle(false);
-    localStorage.clear();
-    window.location.replace('/tutorial');
-  };
 
   return (
     <>
@@ -52,7 +44,7 @@ function SideList({ list, moveIndex, isOpen, toggle }) {
           </div>
         </div>
         <div>
-          <button onClick={handleResetAnswer}>초기화</button>
+          <button onClick={() => dispatch(setModal('DeleteAnswerConfirm'))}>초기화</button>
         </div>
       </Container>
     </>
