@@ -1,15 +1,20 @@
 import React, { useState, useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { setModal } from '../../modules/modal';
 // import { Link, useNavigate } from 'react-router-dom';
 import { requestEditUserInfo } from '../../lib/requestUserInfo';
 import { isValidEditUserInfo, isValidEmail, isValidNickname } from '../../lib/validationFunction';
 import dotenv from 'dotenv';
 dotenv.config();
 
-export const EditUserInfo = ({ setModalState }) => {
+export const EditUserInfo = () => {
+  const dispatch = useDispatch();
+
   const [inputUserInfo, setInputUserInfo] = useState({
     email: '',
     nickname: '',
   });
+
   const [errorMessage, setErrorMessage] = useState({
     email: '',
     nickname: '',
@@ -45,7 +50,6 @@ export const EditUserInfo = ({ setModalState }) => {
     // * 서버 통신
     const serverResult = await requestEditUserInfo(inputUserInfo);
     if (serverResult) console.log('hi');
-    // return setModalState('alert');
     else console.log('error!');
   };
 
@@ -61,7 +65,7 @@ export const EditUserInfo = ({ setModalState }) => {
         <input type="text" onChange={handleInputValue('nickname')} onKeyUp={handleKeyUp}></input>
         <p>{errorMessage.nickname}&nbsp;</p>
 
-        <input type="button" onClick={handleSubmit} value="Submit" />
+        <input type="button" onClick={() => dispatch(setModal('emailCert'))} value="Submit" />
       </div>
     </>
   );

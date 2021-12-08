@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EmailCertModal = () => {
+const EmailCert = () => {
   return (
     <>
       <div>
@@ -13,4 +13,4 @@ const EmailCertModal = () => {
   );
 };
 
-export default EmailCertModal;
+export default EmailCert;

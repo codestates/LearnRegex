@@ -1,8 +1,12 @@
 import React from 'react';
 import { FaBars } from 'react-icons/fa';
 import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtn, NavSignInBtn } from './NavbarElements';
+import { useDispatch } from 'react-redux';
+import { setModal } from '../../modules/modal';
 
-const Navbar = ({ handleSidebar, handleModal }) => {
+const Navbar = ({ handleSidebar }) => {
+  const dispatch = useDispatch();
+
   return (
     <>
       <Nav>
@@ -22,7 +26,7 @@ const Navbar = ({ handleSidebar, handleModal }) => {
               <NavLinks to="/cheatsheet">자습서</NavLinks>
             </NavItem>
             <NavBtn>
-              <NavSignInBtn onClick={() => handleModal(true)}>로그인</NavSignInBtn>
+              <NavSignInBtn onClick={() => dispatch(setModal('signIn'))}>로그인</NavSignInBtn>
             </NavBtn>
           </NavMenu>
         </NavbarContainer>

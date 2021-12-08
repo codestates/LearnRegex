@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
-// import { Link, useNavigate } from 'react-router-dom';
-
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setModal } from '../../modules/modal';
 import { requestSignIn, requestSignOut } from '../../lib/requestUserInfo';
 import { googleLogin } from '../../lib/oauthGoogle';
 import { kakaoLogin } from '../../lib/oauthKakao';
 import { githubLogin } from '../../lib/oauthGithub';
 
-export const SignIn = ({ setModalState, handleModal }) => {
+export const SignIn = () => {
+  const dispatch = useDispatch();
+
   const [inputUserInfo, setInputUserInfo] = useState({
     email: '',
     password: '',
@@ -39,8 +41,10 @@ export const SignIn = ({ setModalState, handleModal }) => {
     // 서버 통신
     const serverResult = await requestSignIn(inputUserInfo);
     //TODO: 모달 닫히게 하기
-    if (serverResult) return handleModal(false);
-    else console.log('error!');
+    if (serverResult) {
+      console.log('hi');
+      dispatch(setModal('close'));
+    } else console.log('error!');
   };
 
   const handleSignOut = async () => {
@@ -71,7 +75,7 @@ export const SignIn = ({ setModalState, handleModal }) => {
         <p>{errorMessage.password}&nbsp;</p>
 
         <div>
-          <button onClick={() => setModalState('findPassword')}>비밀번호를 잊으셨나요 ?</button>
+          <button onClick={() => dispatch(setModal('findPassword'))}>비밀번호를 잊으셨나요 ?</button>
         </div>
 
         <div>
@@ -85,7 +89,7 @@ export const SignIn = ({ setModalState, handleModal }) => {
         </div>
         <div>아직 계정이 없으신가요?</div>
         <div>
-          <button type="button" onClick={() => setModalState('signUp')}>
+          <button type="button" onClick={() => dispatch(setModal('signUp'))}>
             가입하기
           </button>
         </div>

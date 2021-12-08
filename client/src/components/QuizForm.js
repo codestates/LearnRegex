@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { setModal } from '../modules/modal';
 import Interweave from 'interweave';
 import style from './devQuizFormStyle.css';
 import { saveAnswerTutorial, saveAnswerQuiz } from '../modules/answer';
 import { clearList } from '../modules/list';
-import requestQuizClear from '../lib/requestQuizClear';
-import QuizAnswerModal from '../components/modal/QuizAnswerModal';
+import { requestQuizClear } from '../lib/requestQuiz';
 
 function QuizForm({ data, orderPage }) {
   const text = useSelector((state) => (orderPage === 'tutorial' ? state.answer.tutorial[data.id] : state.answer.quiz[data.id]));
@@ -23,14 +23,6 @@ function QuizForm({ data, orderPage }) {
 
   const handleAnswer = (e) => {
     setInputRegex(e.target.value);
-  };
-
-  //! Modal 상태
-  const [openModal, setOpenModal] = useState(false);
-
-  //! Modal 상태 변경 함수
-  const handleModal = (boolean) => {
-    setOpenModal(boolean);
   };
 
   //! ------------------------ 정규표현식 실시간 적용 ------------------------
@@ -109,8 +101,7 @@ function QuizForm({ data, orderPage }) {
           </div>
         </div>
         <div>
-          <button onClick={() => handleModal(true)}>{orderPage === 'quizList' ? '정답 확인하기' : '도움이 필요합니다'}</button>
-          {openModal ? <QuizAnswerModal openModal={openModal} setOpenModal={setOpenModal} answer={data.answer} explanation={data.explanation} /> : null}
+          <button onClick={() => dispatch(setModal('quizAnswer'))}>{orderPage === 'quizList' ? '정답 확인하기' : '도움이 필요합니다'}</button>
         </div>
       </div>
     </>

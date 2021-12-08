@@ -1,11 +1,14 @@
 import React, { useState, useRef } from 'react';
-// import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setModal } from '../../modules/modal';
 import { requestSignUp } from '../../lib/requestUserInfo';
 import { isValidSignUp, isValidEmail, isValidNickname, isValidPassword, isValidPasswordConfirm } from '../../lib/validationFunction';
 import dotenv from 'dotenv';
 dotenv.config();
 
-export const SignUp = ({ setModalState }) => {
+export const SignUp = () => {
+  const dispatch = useDispatch();
+
   const [inputUserInfo, setSignUpInfo] = useState({
     email: '',
     nickname: '',
@@ -49,7 +52,7 @@ export const SignUp = ({ setModalState }) => {
 
     // * 서버 통신
     const serverResult = await requestSignUp(inputUserInfo);
-    if (serverResult) return setModalState('emailCertAlert');
+    if (serverResult) return dispatch(setModal('emailCert'));
     else console.log('error!');
   };
 
@@ -76,7 +79,7 @@ export const SignUp = ({ setModalState }) => {
         <input type="button" onClick={handleSubmit} value="회원가입" />
 
         <div>이미 가입하셨나요?</div>
-        <button onClick={() => setModalState('signIn')}>로그인 하기</button>
+        <button onClick={() => dispatch(setModal('signIn'))}>로그인 하기</button>
       </div>
     </>
   );
