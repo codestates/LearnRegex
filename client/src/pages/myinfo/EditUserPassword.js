@@ -5,7 +5,7 @@ import { isValidEditUserPassword, isValidPassword, isValidPasswordConfirm } from
 import dotenv from 'dotenv';
 dotenv.config();
 
-export const EditUserPassword = () => {
+export const EditUserPassword = ({ setModalState }) => {
   const [inputUserInfo, setInputUserInfo] = useState({
     oldPassword: '',
     newPassword: '',
@@ -48,6 +48,7 @@ export const EditUserPassword = () => {
     // * 서버 통신
     const serverResult = await requestEditUserPassword(inputUserInfo);
     if (serverResult) console.log('hi!');
+    // return setModalState('alert')
     else console.log('error!');
   };
 

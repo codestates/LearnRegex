@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { setModal } from '../modules/modal';
 import Interweave from 'interweave';
 import style from './devQuizFormStyle.css';
 import { saveAnswerTutorial, saveAnswerQuiz } from '../modules/answer';
 import { clearList } from '../modules/list';
 import { requestQuizClear } from '../lib/requestQuiz';
+import QuizAnswer from '../components/modal/QuizAnswer';
 
 function QuizForm({ data, orderPage }) {
   const text = useSelector((state) => (orderPage === 'tutorial' ? state.answer.tutorial[data.id] : state.answer.quiz[data.id]));
@@ -15,10 +17,6 @@ function QuizForm({ data, orderPage }) {
   useEffect(() => {
     setInputRegex(text || '');
   }, [data]);
-
-  const handleModal = () => {
-    // TODO: button 클릭시 QuizAnswerModal에게 상속 받은 data.answer, data.explanation를 props로 전달
-  };
 
   const saveLocal = (text) => {
     orderPage === 'tutorial' ? dispatch(saveAnswerTutorial(data.id, text)) : dispatch(saveAnswerQuiz(data.id, text));
@@ -104,7 +102,13 @@ function QuizForm({ data, orderPage }) {
           </div>
         </div>
         <div>
-          <button onClick={handleModal}>{orderPage === 'quizList' ? '정답 확인하기' : '도움이 필요합니다'}</button>
+          <button
+            onClick={() => {
+              orderPage === 'quizList' ? dispatch(setModal('quizAnswer')) : dispatch(setModal('tutorialAnswer'));
+            }}
+          >
+            {orderPage === 'quizList' ? '정답 확인하기' : '도움이 필요합니다'}
+          </button>
         </div>
       </div>
     </>

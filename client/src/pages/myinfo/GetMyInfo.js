@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setModal } from '../../modules/modal';
+
 // import { Link, useNavigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { requestGetMyInfo } from '../../lib/requestUserInfo';
@@ -6,6 +9,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export const GetMyInfo = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [myInfo, setMyInfo] = useState({
     email: '기본메일',
@@ -28,6 +32,7 @@ export const GetMyInfo = () => {
     if (!resultMyInfo) return;
     console.log(resultMyInfo.data.data);
     setMyInfo(resultMyInfo.data.data);
+    dispatch(setModal('alert'));
   };
   return (
     <>

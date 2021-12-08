@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
-// import { Link, useNavigate } from 'react-router-dom';
-
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setModal } from '../../modules/modal';
 import { requestSignIn, requestSignOut } from '../../lib/requestUserInfo';
 import { googleLogin } from '../../lib/oauthGoogle';
 import { kakaoLogin } from '../../lib/oauthKakao';
 import { githubLogin } from '../../lib/oauthGithub';
 
 export const SignIn = () => {
+  const dispatch = useDispatch();
+
   const [inputUserInfo, setInputUserInfo] = useState({
     email: '',
     password: '',
@@ -15,7 +17,6 @@ export const SignIn = () => {
     email: '',
     password: '',
   });
-  const [saveEmail, setSaveEmail] = useState(false);
 
   const handleInputValue = (key) => (e) => {
     setInputUserInfo({ ...inputUserInfo, [key]: e.target.value });
@@ -25,10 +26,6 @@ export const SignIn = () => {
     if (e.key === 'Enter') {
       handleSubmit();
     }
-  };
-
-  const handleSaveEmail = (e) => {
-    setSaveEmail(!saveEmail);
   };
 
   const handleSubmit = async () => {
@@ -43,8 +40,11 @@ export const SignIn = () => {
 
     // 서버 통신
     const serverResult = await requestSignIn(inputUserInfo);
-    if (serverResult) console.log('SignIn');
-    else console.log('error!');
+    //TODO: 모달 닫히게 하기
+    if (serverResult) {
+      console.log('hi');
+      dispatch(setModal('close'));
+    } else console.log('error!');
   };
 
   const handleSignOut = async () => {
@@ -73,8 +73,11 @@ export const SignIn = () => {
         <h2>password</h2>
         <input type="text" onChange={handleInputValue('password')} onKeyUp={handleKeyUp}></input>
         <p>{errorMessage.password}&nbsp;</p>
-        <input type="checkbox" onChange={handleSaveEmail} value={saveEmail} />
-        <span>이메일 저장</span>
+
+        <div>
+          <button onClick={() => dispatch(setModal('findPassword'))}>비밀번호를 잊으셨나요 ?</button>
+        </div>
+
         <div>
           <input type="button" onClick={handleSubmit} value="SignIn" />
           <input type="button" onClick={handleSignOut} value="SignOut" />
@@ -83,6 +86,12 @@ export const SignIn = () => {
           <input type="button" onClick={handleOAuthKakao} value="OAuth Kakao" />
           <input type="button" onClick={handleOAuthGoogle} value="OAuth Google" />
           <input type="button" onClick={handleOAuthGithub} value="OAuth Github" />
+        </div>
+        <div>아직 계정이 없으신가요?</div>
+        <div>
+          <button type="button" onClick={() => dispatch(setModal('signUp'))}>
+            가입하기
+          </button>
         </div>
       </div>
     </>

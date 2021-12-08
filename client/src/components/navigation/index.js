@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
-import Modal from '../modal/Modal';
+import Modal from '../modal';
 import { googleCallback } from '../../lib/oauthGoogle';
 import { kakaoCallback } from '../../lib/oauthKakao';
 import { githubCallback } from '../../lib/oauthGithub';
 import { verifyEmail } from '../../lib/requestEmailConfirm';
 
 const Navigation = () => {
+  const { modalType } = useSelector((state) => state.modal);
   //! Sidebar 상태
   const [openSidebar, setOpenSidebar] = useState(false);
 
@@ -15,14 +17,6 @@ const Navigation = () => {
   const handleSidebar = (boolean) => {
     console.log(openSidebar);
     setOpenSidebar(boolean);
-  };
-
-  //! Modal 상태
-  const [openModal, setOpenModal] = useState(false);
-
-  //! Modal 상태 변경 함수
-  const handleModal = (boolean) => {
-    setOpenModal(boolean);
   };
 
   useEffect(() => {
@@ -47,9 +41,9 @@ const Navigation = () => {
 
   return (
     <>
-      <Navbar handleSidebar={handleSidebar} handleModal={handleModal} openModal={openModal} setOpenModal={setOpenModal} />
-      <Sidebar openSidebar={openSidebar} handleSidebar={handleSidebar} handleModal={handleModal} openModal={openModal} setOpenModal={setOpenModal} />
-      {openModal ? <Modal openModal={openModal} setOpenModal={setOpenModal} /> : null}
+      <Navbar handleSidebar={handleSidebar} />
+      <Sidebar openSidebar={openSidebar} handleSidebar={handleSidebar} />
+      {modalType !== 'close' ? <Modal /> : null}
     </>
   );
 };

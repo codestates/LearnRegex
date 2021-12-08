@@ -21,6 +21,7 @@ function App() {
   return (
     <>
       <Navigation />
+      {/* <EditUserInfo /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/tutorial" element={<Tutorial />} />

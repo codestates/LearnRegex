@@ -7,6 +7,7 @@ import { dummyData } from '../data/tutorialData';
 
 function Tutorial() {
   const { index } = useSelector((state) => state.bookmark);
+  useSelector((state) => console.log(state.bookmark));
   const [current, setCurrent] = useState(index);
   const [list, setList] = useState(dummyData);
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ function Tutorial() {
     // console.log('튜토리얼!');
     dispatch(saveBookmark(current));
   }, [current]);
-
+  console.log(current);
   return (
     <>
       <div>

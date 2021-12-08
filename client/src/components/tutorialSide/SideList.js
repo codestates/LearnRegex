@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { setModal } from '../../modules/modal';
 import styled from 'styled-components';
 import { MdCancel } from 'react-icons/md';
 import { BsCheckSquare } from 'react-icons/bs';
@@ -10,6 +11,8 @@ export const Container = styled.div`
 `;
 
 function SideList({ list, moveIndex, isOpen, toggle }) {
+  const dispatch = useDispatch();
+
   const clearList = useSelector((state) => state.list);
 
   const handleResetAnswer = () => {
