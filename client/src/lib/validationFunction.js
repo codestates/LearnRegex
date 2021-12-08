@@ -12,10 +12,10 @@ export const isValidSignUp = async (values) => {
   return validResult;
 };
 
-export const isValidEditUserInfo = async (values) => {
+export const isValidEditUserInfo = async (values, myInfo) => {
   const validResult = {
-    email: await isValidOnlyEmail(values.email),
-    nickname: await isValidOnlyNickname(values.nickname),
+    email: await isValidEmail(values.email, myInfo.email),
+    nickname: await isValidNickname(values.nickname, myInfo.nickname),
   };
   return validResult;
 };
@@ -44,9 +44,11 @@ export const getByte = (str) => {
   return byte;
 };
 
-export const isValidEmail = async (email) => {
+export const isValidEmail = async (email, myInfoEmail) => {
   if (!email) {
     return '이메일을 입력해주세요.';
+  } else if (!!myInfoEmail && email === myInfoEmail) {
+    return '';
   } else if (!/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/g.test(email)) {
     return '올바른 이메일 형식이 아닙니다.';
   } else if (!(await isUniqueEmail(email))) {
@@ -56,20 +58,23 @@ export const isValidEmail = async (email) => {
   }
 };
 
-export const isValidOnlyEmail = async (email) => {
-  if (!email) {
-    return '이메일을 입력해주세요.';
-  } else if (!/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/g.test(email)) {
-    return '올바른 이메일 형식이 아닙니다.';
-  } else {
-    return '';
-  }
-};
+// export const isValidOnlyEmail = async (email) => {
+//   if (!email) {
+//     return '이메일을 입력해주세요.';
+//   } else if (!/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/g.test(email)) {
+//     return '올바른 이메일 형식이 아닙니다.';
+//   } else {
+//     return '';
+//   }
+// };
 
-export const isValidNickname = async (nickname) => {
+export const isValidNickname = async (nickname, myInfoNickname) => {
+  console.log(nickname, myInfoNickname);
   const strByte = getByte(nickname);
   if (!nickname) {
     return '닉네임을 입력해주세요.';
+  } else if (!!myInfoNickname && nickname === myInfoNickname) {
+    return '';
   } else if (!/^[가-힣a-zA-Z0-9]*$/g.test(nickname)) {
     return '올바른 닉네임이 아닙니다.';
   } else if (!(strByte < 13 && strByte > 3)) {
@@ -81,18 +86,18 @@ export const isValidNickname = async (nickname) => {
   }
 };
 
-export const isValidOnlyNickname = async (nickname) => {
-  const strByte = getByte(nickname);
-  if (!nickname) {
-    return '닉네임을 입력해주세요.';
-  } else if (!(strByte < 13 && strByte > 3)) {
-    return '한글 2~6자, 영어 4~12자로 입력하세요.';
-  } else if (!/^[가-힣a-zA-Z0-9]{2,12}$/g.test(nickname)) {
-    return '올바른 닉네임이 아닙니다.';
-  } else {
-    return '';
-  }
-};
+// export const isValidOnlyNickname = async (nickname) => {
+//   const strByte = getByte(nickname);
+//   if (!nickname) {
+//     return '닉네임을 입력해주세요.';
+//   } else if (!(strByte < 13 && strByte > 3)) {
+//     return '한글 2~6자, 영어 4~12자로 입력하세요.';
+//   } else if (!/^[가-힣a-zA-Z0-9]{2,12}$/g.test(nickname)) {
+//     return '올바른 닉네임이 아닙니다.';
+//   } else {
+//     return '';
+//   }
+// };
 
 export const isValidPassword = (password) => {
   if (!password) {

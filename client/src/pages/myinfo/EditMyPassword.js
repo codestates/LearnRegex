@@ -1,11 +1,11 @@
 import React, { useState, useRef } from 'react';
-// import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { requestEditUserPassword } from '../../lib/requestUserInfo';
 import { isValidEditUserPassword, isValidPassword, isValidPasswordConfirm } from '../../lib/validationFunction';
 import dotenv from 'dotenv';
 dotenv.config();
 
-export const EditUserPassword = () => {
+export const EditMyPassword = () => {
   const [inputUserInfo, setInputUserInfo] = useState({
     oldPassword: '',
     newPassword: '',
@@ -16,6 +16,7 @@ export const EditUserPassword = () => {
     newPassword: '',
     confirm: '',
   });
+  const navigate = useNavigate();
 
   // * 키 입력 0.5초 기다리고 유효성 검사
   const timeWait = useRef();
@@ -54,7 +55,7 @@ export const EditUserPassword = () => {
   return (
     <>
       <div>
-        <h1>EditUserPassword</h1>
+        <h1>EditMyPassword</h1>
         <h2>Password</h2>
         <input type="text" onChange={handleInputValue('oldPassword')} onKeyUp={handleKeyUp}></input>
         <p>{errorMessage.oldPassword}&nbsp;</p>
@@ -68,9 +69,10 @@ export const EditUserPassword = () => {
         <p>{errorMessage.confirm}&nbsp;</p>
 
         <input type="button" onClick={handleSubmit} value="Submit" />
+        <input type="button" onClick={() => navigate('/myinfo')} value="Cancel" />
       </div>
     </>
   );
 };
 
-export default EditUserPassword;
+export default EditMyPassword;
