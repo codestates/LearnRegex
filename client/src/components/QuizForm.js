@@ -2,18 +2,24 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Interweave from 'interweave';
 import style from './devQuizFormStyle.css';
-import { saveAnswer } from '../modules/answer';
+import { saveAnswerTutorial, saveAnswerQuiz } from '../modules/answer';
 import { clearList } from '../modules/list';
 import requestQuizClear from '../lib/requestQuizClear';
 import QuizAnswerModal from '../components/modal/QuizAnswerModal';
 
 function QuizForm({ data, orderPage }) {
-  const { text } = useSelector((state) => state.answer);
-  const [inputRegex, setInputRegex] = useState(text);
+  const text = useSelector((state) => (orderPage === 'tutorial' ? state.answer.tutorial[data.id] : state.answer.quiz[data.id]));
+  const isLogin = useSelector((state) => state.isLogin);
+  const [inputRegex, setInputRegex] = useState(text || '');
   const dispatch = useDispatch();
-  console.log(text);
 
-  const saveLocal = (regex) => dispatch(saveAnswer(regex));
+  useEffect(() => {
+    setInputRegex(text || '');
+  }, [data]);
+
+  const saveLocal = (text) => {
+    orderPage === 'tutorial' ? dispatch(saveAnswerTutorial(data.id, text)) : dispatch(saveAnswerQuiz(data.id, text));
+  };
 
   const handleAnswer = (e) => {
     setInputRegex(e.target.value);
@@ -72,8 +78,10 @@ function QuizForm({ data, orderPage }) {
   //! ------------------------ 정규표현식 실시간 적용 ------------------------
 
   useEffect(() => {
-    // console.log(isCorrectReg);
-    if (orderPage === 'quizList' && isCorrectReg) requestQuizClear(data.id);
+    // 퀴즈에서 로그인한 회원이 처음 문제를 풀었을 경우 서버 요청
+    if (orderPage === 'quizList' && isCorrectReg && isLogin && !data.isClear) requestQuizClear(data.id);
+
+    // 학습하기에서 문제를 풀었을 경우 상태 저장
     if (orderPage === 'tutorial' && isCorrectReg) dispatch(clearList(data.id - 1));
   }, [isCorrectReg]);
 

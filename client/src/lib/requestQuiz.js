@@ -1,5 +1,7 @@
+import { checkIsLogin } from '../lib/checkIsLogin';
 import axios from 'axios';
 axios.defaults.withCredentials = true;
+axios.defaults.headers.common['Content-Type'] = 'application/json';
 
 // 퀴즈 삭제 요청
 export function deleteQuiz(id) {
@@ -43,10 +45,30 @@ export function submitQuiz(data, content) {
     axios
       .post(`${process.env.REACT_APP_SERVER_ADDR}/quiz`, content)
       .then((res) => {
+        checkIsLogin(res);
         console.log('post 요청 성공');
         alert('퀴즈 등록 되었습니다!');
         document.location.href = `/quizlist`;
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        checkIsLogin(err);
+        console.log(err);
+      });
   }
 }
+
+export const requestQuizClear = async (quizId) => {
+  console.log(quizId);
+  if (!quizId) return;
+  try {
+    const result = await axios.post(`${process.env.REACT_APP_SERVER_ADDR}/quiz/clear?quizId=${quizId}`);
+    checkIsLogin(result);
+    console.log(result);
+    console.log('requestQuizClear!!');
+    return true;
+  } catch (error) {
+    checkIsLogin(error);
+    console.log(error.response.data.message);
+    return false;
+  }
+};
