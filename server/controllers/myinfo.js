@@ -163,12 +163,9 @@ module.exports = {
       const userId = req.userId;
 
       // 유저 정보 삭제
-      await users
-        .header({ isLogin: false })
-        .clearCookie('token')
-        .destroy({ where: { id: userId } });
+      await users.destroy({ where: { id: userId } });
 
-      return res.status(200).send({ message: 'success' });
+      return res.header({ isLogin: false }).clearCookie('token').status(200).send({ message: 'success' });
     } catch (err) {
       console.log(err);
       return res.status(500).send({ message: 'server error' });

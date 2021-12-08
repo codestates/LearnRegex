@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setModal } from '../../modules/modal';
 // import { Link, useNavigate } from 'react-router-dom';
 import { requestGetMyInfo } from '../../lib/requestUserInfo';
 import dotenv from 'dotenv';
@@ -8,6 +10,7 @@ import { EditMyPassword } from './EditMyPassword';
 dotenv.config();
 
 const MyInfo = () => {
+  const dispatch = useDispatch();
   const [Pages, setPages] = useState('');
   const [myInfo, setMyInfo] = useState({
     email: '',
@@ -33,8 +36,7 @@ const MyInfo = () => {
   };
 
   const handleDeleteMyInfo = () => {
-    //TODO 모달을 띄워주세요!
-    console.log('모달을 띄워주세요!');
+    dispatch(setModal('deleteUserConfirm'));
   };
 
   const PrintModifyPages = () => {
@@ -49,7 +51,7 @@ const MyInfo = () => {
         <h3>Modify</h3>
         <p>Email: {myInfo.socialType === 'local' ? myInfo.email : 'Login as ' + myInfo.socialType}</p>
         <p>Nickname: {myInfo.nickname}</p>
-        <button onClick={handleEditMyInfo}>회원 정보 수정</button>
+        <button onClick={handleEditMyInfo}>프로필 수정</button>
         {myInfo.socialType === 'local' ? <button onClick={handleEditMyPassword}>비밀번호 수정</button> : <></>}
         <button onClick={handleDeleteMyInfo}>회원 탈퇴</button>
       </>

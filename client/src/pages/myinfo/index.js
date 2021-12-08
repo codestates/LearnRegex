@@ -27,7 +27,7 @@ const MyInfo = () => {
       <p>Nickname: {myInfo.nickname}</p>
       <p>MakeQuiz: {myInfo.makeQuiz}</p>
       <p>ClearQuiz: {myInfo.clearQuiz}</p>
-      <Link to={`/modify`}>회원 정보 수정</Link>
+      <Link to="/modify">회원 정보 수정</Link>
     </>
   );
 };
