@@ -61,20 +61,18 @@ module.exports = {
         return res.status(403).send({ message: 'socialType is not local' });
       }
 
-      // 기존 이메일을 변경한 경우(이메일 인증을 다시 해야함 -> 로그아웃 처리)
+      // 기존 이메일을 변경한 경우(우선 기존 이메일 사용 -> 이메일 인증을 하면 그때 변경)
       if (userInfo.email !== email) {
-        await users.update({ email, nickname, verifyEmail: false }, { where: { id: userId } });
-
-        const token = getToken({ id: userInfo.id });
+        const token = getToken({ id: userInfo.id, email });
 
         const html = `<img width="350" alt="learnregex-logo" src="https://user-images.githubusercontent.com/62797565/143479379-106673e5-05e7-4447-9138-979457152e54.png"/>
                     <h3> 안녕하세요 Learn Regex 인증 메일입니다. </h3>
                     <h3> 아래 버튼을 눌러 이메일 인증을 완료해주세요! </h3>
-                    <button style="background-color:white"><a style="text-decoration:none; color:black;" href='${process.env.REDIRECT_URI}?token=${token}&state=editinfo'>Learn Regex 시작하기!</a></button>`;
+                    <button style="background-color:white"><a style="text-decoration:none; color:black;" href='${process.env.REDIRECT_URI}?token=${token}&state=editemail'>Learn Regex 시작하기!</a></button>`;
 
         sendemail(email, html);
 
-        return res.header({ isLogin: false }).clearCookie('token').status(200).send({ message: 'success' });
+        return res.status(200).send({ message: 'success' });
       }
 
       // 수정 내용 적용(닉네임만 바꾼 경우)
@@ -163,12 +161,9 @@ module.exports = {
       const userId = req.userId;
 
       // 유저 정보 삭제
-      await users
-        .header({ isLogin: false })
-        .clearCookie('token')
-        .destroy({ where: { id: userId } });
+      await users.destroy({ where: { id: userId } });
 
-      return res.status(200).send({ message: 'success' });
+      return res.header({ isLogin: false }).clearCookie('token').status(200).send({ message: 'success' });
     } catch (err) {
       console.log(err);
       return res.status(500).send({ message: 'server error' });

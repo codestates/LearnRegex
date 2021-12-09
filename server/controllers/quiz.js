@@ -26,6 +26,9 @@ module.exports = {
       // 유저 확인
       await isAuth(req, res, () => {});
 
+      // isAuth가 실패한 경우 함수 종료
+      if (!req.userId) return;
+
       // 유저가 푼 퀴즈 아이디 조회
       const clearQuizList = await users_quiz.findAll({
         where: {
@@ -74,6 +77,9 @@ module.exports = {
 
       // 유저 확인
       await isAuth(req, res, () => {});
+
+      // isAuth가 실패한 경우 함수 종료
+      if (!req.userId) return;
 
       // 본인이 만든 퀴즈인 경우
       if (quizInfo.userId === req.userId) {
@@ -149,6 +155,10 @@ module.exports = {
 
       // 유저 확인
       await isAuth(req, res, () => {});
+
+      // isAuth가 실패한 경우 함수 종료
+      if (!req.userId) return;
+
       const userId = req.userId;
 
       const quizId = req.query.quizId;

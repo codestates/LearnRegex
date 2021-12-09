@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setModal } from '../../modules/modal';
-// import { Link, useNavigate } from 'react-router-dom';
 import { requestEditUserInfo } from '../../lib/requestUserInfo';
 import { isValidEditUserInfo, isValidEmail, isValidNickname } from '../../lib/validationFunction';
 import dotenv from 'dotenv';
@@ -52,8 +51,10 @@ export const EditMyInfo = ({ myInfo }) => {
 
     // * 서버 통신
     const serverResult = await requestEditUserInfo(inputUserInfo);
-    if (serverResult) dispatch(setModal('emailCert'));
-    else console.log('error!');
+    if (serverResult) {
+      navigate('/myinfo');
+      if (myInfo.email !== inputUserInfo.email) dispatch(setModal('emailCert'));
+    } else dispatch(setModal('alert'));
   };
 
   return (
@@ -71,8 +72,8 @@ export const EditMyInfo = ({ myInfo }) => {
         <h2>Nickname</h2>
         <input type="text" onChange={handleInputValue('nickname')} value={inputUserInfo.nickname} onKeyUp={handleKeyUp}></input>
         <p>{errorMessage.nickname}&nbsp;</p>
-        <input type="button" onClick={handleSubmit} value="Submit" />
-        <input type="button" onClick={() => navigate('/myinfo')} value="Cancel" />
+        <input type="button" onClick={handleSubmit} value="수정 완료" />
+        <input type="button" onClick={() => navigate('/myinfo')} value="취소" />
       </div>
     </>
   );
