@@ -6,7 +6,6 @@ import style from './devQuizFormStyle.css';
 import { saveAnswerTutorial, saveAnswerQuiz } from '../modules/answer';
 import { clearList } from '../modules/list';
 import { requestQuizClear } from '../lib/requestQuiz';
-import QuizAnswer from '../components/modal/QuizAnswer';
 
 function QuizForm({ data, orderPage }) {
   const text = useSelector((state) => (orderPage === 'tutorial' ? state.answer.tutorial[data.id] : state.answer.quiz[data.id]));
