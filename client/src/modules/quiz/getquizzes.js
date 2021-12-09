@@ -12,11 +12,12 @@ export const getQuizzes = () => async (dispatch) => {
     const result = await axios.get(`${process.env.REACT_APP_SERVER_ADDR}/quiz`);
     const list = result.data.quizs;
     checkIsLogin(result);
-    // console.log(list);
     dispatch({ type: GET_QUIZZES_SUCCESS, list });
   } catch (error) {
     checkIsLogin(error);
-    dispatch({ type: GET_QUIZZES_ERROR, error });
+    // 에러코드 406이면 재귀
+    if (error.response.status === 406) dispatch(getQuizzes());
+    else dispatch({ type: GET_QUIZZES_ERROR, error });
   }
 };
 
