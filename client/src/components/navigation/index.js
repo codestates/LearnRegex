@@ -6,7 +6,7 @@ import Modal from '../modal';
 import { googleCallback } from '../../lib/oauthGoogle';
 import { kakaoCallback } from '../../lib/oauthKakao';
 import { githubCallback } from '../../lib/oauthGithub';
-import { verifyEmail } from '../../lib/requestEmailConfirm';
+import { verifyEmail, editEmail } from '../../lib/requestEmailConfirm';
 
 const Navigation = () => {
   const { modalType } = useSelector((state) => state.modal);
@@ -32,9 +32,10 @@ const Navigation = () => {
         googleCallback(url);
       } else if (state === 'github') {
         githubCallback(url);
-      } else if (state === 'signup' || state === 'editinfo') {
+      } else if (state === 'signup') {
         verifyEmail(url);
-      } else if (state === 'findpassword') {
+      } else if (state === 'editemail') {
+        editEmail(url);
       }
     }
   }, []);
