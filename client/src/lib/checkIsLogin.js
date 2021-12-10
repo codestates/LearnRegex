@@ -9,3 +9,8 @@ export function checkIsLogin(res) {
   console.log(isLogin);
   store.dispatch(setIsLogin(isLogin === 'true'));
 }
+
+export function checkUserIsLogin() {
+  const isLogin = store.getState().isLogin.isLogin;
+  return isLogin || false;
+}

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { requestGetMyInfo } from '../../lib/requestUserInfo';
+import { checkUserIsLogin } from '../../lib/checkIsLogin';
 import dotenv from 'dotenv';
 dotenv.config();
 
 const MyInfo = () => {
+  if (!checkUserIsLogin()) window.location.replace('/');
   const [myInfo, setMyInfo] = useState({
     email: '',
     nickname: '',
