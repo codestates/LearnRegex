@@ -26,6 +26,7 @@ function Paginate() {
   };
 
   useEffect(() => {
+    console.log('되니?');
     dispatch(getQuizzes(current));
   }, [current]);
 
