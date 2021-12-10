@@ -83,7 +83,7 @@ export const SidebarBtn = styled.button`
   border-radius: 40px;
   background: #fff;
   white-space: nowrap;
-  padding: 24px 50px;
+  padding: 10px 40px;
   color: #000;
   font-size: 25px;
   outline: none;
@@ -97,4 +97,30 @@ export const SidebarBtn = styled.button`
     background: ;
     color: ;
   } */
+`;
+
+export const SidebarSignOut = styled.div`
+  display: felx;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  text-decoration: none;
+  list-style: none;
+  transition: 0.2s ease-in-out;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+`;
+
+export const SubSidebar = styled.div`
+  /* display: felx;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  text-decoration: none;
+  list-style: none;
+  transition: 0.2s ease-in-out;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer; */
 `;
