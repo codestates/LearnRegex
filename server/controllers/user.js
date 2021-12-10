@@ -29,7 +29,7 @@ module.exports = {
 
       // 입력한 비밀번호가 맞지 않는 경우
       if (!bcrypt.compareSync(password, userInfo.password)) {
-        return res.header({ isLogin: false }).status(406).send({ message: ' invalid password' });
+        return res.header({ isLogin: false }).status(406).send({ message: 'invalid password' });
       }
 
       // 이메일 인증을 하지 않은 경우

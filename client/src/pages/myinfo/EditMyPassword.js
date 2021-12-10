@@ -52,8 +52,13 @@ export const EditMyPassword = () => {
 
     // * 서버 통신
     const serverResult = await requestEditUserPassword(inputUserInfo);
-    if (serverResult) dispatch(setModal('alert'));
-    else console.log('error!');
+    console.log(serverResult);
+    if (serverResult === true) dispatch(setModal('alert'));
+    else if (serverResult === 'invalid oldPassword') {
+      setErrorMessage({ ...errorResult, oldPassword: '잘못된 비밀번호입니다.' });
+    } else {
+      setErrorMessage({ ...errorResult, oldPassword: '잠시후에 다시 시도해주세요.' });
+    }
   };
 
   return (

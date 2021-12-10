@@ -42,17 +42,23 @@ export const SignIn = () => {
 
     // 서버 통신
     const serverResult = await requestSignIn(inputUserInfo);
-    //TODO: 모달 닫히게 하기
-    if (serverResult) {
-      console.log('hi');
+    if (serverResult === true) {
       dispatch(setModal('close'));
       window.location.reload();
-    } else console.log('error!');
+    } else if (serverResult === 'invalid email') {
+      setErrorMessage({ ...errorResult, email: '잘못된 이메일입니다.' });
+    } else if (serverResult === 'not verify email') {
+      setErrorMessage({ ...errorResult, email: '인증되지 않은 이메일입니다.' });
+    } else if (serverResult === 'invalid password') {
+      setErrorMessage({ ...errorResult, password: '잘못된 비밀번호입니다.' });
+    } else {
+      setErrorMessage({ ...errorResult, email: '잠시후에 다시 시도해주세요.' });
+    }
   };
 
   const handleSignOut = async () => {
     const serverResult = await requestSignOut(inputUserInfo);
-    if (serverResult) {
+    if (serverResult === true) {
       navigate('/');
       dispatch(setModal('close'));
     } else console.log('error!');

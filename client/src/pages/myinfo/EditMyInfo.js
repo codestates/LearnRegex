@@ -51,7 +51,7 @@ export const EditMyInfo = ({ myInfo }) => {
 
     // * 서버 통신
     const serverResult = await requestEditUserInfo(inputUserInfo);
-    if (serverResult) {
+    if (serverResult === true) {
       navigate('/myinfo');
       if (myInfo.email !== inputUserInfo.email) dispatch(setModal('emailCert'));
       else dispatch(setModal('alert'));

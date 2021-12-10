@@ -17,7 +17,8 @@ export const requestSignIn = async (userInfo) => {
     return true;
   } catch (error) {
     checkIsLogin(error);
-    return false;
+    if (!!error.response.data) return error.response.data.message;
+    else return false;
   }
 };
 
@@ -45,12 +46,12 @@ export const requestEditUserInfo = async (userInfo) => {
       `${process.env.REACT_APP_SERVER_ADDR}/myinfo`, //client
       { email, nickname }
     );
-    console.log(result);
     checkIsLogin(result);
     return true;
   } catch (error) {
     checkIsLogin(error);
-    return false;
+    if (!!error.response.data) return error.response.data.message;
+    else return false;
   }
 };
 
@@ -66,7 +67,8 @@ export const requestEditUserPassword = async (userInfo) => {
     return true;
   } catch (error) {
     checkIsLogin(error);
-    return false;
+    if (!!error.response.data) return error.response.data.message;
+    else return false;
   }
 };
 
