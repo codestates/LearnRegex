@@ -38,17 +38,16 @@ function QuizForm({ data, orderPage }) {
       const pattern = inputRegex || '^$';
       myRegex = new RegExp(pattern, flags);
     } catch (e) {
-      console.log(e);
       myRegex = new RegExp('^$', 'g');
     }
     console.log('myRegex:', myRegex);
 
     // * Realtime CSS
-    let matchArray;
     let startIndex = 0;
     let lastIndex = 0;
     let result = '';
-    if ((matchArray = myRegex.exec(testCase)) !== null) {
+    let matchArray = myRegex.exec(testCase);
+    if (Array.isArray(matchArray)) {
       lastIndex = matchArray.index;
       highlightedTestCase += data.testCase.substring(startIndex, lastIndex);
       highlightedTestCase += "<span class='found'>" + matchArray[0] + '</span>';

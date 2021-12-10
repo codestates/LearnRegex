@@ -52,7 +52,7 @@ export const SignUp = () => {
 
     // * 서버 통신
     const serverResult = await requestSignUp(inputUserInfo);
-    if (serverResult) return dispatch(setModal('emailCert'));
+    if (serverResult === true) return dispatch(setModal('emailCert'));
     else console.log('error!');
   };
 

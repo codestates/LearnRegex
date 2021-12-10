@@ -35,7 +35,7 @@ const FindPassword = () => {
 
     // 서버 통신
     const serverResult = await requestFindPassword(inputUserInfo);
-    if (serverResult) dispatch(setModal('emailCert'));
+    if (serverResult === true) dispatch(setModal('emailCert'));
     else console.log('error!');
   };
 

@@ -1,6 +1,5 @@
 const { users, quiz, users_quiz } = require('../models');
 const { isAuth } = require('./authfunction');
-const sequelize = require('sequelize');
 
 module.exports = {
   getquizs: async (req, res) => {

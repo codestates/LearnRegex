@@ -14,7 +14,7 @@ module.exports = {
     });
   },
 
-  sendToken: (res, token) => {
+  sendToken: (res, token, nickname) => {
     const cookieOption = {
       sameSite: 'Strict',
       httpOnly: true,
@@ -22,6 +22,6 @@ module.exports = {
     };
     if (process.env.DOMAIN_NAME) cookieOption.domain = process.env.DOMAIN_NAME;
 
-    return res.header({ isLogin: true }).cookie('token', token, cookieOption).status(200).send({ message: 'success' });
+    return res.header({ isLogin: true }).cookie('token', token, cookieOption).status(200).send({ message: 'success', nickname });
   },
 };

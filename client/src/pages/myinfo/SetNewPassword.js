@@ -44,7 +44,7 @@ export const SetNewPassword = () => {
 
     // * 서버 통신
     const serverResult = await requestSetNewPassword(inputUserInfo);
-    if (serverResult) console.log('hi!');
+    if (serverResult === true) console.log('hi!');
     else console.log('error!');
   };
 
