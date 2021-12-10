@@ -2,15 +2,23 @@ import { setIsLogin } from '../modules/isLogin';
 import { store } from '../index';
 
 export function checkIsLogin(res) {
-  console.dir(res);
   let isLogin = false;
+  let nickname = '';
+  // isLogin 헤더 확인
   if (!!res.response && !!res.response.headers) isLogin = res.response.headers.islogin;
   else isLogin = res.headers.islogin;
-  console.log(isLogin);
-  store.dispatch(setIsLogin(isLogin === 'true'));
+  // nickname 저장
+  if (!!res.data) nickname = res.data.nickname;
+
+  store.dispatch(setIsLogin(isLogin === 'true', nickname));
 }
 
 export function checkUserIsLogin() {
   const isLogin = store.getState().isLogin.isLogin;
+  return isLogin || false;
+}
+
+export function checkUserNickname() {
+  const isLogin = store.getState().isLogin.nickname;
   return isLogin || false;
 }
