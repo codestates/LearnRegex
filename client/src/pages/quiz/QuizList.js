@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getQuizzes } from '../../modules/quiz/getquizzes';
-import QuizListElement from '../../components/QuizListElement';
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import QuizListElement from '../../components/QuizListElement';
+import Pagenate from '../../components/Paginate';
+import { getQuizzes } from '../../modules/quiz/getquizzes';
 import { BsPencilSquare } from 'react-icons/bs';
 
 function QuizList() {
   const { isLogin } = useSelector((state) => state.isLogin);
   const { data } = useSelector((state) => state.getquizzes.list);
-  // console.log(data);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -20,18 +20,12 @@ function QuizList() {
     }
   };
 
-  useEffect(() => {
-    dispatch(getQuizzes());
-  }, [dispatch]);
-
-  if (!data) return <div>loading....</div>;
-
   return (
     <>
       <BsPencilSquare onClick={handleAlert} size="50" />
-      {data.map((el) => (
-        <QuizListElement key={el.id} data={el} />
-      ))}
+      {!data ? <div>loading</div> : data.map((el) => <QuizListElement key={el.id} data={el} />)}
+
+      <Pagenate />
     </>
   );
 }
