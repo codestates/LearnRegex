@@ -54,7 +54,8 @@ export const EditMyInfo = ({ myInfo }) => {
     if (serverResult) {
       navigate('/myinfo');
       if (myInfo.email !== inputUserInfo.email) dispatch(setModal('emailCert'));
-    } else dispatch(setModal('alert'));
+      else dispatch(setModal('alert'));
+    } else console.log('error!');
   };
 
   return (
