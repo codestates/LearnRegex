@@ -2,8 +2,12 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { FaBars } from 'react-icons/fa';
 import { setModal } from '../../modules/modal';
+<<<<<<< HEAD
 import { checkUserIsLogin, checkUserNickname } from '../../lib/checkIsLogin';
 import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtn, NavSignInBtn } from './NavbarElements';
+=======
+import { clearSession } from '../../lib/clearSession';
+>>>>>>> dev
 
 const Navbar = ({ handleSidebar }) => {
   const dispatch = useDispatch();
@@ -23,7 +27,9 @@ const Navbar = ({ handleSidebar }) => {
               <NavLinks to="/tutorial">학습하기</NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to="/quizlist">퀴즈</NavLinks>
+              <NavLinks to="/quizlist" onClick={() => clearSession()}>
+                퀴즈
+              </NavLinks>
             </NavItem>
             <NavItem>
               <NavLinks to="/cheatsheet">자습서</NavLinks>
