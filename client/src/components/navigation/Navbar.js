@@ -7,7 +7,6 @@ import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, 
 
 const Navbar = ({ handleSidebar }) => {
   const dispatch = useDispatch();
-
   const isLogin = checkUserIsLogin();
   const nickname = checkUserNickname();
 
