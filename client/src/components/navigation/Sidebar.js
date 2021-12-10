@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setModal } from '../../modules/modal';
 import { SidebarContainer, Icon, CloseIcon, SidebarWrapper, SidebarMenu, SidebarLink, SidebarBtnWrap, SidebarBtn } from './SidebarElements';
+import { clearSession } from '../../lib/clearSession';
 
 const Sidebar = ({ openSidebar, handleSidebar }) => {
   const dispatch = useDispatch();
@@ -14,7 +15,9 @@ const Sidebar = ({ openSidebar, handleSidebar }) => {
       <SidebarWrapper>
         <SidebarMenu onClick={() => handleSidebar(false)}>
           <SidebarLink to="/tutorial">학습하기</SidebarLink>
-          <SidebarLink to="/quizlist">퀴즈</SidebarLink>
+          <SidebarLink to="/quizlist" onClick={() => clearSession()}>
+            퀴즈
+          </SidebarLink>
           <SidebarLink to="/cheatsheet">자습서</SidebarLink>
           <SidebarBtnWrap>
             <SidebarBtn
