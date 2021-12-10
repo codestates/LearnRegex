@@ -1,11 +1,15 @@
 import React from 'react';
-import { FaBars } from 'react-icons/fa';
-import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtn, NavSignInBtn } from './NavbarElements';
 import { useDispatch } from 'react-redux';
+import { FaBars } from 'react-icons/fa';
 import { setModal } from '../../modules/modal';
+import { checkUserIsLogin, checkUserNickname } from '../../lib/checkIsLogin';
+import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtn, NavSignInBtn } from './NavbarElements';
 
 const Navbar = ({ handleSidebar }) => {
   const dispatch = useDispatch();
+
+  const isLogin = checkUserIsLogin();
+  const nickname = checkUserNickname();
 
   return (
     <>
@@ -26,7 +30,7 @@ const Navbar = ({ handleSidebar }) => {
               <NavLinks to="/cheatsheet">자습서</NavLinks>
             </NavItem>
             <NavBtn>
-              <NavSignInBtn onClick={() => dispatch(setModal('signIn'))}>로그인</NavSignInBtn>
+              <NavSignInBtn onClick={() => dispatch(setModal('signIn'))}>{isLogin ? nickname : '로그인'}</NavSignInBtn>
             </NavBtn>
           </NavMenu>
         </NavbarContainer>

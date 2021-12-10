@@ -19,6 +19,7 @@ export function checkUserIsLogin() {
 }
 
 export function checkUserNickname() {
-  const isLogin = store.getState().isLogin.nickname;
-  return isLogin || false;
+  const nickname = store.getState().isLogin.nickname;
+  console.log(nickname);
+  return nickname || '';
 }
