@@ -6,18 +6,21 @@ const GET_QUIZZES = 'GET_QUIZZES';
 const GET_QUIZZES_SUCCESS = 'GET_QUIZZES_SUCCESS';
 const GET_QUIZZES_ERROR = 'GET_QUIZZES_ERROR';
 
-export const getQuizzes = () => async (dispatch) => {
-  dispatch({ type: GET_QUIZZES });
+export const getQuizzes = (idx) => async (dispatch) => {
+  dispatch({ type: GET_QUIZZES, idx });
   try {
-    const result = await axios.get(`${process.env.REACT_APP_SERVER_ADDR}/quiz`);
+    const result = await axios.get(`${process.env.REACT_APP_SERVER_ADDR}/quiz?page=${idx + 1}`);
     const list = result.data.quizs;
+    const pages = result.data.pages;
     checkIsLogin(result);
-    dispatch({ type: GET_QUIZZES_SUCCESS, list });
+    dispatch({ type: GET_QUIZZES_SUCCESS, list, pages });
   } catch (error) {
-    checkIsLogin(error);
     // 에러코드 406이면 재귀
     if (error.response.status === 406) dispatch(getQuizzes());
-    else dispatch({ type: GET_QUIZZES_ERROR, error });
+    else {
+      checkIsLogin(error);
+      dispatch({ type: GET_QUIZZES_ERROR, error });
+    }
   }
 };
 
@@ -45,7 +48,8 @@ export default function quizzes(state = initialState, action) {
         ...state,
         list: {
           loading: true,
-          data: action.list,
+          list: action.list,
+          pages: action.pages,
           error: null,
         },
       };

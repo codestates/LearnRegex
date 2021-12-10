@@ -3,6 +3,7 @@ import { FaBars } from 'react-icons/fa';
 import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtn, NavSignInBtn } from './NavbarElements';
 import { useDispatch } from 'react-redux';
 import { setModal } from '../../modules/modal';
+import { clearSession } from '../../lib/clearSession';
 
 const Navbar = ({ handleSidebar }) => {
   const dispatch = useDispatch();
@@ -20,7 +21,9 @@ const Navbar = ({ handleSidebar }) => {
               <NavLinks to="/tutorial">학습하기</NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to="/quizlist">퀴즈</NavLinks>
+              <NavLinks to="/quizlist" onClick={() => clearSession()}>
+                퀴즈
+              </NavLinks>
             </NavItem>
             <NavItem>
               <NavLinks to="/cheatsheet">자습서</NavLinks>
