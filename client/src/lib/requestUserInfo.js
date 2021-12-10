@@ -135,7 +135,6 @@ export const requestSetNewPassword = async (userInfo) => {
     }
     return false;
   } catch (error) {
-    console.log(error.response.data.message);
     return false;
   }
 };
@@ -150,7 +149,6 @@ export const requestFindPassword = async (userInfo) => {
     console.log(result);
     return true;
   } catch (error) {
-    console.log(error.response.data.message);
     return false;
   }
 };
