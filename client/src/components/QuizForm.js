@@ -8,6 +8,8 @@ import { clearList } from '../modules/list';
 import { requestQuizClear } from '../lib/requestQuiz';
 
 function QuizForm({ data, orderPage }) {
+  //TODO 리덕스 구조가 변경됐을 때 에러발생.
+  // ? 에러가 발생하면 로컬스토리지를 초기화 해야될까?
   const text = useSelector((state) => (orderPage === 'tutorial' ? state.answer.tutorial[data.id] : state.answer.quiz[data.id]));
   const isLogin = useSelector((state) => state.isLogin);
   const [inputRegex, setInputRegex] = useState(text || '');

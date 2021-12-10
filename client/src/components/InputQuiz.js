@@ -3,6 +3,7 @@ import BackButton from '../components/BackButton';
 import { submitQuiz } from '../lib/requestQuiz';
 import { limitChar } from '../lib/limitChar';
 import styled from 'styled-components';
+import { checkUserIsLogin } from '../lib/checkIsLogin';
 
 export const Input = styled.input.attrs({})`
   outline: none;
@@ -15,6 +16,7 @@ export const Textarea = styled.textarea.attrs({})`
 `;
 
 function InputQuiz({ data }) {
+  if (!checkUserIsLogin()) window.location.replace('/');
   const [content, setContent] = useState({ title: '', testCase: '', testCaseTarget: '', answer: '', explanation: '' });
   const [isEmpty, setIsEmpty] = useState({ title: false, testCase: false, testCaseTarget: false, answer: false, explanation: false });
 
