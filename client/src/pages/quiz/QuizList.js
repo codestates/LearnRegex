@@ -8,7 +8,6 @@ import { BsPencilSquare } from 'react-icons/bs';
 function QuizList() {
   const { isLogin } = useSelector((state) => state.isLogin);
   const { list } = useSelector((state) => state.getquizzes.list);
-  console.log(list);
   const navigate = useNavigate();
 
   const handleAlert = () => {
