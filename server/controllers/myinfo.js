@@ -40,7 +40,15 @@ module.exports = {
       }
 
       const userId = req.userId;
+      // 유저 정보 조회
+      const userInfo = await users.findOne({ where: { id: userId }, raw: true });
+
       const data = { userId, email, nickname };
+
+      // 유저의 소셜타입이 로컬이 아닌 경우 검사내용에서 이메일 제외
+      if (userInfo.socialType !== 'local') {
+        delete data.email;
+      }
 
       // 수정 내용 유효성 검사
       const isValid = validation(req.body);
@@ -52,9 +60,6 @@ module.exports = {
       if (Object.keys(isValid).length || Object.keys(isConflict).length) {
         return res.status(406).send({ data: { isValid, isConflict } });
       }
-
-      // 유저 정보 조회
-      const userInfo = await users.findOne({ where: { id: userId }, raw: true });
 
       // 이메일 변경을 하려는데 socialType이 local이 아닌 경우
       if (userInfo.socialType !== 'local' && userInfo.email !== email) {
