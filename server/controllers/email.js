@@ -34,7 +34,7 @@ module.exports = {
 
       const token = getToken(userInfo);
 
-      sendToken(res, token);
+      sendToken(res, token, userInfo.nickname);
     } catch (err) {
       console.log(err);
       return res.status(500).send({ message: 'server error' });
@@ -73,7 +73,7 @@ module.exports = {
 
       const token = getToken(userInfo);
 
-      sendToken(res, token);
+      sendToken(res, token, userInfo.nickname);
     } catch (err) {
       console.log(err);
       return res.status(500).send({ message: 'server error' });

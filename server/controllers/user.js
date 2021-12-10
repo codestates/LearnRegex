@@ -42,7 +42,7 @@ module.exports = {
 
       const token = getToken(tokenData);
 
-      sendToken(res, token);
+      sendToken(res, token, nickname);
     } catch (err) {
       console.log(err);
       return res.status(500).send({ message: 'server error' });
