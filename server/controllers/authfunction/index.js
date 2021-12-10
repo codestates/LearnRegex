@@ -16,8 +16,14 @@ module.exports = {
       const verifyToken = isVerify(token);
 
       if (!verifyToken) {
+        const cookieOption = {
+          sameSite: 'Strict',
+          httpOnly: true,
+        };
+        if (process.env.DOMAIN_NAME) cookieOption.domain = process.env.DOMAIN_NAME;
+
         res.header({ isLogin: false });
-        return res.clearCookie('token').status(406).send({ message: 'invalid token' });
+        return res.clearCookie('token', cookieOption).status(406).send({ message: 'invalid token' });
       }
 
       // 유효한 토큰이라면 database에 저장된 유저인지 확인
