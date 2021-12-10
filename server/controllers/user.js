@@ -52,7 +52,13 @@ module.exports = {
   // 로그아웃
   signout: async (req, res) => {
     try {
-      return res.header({ isLogin: false }).clearCookie('token').status(200).send({ message: 'success' });
+      const cookieOption = {
+        sameSite: 'Strict',
+        httpOnly: true,
+      };
+      if (process.env.DOMAIN_NAME) cookieOption.domain = process.env.DOMAIN_NAME;
+
+      return res.header({ isLogin: false }).clearCookie('token', cookieOption).status(200).send({ message: 'success' });
     } catch (err) {
       console.log(err);
       return res.status(500).send({ message: 'server error' });
