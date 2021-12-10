@@ -8,8 +8,11 @@ export function checkIsLogin(res) {
   if (!!res.response && !!res.response.headers) isLogin = res.response.headers.islogin;
   else isLogin = res.headers.islogin;
   // nickname 저장
-  if (!!res.data) nickname = res.data.nickname;
-
+  // res.data.nickname 또는 res.data.data.nickname;
+  if (!!res.data) {
+    nickname = res.data.nickname;
+    if (!!res.data.data && !nickname) nickname = res.data.data.nickname;
+  }
   store.dispatch(setIsLogin(isLogin === 'true', nickname));
 }
 
