@@ -100,6 +100,7 @@ export const NavBtn = styled.nav`
   display: flex;
   align-items: center;
   margin-right: 30px;
+  position: relative;
 
   @media screen and (max-width: 768px) {
     display: none;
@@ -124,4 +125,13 @@ export const NavSignInBtn = styled.button`
     background-color: #;
     color: ;
   } */
+`;
+
+export const SubNavigation = styled.div`
+  color: #fff;
+  position: absolute;
+  top: 50px;
+  background-color: #000;
+  width: 100px;
+  text-decoration: none;
 `;
