@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setModal } from '../../modules/modal';
-// import { Link, useNavigate } from 'react-router-dom';
 import { requestGetMyInfo } from '../../lib/requestUserInfo';
 import dotenv from 'dotenv';
-// import { Modify } from './Modify';
 import { EditMyInfo } from './EditMyInfo';
 import { EditMyPassword } from './EditMyPassword';
+import { checkUserIsLogin } from '../../lib/checkIsLogin';
 dotenv.config();
 
 const MyInfo = () => {
+  if (!checkUserIsLogin()) window.location.replace('/');
   const dispatch = useDispatch();
   const [Pages, setPages] = useState('');
   const [myInfo, setMyInfo] = useState({
