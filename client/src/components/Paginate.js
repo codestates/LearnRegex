@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getQuizzes } from '../modules/quiz/getquizzes';
 import styled from 'styled-components';
 
@@ -8,10 +8,11 @@ export const List = styled.li`
 `;
 
 function Paginate() {
+  const { pages } = useSelector((state) => state.getquizzes.list);
   const [current, setCurrent] = useState(0);
   const dispatch = useDispatch();
 
-  const list = new Array(5).fill(true);
+  const list = new Array(pages || 1).fill(true);
 
   const movePrev = () => {
     current > 0 ? setCurrent(current - 1) : alert('첫번째 페이지입니다.');
