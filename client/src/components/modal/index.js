@@ -39,7 +39,6 @@ const Modal = () => {
           </ModalContent>
         </ModalWrapper>
       </Background>
-      ;
     </>
   );
 };
