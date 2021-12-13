@@ -25,19 +25,13 @@ function QuizForm({ data, orderPage }) {
 
   //! ------------------------ 정규표현식 실시간 적용 ------------------------
   const realtimeRegex = (testCase) => {
-    const getMyRegex = (inputRegex) => {
-      // * Create myRegex
-      let myRegex;
-      const flags = 'g';
-      const pattern = inputRegex || '^$';
-      try {
-        myRegex = new RegExp(pattern, flags);
-      } catch (e) {
-        myRegex = new RegExp('^$', flags);
-      }
-      return myRegex;
-    };
-    const myRegex = getMyRegex(inputRegex);
+    // * Make new RegExp
+    let myRegex;
+    try {
+      myRegex = new RegExp(inputRegex || '^$', 'g');
+    } catch (e) {
+      myRegex = new RegExp('^$', 'g');
+    }
 
     // * Realtime CSS
     let startIndex = 0,
@@ -53,11 +47,6 @@ function QuizForm({ data, orderPage }) {
     highlightedTestCase += testCase.target[0].substring(startIndex, testCase.target[0].length);
     return { highlightedTestCase, matchArray };
   };
-
-  // * Groups 출력
-  // const realtimeGroups = (target, isCorrectRegGroups) => {
-  //   return;
-  // };
 
   //! ------------------------ 정규표현식 실시간 적용 ------------------------
   console.log(data.testCase);
@@ -96,6 +85,7 @@ function QuizForm({ data, orderPage }) {
           <Interweave content={regExpResult.highlightedTestCase} />
           {isCorrectReg ? '✅' : '❌'}
           {testCase.task === 'capture' ? (
+            // 0번 인덱스는 전체 값을 의미. highlightedTestCase에서 표현
             testCase.target.slice(1).map((el, idx) => {
               return isCorrectRegGroups[idx + 1] ? <p class="found">{el}</p> : <p>{el}</p>;
             })
@@ -107,7 +97,6 @@ function QuizForm({ data, orderPage }) {
       </>
     );
   });
-  console.log(isCorrectRegTotal);
 
   //! ------------------------ 정답일 경우 서버 전송 ------------------------
   const saveLocal = (text) => {

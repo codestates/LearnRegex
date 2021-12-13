@@ -41,31 +41,108 @@ module.exports = {
       },
     ]);
 
-    const quiz1 = await queryInterface.bulkInsert('quiz', [
-      {
-        id: 1,
-        userId: user1,
-        title: 'a만 통과하는 정규표현식 작성하기',
-        testCase: 'aAbBcCdDeE',
-        testCaseTarget: 'a',
-        answer: 'a',
-        explanation: '블라블라',
-        count: 3,
-        isClear: false,
-        isMade: false,
-        createdAt: new Date(Date.now()),
-        updatedAt: new Date(Date.now()),
-      },
-    ]);
+    const quiz1 = await queryInterface.bulkInsert(
+      'quiz',
+      [
+        {
+          id: 1,
+          userId: user1,
+          title: '이메일 만들기',
+          testCase: JSON.stringify([
+            {
+              task: 'match',
+              target: ['kimcoding@test.com'],
+            },
+            {
+              task: 'match',
+              target: ['kimcoding@test.com'],
+            },
+            {
+              task: 'skip',
+              target: ['@test.com'],
+            },
+            {
+              task: 'capture',
+              target: ['kimcoding@test.com', 'kimcoding', 'test', 'com'],
+            },
+          ]),
+          testCaseTarget: 'a',
+          answer: '(\\w+)@(\\w+)\\.(\\w+)',
+          explanation: '블라블라',
+          count: 3,
+          isClear: false,
+          isMade: false,
+          createdAt: new Date(Date.now()),
+          updatedAt: new Date(Date.now()),
+        },
+        {
+          id: 2,
+          userId: user1,
+          title: 'a만 통과하는 정규표현식 작성하기',
+          testCase: JSON.stringify([
+            {
+              task: 'match',
+              target: ['a'],
+            },
+            {
+              task: 'skip',
+              target: ['b'],
+            },
+          ]),
+          testCaseTarget: 'a',
+          answer: 'a',
+          explanation: '블라블라',
+          count: 3,
+          isClear: false,
+          isMade: false,
+          createdAt: new Date(Date.now()),
+          updatedAt: new Date(Date.now()),
+        },
+        {
+          id: 3,
+          userId: user1,
+          title: '전화번호 만들기',
+          testCase: JSON.stringify([
+            {
+              task: 'match',
+              target: ['010-4321-1234'],
+            },
+            {
+              task: 'match',
+              target: ['02-112-1191'],
+            },
+            {
+              task: 'skip',
+              target: ['1-1-1'],
+            },
+          ]),
+          testCaseTarget: 'a',
+          answer: '\\d{2,3}-\\d{3,4}-\\d{4}',
+          explanation: '블라블라',
+          count: 3,
+          isClear: false,
+          isMade: false,
+          createdAt: new Date(Date.now()),
+          updatedAt: new Date(Date.now()),
+        },
+      ],
+      {},
+      { enabled_payments: { type: new Sequelize.JSON() } }
+    );
 
     const quiz2 = await queryInterface.bulkInsert('quiz', [
       {
-        id: 2,
+        id: 4,
         userId: user2,
         title: 'b만 통과하는 정규표현식 작성하기',
-        testCase: 'aAbBcCdDeE',
+        testCase: JSON.stringify([
+          {
+            task: 'match',
+            target: ['b'],
+          },
+        ]),
         testCaseTarget: 'b',
-        answer: 'b',
+        answer: `b`,
         explanation: '어쩌구저쩌구',
         count: 1,
         isClear: false,
@@ -75,22 +152,6 @@ module.exports = {
       },
     ]);
 
-    const quiz3 = await queryInterface.bulkInsert('quiz', [
-      {
-        id: 3,
-        userId: user1,
-        title: 'E만 통과하는 정규표현식 작성하기',
-        testCase: 'aAbBcCdDeE',
-        testCaseTarget: 'E',
-        answer: 'E',
-        explanation: '저쩌구어쩌구',
-        count: 7,
-        isClear: false,
-        isMade: false,
-        createdAt: new Date(Date.now()),
-        updatedAt: new Date(Date.now()),
-      },
-    ]);
     await queryInterface.bulkInsert('users_quiz', [
       {
         id: 1,
@@ -125,6 +186,6 @@ module.exports = {
   down: async (queryInterface, Sequelize) => {
     await queryInterface.bulkDelete('users', null, {});
     await queryInterface.bulkDelete('quiz', null, {});
-    await queryInterface.bulkDelete('users_quiz', null, {});
+    // await queryInterface.bulkDelete('users_quiz', null, {});
   },
 };
