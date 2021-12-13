@@ -12,7 +12,7 @@ import EditQuiz from './pages/quiz/EditQuiz';
 import MakeQuiz from './pages/quiz/MakeQuiz';
 import Footer from './components/footer/Footer';
 import dotenv from 'dotenv';
-import './App.css';
+// import './App.css';
 dotenv.config();
 
 function App() {
