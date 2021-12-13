@@ -19,10 +19,6 @@ function QuizForm({ data, orderPage }) {
     setInputRegex(previousRegex || '');
   }, [data]);
 
-  const saveLocal = (text) => {
-    orderPage === 'tutorial' ? dispatch(saveAnswerTutorial(data.id, text)) : dispatch(saveAnswerQuiz(data.id, text));
-  };
-
   const handleAnswer = (e) => {
     setInputRegex(e.target.value);
   };
@@ -65,6 +61,7 @@ function QuizForm({ data, orderPage }) {
 
   //! ------------------------ 정규표현식 실시간 적용 ------------------------
   console.log(data.testCase);
+  const isCorrectRegTotal = [];
   const testCases = data.testCase.map((testCase) => {
     let regExpResult = realtimeRegex(testCase);
     let regExpResultGroups;
@@ -84,6 +81,9 @@ function QuizForm({ data, orderPage }) {
         isCorrectReg = isCorrectRegGroups.indexOf(false) === -1;
       }
     }
+    if (isCorrectReg) isCorrectRegTotal.push(true);
+    else isCorrectRegTotal.push(false);
+
     console.log(regExpResult.matchArray);
     console.log(isCorrectRegGroups);
     // * 출력
@@ -107,39 +107,41 @@ function QuizForm({ data, orderPage }) {
       </>
     );
   });
+  console.log(isCorrectRegTotal);
 
   //! ------------------------ 정답일 경우 서버 전송 ------------------------
-  // const timeWait = useRef();
-  // useEffect(() => {
-  //   clearTimeout(timeWait.current);
-  //   timeWait.current = setTimeout(() => {
-  //     saveLocal(inputRegex);
-  //   }, 1000);
-  // }, [inputRegex]);
+  const saveLocal = (text) => {
+    orderPage === 'tutorial' ? dispatch(saveAnswerTutorial(data.id, text)) : dispatch(saveAnswerQuiz(data.id, text));
+  };
+  const timeWait = useRef();
+  const isAllCorrectReg = isCorrectRegTotal.indexOf(false) === -1;
+  useEffect(() => {
+    clearTimeout(timeWait.current);
+    timeWait.current = setTimeout(() => {
+      saveLocal(inputRegex);
+    }, 1000);
+  }, [inputRegex]);
 
-  // useEffect(() => {
-  //   // 퀴즈에서 로그인한 회원이 처음 문제를 풀었을 경우 서버 요청
-  //   if (orderPage === 'quizList' && isCorrectReg && isLogin && !data.isClear) requestQuizClear(data.id);
+  useEffect(() => {
+    // 퀴즈에서 로그인한 회원이 처음 문제를 풀었을 경우 서버 요청
+    if (orderPage === 'quizList' && isAllCorrectReg && isLogin && !data.isClear) requestQuizClear(data.id);
 
-  //   // 학습하기에서 문제를 풀었을 경우 상태 저장
-  //   if (orderPage === 'tutorial' && isCorrectReg) dispatch(clearList(data.id - 1));
-  // }, [isCorrectReg]);
-  // console.log(data);
+    // 학습하기에서 문제를 풀었을 경우 상태 저장
+    if (orderPage === 'tutorial' && isAllCorrectReg) dispatch(clearList(data.id - 1));
+  }, [isAllCorrectReg]);
+  console.log(data);
 
   //! ------------------------ HTML 태그 출력 ------------------------
-
   return (
     <>
       <div>
         <div>
           <h2>Test Case</h2>
           <div>{testCases}</div>
-          {/* <div><Interweave content={highlightedTestCase} /></div> */}
           <div>{/*  */}</div>
         </div>
         <div>
           <h2>My Regexp</h2>
-          <div>{/* <span>{regExpResult}</span> */}</div>
           <div>
             <input type="text" value={inputRegex} placeholder="정규표현식을 입력하세요!" onChange={handleAnswer} size="100" />
           </div>
