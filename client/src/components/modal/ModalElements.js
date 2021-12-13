@@ -22,6 +22,7 @@ export const ModalWrapper = styled.div`
   width: 400px;
   height: ${({ modalType }) => {
     if (modalType === 'emailCert') return '300px';
+    else if (modalType === 'findPassword') return '280px';
     else return '550px';
   }};
   grid-template-columns: 1fr 1fr;
@@ -34,7 +35,11 @@ export const ModalContent = styled.div`
   justify-content: center;
   align-items: center;
   width: 400px;
-  height: ${({ modalType }) => (modalType === 'emailCert' ? '300px' : '550px')};
+  height: ${({ modalType }) => {
+    if (modalType === 'emailCert') return '300px';
+    else if (modalType === 'findPassword') return '280px';
+    else return '550px';
+  }};
 `;
 
 export const CloseModalButton = styled(MdClose)`

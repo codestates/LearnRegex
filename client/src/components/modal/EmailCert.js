@@ -8,7 +8,7 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   text-align: center;
-  padding: 0 2rem;
+  padding: 0 1.8rem;
 
   img {
     width: 25%;
@@ -38,7 +38,7 @@ const EmailCert = () => {
         <h2>인증 메일 발송 완료</h2>
         <p>메일함에서 인증 메일을 확인 바랍니다.</p>
         <p>
-          이메일의 <span>인증 버튼</span>을 클릭하면 계정이 생성됩니다.
+          이메일의 <span>인증 버튼</span>을 클릭하여 인증을 진행해주세요.
         </p>
       </Container>
     </>
