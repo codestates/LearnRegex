@@ -1,7 +1,8 @@
 import React from 'react';
+import HeroSection from '../components/heroSection';
 
 const Home = () => {
-  return <div>Hello LearnRegex</div>;
+  return <HeroSection />;
 };
 
 export default Home;
