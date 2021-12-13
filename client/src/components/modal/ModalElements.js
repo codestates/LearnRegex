@@ -16,7 +16,6 @@ export const Background = styled.div`
 
 export const ModalWrapper = styled.div`
   background: #fff;
-  color: #000;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   display: flex;
   border-radius: 16px;
@@ -33,18 +32,6 @@ export const ModalContent = styled.div`
   align-items: center;
   width: 400px;
   height: 550px;
-  /* line-height: 1.8; */
-  color: #000;
-  p {
-    margin-bottom: 3rem;
-  }
-  button {
-    /* padding: 10px 24px; */
-    background: #141414;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
 `;
 
 export const CloseModalButton = styled(MdClose)`
