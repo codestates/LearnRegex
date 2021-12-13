@@ -1,11 +1,13 @@
 import React, { useState, useRef } from 'react';
-// import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setModal } from '../../modules/modal';
 import { requestSetNewPassword } from '../../lib/requestUserInfo';
 import { isValidSetNewPassword, isValidPassword, isValidPasswordConfirm } from '../../lib/validationFunction';
 import dotenv from 'dotenv';
 dotenv.config();
 
 export const SetNewPassword = () => {
+  const dispatch = useDispatch();
   const [inputUserInfo, setInputUserInfo] = useState({
     newPassword: '',
     confirm: '',
@@ -44,7 +46,7 @@ export const SetNewPassword = () => {
 
     // * 서버 통신
     const serverResult = await requestSetNewPassword(inputUserInfo);
-    if (serverResult === true) console.log('hi!');
+    if (serverResult === true) dispatch(setModal('alert'));
     else console.log('error!');
   };
 
