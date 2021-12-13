@@ -32,8 +32,8 @@ const Modal = () => {
   return (
     <>
       <Background>
-        <ModalWrapper>
-          <ModalContent>
+        <ModalWrapper modalType={modalType}>
+          <ModalContent modalType={modalType}>
             <CloseModalButton onClick={() => dispatch(setModal('close'))} />
             <SetContent />
           </ModalContent>

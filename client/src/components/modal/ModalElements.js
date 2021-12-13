@@ -20,7 +20,10 @@ export const ModalWrapper = styled.div`
   display: flex;
   border-radius: 16px;
   width: 400px;
-  height: 550px;
+  height: ${({ modalType }) => {
+    if (modalType === 'emailCert') return '300px';
+    else return '550px';
+  }};
   grid-template-columns: 1fr 1fr;
   position: relative;
 `;
@@ -31,7 +34,7 @@ export const ModalContent = styled.div`
   justify-content: center;
   align-items: center;
   width: 400px;
-  height: 550px;
+  height: ${({ modalType }) => (modalType === 'emailCert' ? '300px' : '550px')};
 `;
 
 export const CloseModalButton = styled(MdClose)`
