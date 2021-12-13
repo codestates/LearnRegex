@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { setModal } from '../../modules/modal';
 import { requestSignUp } from '../../lib/requestUserInfo';
 import { isValidSignUp, isValidEmail, isValidNickname, isValidPassword, isValidPasswordConfirm } from '../../lib/validationFunction';
+import { Container, Header, InputBox, Input, Button, Bottom, Span } from './SignUpElements';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -58,29 +59,35 @@ export const SignUp = () => {
 
   return (
     <>
-      <div>
-        <h2>SignUp</h2>
-        <h3>Email</h3>
-        <input type="text" onChange={handleInputValue('email')} onKeyUp={handleKeyUp}></input>
-        <p>{errorMessage.email}&nbsp;</p>
+      <Container>
+        <Header>
+          <span>회원가입</span>
+        </Header>
+        <InputBox>
+          <Input type="text" placeholder="이메일" onChange={handleInputValue('email')} onKeyUp={handleKeyUp}></Input>
+          <span>&nbsp;&nbsp;{errorMessage.email}</span>
+        </InputBox>
+        <InputBox>
+          <Input type="text" placeholder="닉네임" onChange={handleInputValue('nickname')} onKeyUp={handleKeyUp}></Input>
+          <span>&nbsp;&nbsp;{errorMessage.nickname}</span>
+        </InputBox>
+        <InputBox>
+          <Input type="password" placeholder="비밀번호" onChange={handleInputValue('password')} onKeyUp={handleKeyUp}></Input>
+          <span>&nbsp;&nbsp;{errorMessage.password}</span>
+        </InputBox>
+        <InputBox>
+          <Input type="password" placeholder="비밀번호 재입력" onChange={handleInputValue('confirm')} onKeyUp={handleKeyUp}></Input>
+          <span>&nbsp;&nbsp;{errorMessage.confirm}</span>
+        </InputBox>
 
-        <h3>Nickname</h3>
-        <input type="text" onChange={handleInputValue('nickname')} onKeyUp={handleKeyUp}></input>
-        <p>{errorMessage.nickname}&nbsp;</p>
-
-        <h3>Password</h3>
-        <input type="text" onChange={handleInputValue('password')} onKeyUp={handleKeyUp}></input>
-        <p>{errorMessage.password}&nbsp;</p>
-
-        <h3>Password Confirm</h3>
-        <input type="text" onChange={handleInputValue('confirm')} onKeyUp={handleKeyUp}></input>
-        <p>{errorMessage.confirm}&nbsp;</p>
-
-        <input type="button" onClick={handleSubmit} value="회원가입" />
-
-        <div>이미 가입하셨나요?</div>
-        <button onClick={() => dispatch(setModal('signIn'))}>로그인 하기</button>
-      </div>
+        <Button onClick={handleSubmit}>가입</Button>
+        <Bottom>
+          <span>이미 계정이 있으신가요?</span>
+          <Span btn onClick={() => dispatch(setModal('signIn'))}>
+            로그인 하기
+          </Span>
+        </Bottom>
+      </Container>
     </>
   );
 };
