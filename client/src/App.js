@@ -4,7 +4,6 @@ import Navigation from './components/navigation';
 import Home from './pages/Home';
 import Tutorial from './pages/Tutorial';
 import QuizList from './pages/quiz/QuizList';
-import CheatSheet from './pages/CheatSheet';
 import MyInfo from './pages/myinfo';
 import ModifyMyInfo from './pages/myinfo/modify';
 import SetNewPassword from './pages/myinfo/SetNewPassword';
@@ -13,7 +12,7 @@ import EditQuiz from './pages/quiz/EditQuiz';
 import MakeQuiz from './pages/quiz/MakeQuiz';
 import Footer from './components/footer/Footer';
 import dotenv from 'dotenv';
-import './App.css';
+// import './App.css';
 dotenv.config();
 
 function App() {
@@ -23,7 +22,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/tutorial" element={<Tutorial />} />
-        <Route path="/cheatsheet" element={<CheatSheet />} />
         <Route path="/myinfo" element={<MyInfo />} />
         <Route path="/modify" element={<ModifyMyInfo />} />
         <Route path="/quizlist" element={<QuizList />} />

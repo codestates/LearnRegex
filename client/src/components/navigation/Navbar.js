@@ -42,9 +42,6 @@ const Navbar = ({ handleSidebar }) => {
                 퀴즈
               </NavLinks>
             </NavItem>
-            <NavItem>
-              <NavLinks to="/cheatsheet">자습서</NavLinks>
-            </NavItem>
             <NavBtnWrap>
               {isLogin ? <NavSignInBtn onClick={handleSubNavi}>{nickname}</NavSignInBtn> : <NavSignInBtn onClick={() => dispatch(setModal('signIn'))}>로그인</NavSignInBtn>}
               {isOpen ? (
