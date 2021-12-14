@@ -24,6 +24,7 @@ export const ModalWrapper = styled.div`
     if (modaltype === 'emailCert') return '330px';
     else if (modaltype === 'findPassword') return '280px';
     else if (modaltype === 'toHome') return '200px';
+    else if (modaltype === 'toUserInfo') return '200px';
     else if (modaltype === 'toSignOut') return '200px';
     else if (modaltype === 'deleteUserConfirm') return '250px';
     else return '550px';
@@ -42,6 +43,7 @@ export const ModalContent = styled.div`
     if (modaltype === 'emailCert') return '330px';
     else if (modaltype === 'findPassword') return '280px';
     else if (modaltype === 'toSignOut') return '200px';
+    else if (modaltype === 'toUserInfo') return '200px';
     else if (modaltype === 'toHome') return '200px';
     else if (modaltype === 'deleteUserConfirm') return '250px';
     else return '550px';
