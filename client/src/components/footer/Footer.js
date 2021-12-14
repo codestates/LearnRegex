@@ -1,12 +1,12 @@
 import React from 'react';
 import { FaGithub } from 'react-icons/fa';
-import { FooterContainer, FooterWrap, SocialMedia, SocialMediaWrap, SocialLogo, WebsiteRights, SocialIcons, SocialIconLink } from './FooterElements';
+import { FooterContainer, FooterWrap, ContentsWrap, SocialMediaWrap, SocialLogo, WebsiteRights, SocialIcons, SocialIconLink } from './FooterElements';
 
 const Footer = () => {
   return (
     <FooterContainer>
       <FooterWrap>
-        <SocialMedia>
+        <ContentsWrap>
           <SocialMediaWrap>
             <SocialLogo to="/">LearnRegex</SocialLogo>
             <WebsiteRights>LearnRegex © 2021 All rights reserved.</WebsiteRights>
@@ -29,7 +29,7 @@ const Footer = () => {
               </SocialIconLink>
             </SocialIcons>
           </SocialMediaWrap>
-        </SocialMedia>
+        </ContentsWrap>
       </FooterWrap>
     </FooterContainer>
   );

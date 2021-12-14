@@ -6,6 +6,7 @@ import { clearSession } from '../../lib/clearSession';
 import { requestSignOut } from '../../lib/requestUserInfo';
 import { checkUserIsLogin, checkUserNickname } from '../../lib/checkIsLogin';
 import { FaBars } from 'react-icons/fa';
+import logo from '../../images/logo.png';
 import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtnWrap, NavSignInBtn, SubNavigation } from './NavbarElements';
 
 const Navbar = ({ handleSidebar }) => {
@@ -29,7 +30,7 @@ const Navbar = ({ handleSidebar }) => {
     <>
       <Nav>
         <NavbarContainer>
-          <NavLogo to="/">LearnRegex</NavLogo>
+          <NavLogo src={logo} type="image/png" />
           <MobileIcon onClick={() => handleSidebar(true)}>
             <FaBars />
           </MobileIcon>

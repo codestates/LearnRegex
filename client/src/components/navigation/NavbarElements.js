@@ -10,9 +10,9 @@ import { Link as LinkR } from 'react-router-dom';
 import { Link as LinkS } from 'react-router-dom';
 
 export const Nav = styled.nav`
-  background: #000;
+  background: var(--color-white);
   height: 80px;
-  /* margin-top: -80px; */
+  margin-top: -1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,22 +30,19 @@ export const NavbarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   height: 80px;
-  z-index: 1;
+  z-index: 1000;
   width: 100%;
-  padding: 0 24px;
-  max-width: 1100px;
+  padding: 10px 24px;
+  max-width: 1170px;
 `;
 
-export const NavLogo = styled(LinkR)`
-  color: #fff;
+export const NavLogo = styled.img.attrs({})`
   justify-self: flex-start;
   cursor: pointer;
-  font-size: 1.5rem;
+  height: 100%;
   display: flex;
   align-items: center;
-  margin-left: 24px;
-  font-weight: bold;
-  text-decoration: none;
+  margin: 10px 0 30px 24px;
 `;
 
 // 반응형 햄버거 아이콘
@@ -55,12 +52,12 @@ export const MobileIcon = styled.div`
   @media screen and (max-width: 768px) {
     display: block;
     position: absolute;
-    top: 0;
+    top: 10px;
     right: 0;
     transform: translate(-100%, 60%);
-    font-size: 1.8rem; // 1rem = 16px
+    font-size: 2rem; // 1rem = 16px
     cursor: pointer;
-    color: #fff;
+    color: var(--color-blue);
   }
 `;
 
@@ -81,7 +78,7 @@ export const NavItem = styled.li`
 `;
 
 export const NavLinks = styled(LinkS)`
-  color: #fff;
+  color: var(--color-blue);
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -109,8 +106,8 @@ export const NavBtnWrap = styled.nav`
 
 export const NavSignInBtn = styled.button`
   border-radius: 20px;
-  background: #fff;
-  color: #000;
+  background: var(--color-blue);
+  color: var(--color-white);
   white-space: nowrap;
   padding: 10px 15px;
   font-size: 16px;
