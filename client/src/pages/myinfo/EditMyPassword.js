@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { setModal } from '../../modules/modal';
 import { requestEditUserPassword } from '../../lib/requestUserInfo';
 import { isValidEditUserPassword, isValidPassword, isValidPasswordConfirm } from '../../lib/validationFunction';
-import { Container, InputBox, Input, NewButton } from './EditMyPassword.styled';
+import { Container, InputBox, Input, NewButton, Box } from './EditMyPassword.styled';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -65,32 +65,34 @@ export const EditMyPassword = () => {
   return (
     <>
       <Container>
-        <p>비밀번호 수정</p>
-        <div className="content">
-          <span>현재 비밀번호</span>
-          <InputBox>
-            <Input type="password" onChange={handleInputValue('oldPassword')} onKeyUp={handleKeyUp} />
-            <p>{errorMessage.oldPassword}&nbsp;</p>
-          </InputBox>
-        </div>
-        <div className="content">
-          <span>새로운 비밀번호</span>
-          <InputBox>
-            <Input type="password" onChange={handleInputValue('newPassword')} onKeyUp={handleKeyUp} />
-            <p>{errorMessage.newPassword}&nbsp;</p>
-          </InputBox>
-        </div>
-        <div className="content">
-          <span>비밀번호 재입력</span>
-          <InputBox>
-            <Input type="password" onChange={handleInputValue('confirm')} onKeyUp={handleKeyUp} />
-            <p>{errorMessage.confirm}&nbsp;</p>
-          </InputBox>
-        </div>
-        <div className="buttonBox">
-          <NewButton onClick={handleSubmit}>수정 완료</NewButton>
-          <NewButton onClick={() => navigate('/myinfo')}>취소</NewButton>
-        </div>
+        <Box>
+          <p>비밀번호 수정</p>
+          <div className="content">
+            <span>현재 비밀번호</span>
+            <InputBox>
+              <Input type="password" onChange={handleInputValue('oldPassword')} onKeyUp={handleKeyUp} />
+              <p>{errorMessage.oldPassword}&nbsp;</p>
+            </InputBox>
+          </div>
+          <div className="content">
+            <span>새로운 비밀번호</span>
+            <InputBox>
+              <Input type="password" onChange={handleInputValue('newPassword')} onKeyUp={handleKeyUp} />
+              <p>{errorMessage.newPassword}&nbsp;</p>
+            </InputBox>
+          </div>
+          <div className="content">
+            <span>비밀번호 재입력</span>
+            <InputBox>
+              <Input type="password" onChange={handleInputValue('confirm')} onKeyUp={handleKeyUp} />
+              <p>{errorMessage.confirm}&nbsp;</p>
+            </InputBox>
+          </div>
+          <div className="buttonBox">
+            <NewButton onClick={handleSubmit}>수정 완료</NewButton>
+            <NewButton onClick={() => navigate('/myinfo')}>취소</NewButton>
+          </div>
+        </Box>
       </Container>
     </>
   );

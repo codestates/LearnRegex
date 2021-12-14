@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Button } from '../../styled/button/CommonButton.styled';
+import { ShadowBox } from '../../styled/shadowBox.styled';
 
 export const Container = styled.div`
   display: flex;
@@ -36,8 +37,10 @@ export const Container = styled.div`
   }
 `;
 
+export const Box = styled(ShadowBox)``;
+
 export const NewButton = styled(Button)`
-  width: 20%;
+  width: 12rem;
   margin: 2.9rem 0 4rem 0;
 `;
 

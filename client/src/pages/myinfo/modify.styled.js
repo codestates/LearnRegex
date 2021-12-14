@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Button } from '../../styled/button/CommonButton.styled';
+import { ShadowBox } from '../../styled/shadowBox.styled';
 
 export const Container = styled.div`
   width: 80%;
@@ -21,31 +22,28 @@ export const Container = styled.div`
     align-items: center;
     margin: 1.3rem;
   }
+  hr {
+    border: dashed 1px;
+    color: var(--color-light-blue);
+  }
 
-  .box {
+  .buttonBox {
+    display: flex;
+    height: 50%;
+    justify-content: center;
+    align-items: center;
     /* border: 1px solid; */
-    box-shadow: 0px 5px 8px rgba(171, 180, 221, 0.4);
-    width: 30rem;
-    height: 26rem;
-    margin: 0 1rem;
 
-    hr {
-      border: dashed 1px;
-      color: var(--color-light-blue);
-    }
-
-    .buttonBox {
-      display: flex;
-      height: 50%;
-      justify-content: center;
-      align-items: center;
-      /* border: 1px solid; */
-
-      p {
-        color: var(--color-red);
-      }
+    p {
+      color: var(--color-red);
     }
   }
+`;
+
+export const Box = styled(ShadowBox)`
+  width: 30rem;
+  margin: 0 2rem;
+  padding: 0;
 `;
 
 export const NewButton = styled(Button)`

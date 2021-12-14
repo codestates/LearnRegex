@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { setModal } from '../../modules/modal';
 import { requestSetNewPassword } from '../../lib/requestUserInfo';
 import { isValidSetNewPassword, isValidPassword, isValidPasswordConfirm } from '../../lib/validationFunction';
-import { Container, InputBox, Input, NewButton } from './SetNewPassword.styled';
+import { Container, InputBox, Input, NewButton, Box } from './SetNewPassword.styled';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -60,22 +60,24 @@ export const SetNewPassword = () => {
   return (
     <>
       <Container>
-        <p>비밀번호 재설정</p>
-        <div className="content">
-          <span>새로운 비밀번호</span>
-          <InputBox>
-            <Input type="password" onChange={handleInputValue('newPassword')} onKeyUp={handleKeyUp}></Input>
-            <p>&nbsp;&nbsp;{errorMessage.newPassword}</p>
-          </InputBox>
-        </div>
-        <div className="content">
-          <span>비밀번호 재입력</span>
-          <InputBox>
-            <Input type="password" onChange={handleInputValue('confirm')} onKeyUp={handleKeyUp}></Input>
-            <p>&nbsp;&nbsp;{errorMessage.confirm}</p>
-          </InputBox>
-        </div>
-        <NewButton onClick={handleSubmit}>수정 완료</NewButton>
+        <Box>
+          <p>비밀번호 재설정</p>
+          <div className="content">
+            <span>새로운 비밀번호</span>
+            <InputBox>
+              <Input type="password" onChange={handleInputValue('newPassword')} onKeyUp={handleKeyUp}></Input>
+              <p>&nbsp;&nbsp;{errorMessage.newPassword}</p>
+            </InputBox>
+          </div>
+          <div className="content">
+            <span>비밀번호 재입력</span>
+            <InputBox>
+              <Input type="password" onChange={handleInputValue('confirm')} onKeyUp={handleKeyUp}></Input>
+              <p>&nbsp;&nbsp;{errorMessage.confirm}</p>
+            </InputBox>
+          </div>
+          <NewButton onClick={handleSubmit}>수정 완료</NewButton>
+        </Box>
       </Container>
     </>
   );

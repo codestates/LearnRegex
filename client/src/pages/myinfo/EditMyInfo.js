@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { setModal } from '../../modules/modal';
 import { requestEditUserInfo } from '../../lib/requestUserInfo';
 import { isValidEditUserInfo, isValidEmail, isValidNickname } from '../../lib/validationFunction';
-import { Container, InputBox, Input, NewButton } from './EditMyInfo.styled';
+import { Container, InputBox, Input, NewButton, Box } from './EditMyInfo.styled';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -62,29 +62,31 @@ export const EditMyInfo = ({ myInfo }) => {
   return (
     <>
       <Container>
-        <p>프로필 수정</p>
-        <div className="content">
-          <span>이메일</span>
-          <InputBox>
-            {myInfo.socialType === 'local' ? ( //
-              <Input type="text" onChange={handleInputValue('email')} value={inputUserInfo.email} onKeyUp={handleKeyUp}></Input>
-            ) : (
-              <span>{myInfo.socialType + ' 로그인'}</span>
-            )}
-            <p>&nbsp;&nbsp;{errorMessage.email}</p>
-          </InputBox>
-        </div>
-        <div className="content">
-          <span>닉네임</span>
-          <InputBox>
-            <Input type="text" onChange={handleInputValue('nickname')} value={inputUserInfo.nickname} onKeyUp={handleKeyUp}></Input>
-            <p>&nbsp;&nbsp;{errorMessage.nickname}&nbsp;</p>
-          </InputBox>
-        </div>
-        <div className="buttonBox">
-          <NewButton onClick={handleSubmit}>수정 완료</NewButton>
-          <NewButton onClick={() => navigate('/myinfo')}>취소</NewButton>
-        </div>
+        <Box>
+          <p>프로필 수정</p>
+          <div className="content">
+            <span>이메일</span>
+            <InputBox>
+              {myInfo.socialType === 'local' ? ( //
+                <Input type="text" onChange={handleInputValue('email')} value={inputUserInfo.email} onKeyUp={handleKeyUp}></Input>
+              ) : (
+                <span>{myInfo.socialType + ' 로그인'}</span>
+              )}
+              <p>&nbsp;&nbsp;{errorMessage.email}</p>
+            </InputBox>
+          </div>
+          <div className="content">
+            <span>닉네임</span>
+            <InputBox>
+              <Input type="text" onChange={handleInputValue('nickname')} value={inputUserInfo.nickname} onKeyUp={handleKeyUp}></Input>
+              <p>&nbsp;&nbsp;{errorMessage.nickname}&nbsp;</p>
+            </InputBox>
+          </div>
+          <div className="buttonBox">
+            <NewButton onClick={handleSubmit}>수정 완료</NewButton>
+            <NewButton onClick={() => navigate('/myinfo')}>취소</NewButton>
+          </div>
+        </Box>
       </Container>
     </>
   );
