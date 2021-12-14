@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import GlobalStyle from './styled';
 
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
@@ -23,6 +24,7 @@ ReactDOM.render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <App />
+        <GlobalStyle />
       </PersistGate>
     </Provider>
   </BrowserRouter>,
