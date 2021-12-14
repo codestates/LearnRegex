@@ -25,16 +25,16 @@ const Modal = () => {
     else if (modalType === 'emailCert') return <EmailCert />;
     else if (modalType === 'findPassword') return <FindPassword />;
     else if (modalType === 'deleteUserConfirm') return <DeleteUserConfirm />;
-    else if (modalType === 'DeleteAnswerConfirm') return <DeleteAnswerConfirm />;
+    else if (modalType === 'deleteAnswerConfirm') return <DeleteAnswerConfirm />;
     else if (modalType === 'tutorialAnswer') return <QuizAnswer />;
   };
 
   return (
     <>
       <Background>
-        <ModalWrapper modalType={modalType}>
-          <ModalContent modalType={modalType}>
-            <CloseModalButton onClick={() => dispatch(setModal('close'))} />
+        <ModalWrapper modaltype={modalType}>
+          <ModalContent modaltype={modalType}>
+            <CloseModalButton modaltype={modalType} onClick={() => dispatch(setModal('close'))} />
             <SetContent />
           </ModalContent>
         </ModalWrapper>
