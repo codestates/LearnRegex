@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import { EditMyInfo } from './EditMyInfo';
 import { EditMyPassword } from './EditMyPassword';
 import { checkUserIsLogin } from '../../lib/checkIsLogin';
+import { Container, Button, Span } from './modify.styled';
 dotenv.config();
 
 const MyInfo = () => {
@@ -48,12 +49,40 @@ const MyInfo = () => {
   const Modify = () => {
     return (
       <>
-        <h3>Modify</h3>
-        <p>Email: {myInfo.socialType === 'local' ? myInfo.email : 'Login as ' + myInfo.socialType}</p>
-        <p>Nickname: {myInfo.nickname}</p>
-        <button onClick={handleEditMyInfo}>프로필 수정</button>
-        {myInfo.socialType === 'local' ? <button onClick={handleEditMyPassword}>비밀번호 수정</button> : <></>}
-        <button onClick={handleDeleteMyInfo}>회원 탈퇴</button>
+        <Container>
+          <div className="box">
+            <div className="contentBox">
+              <div className="content">
+                <Span category>
+                  <span>이메일</span>
+                </Span>
+                <Span>
+                  <span>{myInfo.socialType === 'local' ? myInfo.email : 'Login as ' + myInfo.socialType}</span>
+                </Span>
+              </div>
+              <div className="content">
+                <Span category>
+                  <span>닉네임</span>
+                </Span>
+                <Span>
+                  <span>{myInfo.nickname}</span>
+                </Span>
+              </div>
+            </div>
+            <div className="buttonBox">
+              <Button onClick={handleEditMyInfo}>프로필 수정</Button>
+            </div>
+          </div>
+          <div className="box">
+            <div className="buttonBox">{myInfo.socialType === 'local' ? <Button onClick={handleEditMyPassword}>비밀번호 수정</Button> : <p>비밀번호 수정 불가능</p>}</div>
+            <hr />
+            <div className="buttonBox">
+              <Button danger onClick={handleDeleteMyInfo}>
+                회원 탈퇴
+              </Button>
+            </div>
+          </div>
+        </Container>
       </>
     );
   };

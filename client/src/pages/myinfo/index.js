@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { requestGetMyInfo } from '../../lib/requestUserInfo';
 import { checkUserIsLogin } from '../../lib/checkIsLogin';
-import { Container, EmailIcon, NicknameIcon, RegisterQuizIcon, ClearQuizIcon, Span } from './index.styled';
+import { Container, Span } from './index.styled';
 import dotenv from 'dotenv';
 dotenv.config();
 
