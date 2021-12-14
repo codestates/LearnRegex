@@ -5,53 +5,32 @@ export const Container = styled.div`
   flex-direction: column;
   margin: auto;
   width: 70%;
-  /* border: 1px solid; */
   text-align: center;
   align-items: center;
   padding: 10rem 0 12rem 0;
+  /* border: 1px solid; */
 
   p {
+    font-size: 2rem;
     font-family: IBMPlexSansKR-Bold;
     color: var(--color-dark-blue);
-    font-size: 2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 4.5rem;
+    /* border: 1px solid; */
   }
 
-  .box {
-    width: 40%;
-    height: 4rem;
+  .content {
+    width: 100%;
     display: flex;
+    /* border: 1px solid; */
+    align-items: center;
     justify-content: center;
-    /* align-items: center; */
-    margin: 0.2rem 0;
+    margin: 0.4rem 0;
 
     span {
-      margin: 0.7rem 1rem 0 0;
-    }
-
-    .input {
-      display: flex;
-      flex-direction: column;
-      height: 4rem;
-      text-align: left;
-      margin: 0.1rem 0;
-      /* border: 1px solid; */
-
-      input {
-        width: 100%;
-        height: 2.5rem;
-        background-color: var(--color-gray);
-        border-radius: 7px;
-        opacity: 0.7;
-        padding: 0 0.6rem 0 0.6rem;
-      }
-
-      span {
-        color: var(--color-red);
-        opacity: 0.8;
-        font-size: 0.9rem;
-        margin: 0 0;
-      }
+      /* width: 20rem; */
+      margin-bottom: 0.8rem;
+      text-align: right;
+      padding-right: 1rem;
     }
   }
 
@@ -60,7 +39,7 @@ export const Container = styled.div`
     height: 40px;
     font-size: 1.3rem;
     border-radius: 1rem;
-    margin: 4rem 0 0;
+    margin: 2.9rem 0 4rem 0;
     background-color: var(--color-blue);
     color: white;
 
@@ -71,4 +50,27 @@ export const Container = styled.div`
       transform: translateY(-2px);
     }
   }
+`;
+
+export const InputBox = styled.div`
+  width: 20rem;
+  height: 4rem;
+  text-align: left;
+  margin: 0.1rem 0;
+
+  p {
+    color: var(--color-red);
+    opacity: 0.8;
+    font-size: 0.9rem;
+    margin: 0;
+  }
+`;
+
+export const Input = styled.input.attrs({})`
+  width: 100%;
+  height: 2.5rem;
+  background-color: var(--color-gray);
+  border-radius: 7px;
+  opacity: 0.7;
+  padding: 0 0.6rem 0 0.6rem;
 `;

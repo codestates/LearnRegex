@@ -20,7 +20,9 @@ const Modal = () => {
   const SetContent = () => {
     if (modalType === 'signIn') return <SignIn />;
     else if (modalType === 'signUp') return <SignUp />;
-    else if (modalType === 'alert') return <Alert />;
+    else if (modalType === 'toHome') return <Alert func={modalType} />;
+    else if (modalType === 'toSignOut') return <Alert func={modalType} />;
+    else if (modalType === 'toUserInfo') return <Alert func={modalType} />;
     else if (modalType === 'quizAnswer') return <QuizAnswer />;
     else if (modalType === 'emailCert') return <EmailCert />;
     else if (modalType === 'findPassword') return <FindPassword />;
