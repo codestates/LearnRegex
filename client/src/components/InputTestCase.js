@@ -12,7 +12,7 @@ export const Textarea = styled.textarea.attrs({})`
 `;
 
 // ! ---------------------------- 테스트케이스 입력창 -----------------
-export const InputTestCase = ({ testCases, handleInputTestCase, handleTaskButton }) => {
+export const InputTestCase = ({ testCases, handleInputTestCase, handleTaskButton, handleTestCaseQuantity }) => {
   return (
     <div>
       {testCases.map((testCase, idx) => {
@@ -25,6 +25,9 @@ export const InputTestCase = ({ testCases, handleInputTestCase, handleTaskButton
               </button>
             </h3>
             <Textarea value={testCase.target} placeholder="testCase를 입력하세요" maxLength="400" onChange={handleInputTestCase(idx)} />
+            <button type="button" onClick={handleTestCaseQuantity('delete', idx)}>
+              ➖
+            </button>
           </div>
         );
       })}

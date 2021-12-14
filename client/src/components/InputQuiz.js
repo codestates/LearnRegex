@@ -24,9 +24,7 @@ function InputQuiz({ data }) {
   };
   const [content, setContent] = useState({
     title: '',
-    testCase: Array(5)
-      .fill()
-      .map(() => makeTestCase()),
+    testCase: [makeTestCase()],
     testCaseTarget: 'deprecated',
     answer: '',
     explanation: '',
@@ -49,36 +47,48 @@ function InputQuiz({ data }) {
   };
 
   // ! ---------------------------- 테스트케이스 입력 -------------------------
-  const handleInputTestCase = (key) => (e) => {
+  const handleTaskButton = (idx) => (e) => {
     const newTestCase = content.testCase.slice();
-    newTestCase[key].target = e.target.value;
+    if (newTestCase[idx].task === 'click') newTestCase[idx].task = 'match';
+    else if (newTestCase[idx].task === 'match') newTestCase[idx].task = 'skip';
+    else if (newTestCase[idx].task === 'skip') newTestCase[idx].task = 'capture';
+    else if (newTestCase[idx].task === 'capture') newTestCase[idx].task = 'match';
+    setContent({ ...content, testCase: newTestCase });
+  };
+
+  const handleInputTestCase = (idx) => (e) => {
+    const newTestCase = content.testCase.slice();
+    newTestCase[idx].target = e.target.value;
     setContent({ ...content, testCase: newTestCase });
   };
   console.log(content);
 
-  const handleTaskButton = (key) => (e) => {
-    const newTestCase = content.testCase.slice();
-    if (newTestCase[key].task === 'click') newTestCase[key].task = 'match';
-    else if (newTestCase[key].task === 'match') newTestCase[key].task = 'skip';
-    else if (newTestCase[key].task === 'skip') newTestCase[key].task = 'capture';
-    else if (newTestCase[key].task === 'capture') newTestCase[key].task = 'match';
-    setContent({ ...content, testCase: newTestCase });
-  };
-
-  const handleFocusTestCase = (key) => (e) => {
-    key === 'testCase' ? setFocusTestCase(true) : setFocusTestCase(false);
-  };
-
   const handleInputCapture = (idx, group) => {
-    const newTestCase = content.testCase.slice();
+    let newTestCase = content.testCase.slice();
     newTestCase[idx].groups = group;
     if (JSON.stringify(newTestCase[idx].groups) !== JSON.stringify(group)) setContent({ ...content, testCase: newTestCase });
   };
 
   const handleIsCorrectRegTotal = (e) => {
     const result = e.indexOf(false) === -1;
-    if (isCorrectRegTotal) return;
     if (result !== isCorrectRegTotal) setIsCorrectRegTotal(result);
+  };
+
+  const handleFocusTestCase = (key) => (e) => {
+    key === 'testCase' ? setFocusTestCase(true) : setFocusTestCase(false);
+  };
+
+  const handleTestCaseQuantity = (key, idx) => (e) => {
+    let newTestCase = content.testCase.slice();
+    if (key === 'add' && newTestCase.length < 5) {
+      newTestCase.push(makeTestCase());
+    } else if (key === 'delete' && !!idx && newTestCase.length > 1) {
+      const front = newTestCase.slice().splice(0, idx);
+      const back = newTestCase.slice().splice(idx + 1);
+      newTestCase = [...front, ...back];
+    }
+    console.log(newTestCase);
+    setContent({ ...content, testCase: newTestCase });
   };
 
   // ! ---------------------------- 서버 전송 ----------------------------------
@@ -91,10 +101,11 @@ function InputQuiz({ data }) {
       explanation: content.explanation === '',
     };
     setIsEmpty({ ...result });
-    console.log(data);
+    console.log(isCorrectRegTotal);
 
-    if (Object.values(result).indexOf(true) === -1) submitQuiz(data, content);
-    else alert('모든 칸을 채워주세요!');
+    if (Object.values(result).indexOf(true) !== -1) alert('모든 칸을 채워주세요!');
+    else if (!isCorrectRegTotal) alert('정규표현식을 확인해주세요!');
+    else submitQuiz(data, content);
   };
 
   // ! ---------------------------- 수정일 경우 데이터 삽입 ----------------------------------
@@ -118,15 +129,29 @@ function InputQuiz({ data }) {
           <div onClick={handleFocusTestCase('testCase')}>
             <h2>Test Case</h2>
             {focusTestCase ? ( //
-              <InputTestCase testCases={content.testCase} handleInputTestCase={handleInputTestCase} handleTaskButton={handleTaskButton} />
+              <InputTestCase //
+                testCases={content.testCase}
+                handleInputTestCase={handleInputTestCase}
+                handleTaskButton={handleTaskButton}
+                handleTestCaseQuantity={handleTestCaseQuantity}
+              />
             ) : (
-              <ShowTestCase testCases={content.testCase} inputRegex={content.answer} handleIsCorrectRegTotal={handleIsCorrectRegTotal} handleInputCapture={handleInputCapture} />
+              <ShowTestCase //
+                testCases={content.testCase}
+                inputRegex={content.answer}
+                handleIsCorrectRegTotal={handleIsCorrectRegTotal}
+                handleInputCapture={handleInputCapture}
+                handleTestCaseQuantity={handleTestCaseQuantity}
+              />
             )}
             {/* <div>
               <p>곧 사라질 입력창입니다.</p>
               <Textarea isEmpty={isEmpty.testCaseTarget} value={content.testCaseTarget} placeholder="testCaseTarget을 입력하세요" readonly maxLength="400" />
             </div> */}
           </div>
+          <button type="button" onClick={handleTestCaseQuantity('add')}>
+            ➕
+          </button>
           <div onClick={handleFocusTestCase('answer')}>
             <h2>정답 / 해설</h2>
             <div>

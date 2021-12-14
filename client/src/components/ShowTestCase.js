@@ -1,7 +1,7 @@
 import React from 'react';
 import Interweave from 'interweave';
 
-export const ShowTestCase = ({ testCases, inputRegex, handleIsCorrectRegTotal, handleInputCapture }) => {
+export const ShowTestCase = ({ testCases, inputRegex, handleIsCorrectRegTotal, handleInputCapture, handleTestCaseQuantity }) => {
   if (testCases.length === 0) return <></>;
   //! ------------------------ 정규표현식 생성 --------------------
   const createMyRegex = (inputRegex) => {
@@ -76,9 +76,17 @@ export const ShowTestCase = ({ testCases, inputRegex, handleIsCorrectRegTotal, h
         <div iscorrectregtotal={isCorrectRegTotal}>
           <Interweave content={regExpResult.highlightedTestCase} />
           {isCorrectReg ? '✅' : '❌'}
+          {handleTestCaseQuantity ? (
+            <button type="button" onClick={handleTestCaseQuantity('delete', idx)}>
+              ➖
+            </button>
+          ) : (
+            <></>
+          )}
+
           {testCase.task === 'capture' ? (
             isCaptuerInput ? (
-              captureInputArray.map((el, idx) => <p class="found">{el}</p>)
+              captureInputArray.map((el) => <p class="found">{el}</p>)
             ) : (
               testCase.groups.map((el, idx) => (isCorrectRegGroups[idx] ? <p class="found">{el}</p> : <p>{el}</p>))
             )
