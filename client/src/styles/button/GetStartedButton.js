@@ -1,13 +1,14 @@
 import styled from 'styled-components';
-import { Link } from 'react-scroll';
+import { Link as LinkS } from 'react-scroll';
 
-export const GetStartedButton = styled(Link)`
+export const GetStartedButton = styled(LinkS)`
   border-radius: 50px;
   background: ${({ primary }) => (primary ? 'var(--color-blue)' : 'var(--color-gray')};
   white-space: nowrap;
   padding: ${({ big }) => (big ? '14px 48px' : '12px 30px')};
-  color: ${({ dark }) => (dark ? '#010606' : '#ffffff')};
-  font-size: ${({ fontBig }) => (fontBig ? '20px' : '16px')};
+  color: var(--color-white);
+  font-size: 1rem;
+  font-family: 'IBMPlexSansKR-SemiBold';
   outline: none;
   border: none;
   cursor: pointer;

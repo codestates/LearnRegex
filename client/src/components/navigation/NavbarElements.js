@@ -7,7 +7,7 @@ import { Link as LinkR } from 'react-router-dom';
 // 랜딩페이지에서 스크롤 애니메이션 (추후 변동 가능성 있음)
 // 사용하지 않을 시 styled(LinkS) -> styled(LinkR)로 변경하거나
 // styled(Link)로 통일
-import { Link as LinkS } from 'react-router-dom';
+import { Link as LinkS } from 'react-scroll';
 
 export const Nav = styled.nav`
   background: var(--color-white);
@@ -63,12 +63,14 @@ export const MobileIcon = styled.div`
 `;
 
 export const NavMenu = styled.ul`
+  font-size: 1.2rem;
+  font-family: 'IBMPlexSansKR-SemiBold';
   display: flex;
   align-items: center;
   list-style: none;
   text-align: center;
   margin-right: -1.375rem;
-  margin-bottom: -0.5rem;
+  margin-bottom: -1rem;
 
   @media screen and (max-width: 768px) {
     display: none;
@@ -76,7 +78,7 @@ export const NavMenu = styled.ul`
 `;
 
 export const NavItem = styled.li`
-  height: 100px;
+  height: 100%;
 `;
 
 export const NavLinks = styled(LinkS)`
@@ -113,7 +115,7 @@ export const NavSignInBtn = styled.button`
   color: var(--color-white);
   white-space: nowrap;
   padding: 10px 15px;
-  font-size: 16px;
+  font-size: 1.25rem;
   outline: none;
   border: none;
   cursor: pointer;

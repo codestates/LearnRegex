@@ -49,7 +49,7 @@ export const HeroH1 = styled.h1`
   border-radius: 10px;
   color: var(--color-black);
   font-size: 3rem;
-  font-family: 'IBMPlexSansKR-SemiBold';
+  font-family: 'IBMPlexSansKR-Bold';
   text-align: center;
 
   @media screen and (max-width: 768px) {
@@ -66,6 +66,7 @@ export const HeroP = styled.p`
   color: var(--color-black);
   /* background-color: rgba(051, 102, 153, 0.1); */
   font-size: 1.5rem;
+  font-family: 'IBMPlexSansKR-SemiBold';
   text-align: center;
   max-width: 37.5rem;
 
