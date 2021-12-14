@@ -107,7 +107,7 @@ module.exports = {
       // 유저의 아이디만 담긴 임시 토큰 발급하여 유저 메일로 발송
       const token = getToken({ id: userInfo[0].id });
 
-      const html = `<img width="350" alt="learnregex-logo" src="https://user-images.githubusercontent.com/62797565/143479379-106673e5-05e7-4447-9138-979457152e54.png"/>
+      const html = `<img width="350" alt="learnregex-logo" src="https://user-images.githubusercontent.com/87485508/145760234-b6883d97-25df-4199-bb0b-db5fdbd5156b.png"/>
                     <h3> 안녕하세요 Learn Regex 인증 메일입니다. </h3>
                     <h3> 아래 버튼을 눌러 이메일 인증을 완료해주세요! </h3>
                     <button style="background-color:white"><a style="text-decoration:none; color:black;" href='${process.env.REDIRECT_URI}?token=${token}&state=signup'>Learn Regex 시작하기!</a></button>`;
