@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { setModal } from '../../modules/modal';
 import { requestSetNewPassword } from '../../lib/requestUserInfo';
 import { isValidSetNewPassword, isValidPassword, isValidPasswordConfirm } from '../../lib/validationFunction';
+import { Container } from './SetNewPassword.styled';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -52,18 +53,24 @@ export const SetNewPassword = () => {
 
   return (
     <>
-      <div>
-        <h1>SetNewPassword</h1>
-        <h2>Password</h2>
-        <input type="text" onChange={handleInputValue('newPassword')} onKeyUp={handleKeyUp}></input>
-        <p>{errorMessage.newPassword}&nbsp;</p>
-
-        <h2>Password Confirm</h2>
-        <input type="text" onChange={handleInputValue('confirm')} onKeyUp={handleKeyUp}></input>
-        <p>{errorMessage.confirm}&nbsp;</p>
-
-        <input type="button" onClick={handleSubmit} value="Submit" />
-      </div>
+      <Container>
+        <p>비밀번호 재설정</p>
+        <div className="box">
+          <span>새로운 비밀번호</span>
+          <div className="input">
+            <input type="password" onChange={handleInputValue('newPassword')} onKeyUp={handleKeyUp}></input>
+            <span>{errorMessage.newPassword}&nbsp;</span>
+          </div>
+        </div>
+        <div className="box">
+          <span>비밀번호 재입력</span>
+          <div className="input">
+            <input type="password" onChange={handleInputValue('confirm')} onKeyUp={handleKeyUp}></input>
+            <span>{errorMessage.confirm}&nbsp;</span>
+          </div>
+        </div>
+        <button onClick={handleSubmit}>수정 완료</button>
+      </Container>
     </>
   );
 };
