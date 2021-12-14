@@ -24,7 +24,7 @@ export const Container = styled.div`
     margin: 0.4rem 0;
 
     span {
-      width: 7rem;
+      width: 10rem;
       font-family: IBMPlexSansKR-SemiBold;
       font-size: 1.2rem;
       margin-bottom: 1.2rem;
