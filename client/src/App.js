@@ -30,7 +30,7 @@ function App() {
         <Route path="/makequiz" element={<MakeQuiz />} />
         <Route path="/editquiz/:id" element={<EditQuiz />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

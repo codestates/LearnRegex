@@ -50,7 +50,7 @@ export const SetNewPassword = () => {
     if (inputUserInfo.newPassword === inputUserInfo.confirm) {
       // * 서버 통신
       const serverResult = await requestSetNewPassword(inputUserInfo);
-      if (serverResult === true) return dispatch(setModal('toSignOut'));
+      if (serverResult === true) return dispatch(setModal('toHome'));
       else console.log('error!');
     } else if (inputUserInfo.newPassword !== inputUserInfo.confirm) {
       setErrorMessage({ ...inputUserInfo, newPassword: '', confirm: '비밀번호를 다시 확인하세요.' });

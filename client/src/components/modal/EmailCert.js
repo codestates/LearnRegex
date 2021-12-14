@@ -53,7 +53,7 @@ const EmailCert = () => {
   return (
     <>
       <Container>
-        <img src="/assets/email.png" alt="email.png" />
+        <img src="/assets/emailCert.png" alt="email.png" />
         <h2>인증 메일 발송 완료</h2>
         <p>메일함에서 인증 메일을 확인 바랍니다.</p>
         <p>

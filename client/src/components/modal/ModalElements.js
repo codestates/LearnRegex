@@ -23,6 +23,8 @@ export const ModalWrapper = styled.div`
   height: ${({ modaltype }) => {
     if (modaltype === 'emailCert') return '330px';
     else if (modaltype === 'findPassword') return '280px';
+    else if (modaltype === 'toHome') return '200px';
+    else if (modaltype === 'toSignOut') return '200px';
     else return '550px';
   }};
   grid-template-columns: 1fr 1fr;
@@ -38,6 +40,8 @@ export const ModalContent = styled.div`
   height: ${({ modaltype }) => {
     if (modaltype === 'emailCert') return '330px';
     else if (modaltype === 'findPassword') return '280px';
+    else if (modaltype === 'toSignOut') return '200px';
+    else if (modaltype === 'toHome') return '200px';
     else return '550px';
   }};
 `;
