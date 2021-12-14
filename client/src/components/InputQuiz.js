@@ -22,60 +22,63 @@ function InputQuiz({ data }) {
   const makeTestCase = () => {
     return { task: 'match', target: '', groups: [] };
   };
-  const [content, setContent] = useState({ title: '', testCase: '', testCaseTarget: '', answer: '', explanation: '' });
-  const [isEmpty, setIsEmpty] = useState({ title: false, testCase: false, testCaseTarget: false, answer: false, explanation: false });
-  const [focusTestCase, setFocusTestCase] = useState(true);
-  const [testCases, setTestCases] = useState(
-    Array(5)
+  const [content, setContent] = useState({
+    title: '',
+    testCase: Array(5)
       .fill()
-      .map(() => makeTestCase())
-  );
+      .map(() => makeTestCase()),
+    testCaseTarget: 'deprecated',
+    answer: '',
+    explanation: '',
+  });
+  const [isEmpty, setIsEmpty] = useState({
+    title: false,
+    testCase: false,
+    answer: false,
+    explanation: false,
+  });
+  const [focusTestCase, setFocusTestCase] = useState(true);
+  const [isCorrectRegTotal, setIsCorrectRegTotal] = useState(false);
 
   // * --------- 텍스트창 입력 ---------
   const handleInputValue = (key) => (e) => {
     if (isEmpty[key] === true) setIsEmpty({ ...isEmpty, [key]: false }); // 빈 칸이었다가 무언가 입력 시  빨간 테두리 사라짐
     let result = limitChar(e.target.value.length, e.target.maxLength);
 
-    // * 정규표현식 관련 변수 초기화
-    let testCase = content.testCase;
-    let answer = content.answer;
-    if (key === 'testCase') testCase = e.target.value;
-    else if (key === 'answer') answer = e.target.value;
-
-    // * 정규표현식 만들기
-    let myRegex = '';
-    try {
-      const flags = 'g';
-      const pattern = answer || '^$';
-      myRegex = new RegExp(pattern, flags);
-    } catch (e) {
-      myRegex = new RegExp('^$', 'g');
-    }
-    let matchArray = myRegex.exec(testCase);
-    let testCaseTarget = Array.isArray(matchArray) ? matchArray[0] : '';
-    if (!!result) setContent({ ...content, testCaseTarget: testCaseTarget, [key]: e.target.value });
+    if (!!result) setContent({ ...content, [key]: e.target.value });
   };
 
   // ! ---------------------------- 테스트케이스 입력 -------------------------
   const handleInputTestCase = (key) => (e) => {
-    const newTestCase = testCases.slice();
-    newTestCase[key].target[0] = e.target.value;
-    setTestCases(newTestCase);
-    console.log(newTestCase);
+    const newTestCase = content.testCase.slice();
+    newTestCase[key].target = e.target.value;
+    setContent({ ...content, testCase: newTestCase });
   };
+  console.log(content);
 
   const handleTaskButton = (key) => (e) => {
-    const newTestCase = testCases.slice();
+    const newTestCase = content.testCase.slice();
     if (newTestCase[key].task === 'click') newTestCase[key].task = 'match';
     else if (newTestCase[key].task === 'match') newTestCase[key].task = 'skip';
     else if (newTestCase[key].task === 'skip') newTestCase[key].task = 'capture';
     else if (newTestCase[key].task === 'capture') newTestCase[key].task = 'match';
-    setTestCases(newTestCase);
+    setContent({ ...content, testCase: newTestCase });
   };
 
   const handleFocusTestCase = (key) => (e) => {
     key === 'testCase' ? setFocusTestCase(true) : setFocusTestCase(false);
-    console.log(focusTestCase);
+  };
+
+  const handleInputCapture = (idx, group) => {
+    const newTestCase = content.testCase.slice();
+    newTestCase[idx].groups = group;
+    if (JSON.stringify(newTestCase[idx].groups) !== JSON.stringify(group)) setContent({ ...content, testCase: newTestCase });
+  };
+
+  const handleIsCorrectRegTotal = (e) => {
+    const result = e.indexOf(false) === -1;
+    if (isCorrectRegTotal) return;
+    if (result !== isCorrectRegTotal) setIsCorrectRegTotal(result);
   };
 
   // ! ---------------------------- 서버 전송 ----------------------------------
@@ -88,6 +91,7 @@ function InputQuiz({ data }) {
       explanation: content.explanation === '',
     };
     setIsEmpty({ ...result });
+    console.log(data);
 
     if (Object.values(result).indexOf(true) === -1) submitQuiz(data, content);
     else alert('모든 칸을 채워주세요!');
@@ -109,21 +113,19 @@ function InputQuiz({ data }) {
         </div>
         <form onSubmit={(e) => e.preventDefault()}>
           <div>
-            <Input isEmpty={isEmpty.title} type="text" value={testCases.title} placeholder="제목을 입력하세요" maxLength="20" onChange={handleInputValue('title')} />
+            <Input isEmpty={isEmpty.title} type="text" value={content.title} placeholder="제목을 입력하세요" maxLength="20" onChange={handleInputValue('title')} />
           </div>
           <div onClick={handleFocusTestCase('testCase')}>
             <h2>Test Case</h2>
             {focusTestCase ? ( //
-              <InputTestCase testCases={testCases} handleInputTestCase={handleInputTestCase} handleTaskButton={handleTaskButton} />
+              <InputTestCase testCases={content.testCase} handleInputTestCase={handleInputTestCase} handleTaskButton={handleTaskButton} />
             ) : (
-              <ShowTestCase testCases={testCases} inputRegex={content.answer} />
+              <ShowTestCase testCases={content.testCase} inputRegex={content.answer} handleIsCorrectRegTotal={handleIsCorrectRegTotal} handleInputCapture={handleInputCapture} />
             )}
-
-            <div>
-              {/* //? 수정할 수 없는 Textarea. 디자인 처리할 때 다른 태그로 바꿔야될 것 같음 */}
+            {/* <div>
               <p>곧 사라질 입력창입니다.</p>
               <Textarea isEmpty={isEmpty.testCaseTarget} value={content.testCaseTarget} placeholder="testCaseTarget을 입력하세요" readonly maxLength="400" />
-            </div>
+            </div> */}
           </div>
           <div onClick={handleFocusTestCase('answer')}>
             <h2>정답 / 해설</h2>

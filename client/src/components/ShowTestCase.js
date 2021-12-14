@@ -1,9 +1,8 @@
 import React from 'react';
 import Interweave from 'interweave';
 
-export const ShowTestCase = ({ testCases, inputRegex, handleIsCorrectRegTotal }) => {
+export const ShowTestCase = ({ testCases, inputRegex, handleIsCorrectRegTotal, handleInputCapture }) => {
   if (testCases.length === 0) return <></>;
-  // console.log(testCases);
   //! ------------------------ 정규표현식 생성 --------------------
   const createMyRegex = (inputRegex) => {
     // * Make new RegExp
@@ -40,6 +39,8 @@ export const ShowTestCase = ({ testCases, inputRegex, handleIsCorrectRegTotal })
     let regExpResult = realtimeRegex(testCase, myRegex);
     let isCorrectReg = false;
     let isCorrectRegGroups = Array(testCase.target.length).fill(false);
+    let captureInputArray = [];
+    const isCaptuerInput = !!handleInputCapture;
     const matchArray = regExpResult.matchArray;
     const isValidRegex = Array.isArray(matchArray);
 
@@ -48,16 +49,24 @@ export const ShowTestCase = ({ testCases, inputRegex, handleIsCorrectRegTotal })
       if (isValidRegex) isCorrectReg = regExpResult.matchArray[0] === testCase.target;
     } else if (testCase.task === 'skip') {
       if (!isValidRegex) isCorrectReg = true;
+    } else if (testCase.task === 'capture' && isCaptuerInput) {
+      if (isValidRegex) {
+        captureInputArray = regExpResult.matchArray.slice(1);
+        if (!!handleInputCapture) handleInputCapture(idx, captureInputArray);
+        isCorrectReg = true;
+      }
     } else if (testCase.task === 'capture') {
       if (isValidRegex) {
         isCorrectRegGroups = testCase.groups.map((group, idx) => group === regExpResult.matchArray[idx + 1]);
         isCorrectReg = isCorrectRegGroups.indexOf(false) === -1;
       }
     }
+    //! ------------------------ 모두 맞았는지 확인 ------------------------
+
     if (isCorrectReg) isCorrectRegTotal.push(true);
     else isCorrectRegTotal.push(false);
-
     if (arr.length === isCorrectRegTotal.length) handleIsCorrectRegTotal(isCorrectRegTotal);
+
     // * 출력
     return (
       <>
@@ -68,10 +77,11 @@ export const ShowTestCase = ({ testCases, inputRegex, handleIsCorrectRegTotal })
           <Interweave content={regExpResult.highlightedTestCase} />
           {isCorrectReg ? '✅' : '❌'}
           {testCase.task === 'capture' ? (
-            // 0번 인덱스는 전체 값을 의미. highlightedTestCase 에서 표현
-            testCase.groups.map((el, idx) => {
-              return isCorrectRegGroups[idx] ? <p class="found">{el}</p> : <p>{el}</p>;
-            })
+            isCaptuerInput ? (
+              captureInputArray.map((el, idx) => <p class="found">{el}</p>)
+            ) : (
+              testCase.groups.map((el, idx) => (isCorrectRegGroups[idx] ? <p class="found">{el}</p> : <p>{el}</p>))
+            )
           ) : (
             <></>
           )}

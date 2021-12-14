@@ -24,7 +24,7 @@ export const InputTestCase = ({ testCases, handleInputTestCase, handleTaskButton
                 {testCase.task}
               </button>
             </h3>
-            <Textarea value={testCase.target[0]} placeholder="testCase를 입력하세요" maxLength="400" onChange={handleInputTestCase(idx)} />
+            <Textarea value={testCase.target} placeholder="testCase를 입력하세요" maxLength="400" onChange={handleInputTestCase(idx)} />
           </div>
         );
       })}
