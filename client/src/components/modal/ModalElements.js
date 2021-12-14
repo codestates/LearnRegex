@@ -25,6 +25,7 @@ export const ModalWrapper = styled.div`
     else if (modaltype === 'findPassword') return '280px';
     else if (modaltype === 'toHome') return '200px';
     else if (modaltype === 'toSignOut') return '200px';
+    else if (modaltype === 'deleteUserConfirm') return '250px';
     else return '550px';
   }};
   grid-template-columns: 1fr 1fr;
@@ -42,6 +43,7 @@ export const ModalContent = styled.div`
     else if (modaltype === 'findPassword') return '280px';
     else if (modaltype === 'toSignOut') return '200px';
     else if (modaltype === 'toHome') return '200px';
+    else if (modaltype === 'deleteUserConfirm') return '250px';
     else return '550px';
   }};
 `;

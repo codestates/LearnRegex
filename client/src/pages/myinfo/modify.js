@@ -57,7 +57,7 @@ const MyInfo = () => {
                   <span>이메일</span>
                 </Span>
                 <Span>
-                  <span>{myInfo.socialType === 'local' ? myInfo.email : 'Login as ' + myInfo.socialType}</span>
+                  <span>{myInfo.socialType === 'local' ? myInfo.email : myInfo.socialType + ' 로그인'}</span>
                 </Span>
               </div>
               <div className="content">
