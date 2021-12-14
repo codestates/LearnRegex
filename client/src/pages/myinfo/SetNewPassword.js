@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { setModal } from '../../modules/modal';
 import { requestSetNewPassword } from '../../lib/requestUserInfo';
 import { isValidSetNewPassword, isValidPassword, isValidPasswordConfirm } from '../../lib/validationFunction';
-import { Container, InputBox, Input } from './SetNewPassword.styled';
+import { Container, InputBox, Input, NewButton } from './SetNewPassword.styled';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -75,7 +75,7 @@ export const SetNewPassword = () => {
             <p>&nbsp;&nbsp;{errorMessage.confirm}</p>
           </InputBox>
         </div>
-        <button onClick={handleSubmit}>수정 완료</button>
+        <NewButton onClick={handleSubmit}>수정 완료</NewButton>
       </Container>
     </>
   );

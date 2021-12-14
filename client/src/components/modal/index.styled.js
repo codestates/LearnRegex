@@ -42,9 +42,7 @@ export const ModalContent = styled.div`
   height: ${({ modaltype }) => {
     if (modaltype === 'emailCert') return '330px';
     else if (modaltype === 'findPassword') return '280px';
-    else if (modaltype === 'toSignOut') return '200px';
-    else if (modaltype === 'toUserInfo') return '200px';
-    else if (modaltype === 'toHome') return '200px';
+    else if (modaltype === 'toSignOut' || modaltype === 'toUserInfo' || modaltype === 'toHome') return '200px';
     else if (modaltype === 'deleteUserConfirm') return '250px';
     else return '550px';
   }};
@@ -55,12 +53,8 @@ export const CloseModalButton = styled(MdClose)`
   cursor: pointer;
   ${({ modaltype }) => {
     if (modaltype === 'signIn' || modaltype === 'signUp' || modaltype === 'findPassword') {
-      console.log(modaltype);
-      console.log('로그인, 회원가입 모달 맞음');
       return null;
     } else {
-      console.log(modaltype);
-      console.log('로그인, 회원가입 모달 아님');
       return `display: none;`;
     }
   }}

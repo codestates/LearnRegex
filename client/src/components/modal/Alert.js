@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { setModal } from '../../modules/modal';
 import { requestSignOut } from '../../lib/requestUserInfo';
 import styled from 'styled-components';
+import { Button } from '../../styled/button/CommonButton.styled';
 
 const Container = styled.div`
   width: 100%;
@@ -15,22 +16,11 @@ const Container = styled.div`
     font-size: 1.7rem;
     margin: 2.4rem 0;
   }
+`;
 
-  button {
-    width: 38%;
-    height: 40px;
-    font-size: 1.2rem;
-    border-radius: 1rem;
-    background-color: var(--color-blue);
-    color: white;
-
-    transition: all 0.3s ease 0s;
-    letter-spacing: 2.5px;
-    :hover {
-      box-shadow: 0px 5px 8px rgba(171, 180, 221, 0.4);
-      transform: translateY(-2px);
-    }
-  }
+const NewButton = styled(Button)`
+  width: 38%;
+  margin: 0;
 `;
 
 const Alert = ({ func }) => {
@@ -53,7 +43,7 @@ const Alert = ({ func }) => {
     <>
       <Container>
         <p>정보가 수정되었습니다.</p>
-        <button onClick={handleNavigate}>확인</button>
+        <NewButton onClick={handleNavigate}>확인</NewButton>
       </Container>
     </>
   );

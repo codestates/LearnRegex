@@ -3,6 +3,7 @@ import { MdEmail } from 'react-icons/md';
 import { BsPersonFill } from 'react-icons/bs';
 import { BsFillCheckSquareFill } from 'react-icons/bs';
 import { MdQuiz } from 'react-icons/md';
+import { Button } from '../../styled/button/CommonButton.styled';
 
 export const Container = styled.div`
   width: 70%;
@@ -38,24 +39,12 @@ export const Container = styled.div`
     width: 2rem;
     margin-right: 1rem;
   }
+`;
 
-  button {
-    width: 32%;
-    height: 40px;
-    font-size: 1.3rem;
-    border-radius: 1rem;
-    margin: 3.5rem 0 2rem 0;
-    background-color: var(--color-blue);
-
-    color: white;
-
-    transition: all 0.3s ease 0s;
-    letter-spacing: 2.5px;
-    :hover {
-      box-shadow: 0px 5px 8px rgba(171, 180, 221, 0.4);
-      transform: translateY(-2px);
-    }
-  }
+export const NewButton = styled(Button)`
+  width: 32%;
+  font-size: 1.3rem;
+  margin: 3.5rem 0 2rem 0;
 `;
 
 export const Span = styled.div`

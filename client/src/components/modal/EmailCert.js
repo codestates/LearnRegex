@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { store } from '../../index';
 import { setModal } from '../../modules/modal';
+import { Button } from '../../styled/button/CommonButton.styled';
 
 const Container = styled.div`
   display: flex;
@@ -30,23 +31,10 @@ const Container = styled.div`
     font-weight: bold;
     color: var(--color-blue);
   }
+`;
 
-  button {
-    width: 37%;
-    height: 40px;
-    font-size: 1.2rem;
-    border-radius: 1rem;
-    margin: 1.3rem 0 0.9rem 0;
-    background-color: var(--color-blue);
-    color: white;
-
-    transition: all 0.3s ease 0s;
-    letter-spacing: 2.5px;
-    :hover {
-      box-shadow: 0px 5px 8px rgba(171, 180, 221, 0.4);
-      transform: translateY(-2px);
-    }
-  }
+const NewButton = styled(Button)`
+  width: 37%;
 `;
 
 const EmailCert = () => {
@@ -59,7 +47,7 @@ const EmailCert = () => {
         <p>
           이메일의 <span>인증 버튼</span>을 클릭하여 인증을 진행해주세요.
         </p>
-        <button onClick={() => store.dispatch(setModal('close'))}>확인</button>
+        <NewButton onClick={() => store.dispatch(setModal('close'))}>확인</NewButton>
       </Container>
     </>
   );

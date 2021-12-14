@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Button } from '../../styled/button/CommonButton.styled';
 
 export const Container = styled.div`
   display: flex;
@@ -36,24 +37,13 @@ export const Container = styled.div`
   .buttonBox {
     width: 100%;
     margin: 1rem 0;
-
-    button {
-      width: 12rem;
-      height: 40px;
-      font-size: 1.3rem;
-      border-radius: 1rem;
-      margin: 0.3rem 1rem;
-      background-color: var(--color-blue);
-      color: white;
-
-      transition: all 0.3s ease 0s;
-      letter-spacing: 2.5px;
-      :hover {
-        box-shadow: 0px 5px 8px rgba(171, 180, 221, 0.4);
-        transform: translateY(-2px);
-      }
-    }
   }
+`;
+
+export const NewButton = styled(Button)`
+  width: 12rem;
+  font-size: 1.3rem;
+  margin: 0.3rem 1rem;
 `;
 
 export const InputBox = styled.div`

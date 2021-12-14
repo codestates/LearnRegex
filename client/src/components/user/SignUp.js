@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { setModal } from '../../modules/modal';
 import { requestSignUp } from '../../lib/requestUserInfo';
 import { isValidSignUp, isValidEmail, isValidNickname, isValidPassword, isValidPasswordConfirm } from '../../lib/validationFunction';
-import { Container, Header, InputBox, Input, Button, Bottom, Span } from './SignUpElements';
+import { Container, Header, InputBox, Input, NewButton, Bottom, Span } from './SignUp.styled';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -80,7 +80,7 @@ export const SignUp = () => {
           <span>&nbsp;&nbsp;{errorMessage.confirm}</span>
         </InputBox>
 
-        <Button onClick={handleSubmit}>가입</Button>
+        <NewButton onClick={handleSubmit}>가입</NewButton>
         <Bottom>
           <span>이미 계정이 있으신가요?</span>
           <Span btn onClick={() => dispatch(setModal('signIn'))}>

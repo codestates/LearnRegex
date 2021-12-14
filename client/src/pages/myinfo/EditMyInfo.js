@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { setModal } from '../../modules/modal';
 import { requestEditUserInfo } from '../../lib/requestUserInfo';
 import { isValidEditUserInfo, isValidEmail, isValidNickname } from '../../lib/validationFunction';
-import { Container, InputBox, Input } from './EditMyInfo.styled';
+import { Container, InputBox, Input, NewButton } from './EditMyInfo.styled';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -82,8 +82,8 @@ export const EditMyInfo = ({ myInfo }) => {
           </InputBox>
         </div>
         <div className="buttonBox">
-          <button onClick={handleSubmit}>수정 완료</button>
-          <button onClick={() => navigate('/myinfo')}>취소</button>
+          <NewButton onClick={handleSubmit}>수정 완료</NewButton>
+          <NewButton onClick={() => navigate('/myinfo')}>취소</NewButton>
         </div>
       </Container>
     </>

@@ -10,7 +10,7 @@ import FindPassword from '../user/FindPassword';
 import DeleteUserConfirm from './DeleteUserConfirm';
 import DeleteAnswerConfirm from './DeleteAnswerConfirm';
 
-import { Background, ModalWrapper, ModalContent, CloseModalButton } from './ModalElements';
+import { Background, ModalWrapper, ModalContent, CloseModalButton } from './index.styled';
 
 const Modal = () => {
   const dispatch = useDispatch();

@@ -5,7 +5,7 @@ import { requestSignIn } from '../../lib/requestUserInfo';
 import { googleLogin } from '../../lib/oauthGoogle';
 import { kakaoLogin } from '../../lib/oauthKakao';
 import { githubLogin } from '../../lib/oauthGithub';
-import { Container, Header, Img, InputBox, Button, OauthBox, Bottom, Input, Span } from './SignInElements';
+import { Container, Header, Img, InputBox, NewButton, OauthBox, Bottom, Input, Span } from './SignIn.styled.js';
 
 export const SignIn = () => {
   const dispatch = useDispatch();
@@ -79,7 +79,7 @@ export const SignIn = () => {
           <Input type="password" onChange={handleInputValue('password')} onKeyUp={handleKeyUp} placeholder="비밀번호" />
           <span>&nbsp;&nbsp;{errorMessage.password}</span>
         </InputBox>
-        <Button onClick={handleSubmit}>로그인</Button>
+        <NewButton onClick={handleSubmit}>로그인</NewButton>
         <Span btn onClick={() => dispatch(setModal('findPassword'))}>
           비밀번호를 잊으셨나요 ?
         </Span>

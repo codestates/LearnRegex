@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 import { EditMyInfo } from './EditMyInfo';
 import { EditMyPassword } from './EditMyPassword';
 import { checkUserIsLogin } from '../../lib/checkIsLogin';
-import { Container, Button, Span } from './modify.styled';
+import { Container, NewButton, Span } from './modify.styled';
 dotenv.config();
 
 const MyInfo = () => {
@@ -70,16 +70,16 @@ const MyInfo = () => {
               </div>
             </div>
             <div className="buttonBox">
-              <Button onClick={handleEditMyInfo}>프로필 수정</Button>
+              <NewButton onClick={handleEditMyInfo}>프로필 수정</NewButton>
             </div>
           </div>
           <div className="box">
-            <div className="buttonBox">{myInfo.socialType === 'local' ? <Button onClick={handleEditMyPassword}>비밀번호 수정</Button> : <p>비밀번호 수정 불가능</p>}</div>
+            <div className="buttonBox">{myInfo.socialType === 'local' ? <NewButton onClick={handleEditMyPassword}>비밀번호 수정</NewButton> : <p>비밀번호 수정 불가능</p>}</div>
             <hr />
             <div className="buttonBox">
-              <Button danger onClick={handleDeleteMyInfo}>
+              <NewButton danger onClick={handleDeleteMyInfo}>
                 회원 탈퇴
-              </Button>
+              </NewButton>
             </div>
           </div>
         </Container>

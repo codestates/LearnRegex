@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { setModal } from '../../modules/modal';
 import { requestEditUserPassword } from '../../lib/requestUserInfo';
 import { isValidEditUserPassword, isValidPassword, isValidPasswordConfirm } from '../../lib/validationFunction';
-import { Container, InputBox, Input } from './EditMyPassword.styled';
+import { Container, InputBox, Input, NewButton } from './EditMyPassword.styled';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -88,12 +88,8 @@ export const EditMyPassword = () => {
           </InputBox>
         </div>
         <div className="buttonBox">
-          <button type="button" onClick={handleSubmit}>
-            수정 완료
-          </button>
-          <button type="button" onClick={() => navigate('/myinfo')}>
-            취소
-          </button>
+          <NewButton onClick={handleSubmit}>수정 완료</NewButton>
+          <NewButton onClick={() => navigate('/myinfo')}>취소</NewButton>
         </div>
       </Container>
     </>

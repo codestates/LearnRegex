@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Button } from '../../styled/button/CommonButton.styled';
 
 export const Container = styled.div`
   width: 80%;
@@ -47,23 +48,12 @@ export const Container = styled.div`
   }
 `;
 
-export const Button = styled.button`
+export const NewButton = styled(Button)`
   width: 12rem;
-  height: 40px;
-  font-size: 1.1rem;
-  border-radius: 1rem;
   ${({ danger }) => {
     return danger ? `background-color: var(--color-light-gray);` : `background-color: var(--color-blue);`;
   }}
-
-  color: white;
-
-  transition: all 0.3s ease 0s;
-  letter-spacing: 2.5px;
-  :hover {
-    box-shadow: 0px 5px 8px rgba(171, 180, 221, 0.4);
-    transform: translateY(-2px);
-  }
+  margin: 0;
 `;
 
 export const Span = styled.div`

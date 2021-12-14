@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { requestGetMyInfo } from '../../lib/requestUserInfo';
 import { checkUserIsLogin } from '../../lib/checkIsLogin';
-import { Container, Span } from './index.styled';
+import { Container, Span, NewButton } from './index.styled';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -65,7 +65,7 @@ const MyInfo = () => {
             </Span>
           </div>
           <Link to="/modify">
-            <button>프로필 수정</button>
+            <NewButton>프로필 수정</NewButton>
           </Link>
         </div>
       </Container>

@@ -4,6 +4,7 @@ import { isValidOnlyEmail } from '../../lib/validationFunction';
 import { useDispatch } from 'react-redux';
 import { setModal } from '../../modules/modal';
 import styled from 'styled-components';
+import { Button } from '../../styled/button/CommonButton.styled';
 
 const Container = styled.div`
   align-items: center;
@@ -16,22 +17,12 @@ const Container = styled.div`
     color: var(--color-dark-blue);
     margin: 0.7em 0 1.3rem 0;
   }
+`;
 
-  button {
-    width: 50%;
-    height: 40px;
-    font-size: 1.1rem;
-    border-radius: 1rem;
-    background-color: var(--color-blue);
-    color: white;
-
-    transition: all 0.3s ease 0s;
-    letter-spacing: 2.5px;
-    :hover {
-      box-shadow: 0px 5px 8px rgba(171, 180, 221, 0.4);
-      transform: translateY(-2px);
-    }
-  }
+export const NewButton = styled(Button)`
+  width: 50%;
+  font-size: 1.1rem;
+  margin: 0;
 `;
 
 export const InputBox = styled.div`
@@ -101,9 +92,9 @@ const FindPassword = () => {
           <input type="text" placeholder="이메일을 입력하세요." onChange={handleInputValue('email')} onKeyUp={handleKeyUp}></input>
           <span>&nbsp;&nbsp;{errorMessage.email}</span>
         </InputBox>
-        <button onClick={handleSubmit} value="FindPassword">
+        <NewButton onClick={handleSubmit} value="FindPassword">
           인증 메일 발송
-        </button>
+        </NewButton>
       </Container>
     </>
   );
