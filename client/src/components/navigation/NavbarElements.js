@@ -63,13 +63,13 @@ export const MobileIcon = styled.div`
 `;
 
 export const NavMenu = styled.ul`
-  font-size: 1.2rem;
+  font-size: 1.125rem;
   font-family: 'IBMPlexSansKR-SemiBold';
   display: flex;
   align-items: center;
   list-style: none;
   text-align: center;
-  margin-right: -1.375rem;
+  margin-right: -2rem;
   margin-bottom: -1rem;
 
   @media screen and (max-width: 768px) {
@@ -115,7 +115,7 @@ export const NavSignInBtn = styled.button`
   color: var(--color-white);
   white-space: nowrap;
   padding: 10px 15px;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   outline: none;
   border: none;
   cursor: pointer;
