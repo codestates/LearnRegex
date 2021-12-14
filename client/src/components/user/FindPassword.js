@@ -8,7 +8,6 @@ import styled from 'styled-components';
 const Container = styled.div`
   align-items: center;
   width: 100%;
-  height: 100%;
   text-align: center;
   padding: 1rem 2rem;
 
@@ -88,7 +87,10 @@ const FindPassword = () => {
     // 서버 통신
     const serverResult = await requestFindPassword(inputUserInfo);
     if (serverResult === true) dispatch(setModal('emailCert'));
-    else console.log('error!');
+    else {
+      console.log('error!');
+      setErrorMessage({ ...errorMessage, email: '이메일을 다시 확인해주세요.' });
+    }
   };
 
   return (

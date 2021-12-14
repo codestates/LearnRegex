@@ -20,9 +20,9 @@ export const ModalWrapper = styled.div`
   display: flex;
   border-radius: 16px;
   width: 400px;
-  height: ${({ modaytype }) => {
-    if (modaytype === 'emailCert') return '300px';
-    else if (modaytype === 'findPassword') return '280px';
+  height: ${({ modaltype }) => {
+    if (modaltype === 'emailCert') return '330px';
+    else if (modaltype === 'findPassword') return '280px';
     else return '550px';
   }};
   grid-template-columns: 1fr 1fr;
@@ -35,16 +35,28 @@ export const ModalContent = styled.div`
   justify-content: center;
   align-items: center;
   width: 400px;
-  height: ${({ modaytype }) => {
-    if (modaytype === 'emailCert') return '300px';
-    else if (modaytype === 'findPassword') return '280px';
+  height: ${({ modaltype }) => {
+    if (modaltype === 'emailCert') return '330px';
+    else if (modaltype === 'findPassword') return '280px';
     else return '550px';
   }};
 `;
 
 export const CloseModalButton = styled(MdClose)`
+  /* display: none; */
   cursor: pointer;
-  /* position: absolute; */
+  ${({ modaltype }) => {
+    if (modaltype === 'signIn' || modaltype === 'signUp' || modaltype === 'findPassword') {
+      console.log(modaltype);
+      console.log('로그인, 회원가입 모달 맞음');
+      return null;
+    } else {
+      console.log(modaltype);
+      console.log('로그인, 회원가입 모달 아님');
+      return `display: none;`;
+    }
+  }}
+  position: absolute;
   top: 20px;
   right: 20px;
   width: 32px;
