@@ -10,16 +10,17 @@ function EditQuiz() {
   const { id } = useParams('id');
   const { data } = useSelector((state) => state.getquiz.quiz);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(getQuiz(id));
+    const quiz = getQuiz(id);
+    console.log(quiz);
+    if (!data) window.location.replace(`/quiz/${id}`);
+    dispatch(quiz);
   }, [id]);
-
-  if (!data) return <>{navigate(`/quiz/${id}`)}</>;
 
   return (
     <>
+      <h3>InputQuiz</h3>
       <InputQuiz data={data} />
     </>
   );
