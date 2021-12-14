@@ -6,19 +6,23 @@ export const dummyData = [
     testCase: [
       {
         task: 'match',
-        target: ['kimcoding@test.com'],
+        target: 'kimcoding@test.com',
+        groups: [],
       },
       {
         task: 'match',
-        target: ['kimcoding@test.com'],
+        target: 'kimcoding@test.com',
+        groups: [],
       },
       {
         task: 'skip',
-        target: ['@test.com'],
+        target: '@test.com',
+        groups: [],
       },
       {
         task: 'capture',
-        target: ['kimcoding@test.com', 'kimcoding', 'test', 'com'],
+        target: 'kimcoding@test.com',
+        groups: ['kimcoding', 'test', 'com'],
       },
     ],
     answer: '/sheleecloud@gmail.com/',
@@ -33,11 +37,13 @@ export const dummyData = [
     testCase: [
       {
         task: 'match',
-        target: ['kimcoding@test.com'],
+        target: 'kimcoding@test.com',
+        groups: [],
       },
       {
         task: 'skip',
-        target: ['@test.com'],
+        target: '@test.com',
+        groups: [],
       },
     ],
     answer: '/sheleecloud@gmail.com/',

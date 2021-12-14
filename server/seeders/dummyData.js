@@ -51,19 +51,23 @@ module.exports = {
           testCase: JSON.stringify([
             {
               task: 'match',
-              target: ['kimcoding@test.com'],
+              target: 'kimcoding@test.com',
+              groups: [],
             },
             {
               task: 'match',
-              target: ['kimcoding@test.com'],
+              target: 'kimcoding@test.com',
+              groups: [],
             },
             {
               task: 'skip',
-              target: ['@test.com'],
+              target: '@test.com',
+              groups: [],
             },
             {
               task: 'capture',
-              target: ['kimcoding@test.com', 'kimcoding', 'test', 'com'],
+              target: 'kimcoding@test.com',
+              groups: ['kimcoding', 'test', 'com'],
             },
           ]),
           testCaseTarget: 'a',
@@ -82,11 +86,13 @@ module.exports = {
           testCase: JSON.stringify([
             {
               task: 'match',
-              target: ['a'],
+              target: 'a',
+              groups: [],
             },
             {
               task: 'skip',
-              target: ['b'],
+              target: 'b',
+              groups: [],
             },
           ]),
           testCaseTarget: 'a',
@@ -105,15 +111,18 @@ module.exports = {
           testCase: JSON.stringify([
             {
               task: 'match',
-              target: ['010-4321-1234'],
+              target: '010-4321-1234',
+              groups: [],
             },
             {
               task: 'match',
-              target: ['02-112-1191'],
+              target: '02-112-1191',
+              groups: [],
             },
             {
               task: 'skip',
-              target: ['1-1-1'],
+              target: '1-1-1',
+              groups: [],
             },
           ]),
           testCaseTarget: 'a',
@@ -138,7 +147,8 @@ module.exports = {
         testCase: JSON.stringify([
           {
             task: 'match',
-            target: ['b'],
+            target: 'b',
+            groups: [],
           },
         ]),
         testCaseTarget: 'b',
