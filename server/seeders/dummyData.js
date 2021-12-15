@@ -70,7 +70,6 @@ module.exports = {
               groups: ['kimcoding', 'test', 'com'],
             },
           ]),
-          testCaseTarget: 'a',
           answer: '(\\w+)@(\\w+)\\.(\\w+)',
           explanation: '블라블라',
           count: 3,
@@ -95,7 +94,6 @@ module.exports = {
               groups: [],
             },
           ]),
-          testCaseTarget: 'a',
           answer: 'a',
           explanation: '블라블라',
           count: 3,
@@ -125,7 +123,6 @@ module.exports = {
               groups: [],
             },
           ]),
-          testCaseTarget: 'a',
           answer: '\\d{2,3}-\\d{3,4}-\\d{4}',
           explanation: '블라블라',
           count: 3,
@@ -151,7 +148,6 @@ module.exports = {
             groups: [],
           },
         ]),
-        testCaseTarget: 'b',
         answer: `b`,
         explanation: '어쩌구저쩌구',
         count: 1,
@@ -196,6 +192,6 @@ module.exports = {
   down: async (queryInterface, Sequelize) => {
     await queryInterface.bulkDelete('users', null, {});
     await queryInterface.bulkDelete('quiz', null, {});
-    // await queryInterface.bulkDelete('users_quiz', null, {});
+    await queryInterface.bulkDelete('users_quiz', null, {});
   },
 };
