@@ -7,7 +7,7 @@ export const Button = styled.button`
   border-radius: 1rem;
   margin: 1.3rem 0 0.9rem 0;
   background-color: var(--color-blue);
-  color: white;
+  color: var(--color-white);
 
   transition: all 0.3s ease 0s;
   letter-spacing: 2.5px;

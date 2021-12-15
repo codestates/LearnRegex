@@ -1,22 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChallengeButton } from '../styles/button/ChallengeButton.styled';
+import { Container, Title, Nickname, Cnt, Box } from './QuizListElement.styled';
 
 function QuizListElement({ data }) {
   return (
     <>
-      <div className="container">
-        <div>
-          <div>제목: {data.title}</div>
-          <div>출제자: {data.nickname}</div>
-          <div>이 퀴즈를 {data.count} 명이 풀었습니다!</div>
+      <Container>
+        <div className="content">
+          <Title>{data.title}</Title>
+          <Nickname nickname>{data.nickname}</Nickname>
+          <Cnt cnt>
+            이 퀴즈를 <span>{data.count}</span>명이 풀었습니다!
+          </Cnt>
         </div>
-        <div>
+        <div className="buttonBox">
           <ChallengeButton isClear={data.isClear}>
             <Link to={`/quiz/${data.id}`}>도전하기</Link>
           </ChallengeButton>
         </div>
-      </div>
+      </Container>
     </>
   );
 }

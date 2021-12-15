@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import QuizListElement from '../../components/QuizListElement';
 import Pagenate from '../../components/Paginate';
 import { BsPencilSquare } from 'react-icons/bs';
+import { Container } from './QuizList.styled';
 
 function QuizList() {
   const { isLogin } = useSelector((state) => state.isLogin);
@@ -20,9 +21,11 @@ function QuizList() {
 
   return (
     <>
-      <BsPencilSquare onClick={handleAlert} size="50" />
-      {!list ? <div>loading</div> : list.map((el) => <QuizListElement key={el.id} data={el} />)}
-      <Pagenate />
+      <Container>
+        <BsPencilSquare onClick={handleAlert} size="50" />
+        {!list ? <div>loading</div> : list.map((el) => <QuizListElement key={el.id} data={el} />)}
+        <Pagenate />
+      </Container>
     </>
   );
 }

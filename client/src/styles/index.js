@@ -118,6 +118,7 @@ const GlobalStyle = createGlobalStyle`
     --fontSize-root--small: 14px;
     --color-black: #3F3F44;
     --color-white: #FDFDFD;
+    --color-dark-gray: #85858D;
     --color-gray: #E6E6E6;
     --color-light-gray: #A8AABC;
     --color-blue: #4B60A5;
