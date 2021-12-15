@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { Button } from '../../styled/button/CommonButton.styled';
-import { ShadowBox } from '../../styled/shadowBox.styled';
+import { Button } from '../../styles/button/CommonButton.styled';
+import { ShadowBox } from '../../styles/ShadowBox.styled';
 
 export const Container = styled.div`
   display: flex;

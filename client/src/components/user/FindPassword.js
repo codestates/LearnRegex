@@ -4,7 +4,7 @@ import { isValidOnlyEmail } from '../../lib/validationFunction';
 import { useDispatch } from 'react-redux';
 import { setModal } from '../../modules/modal';
 import styled from 'styled-components';
-import { Button } from '../../styled/button/CommonButton.styled';
+import { Button } from '../../styles/button/CommonButton.styled';
 
 const Container = styled.div`
   align-items: center;

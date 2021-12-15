@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { store } from '../../index';
 import { setModal } from '../../modules/modal';
-import { Button } from '../../styled/button/CommonButton.styled';
+import { Button } from '../../styles/button/CommonButton.styled';
 
 const Container = styled.div`
   display: flex;

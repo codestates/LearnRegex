@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ChallengeButton } from '../styled/button/ChallengeButton.styled';
+import { ChallengeButton } from '../styles/button/ChallengeButton.styled';
 
 function QuizListElement({ data }) {
   return (

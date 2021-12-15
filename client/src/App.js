@@ -12,7 +12,6 @@ import EditQuiz from './pages/quiz/EditQuiz';
 import MakeQuiz from './pages/quiz/MakeQuiz';
 import Footer from './components/footer/Footer';
 import dotenv from 'dotenv';
-// import './App.css';
 dotenv.config();
 
 function App() {
@@ -30,7 +29,7 @@ function App() {
         <Route path="/makequiz" element={<MakeQuiz />} />
         <Route path="/editquiz/:id" element={<EditQuiz />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { setModal } from '../../modules/modal';
 import { requestSignOut } from '../../lib/requestUserInfo';
 import styled from 'styled-components';
-import { Button } from '../../styled/button/CommonButton.styled';
+import { Button } from '../../styles/button/CommonButton.styled';
 
 const Container = styled.div`
   width: 100%;

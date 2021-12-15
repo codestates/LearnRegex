@@ -3,7 +3,7 @@ import { MdEmail } from 'react-icons/md';
 import { BsPersonFill } from 'react-icons/bs';
 import { BsFillCheckSquareFill } from 'react-icons/bs';
 import { MdQuiz } from 'react-icons/md';
-import { Button } from '../../styled/button/CommonButton.styled';
+import { Button } from '../../styles/button/CommonButton.styled';
 
 export const Container = styled.div`
   width: 70%;
