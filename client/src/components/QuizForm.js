@@ -13,6 +13,7 @@ function QuizForm({ data, orderPage }) {
   // ? 에러가 발생하면 로컬스토리지를 초기화 해야될까?
   const previousRegex = useSelector((state) => (orderPage === 'tutorial' ? state.answer.tutorial[data.id] : state.answer.quiz[data.id]));
   const isLogin = useSelector((state) => state.isLogin);
+  const tutorialClearList = useSelector((state) => state.list);
   const [inputRegex, setInputRegex] = useState(previousRegex || '');
   const [isCorrectRegTotal, setIsCorrectRegTotal] = useState(false);
   const dispatch = useDispatch();
@@ -27,7 +28,9 @@ function QuizForm({ data, orderPage }) {
 
   const handleIsCorrectRegTotal = (e) => {
     const result = e.indexOf(false) === -1;
-    if (isCorrectRegTotal) return;
+    console.log(isCorrectRegTotal);
+
+    // if (isCorrectRegTotal) return;
     if (result !== isCorrectRegTotal) setIsCorrectRegTotal(result);
   };
 
@@ -45,10 +48,13 @@ function QuizForm({ data, orderPage }) {
 
   useEffect(() => {
     // 퀴즈에서 로그인한 회원이 처음 문제를 풀었을 경우 서버 요청
-    if (orderPage === 'quizList' && isCorrectRegTotal && isLogin && !data.isClear) requestQuizClear(data.id);
+    if (orderPage === 'quizList' && isCorrectRegTotal && isLogin && !data.isClear) {
+      data.isClear = true;
+      requestQuizClear(data.id);
+    }
 
     // 학습하기에서 문제를 풀었을 경우 상태 저장
-    if (orderPage === 'tutorial' && isCorrectRegTotal) dispatch(clearList(data.id - 1));
+    if (orderPage === 'tutorial' && isCorrectRegTotal && !tutorialClearList[data.id - 1]) dispatch(clearList(data.id - 1));
   }, [isCorrectRegTotal]);
 
   //! ------------------------ HTML 태그 출력 ------------------------
@@ -57,7 +63,6 @@ function QuizForm({ data, orderPage }) {
       <div>
         <div>
           <h2>Test Case</h2>
-          {/* <div>{showTestCase(data.testCase, inputRegex)}</div> */}
           <ShowTestCase testCases={data.testCase} inputRegex={inputRegex} handleIsCorrectRegTotal={handleIsCorrectRegTotal} />
         </div>
         <div>

@@ -144,10 +144,6 @@ function InputQuiz({ data }) {
                 handleTestCaseQuantity={handleTestCaseQuantity}
               />
             )}
-            {/* <div>
-              <p>곧 사라질 입력창입니다.</p>
-              <Textarea isEmpty={isEmpty.testCaseTarget} value={content.testCaseTarget} placeholder="testCaseTarget을 입력하세요" readonly maxLength="400" />
-            </div> */}
           </div>
           <button type="button" onClick={handleTestCaseQuantity('add')}>
             ➕
