@@ -22,10 +22,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.JSON,
         allowNull: false,
       },
-      testCaseTarget: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
       answer: {
         type: DataTypes.STRING,
         allowNull: false,
