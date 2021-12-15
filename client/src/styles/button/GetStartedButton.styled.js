@@ -7,7 +7,7 @@ export const GetStartedButton = styled(LinkS)`
   white-space: nowrap;
   padding: ${({ big }) => (big ? '14px 48px' : '12px 30px')};
   color: var(--color-white);
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-family: 'IBMPlexSansKR-SemiBold';
   outline: none;
   border: none;
