@@ -44,13 +44,15 @@ const DeleteButton = styled(Button)`
 const DeleteUserConfirm = () => {
   const dispatch = useDispatch();
 
-  const handleDeleteUser = () => {
-    const result = requestDeleteUserInfo();
+  const handleDeleteUser = async () => {
+    const result = await requestDeleteUserInfo();
+    // console.log('탈퇴모달: ', result);
     if (result) {
       dispatch(setModal('close'));
       window.location.replace('/');
     }
   };
+
   return (
     <>
       <Container>

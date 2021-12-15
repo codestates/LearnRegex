@@ -51,14 +51,18 @@ export const EditMyPassword = () => {
     console.log(errorResult);
     if (Object.values(errorResult).find((el) => el !== '')) return;
 
-    // * 서버 통신
-    const serverResult = await requestEditUserPassword(inputUserInfo);
-    console.log(serverResult);
-    if (serverResult === true) dispatch(setModal('toSignOut'));
-    else if (serverResult === 'invalid oldPassword') {
-      setErrorMessage({ ...errorResult, oldPassword: '잘못된 비밀번호입니다.' });
+    if (inputUserInfo.newPassword === inputUserInfo.confirm) {
+      // * 서버 통신
+      const serverResult = await requestEditUserPassword(inputUserInfo);
+      console.log(serverResult);
+      if (serverResult === true) dispatch(setModal('toSignOut'));
+      else if (serverResult === 'invalid oldPassword') {
+        setErrorMessage({ ...errorResult, oldPassword: '잘못된 비밀번호입니다.' });
+      } else {
+        setErrorMessage({ ...errorResult, oldPassword: '잠시후에 다시 시도해주세요.' });
+      }
     } else {
-      setErrorMessage({ ...errorResult, oldPassword: '잠시후에 다시 시도해주세요.' });
+      setErrorMessage({ ...errorMessage, confirm: '비밀번호를 다시 확인하세요.' });
     }
   };
 

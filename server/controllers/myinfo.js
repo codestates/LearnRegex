@@ -83,7 +83,7 @@ module.exports = {
       // 수정 내용 적용(닉네임만 바꾼 경우)
       await users.update({ email, nickname }, { where: { id: userId } });
 
-      return res.status(200).send({ message: 'success' });
+      return res.status(200).send({ message: 'success', nickname });
     } catch (err) {
       console.log(err);
       return res.status(500).send({ message: 'server error' });

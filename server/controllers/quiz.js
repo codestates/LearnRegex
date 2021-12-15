@@ -72,7 +72,7 @@ module.exports = {
       // 퀴즈 상세 정보 조회
       let quizInfo = await quiz.findOne({
         where: { id: req.query.quizId },
-        attributes: ['id', 'userId', 'title', 'testCase', 'testCaseTarget', 'answer', 'explanation', 'count', 'isMade', 'isClear'],
+        attributes: ['id', 'userId', 'title', 'testCase', 'answer', 'explanation', 'count', 'isMade', 'isClear'],
         include: [{ model: users, attributes: ['nickname'] }],
       });
 
@@ -117,15 +117,15 @@ module.exports = {
 
   addquiz: async (req, res) => {
     try {
-      const { title, testCase, testCaseTarget, answer, explanation } = req.body;
+      const { title, testCase, answer, explanation } = req.body;
       const userId = req.userId;
 
       // 추가해야 하는 정보가 하나라도 빠졌을 경우
-      if (!(title && testCase && testCaseTarget && answer && explanation)) {
+      if (!(title && testCase && answer && explanation)) {
         return res.status(400).send({ message: 'empty information' });
       }
 
-      await quiz.create({ userId, title, testCase, testCaseTarget, answer, explanation, count: 0, isClear: false, isMade: false });
+      await quiz.create({ userId, title, testCase, answer, explanation, count: 0, isClear: false, isMade: false });
 
       return res.status(200).send({ message: 'success' });
     } catch (err) {
@@ -136,10 +136,10 @@ module.exports = {
 
   editquiz: async (req, res) => {
     try {
-      const { title, testCase, testCaseTarget, answer, explanation } = req.body;
+      const { title, testCase, answer, explanation } = req.body;
 
       // 수정해야 하는 정보가 하나라도 빠졌을 경우
-      if (!(title && testCase && testCaseTarget && answer && explanation)) {
+      if (!(title && testCase && answer && explanation)) {
         return res.status(400).send({ message: 'empty information' });
       }
 
@@ -150,7 +150,7 @@ module.exports = {
         return res.status(404).send({ message: 'not found quiz' });
       }
 
-      await quiz.update({ title, testCase, testCaseTarget, answer, explanation }, { where: { id: req.query.quizId } });
+      await quiz.update({ title, testCase, answer, explanation }, { where: { id: req.query.quizId } });
 
       return res.status(200).send({ message: 'success' });
     } catch (err) {
