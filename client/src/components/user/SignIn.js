@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setModal } from '../../modules/modal';
-import { requestSignIn, requestSignOut } from '../../lib/requestUserInfo';
+import { requestSignIn } from '../../lib/requestUserInfo';
 import { googleLogin } from '../../lib/oauthGoogle';
 import { kakaoLogin } from '../../lib/oauthKakao';
 import { githubLogin } from '../../lib/oauthGithub';
+import { Container, Header, Img, InputBox, NewButton, OauthBox, Bottom, Input, Span } from './SignIn.styled.js';
 
 export const SignIn = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const [inputUserInfo, setInputUserInfo] = useState({
     email: '',
@@ -56,14 +55,6 @@ export const SignIn = () => {
     }
   };
 
-  const handleSignOut = async () => {
-    const serverResult = await requestSignOut(inputUserInfo);
-    if (serverResult === true) {
-      navigate('/');
-      dispatch(setModal('close'));
-    } else console.log('error!');
-  };
-
   const handleOAuthKakao = () => {
     kakaoLogin();
   };
@@ -76,35 +67,40 @@ export const SignIn = () => {
 
   return (
     <>
-      <div>
-        <h1>SignIn</h1>
-        <h2>email</h2>
-        <input type="text" onChange={handleInputValue('email')} onKeyUp={handleKeyUp}></input>
-        <p>{errorMessage.email}&nbsp;</p>
-        <h2>password</h2>
-        <input type="text" onChange={handleInputValue('password')} onKeyUp={handleKeyUp}></input>
-        <p>{errorMessage.password}&nbsp;</p>
-
-        <div>
-          <button onClick={() => dispatch(setModal('findPassword'))}>비밀번호를 잊으셨나요 ?</button>
-        </div>
-
-        <div>
-          <input type="button" onClick={handleSubmit} value="SignIn" />
-          <input type="button" onClick={handleSignOut} value="SignOut" />
-        </div>
-        <div>
-          <input type="button" onClick={handleOAuthKakao} value="OAuth Kakao" />
-          <input type="button" onClick={handleOAuthGoogle} value="OAuth Google" />
-          <input type="button" onClick={handleOAuthGithub} value="OAuth Github" />
-        </div>
-        <div>아직 계정이 없으신가요?</div>
-        <div>
-          <button type="button" onClick={() => dispatch(setModal('signUp'))}>
+      <Container>
+        <Header>
+          <Img logo alt="learnRegex-logo-no-bg" src="https://user-images.githubusercontent.com/87485508/145760234-b6883d97-25df-4199-bb0b-db5fdbd5156b.png" />
+        </Header>
+        <InputBox>
+          <Input type="text" onChange={handleInputValue('email')} onKeyUp={handleKeyUp} placeholder="이메일" />
+          <span>&nbsp;&nbsp;{errorMessage.email}</span>
+        </InputBox>
+        <InputBox>
+          <Input type="password" onChange={handleInputValue('password')} onKeyUp={handleKeyUp} placeholder="비밀번호" />
+          <span>&nbsp;&nbsp;{errorMessage.password}</span>
+        </InputBox>
+        <NewButton onClick={handleSubmit}>로그인</NewButton>
+        <Span btn onClick={() => dispatch(setModal('findPassword'))}>
+          비밀번호를 잊으셨나요 ?
+        </Span>
+        <OauthBox>
+          <div className="icon">
+            <Img btn icon src="/assets/googleIcon.png" onClick={handleOAuthGoogle} value="OAuth Google" alt="googleIcon" />
+          </div>
+          <div className="icon">
+            <Img btn icon src="/assets/kakaoIcon.png" onClick={handleOAuthKakao} value="OAuth Kakao" alt="kakaoIcon" />
+          </div>
+          <div className="icon">
+            <Img btn icon src="/assets/githubIcon.png" onClick={handleOAuthGithub} value="OAuth Github" alt="githubIcon" />
+          </div>
+        </OauthBox>
+        <Bottom>
+          <span>아직 계정이 없으신가요?</span>
+          <Span btn type="button" onClick={() => dispatch(setModal('signUp'))}>
             가입하기
-          </button>
-        </div>
-      </div>
+          </Span>
+        </Bottom>
+      </Container>
     </>
   );
 };

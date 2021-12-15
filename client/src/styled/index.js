@@ -11,7 +11,6 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    line-height: var(--lineHeight-normal);
   }
 
   html {
@@ -119,8 +118,8 @@ const GlobalStyle = createGlobalStyle`
     --fontSize-root--small: 14px;
     --color-black: #3F3F44;
     --color-white: #FDFDFD;
-    --color-grey: #E6E6E6;
-    --color-light-grey: #A8AABC;
+    --color-gray: #E6E6E6;
+    --color-light-gray: #A8AABC;
     --color-blue: #4B60A5;
     --color-light-blue: #ABB4DD;
     --color-dark-blue: #364E84;

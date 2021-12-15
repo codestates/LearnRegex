@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import { EditMyInfo } from './EditMyInfo';
 import { EditMyPassword } from './EditMyPassword';
 import { checkUserIsLogin } from '../../lib/checkIsLogin';
+import { Container, NewButton, Span, Box } from './modify.styled';
 dotenv.config();
 
 const MyInfo = () => {
@@ -48,12 +49,40 @@ const MyInfo = () => {
   const Modify = () => {
     return (
       <>
-        <h3>Modify</h3>
-        <p>Email: {myInfo.socialType === 'local' ? myInfo.email : 'Login as ' + myInfo.socialType}</p>
-        <p>Nickname: {myInfo.nickname}</p>
-        <button onClick={handleEditMyInfo}>프로필 수정</button>
-        {myInfo.socialType === 'local' ? <button onClick={handleEditMyPassword}>비밀번호 수정</button> : <></>}
-        <button onClick={handleDeleteMyInfo}>회원 탈퇴</button>
+        <Container>
+          <Box>
+            <div className="contentBox">
+              <div className="content">
+                <Span category>
+                  <span>이메일</span>
+                </Span>
+                <Span>
+                  <span>{myInfo.socialType === 'local' ? myInfo.email : myInfo.socialType + ' 로그인'}</span>
+                </Span>
+              </div>
+              <div className="content">
+                <Span category>
+                  <span>닉네임</span>
+                </Span>
+                <Span>
+                  <span>{myInfo.nickname}</span>
+                </Span>
+              </div>
+            </div>
+            <div className="buttonBox">
+              <NewButton onClick={handleEditMyInfo}>프로필 수정</NewButton>
+            </div>
+          </Box>
+          <Box>
+            <div className="buttonBox">{myInfo.socialType === 'local' ? <NewButton onClick={handleEditMyPassword}>비밀번호 수정</NewButton> : <p>비밀번호 수정 불가능</p>}</div>
+            <hr />
+            <div className="buttonBox">
+              <NewButton danger onClick={handleDeleteMyInfo}>
+                회원 탈퇴
+              </NewButton>
+            </div>
+          </Box>
+        </Container>
       </>
     );
   };
