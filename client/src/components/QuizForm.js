@@ -27,7 +27,9 @@ function QuizForm({ data, orderPage }) {
 
   const handleIsCorrectRegTotal = (e) => {
     const result = e.indexOf(false) === -1;
-    if (isCorrectRegTotal) return;
+    console.log(isCorrectRegTotal);
+
+    // if (isCorrectRegTotal) return;
     if (result !== isCorrectRegTotal) setIsCorrectRegTotal(result);
   };
 
