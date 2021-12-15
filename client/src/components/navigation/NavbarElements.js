@@ -12,8 +12,8 @@ import { Link as LinkS } from 'react-scroll';
 export const Nav = styled.nav`
   background: var(--color-white);
   height: 5rem;
-  margin-top: -1rem;
-  margin-bottom: -1rem;
+  /* margin-top: 0.5rem;
+  margin-bottom: 0.5rem; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -69,8 +69,8 @@ export const NavMenu = styled.ul`
   align-items: center;
   list-style: none;
   text-align: center;
-  margin-right: -2rem;
-  margin-bottom: -1rem;
+  margin-top: 1rem;
+  /* margin-left: auto; */
 
   @media screen and (max-width: 768px) {
     display: none;
@@ -100,7 +100,7 @@ export const NavLinks = styled(LinkR)`
 export const NavBtnWrap = styled.nav`
   display: flex;
   align-items: center;
-  margin-right: 30px;
+  margin-right: 5px;
   margin-left: 15px;
   position: relative;
 
