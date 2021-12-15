@@ -45,7 +45,7 @@ export const HeroContent = styled.div`
 
 export const HeroH1 = styled.h1`
   background-color: rgba(051, 102, 153, 0.1);
-  padding: 0.5rem;
+  padding: 0.7rem;
   border-radius: 10px;
   color: var(--color-black);
   font-size: 3rem;

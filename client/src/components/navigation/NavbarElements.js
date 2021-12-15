@@ -12,15 +12,15 @@ import { Link as LinkS } from 'react-scroll';
 export const Nav = styled.nav`
   background: var(--color-white);
   height: 5rem;
-  /* margin-top: 0.5rem;
-  margin-bottom: 0.5rem; */
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1rem;
   position: sticky;
   top: 0;
-  z-index: 999;
+  z-index: 10;
+  /* margin-top: 0.5rem;
+  margin-bottom: 0.5rem; */
 
   @media screen and (max-width: 1170px) {
     transition: 0.8s all ease;
@@ -31,18 +31,18 @@ export const NavbarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   height: 100%; // <Nav> height: 5rem;
-  /* z-index: 1; */
+  z-index: 1;
   width: 100%;
   padding: 10px 24px;
   max-width: 1170px;
 `;
 
 export const NavLogo = styled.img.attrs({})`
-  justify-self: flex-start;
-  cursor: pointer;
   height: 100%;
-  display: flex;
-  align-items: center;
+  cursor: pointer;
+  /* justify-self: flex-start; */
+  /* display: flex;
+  align-items: center; */
   /* margin: 10px 0 30px 24px; */
 `;
 
@@ -100,7 +100,7 @@ export const NavLinks = styled(LinkR)`
 export const NavBtnWrap = styled.nav`
   display: flex;
   align-items: center;
-  margin-right: 5px;
+  margin-right: 3px;
   margin-left: 15px;
   position: relative;
 
@@ -112,6 +112,7 @@ export const NavBtnWrap = styled.nav`
 export const NavSignInBtn = styled.button`
   border-radius: 20px;
   background: var(--color-blue);
+  box-shadow: 0px 5px 8px rgba(171, 180, 221, 0.8);
   color: var(--color-white);
   white-space: nowrap;
   padding: 10px 15px;
