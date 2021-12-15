@@ -15,10 +15,12 @@ const Navbar = ({ handleSidebar }) => {
   const navigate = useNavigate();
   const nickname = checkUserNickname();
   const [isOpen, setIsOpen] = useState(false);
+
   const handleSubNavi = (boolean) => {
     if (boolean) setIsOpen(boolean);
     else setIsOpen(!isOpen);
   };
+
   const handleSignOut = async () => {
     const serverResult = await requestSignOut();
     if (serverResult) {
@@ -26,6 +28,7 @@ const Navbar = ({ handleSidebar }) => {
       setIsOpen(false);
     }
   };
+
   return (
     <>
       <Nav>
@@ -44,7 +47,7 @@ const Navbar = ({ handleSidebar }) => {
               </NavLinks>
             </NavItem>
             <NavBtnWrap>
-              {isLogin ? <NavSignInBtn onClick={handleSubNavi}>{nickname}</NavSignInBtn> : <NavSignInBtn onClick={() => dispatch(setModal('signIn'))}>로그인</NavSignInBtn>}
+              {isLogin ? <NavSignInBtn onClick={() => handleSubNavi()}>{nickname}</NavSignInBtn> : <NavSignInBtn onClick={() => dispatch(setModal('signIn'))}>로그인</NavSignInBtn>}
               {isOpen ? (
                 <SubNavigation>
                   <Link to="/myinfo" onClick={() => handleSubNavi(false)}>

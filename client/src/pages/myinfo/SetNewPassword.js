@@ -1,11 +1,14 @@
 import React, { useState, useRef } from 'react';
-// import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setModal } from '../../modules/modal';
 import { requestSetNewPassword } from '../../lib/requestUserInfo';
 import { isValidSetNewPassword, isValidPassword, isValidPasswordConfirm } from '../../lib/validationFunction';
+import { Container, InputBox, Input, NewButton, Box } from './SetNewPassword.styled';
 import dotenv from 'dotenv';
 dotenv.config();
 
 export const SetNewPassword = () => {
+  const dispatch = useDispatch();
   const [inputUserInfo, setInputUserInfo] = useState({
     newPassword: '',
     confirm: '',
@@ -20,6 +23,7 @@ export const SetNewPassword = () => {
   const handleInputValue = (key) => (e) => {
     const inputKey = e.target.value;
     setInputUserInfo({ ...inputUserInfo, [key]: inputKey });
+    console.log('입력했을 때 ', inputUserInfo);
     clearTimeout(timeWait.current);
     timeWait.current = setTimeout(async () => {
       if (key === 'newPassword') setErrorMessage({ ...errorMessage, newPassword: isValidPassword(inputKey) });
@@ -39,29 +43,42 @@ export const SetNewPassword = () => {
     // * 유효성 처리
     const errorResult = await isValidSetNewPassword(inputUserInfo);
     setErrorMessage(errorResult);
-    console.log(errorResult);
+    console.log('error', errorResult);
     if (Object.values(errorResult).find((el) => el !== '')) return;
+    console.log('버튼 클릭했을 때 ', inputUserInfo); // password: 1234qwer, confirm: 1234qwer
 
-    // * 서버 통신
-    const serverResult = await requestSetNewPassword(inputUserInfo);
-    if (serverResult === true) console.log('hi!');
-    else console.log('error!');
+    if (inputUserInfo.newPassword === inputUserInfo.confirm) {
+      // * 서버 통신
+      const serverResult = await requestSetNewPassword(inputUserInfo);
+      if (serverResult === true) return dispatch(setModal('toHome'));
+      else console.log('error!');
+    } else if (inputUserInfo.newPassword !== inputUserInfo.confirm) {
+      setErrorMessage({ ...inputUserInfo, newPassword: '', confirm: '비밀번호를 다시 확인하세요.' });
+    }
   };
 
   return (
     <>
-      <div>
-        <h1>SetNewPassword</h1>
-        <h2>Password</h2>
-        <input type="text" onChange={handleInputValue('newPassword')} onKeyUp={handleKeyUp}></input>
-        <p>{errorMessage.newPassword}&nbsp;</p>
-
-        <h2>Password Confirm</h2>
-        <input type="text" onChange={handleInputValue('confirm')} onKeyUp={handleKeyUp}></input>
-        <p>{errorMessage.confirm}&nbsp;</p>
-
-        <input type="button" onClick={handleSubmit} value="Submit" />
-      </div>
+      <Container>
+        <Box>
+          <p>비밀번호 재설정</p>
+          <div className="content">
+            <span>새로운 비밀번호</span>
+            <InputBox>
+              <Input type="password" onChange={handleInputValue('newPassword')} onKeyUp={handleKeyUp}></Input>
+              <p>&nbsp;&nbsp;{errorMessage.newPassword}</p>
+            </InputBox>
+          </div>
+          <div className="content">
+            <span>비밀번호 재입력</span>
+            <InputBox>
+              <Input type="password" onChange={handleInputValue('confirm')} onKeyUp={handleKeyUp}></Input>
+              <p>&nbsp;&nbsp;{errorMessage.confirm}</p>
+            </InputBox>
+          </div>
+          <NewButton onClick={handleSubmit}>수정 완료</NewButton>
+        </Box>
+      </Container>
     </>
   );
 };

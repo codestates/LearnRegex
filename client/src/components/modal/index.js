@@ -10,7 +10,7 @@ import FindPassword from '../user/FindPassword';
 import DeleteUserConfirm from './DeleteUserConfirm';
 import DeleteAnswerConfirm from './DeleteAnswerConfirm';
 
-import { Background, ModalWrapper, ModalContent, CloseModalButton } from './ModalElements';
+import { Background, ModalWrapper, ModalContent, CloseModalButton } from './index.styled';
 
 const Modal = () => {
   const dispatch = useDispatch();
@@ -20,21 +20,23 @@ const Modal = () => {
   const SetContent = () => {
     if (modalType === 'signIn') return <SignIn />;
     else if (modalType === 'signUp') return <SignUp />;
-    else if (modalType === 'alert') return <Alert />;
+    else if (modalType === 'toHome') return <Alert func={modalType} />;
+    else if (modalType === 'toSignOut') return <Alert func={modalType} />;
+    else if (modalType === 'toUserInfo') return <Alert func={modalType} />;
     else if (modalType === 'quizAnswer') return <QuizAnswer />;
     else if (modalType === 'emailCert') return <EmailCert />;
     else if (modalType === 'findPassword') return <FindPassword />;
     else if (modalType === 'deleteUserConfirm') return <DeleteUserConfirm />;
-    else if (modalType === 'DeleteAnswerConfirm') return <DeleteAnswerConfirm />;
+    else if (modalType === 'deleteAnswerConfirm') return <DeleteAnswerConfirm />;
     else if (modalType === 'tutorialAnswer') return <QuizAnswer />;
   };
 
   return (
     <>
       <Background>
-        <ModalWrapper>
-          <ModalContent>
-            <CloseModalButton onClick={() => dispatch(setModal('close'))} />
+        <ModalWrapper modaltype={modalType}>
+          <ModalContent modaltype={modalType}>
+            <CloseModalButton modaltype={modalType} onClick={() => dispatch(setModal('close'))} />
             <SetContent />
           </ModalContent>
         </ModalWrapper>

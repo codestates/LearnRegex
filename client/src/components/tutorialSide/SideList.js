@@ -44,7 +44,7 @@ function SideList({ list, moveIndex, isOpen, toggle }) {
           </div>
         </div>
         <div>
-          <button onClick={() => dispatch(setModal('DeleteAnswerConfirm'))}>초기화</button>
+          <button onClick={() => dispatch(setModal('deleteAnswerConfirm'))}>초기화</button>
         </div>
       </Container>
     </>

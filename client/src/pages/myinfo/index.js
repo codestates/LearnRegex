@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { requestGetMyInfo } from '../../lib/requestUserInfo';
 import { checkUserIsLogin } from '../../lib/checkIsLogin';
+import { Container, Span, NewButton } from './index.styled';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -24,12 +25,50 @@ const MyInfo = () => {
 
   return (
     <>
-      <h3>MyInfo</h3>
-      <p>Email: {myInfo.socialType === 'local' ? myInfo.email : 'Login as ' + myInfo.socialType}</p>
-      <p>Nickname: {myInfo.nickname}</p>
-      <p>MakeQuiz: {myInfo.makeQuiz}</p>
-      <p>ClearQuiz: {myInfo.clearQuiz}</p>
-      <Link to="/modify">회원 정보 수정</Link>
+      <Container>
+        <div className="tmp">
+          <p>회원 정보 조회</p>
+          <div className="content">
+            <img src="/assets/emailIcon.png" alt="emailIcon" />
+            <Span category>
+              <span title>이메일</span>
+            </Span>
+            <Span>
+              <span>{myInfo.socialType === 'local' ? myInfo.email : myInfo.socialType + ' 로그인'}</span>
+            </Span>
+          </div>
+          <div className="content">
+            <img src="/assets/nicknameIcon.png" alt="nicknameIcon" />
+            <Span category>
+              <span title>닉네임</span>
+            </Span>
+            <Span>
+              <span>{myInfo.nickname}</span>
+            </Span>
+          </div>
+          <div className="content">
+            <img src="/assets/registerQuizIcon.png" alt="registerQuizIcon" />
+            <Span category>
+              <span title>등록한 퀴즈</span>
+            </Span>
+            <Span>
+              <span>{myInfo.makeQuiz}</span>
+            </Span>
+          </div>
+          <div className="content">
+            <img src="/assets/clearQuizIcon.png" alt="clearQuizIcon" />
+            <Span category>
+              <span title>해결한 퀴즈</span>
+            </Span>
+            <Span>
+              <span>{myInfo.clearQuiz}</span>
+            </Span>
+          </div>
+          <Link to="/modify">
+            <NewButton>프로필 수정</NewButton>
+          </Link>
+        </div>
+      </Container>
     </>
   );
 };

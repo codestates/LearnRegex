@@ -12,7 +12,6 @@ export const getQuiz = (id) => async (dispatch) => {
     const result = await axios.get(`${process.env.REACT_APP_SERVER_ADDR}/quiz/info?quizId=${id}`);
     const quiz = result.data.quiz;
     checkIsLogin(result);
-    // console.log(quiz);
     dispatch({ type: GET_QUIZ_SUCCESS, quiz });
   } catch (error) {
     checkIsLogin(error);

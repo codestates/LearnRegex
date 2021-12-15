@@ -5,6 +5,7 @@ export function checkIsLogin(res) {
   let isLogin = false;
   let nickname = '';
   // isLogin 헤더 확인
+  // console.dir(res);
   if (!!res.response && !!res.response.headers) isLogin = res.response.headers.islogin;
   else isLogin = res.headers.islogin;
   // nickname 저장
@@ -23,6 +24,5 @@ export function checkUserIsLogin() {
 
 export function checkUserNickname() {
   const nickname = store.getState().isLogin.nickname;
-  console.log(nickname);
   return nickname || '';
 }
