@@ -10,18 +10,18 @@ module.exports = {
 
       // page가 넘어가면 데이터베이스의 시작지점도 이동
       if (page > 1) {
-        offset = 6 * (page - 1);
+        offset = 4 * (page - 1);
       }
       // 퀴즈 리스트 조회
       let quizList = await quiz.findAndCountAll({
         attributes: ['id', 'title', 'count', 'isClear'],
         include: [{ model: users, attributes: ['nickname'] }],
         offset,
-        limit: 6,
+        limit: 4,
       });
 
       // 총 페이지 수 계산
-      const pages = Math.ceil(quizList.count / 6);
+      const pages = Math.ceil(quizList.count / 4);
 
       // 응답을 보내기 위한 코드 작업
       quizList = quizList.rows.map((el) => {

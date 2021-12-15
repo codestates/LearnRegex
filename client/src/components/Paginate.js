@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getQuizzes } from '../modules/quiz/getquizzes';
-import styled from 'styled-components';
-
-export const List = styled.li`
-  color: ${({ current }) => (current ? 'red' : 'black')};
-`;
+import { Container, List } from './Paginate.styled';
 
 function Paginate() {
   const { pages } = useSelector((state) => state.getquizzes.list);
@@ -35,8 +31,8 @@ function Paginate() {
 
   return (
     <>
-      <div>
-        <p onClick={movePrev}>이전</p>
+      <Container>
+        <span onClick={movePrev}>&lt;</span>
         <ul>
           {page.map((el, idx) => (
             <List key={idx} onClick={() => moveIndex(idx)} current={current === idx}>
@@ -44,8 +40,8 @@ function Paginate() {
             </List>
           ))}
         </ul>
-        <p onClick={moveNext}>다음</p>
-      </div>
+        <span onClick={moveNext}>&gt;</span>
+      </Container>
     </>
   );
 }

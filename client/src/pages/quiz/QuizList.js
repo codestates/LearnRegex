@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import QuizListElement from '../../components/QuizListElement';
-import Pagenate from '../../components/Paginate';
+import Paginate from '../../components/Paginate';
 import { Container, P } from './QuizList.styled';
 
 function QuizList() {
@@ -33,7 +33,9 @@ function QuizList() {
         </div>
         <hr />
         {!list ? <div>loading</div> : list.map((el) => <QuizListElement key={el.id} data={el} />)}
-        <Pagenate />
+        <div>
+          <Paginate />
+        </div>
       </Container>
     </>
   );
