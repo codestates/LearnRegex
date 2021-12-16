@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 export const InfoContainer = styled.div`
   width: 100%;
@@ -74,6 +74,7 @@ export const Heading = styled.h1`
   font-size: 3rem;
   line-height: 1.1;
   font-family: 'IBMPlexSansKR-Bold';
+  word-break: keep-all;
   color: var(--color-black);
   /* color: ${({ lightText }) => (lightText ? 'var(--color-)' : 'var(--color-)')}; */
   @media screen and (max-width: 480px) {
@@ -86,6 +87,7 @@ export const Subtitle = styled.p`
   margin-bottom: 35px;
   font-size: 1.2rem;
   line-height: 24px;
+  word-break: keep-all;
   color: var(--color-black);
   opacity: 0.75;
   /* color: ${({ darkText }) => (darkText ? 'var(--color-)' : 'var(--color-)')}; */
@@ -96,13 +98,54 @@ export const InfoBtnWapper = styled.div`
   justify-content: flex-start;
 `;
 
+const upTransform = keyframes`
+  from {
+    opacity: 0;
+    transform: translate(0, 100px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+`;
+
 export const ImgWrapper = styled.div`
   max-width: 585px; // media-query large: 1170px / 2
   height: 100%;
   margin-right: 3rem;
+  opacity: 0;
+
+  ${({ whiteBg }) =>
+    whiteBg
+      ? null
+      : css`
+          position: relative;
+          top: -40px;
+        `}
+
+  ${({ scrollY, whiteBg }) =>
+    whiteBg
+      ? scrollY > 558 &&
+        css`
+          animation: ${upTransform} 2s;
+          animation-fill-mode: forwards;
+          transition: all 1s linear;
+        `
+      : scrollY > 1520 &&
+        css`
+          animation: ${upTransform} 2s;
+          animation-fill-mode: forwards;
+          transition: all 1s linear;
+        `}
 
   @media screen and (max-width: 768px) {
     margin-bottom: 10rem;
+    ${({ whiteBg }) =>
+      whiteBg
+        ? null
+        : css`
+            top: 0;
+          `}
   }
 `;
 
