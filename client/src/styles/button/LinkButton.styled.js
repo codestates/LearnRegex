@@ -3,7 +3,7 @@ import { Link as LinkR } from 'react-router-dom';
 
 export const LinkButton = styled(LinkR)`
   border-radius: 50px;
-  background: ${({ primary }) => (primary ? 'var(--color-blue)' : 'var(--color-gray')};
+  background-color: var(--color-blue);
   white-space: nowrap;
   padding: ${({ big }) => (big ? '14px 48px' : '12px 30px')};
   color: var(--color-white);

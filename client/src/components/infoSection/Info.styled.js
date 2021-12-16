@@ -20,6 +20,11 @@ export const InfoWrapper = styled.div`
   margin-left: auto;
   padding: 0;
   justify-content: center;
+
+  @media screen and (max-width: 768px) {
+    margin-top: 1rem;
+    margin-bottom: 10rem;
+  }
 `;
 
 export const InfoRow = styled.div`
@@ -30,6 +35,7 @@ export const InfoRow = styled.div`
 
   @media screen and (max-width: 768px) {
     grid-template-areas: ${({ imgStart }) => (imgStart ? `'col1' 'col2'` : `'col1 col1' 'col2 col2'`)};
+    margin-top: 2rem;
   }
 `;
 

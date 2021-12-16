@@ -8,6 +8,7 @@ export const homeObjOne = {
   imgStart: false,
   img: `${process.env.PUBLIC_URL}/assets/svg-1.svg`,
   alt: 'tutorial',
+  link: '/tutorial',
 };
 
 export const homeObjTwo = {
@@ -20,4 +21,5 @@ export const homeObjTwo = {
   imgStart: true,
   img: `${process.env.PUBLIC_URL}/assets/svg-2.svg`,
   alt: 'quiz',
+  link: '/quizlist',
 };
