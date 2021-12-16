@@ -8,11 +8,7 @@ function QuizListElement({ data }) {
     <>
       <Container>
         <div className="content">
-          <Title>
-            <Link to={`/quiz/${data.id}`}>{data.title}</Link>
-          </Title>
-
-          <span className="tooltip">{data.title}</span>
+          <Title>{data.title}</Title>
           <Nickname nickname>{data.nickname}</Nickname>
           <Cnt cnt>
             이 퀴즈를 <span>{data.count}</span>명이 풀었습니다!

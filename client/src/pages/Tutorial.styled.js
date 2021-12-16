@@ -13,15 +13,15 @@ export const Container = styled.div`
   .content {
     width: 65%;
     background-color: var(--color-white);
-    padding: 10rem 0 4rem 0;
+    padding: 7rem 0 4rem 0;
     text-align: center;
-    border: 1px solid;
+    /* border: 1px solid; */
   }
 
   .side {
     width: 35%;
     background-color: var(--color-gray);
-    padding: 4.5rem 0 4rem 0;
-    border: 1px solid;
+    padding: 4rem 0 4rem 0;
+    /* border: 1px solid; */
   }
 `;

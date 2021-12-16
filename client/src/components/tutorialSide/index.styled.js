@@ -1,26 +1,25 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  /* border: 1px solid blue; */
   height: 100%;
-  border: 1px solid blue;
-  /* position: relative; */
+  position: relative;
 
-  /* .header {
+  .header {
     display: flex;
     color: red;
     border: 1px solid;
-  } */
+    margin-left: auto;
+    align-items: center;
+  }
 
   .hint {
-    height: 100%;
     width: 100%;
-    position: absolute;
   }
 
   .list {
     position: absolute;
     top: 0;
-    height: 100%;
     width: 100%;
   }
 `;

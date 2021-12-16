@@ -6,7 +6,10 @@ import { BsCheckCircle } from 'react-icons/bs';
 import { BsCheckCircleFill } from 'react-icons/bs';
 
 export const Container = styled.div`
-  border: 1px solid;
+  /* border: 1px solid; */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 `;
 
 export const FowardIcon = styled(IoIosArrowForward)`

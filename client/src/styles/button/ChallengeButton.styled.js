@@ -13,13 +13,13 @@ export const ChallengeButton = styled.button`
   transition: all 0.3s ease 0s;
   letter-spacing: 2.5px;
 
-  @media screen and (max-width: 1340px) {
-    width: 9rem;
+  @media screen and (max-width: 1170px) {
+    /* width: 10rem; */
+    width: 100%;
   }
 
   @media screen and (max-width: 940px) {
-    width: 7.5rem;
-    font-size: 1.2rem;
+    /* font-size: 1.2rem; */
   }
 
   @media screen and (max-width: 768px) {

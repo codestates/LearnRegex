@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 50%;
+  width: 60%;
   margin: auto;
   text-align: center;
   padding: 4rem 0;
 
   @media screen and (max-width: 768px) {
+    width: 92%;
     padding: 2rem 0;
   }
 

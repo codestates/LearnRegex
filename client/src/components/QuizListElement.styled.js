@@ -29,7 +29,7 @@ export const Container = styled(ShadowBox)`
     height: 100%;
     text-align: left;
     margin-right: 0.4rem;
-    display: inline-block;
+    /* position: relative; */
     position: relative;
 
     @media screen and (max-width: 768px) {
@@ -40,39 +40,6 @@ export const Container = styled(ShadowBox)`
     span {
       font-family: IBMPlexSansKR-Medium;
       color: var(--color-blue);
-    }
-
-    .tooltip {
-      display: none;
-      animation: tooltipAni 1s;
-      transition: opacity 0.5s;
-      position: absolute;
-      bottom: 93%;
-      left: 0;
-      background-color: var(--color-gray);
-      border-radius: 0.3rem;
-      padding: 0.3rem 0.7rem;
-
-      @media screen and (max-width: 768px) {
-        bottom: 80%;
-        right: 0;
-      }
-    }
-
-    p:hover + span {
-      display: block;
-    }
-  }
-
-  @keyframes tooltipAni {
-    0% {
-      opacity: 0;
-    }
-    80 {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
     }
   }
 
@@ -85,6 +52,10 @@ export const Container = styled(ShadowBox)`
     margin-left: 0.4rem;
     padding-top: 3rem;
 
+    @media screen and (max-width: 860px) {
+      margin-left: 0;
+    }
+
     @media screen and (max-width: 768px) {
       width: 15rem;
       padding-top: 0;
@@ -96,35 +67,39 @@ export const Container = styled(ShadowBox)`
 // * ----------------------------------------------------------------
 
 const P = styled.p`
-  margin: 1rem 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  margin: 0 0 1rem 0;
 `;
 
 export const Title = styled(P)`
   font-family: IBMPlexSansKR-SemiBold;
   font-size: 2rem;
-  margin-bottom: 0.3rem;
-  cursor: pointer;
+  margin-bottom: 0.6rem;
+  /* cursor: pointer; */
 
   @media screen and (max-width: 768px) {
-    font-size: 1.6rem;
-    padding-top: 1.3rem;
+    /* font-size: rem; */
     margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
   }
 `;
 
 export const Nickname = styled(P)`
   font-size: 1.4rem;
-  margin-top: 0;
 
   @media screen and (max-width: 768px) {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
 `;
 
 export const Cnt = styled(P)`
   font-size: 1.2rem;
   color: var(--color-dark-gray);
+  /* top: auto; */
+  position: absolute;
+  bottom: 0;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.5rem;
+    position: static;
+  }
 `;
