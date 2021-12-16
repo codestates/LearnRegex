@@ -44,12 +44,13 @@ export const Box = styled(ShadowBox)`
   width: 30rem;
   margin: 0 2rem;
   padding: 0;
+  background-color: var(--color-white);
 `;
 
 export const NewButton = styled(Button)`
   width: 12rem;
   ${({ danger }) => {
-    return danger ? `background-color: var(--color-light-gray);` : `background-color: var(--color-blue);`;
+    return danger ? `background-color: var(--color-dark-gray);` : `background-color: var(--color-blue);`;
   }}
   margin: 0;
 `;

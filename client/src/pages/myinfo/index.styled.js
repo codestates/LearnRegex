@@ -25,6 +25,7 @@ export const Container = styled.div`
     padding: 1rem 2rem 0.5rem 2rem;
     /* border: 1px solid; */
     box-shadow: 0px 5px 8px rgba(171, 180, 221, 0.4);
+    background-color: var(--color-white);
   }
 
   .content {
