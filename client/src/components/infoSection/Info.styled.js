@@ -45,11 +45,11 @@ export const Column2 = styled.div`
 `;
 
 export const TextWrapper = styled.div`
-  max-width: 480px; // media-query large: 1170px / 2
+  max-width: 585px; // media-query large: 1170px / 2
   padding-top: 0;
   padding-bottom: 3.75rem;
   margin-left: 1.5rem;
-  margin-right: 2.5rem;
+  /* margin-right: 2.5rem; */
 `;
 
 export const TopLine = styled.div`
