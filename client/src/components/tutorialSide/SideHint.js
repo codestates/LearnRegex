@@ -1,10 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { IoIosArrowBack } from 'react-icons/io';
-import { IoIosArrowForward } from 'react-icons/io';
-import { AiOutlineUnorderedList } from 'react-icons/ai';
-import { BsCheckSquare } from 'react-icons/bs';
-import { BsCheckSquareFill } from 'react-icons/bs';
+import { FowardIcon, BackIcon, ListIcon, ClearIcon, NotClearIcon } from './SideHint.styled';
 
 function SideHint({ hint, movePrev, moveNext, toggle }) {
   const { index } = useSelector((state) => state.bookmark);
@@ -12,24 +8,25 @@ function SideHint({ hint, movePrev, moveNext, toggle }) {
 
   return (
     <>
-      <div>
+      <div className="header">
         <div>
-          <div>
-            <div>
-              <span>Level {index + 1} of 30</span>
-            </div>
-            <div>{clearList[index] ? <BsCheckSquareFill size="50" color="green" /> : <BsCheckSquare size="50" />}</div>
-          </div>
-          <div>
-            <IoIosArrowBack onClick={movePrev} size="50" />
-            <IoIosArrowForward onClick={moveNext} size="50" />
-          </div>
-          <div>
-            <AiOutlineUnorderedList size="50" onClick={() => toggle(true)} />
-          </div>
+          <BackIcon onClick={movePrev} />
+          <FowardIcon onClick={moveNext} />
         </div>
-        <div>해설: {hint}</div>
+        <div>
+          <ListIcon
+            onClick={() => {
+              console.log('???');
+              toggle(true);
+            }}
+          />
+        </div>
       </div>
+      <div className="title">
+        {clearList[index] ? <ClearIcon color="green" /> : <NotClearIcon />}
+        <span>Level {index + 1} of 30</span>
+      </div>
+      <div className="hint">{hint}</div>
     </>
   );
 }

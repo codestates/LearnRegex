@@ -5,10 +5,7 @@ import styled from 'styled-components';
 import { MdCancel } from 'react-icons/md';
 import { BsCheckSquare } from 'react-icons/bs';
 import { BsCheckSquareFill } from 'react-icons/bs';
-
-export const Container = styled.div`
-  display: ${({ isOpen }) => (isOpen ? '' : 'none')};
-`;
+import { Container } from './SideList.styled';
 
 function SideList({ list, moveIndex, isOpen, toggle }) {
   const dispatch = useDispatch();
@@ -17,7 +14,7 @@ function SideList({ list, moveIndex, isOpen, toggle }) {
   return (
     <>
       <Container isOpen={isOpen}>
-        <div>
+        <div className="header">
           <MdCancel size="50" onClick={() => toggle(false)} />
         </div>
         <div>

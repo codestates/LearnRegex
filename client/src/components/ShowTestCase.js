@@ -86,9 +86,9 @@ export const ShowTestCase = ({ testCases, inputRegex, handleIsCorrectRegTotal, h
 
           {testCase.task === 'capture' ? (
             isCaptuerInput ? (
-              captureInputArray.map((el) => <p class="found">{el}</p>)
+              captureInputArray.map((el) => <span class="found">{el}</span>)
             ) : (
-              testCase.groups.map((el, idx) => (isCorrectRegGroups[idx] ? <p class="found">{el}</p> : <p>{el}</p>))
+              testCase.groups.map((el, idx) => (isCorrectRegGroups[idx] ? <span class="found">{el}</span> : <span>{el}</span>))
             )
           ) : (
             <></>
