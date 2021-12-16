@@ -63,7 +63,7 @@ export const SummaryIcon = styled.img`
 
 export const SummaryH1 = styled.h1`
   font-size: 2.5rem;
-  color: #fff;
+  color: var(--color-black);
   margin-bottom: 64px;
 
   @media screen and (max-width: 480px) {

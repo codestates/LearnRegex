@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import media from 'styled-media-query';
 import { normalize } from 'styled-normalize';
 
 const GlobalStyle = createGlobalStyle`
@@ -19,9 +18,11 @@ const GlobalStyle = createGlobalStyle`
     color: var(--color-black);
     background-color: var(--color-white);
 
-    ${media.lessThan('medium')`
-      font-size: var(--fontSize-root--small);
-    `}
+    
+    @media (max-width: 768px) {
+    /* screen width is less than 768px (medium) */
+    font-size: var(--fontSize-root--small);
+    }
 
     * {
       /* 스크롤 바 제거 */

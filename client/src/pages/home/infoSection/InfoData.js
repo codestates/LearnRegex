@@ -15,7 +15,7 @@ export const homeObjTwo = {
   id: 'quiz',
   whiteBg: false,
   topLine: '퀴즈 quiz',
-  heading: '어느 정도 이해했다면 문제를 직접 만들어봐요',
+  heading: '어느 정도 이해했다면 문제를 직접 만들어보세요',
   description: '내가 낸 문제를 정답과 해설로 설명할 수도 있어야하겠죠? 출제하는 시간을 통해 한번 더 개념을 익혀보세요. 다른 사람들은 어떤 문제를 냈을까요? 도전하기 버튼을 클릭해보세요.',
   buttonLabel: '퀴즈 페이지로',
   imgStart: true,
