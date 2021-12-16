@@ -25,7 +25,6 @@ function InputQuiz({ data }) {
   const [content, setContent] = useState({
     title: '',
     testCase: [makeTestCase()],
-    testCaseTarget: 'deprecated',
     answer: '',
     explanation: '',
   });
@@ -96,7 +95,6 @@ function InputQuiz({ data }) {
     const result = {
       title: content.title === '',
       testCase: content.testCase === '',
-      testCaseTarget: content.testCaseTarget === '',
       answer: content.answer === '',
       explanation: content.explanation === '',
     };
@@ -112,7 +110,7 @@ function InputQuiz({ data }) {
 
   useEffect(() => {
     if (!!data) {
-      setContent({ ...content, title: data.title, testCase: data.testCase, testCaseTarget: data.testCaseTarget, answer: data.answer, explanation: data.explanation });
+      setContent({ ...content, title: data.title, testCase: data.testCase, answer: data.answer, explanation: data.explanation });
     }
   }, []);
 
