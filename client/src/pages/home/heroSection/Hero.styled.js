@@ -40,6 +40,10 @@ export const VideoBg = styled.video`
   object-fit: cover;
   opacity: 0.7;
   /* background: var(--color-black); */
+
+  @media (min-width: 768px) and (max-width: 1170px) {
+    /* 동영상 반응형 비율 조절 */
+  }
 `;
 
 export const HeroContent = styled.div`
@@ -57,7 +61,7 @@ export const HeroH1 = styled.h1`
   padding: 0.7rem;
   border-radius: 10px;
   color: var(--color-light-black);
-  font-size: 4rem;
+  font-size: 3.5rem;
   font-family: 'IBMPlexSansKR-Bold';
   text-align: center;
 

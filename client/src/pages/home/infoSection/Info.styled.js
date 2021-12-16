@@ -13,7 +13,7 @@ export const InfoContainer = styled.div`
 export const InfoWrapper = styled.div`
   display: grid;
   z-index: 1;
-  height: 53rem;
+  height: 50rem;
   width: 100%;
   max-width: 1170px;
   margin-right: auto;
@@ -35,7 +35,7 @@ export const InfoRow = styled.div`
 
   @media screen and (max-width: 768px) {
     grid-template-areas: ${({ imgStart }) => (imgStart ? `'col1' 'col2'` : `'col1 col1' 'col2 col2'`)};
-    margin-top: 2rem;
+    margin-top: 3rem;
   }
 `;
 
@@ -100,6 +100,10 @@ export const ImgWrapper = styled.div`
   max-width: 585px; // media-query large: 1170px / 2
   height: 100%;
   margin-right: 3rem;
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 10rem;
+  }
 `;
 
 export const Img = styled.img`

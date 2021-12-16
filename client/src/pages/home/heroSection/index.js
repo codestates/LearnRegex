@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Video from '../../videos/video-1.mp4';
+import Video from '../../../videos/video-1.mp4';
 import { HeroContainer, HeroBg, HeroContent, VideoBg, HeroH1, HeroP, HeroBtnWrapper, ArrowDownward, ArrowRight } from './Hero.styled';
-import { ScrollButton } from '../../styles/button/ScrollButton.styled';
+import { ScrollButton } from '../../../styles/button/ScrollButton.styled';
 
 const HeroSection = () => {
   const [hover, setHover] = useState(false);
