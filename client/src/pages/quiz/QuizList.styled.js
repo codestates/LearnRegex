@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 60%;
+  width: 50%;
   margin: auto;
   text-align: center;
   padding: 4rem 0;
@@ -40,11 +40,6 @@ export const Container = styled.div`
 
   img:hover + p {
     display: block;
-  }
-
-  hr {
-    border: dashed 1px var(--color-dark-gray);
-    margin-bottom: 3.3rem;
   }
 `;
 

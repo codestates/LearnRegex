@@ -31,7 +31,6 @@ function QuizList() {
             {text.text}
           </P>
         </div>
-        <hr />
         {!list ? <div>loading</div> : list.map((el) => <QuizListElement key={el.id} data={el} />)}
         <div>
           <Paginate />

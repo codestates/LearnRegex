@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export const ChallengeButton = styled.button`
-  width: 100%;
-  height: 100%;
+  width: 13rem;
+  /* height: 100%; */
+  height: 4rem;
   border-radius: 1.8rem;
   border: 0.17rem ${({ isClear }) => (isClear ? '' : `solid rgba(63, 63, 63, 0.2);`)};
   background-color: ${({ isClear }) => (isClear ? `var(--color-blue)` : '')};
@@ -11,6 +12,15 @@ export const ChallengeButton = styled.button`
   font-family: IBMPlexSansKR-SemiBold;
   transition: all 0.3s ease 0s;
   letter-spacing: 2.5px;
+
+  @media screen and (max-width: 1340px) {
+    width: 9rem;
+  }
+
+  @media screen and (max-width: 940px) {
+    width: 7.5rem;
+    font-size: 1.1rem;
+  }
 
   :hover {
     box-shadow: ${({ isClear }) => (isClear ? '0px 5px 8px rgba(54, 78, 132, 0.5);' : '0px 5px 8px rgba(63, 63, 63, 0.4);')};

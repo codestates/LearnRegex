@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: var(--fontSize-root--big);
     font-family: var(--fontFamily);
     color: var(--color-black);
-    background-color: var(--color-white);
+    background-color: rgba(240, 241, 242, 0.7);
 
     ${media.lessThan('medium')`
       font-size: var(--fontSize-root--small);
@@ -121,7 +121,7 @@ const GlobalStyle = createGlobalStyle`
     --color-white: #FDFDFD;
     --color-dark-gray: #85858D;
     --color-gray: #E6E6E6;
-    --color-light-gray: #A8AABC;
+    --color-light-gray: #F0F1F2;
     --color-blue: #4B60A5;
     --color-light-blue: #ABB4DD;
     --color-dark-blue: #364E84;
