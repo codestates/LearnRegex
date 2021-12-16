@@ -25,7 +25,7 @@ function SolveQuiz() {
     <>
       <div>
         <div>
-          <BackButton />
+          <BackButton id="0" />
         </div>
         <div>
           <div>
