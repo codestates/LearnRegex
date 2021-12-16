@@ -41,7 +41,7 @@ export const Column1 = styled.div`
 export const Column2 = styled.div`
   margin-bottom: 1rem;
   padding: 0 1rem;
-  grid-area: col1;
+  grid-area: col2;
 `;
 
 export const TextWrapper = styled.div`
@@ -89,14 +89,15 @@ export const InfoBtnWapper = styled.div`
 `;
 
 export const ImgWrapper = styled.div`
-  max-width: 555px;
+  max-width: 500px;
   height: 100%;
+  margin-right: 5rem;
 `;
 
 export const Img = styled.img`
   width: 100%;
   margin-top: 0;
   margin-right: 0;
-  margin-left: 10px;
+  margin-left: 0;
   padding-right: 0;
 `;

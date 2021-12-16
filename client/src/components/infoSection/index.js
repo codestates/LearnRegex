@@ -1,28 +1,28 @@
 import React from 'react';
-import { InfoContainer, InfoWrapper, InfoRow, Column1, TextWrapper, TopLine, Heading, Subtitle, InfoBtnWapper, Column2, ImgWrapper, Img } from './Info.styled';
 import { LinkButton } from '../../styles/button/LinkButton.styled';
+import { InfoContainer, InfoWrapper, InfoRow, Column1, TextWrapper, TopLine, Heading, Subtitle, InfoBtnWapper, Column2, ImgWrapper, Img } from './Info.styled';
 
-const InfoSection = () => {
+const InfoSection = ({ id, whiteBg, topLine, heading, description, buttonLabel, imgStart, img, alt }) => {
   return (
     <>
-      <InfoContainer>
+      <InfoContainer id={id} whiteBg={whiteBg}>
         <InfoWrapper>
-          <InfoRow>
+          <InfoRow imgStart={imgStart}>
             <Column1>
               <TextWrapper>
-                <TopLine>학습하기 Tutorial</TopLine>
-                <Heading>단계별 학습으로 정규표현식과 친해지세요!</Heading>
-                <Subtitle>내가 입력하는 정규표현식에 따라 match & skip 학습하기 학습하기 학습하기 학습하기 학습하기 학습하기 학습하기 학습하기 학습하기 학습하기 학습하기 학습하기</Subtitle>
+                <TopLine>{topLine}</TopLine>
+                <Heading>{heading}</Heading>
+                <Subtitle>{description}</Subtitle>
                 <InfoBtnWapper>
                   <LinkButton to="/tutorial" primary={true}>
-                    학습하기 페이지로
+                    {buttonLabel}
                   </LinkButton>
                 </InfoBtnWapper>
               </TextWrapper>
             </Column1>
             <Column2>
               <ImgWrapper>
-                <Img />
+                <Img src={img} alt={alt} />
               </ImgWrapper>
             </Column2>
           </InfoRow>
