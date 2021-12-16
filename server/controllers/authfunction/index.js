@@ -14,14 +14,13 @@ module.exports = {
 
     try {
       const verifyToken = isVerify(token);
+      const cookieOption = {
+        sameSite: 'Strict',
+        httpOnly: true,
+      };
+      if (process.env.DOMAIN_NAME) cookieOption.domain = process.env.DOMAIN_NAME;
 
       if (!verifyToken) {
-        const cookieOption = {
-          sameSite: 'Strict',
-          httpOnly: true,
-        };
-        if (process.env.DOMAIN_NAME) cookieOption.domain = process.env.DOMAIN_NAME;
-
         res.header({ isLogin: false });
         return res.clearCookie('token', cookieOption).status(406).send({ message: 'invalid token' });
       }
@@ -31,7 +30,7 @@ module.exports = {
 
       if (!isUser) {
         res.header({ isLogin: false });
-        return res.status(404).send({ message: 'not found user' });
+        return res.clearCookie('token', cookieOption).status(404).send({ message: 'not found user' });
       }
 
       // database에 존재하는 유저라면 req.userId에 id를 담아서 다음 라우터로 전달
