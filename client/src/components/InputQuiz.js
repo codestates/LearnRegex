@@ -98,11 +98,11 @@ function InputQuiz({ data }) {
       answer: content.answer === '',
       explanation: content.explanation === '',
     };
-    setIsEmpty({ ...result });
-    console.log(isCorrectRegTotal);
 
-    if (Object.values(result).indexOf(true) !== -1) alert('모든 칸을 채워주세요!');
-    else if (!isCorrectRegTotal) alert('정규표현식을 확인해주세요!');
+    if (Object.values(result).indexOf(true) !== -1) setIsEmpty({ ...result });
+    // alert('모든 칸을 채워주세요!');
+    else if (!isCorrectRegTotal || focusTestCase) setIsEmpty({ ...result, answer: true });
+    // alert('정규표현식을 확인해주세요!');
     else submitQuiz(data, content);
   };
 
