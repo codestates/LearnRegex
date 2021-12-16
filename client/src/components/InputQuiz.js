@@ -118,7 +118,7 @@ function InputQuiz({ data }) {
     <>
       <div>
         <div>
-          <BackButton />
+          <BackButton id={data ? data.id : '0'} />
         </div>
         <form onSubmit={(e) => e.preventDefault()}>
           <div>

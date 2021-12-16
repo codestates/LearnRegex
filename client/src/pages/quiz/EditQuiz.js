@@ -14,7 +14,7 @@ function EditQuiz() {
   useEffect(() => {
     const quiz = getQuiz(id);
     console.log(quiz);
-    if (!data) window.location.replace(`/quiz/${id}`);
+    if (!data) window.history.back(); // window.location.replace(`/quiz/${id}`);
     dispatch(quiz);
   }, [id]);
 
