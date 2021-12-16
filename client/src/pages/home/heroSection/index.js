@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import Video from '../../videos/video-1.mp4';
-import { HeroContainer, HeroBg, HeroContent, VideoBg, HeroH1, HeroP, HeroBtnWrapper, ArrowForward, ArrowRight } from './HeroElements';
-import { GetStartedButton } from '../../styles/button/GetStartedButton';
+import Video from '../../../videos/video-1.mp4';
+import { HeroContainer, HeroBg, HeroContent, VideoBg, HeroH1, HeroP, HeroBtnWrapper, ArrowDownward, ArrowRight } from './Hero.styled';
+import { ScrollButton } from '../../../styles/button/ScrollButton.styled';
 
 const HeroSection = () => {
   const [hover, setHover] = useState(false);
   const onHover = () => {
-    setHover(true);
+    setHover(!hover);
   };
 
   return (
@@ -22,9 +22,9 @@ const HeroSection = () => {
             <HeroP>LearnRegex와 함께 공부해볼까요?</HeroP>
           </HeroP>
           <HeroBtnWrapper>
-            <GetStartedButton to="/tutorial" onMouseEnter={onHover} onMouseLeave={onHover} primary="true" dark="true">
-              시작하기 {hover ? <ArrowForward /> : <ArrowRight />}
-            </GetStartedButton>
+            <ScrollButton onMouseEnter={onHover} onMouseLeave={onHover} primary="true" dark="true">
+              시작하기 {hover ? <ArrowDownward /> : <ArrowRight />}
+            </ScrollButton>
           </HeroBtnWrapper>
         </HeroContent>
       </HeroContainer>
