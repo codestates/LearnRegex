@@ -112,11 +112,6 @@ export const NavSignInBtn = styled.button`
   border: none;
   cursor: pointer;
   text-decoration: none;
-
-  :hover {
-    transition: all 0.2s ease-in-out;
-    transform: translateY(-3px);
-  }
 `;
 
 export const SubNavigation = styled.div`
@@ -124,8 +119,8 @@ export const SubNavigation = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-light-blue);
+  color: var(--color-white);
   position: absolute;
   top: 2.8rem;
   width: 6.3rem;
@@ -138,6 +133,7 @@ export const SubNavigation = styled.div`
 export const SubNaviLink = styled(Link)`
   width: 100%;
   :hover {
+    color: var(--color-black);
     opacity: 0.7;
   }
 `;
@@ -145,6 +141,7 @@ export const SubNaviLink = styled(Link)`
 export const SubNaviSignOut = styled.div`
   width: 100%;
   :hover {
+    color: var(--color-black);
     opacity: 0.7;
   }
 `;

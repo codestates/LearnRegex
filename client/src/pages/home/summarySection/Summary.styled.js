@@ -102,4 +102,6 @@ export const SummaryP = styled.p`
   font-size: 1.3rem;
   text-align: center;
   word-break: keep-all;
+  font-family: 'IBMPlexSansKR-Light';
+  line-height: 1.8rem;
 `;
