@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaGithub } from 'react-icons/fa';
-import { FooterContainer, FooterWrap, ContentsWrap, FooterInnerWrap, RepoWikiWrap, Logo, RepoWiki, WebsiteRights, GithubLinkWrap, GithubIcon, GithubLink } from './FooterElements';
+import { FooterContainer, FooterWrap, ContentsWrap, FooterInnerWrap, RepoWikiWrap, CircleIcon, Logo, RepoWiki, WebsiteRights, GithubLinkWrap, GithubIcon, GithubLink } from './Footer.styled';
 
 const Footer = () => {
   return (
@@ -10,6 +10,7 @@ const Footer = () => {
           <FooterInnerWrap>
             <RepoWikiWrap>
               <Logo>LearnRegex&nbsp;</Logo>
+              <CircleIcon />
               <RepoWiki href="https://github.com/codestates/LearnRegex" target="_blank">
                 &nbsp;Repository&nbsp;
               </RepoWiki>

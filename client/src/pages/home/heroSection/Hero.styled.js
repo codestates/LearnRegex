@@ -9,17 +9,6 @@ export const HeroContainer = styled.div`
   height: 95vh;
   position: relative;
   z-index: 1;
-
-  /* :before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(150deg, rgba(180, 180, 180, 0.3) 0%, rgba(180, 180, 180, 0.3) 100%), linear-gradient(180deg, rgba(180, 180, 180, 0.3) 0%, transparent 100%);
-    z-index: 2;
-  } */
 `;
 
 export const HeroBg = styled.div`
@@ -73,7 +62,6 @@ export const HeroH1 = styled.h1`
 export const HeroP = styled.p`
   margin-top: 1rem;
   color: var(--color-black);
-  /* background-color: rgba(051, 102, 153, 0.1); */
   font-size: 2rem;
   font-family: 'IBMPlexSansKR-SemiBold';
   text-align: center;
