@@ -8,7 +8,7 @@ import { clearList } from '../modules/list';
 import { requestQuizClear } from '../lib/requestQuiz';
 import ShowTestCase from './ShowTestCase';
 
-function QuizForm({ data, orderPage }) {
+function QuizForm({ data, orderPage, moveNext }) {
   //TODO 리덕스 구조가 변경됐을 때 에러발생.
   // ? 에러가 발생하면 로컬스토리지를 초기화 해야될까?
   const previousRegex = useSelector((state) => (orderPage === 'tutorial' ? state.answer.tutorial[data.id] : state.answer.quiz[data.id]));
@@ -79,6 +79,17 @@ function QuizForm({ data, orderPage }) {
           >
             {orderPage === 'quizList' ? '정답 확인하기' : '도움이 필요합니다'}
           </button>
+          {moveNext ? (
+            isCorrectRegTotal ? ( //
+              <button onClick={moveNext} className="isCorrectRegTotal">
+                다음 문제로!
+              </button>
+            ) : (
+              <button>풀어봅시다.</button>
+            )
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </>
