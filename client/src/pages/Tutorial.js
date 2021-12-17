@@ -39,7 +39,7 @@ function Tutorial() {
       <Container>
         <div className="content">
           <p>{list[current].title}</p>
-          <QuizForm data={list[current]} orderPage={'tutorial'} />
+          <QuizForm data={list[current]} orderPage={'tutorial'} moveNext={moveNext} />
         </div>
         <div className="sidebar">
           <TutorialSide list={list} movePrev={movePrev} moveNext={moveNext} moveIndex={moveIndex} />
