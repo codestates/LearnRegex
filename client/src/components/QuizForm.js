@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setModal } from '../modules/modal';
-import style from './devQuizFormStyle.css';
 import { saveAnswerTutorial, saveAnswerQuiz } from '../modules/answer';
 import { clearList } from '../modules/list';
 import { requestQuizClear } from '../lib/requestQuiz';
 import ShowTestCase from './ShowTestCase';
-import { Container } from './QuizForm.styled';
+import { Container, Span, Input, AnswerButton } from './QuizForm.styled';
 import { ShowTestCaseContainer } from '../styles/TestCase.styled';
 
 function QuizForm({ data, orderPage }) {
@@ -62,27 +61,23 @@ function QuizForm({ data, orderPage }) {
   return (
     <>
       <Container>
-        <div>
-          <h2>Test Case</h2>
-          <ShowTestCaseContainer>
-            <ShowTestCase testCases={data.testCase} inputRegex={inputRegex} handleIsCorrectRegTotal={handleIsCorrectRegTotal} />
-          </ShowTestCaseContainer>
-        </div>
-        <div>
-          <h2>My Regexp</h2>
-          <div>
-            <input type="text" value={inputRegex} placeholder="정규표현식을 입력하세요!" onChange={handleAnswer} size="100" />
-          </div>
-        </div>
-        <div>
-          <button
-            onClick={() => {
-              orderPage === 'quizList' ? dispatch(setModal('quizAnswer')) : dispatch(setModal('tutorialAnswer'));
-            }}
-          >
-            {orderPage === 'quizList' ? '정답 확인하기' : '도움이 필요합니다'}
-          </button>
-        </div>
+        <Span>Test Case</Span>
+        <ShowTestCaseContainer>
+          <ShowTestCase testCases={data.testCase} inputRegex={inputRegex} handleIsCorrectRegTotal={handleIsCorrectRegTotal} />
+        </ShowTestCaseContainer>
+        <Span>My Regexp</Span>
+        <Input value={inputRegex} placeholder="정규표현식을 입력하세요!" onChange={handleAnswer} size="100" />
+        <AnswerButton
+          onClick={() => {
+            orderPage === 'quizList' //
+              ? dispatch(setModal('quizAnswer')) //
+              : dispatch(setModal('tutorialAnswer'));
+          }}
+        >
+          {orderPage === 'quizList' //
+            ? '정답 확인하기' //
+            : '도움이 필요합니다'}
+        </AnswerButton>
       </Container>
     </>
   );

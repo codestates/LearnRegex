@@ -126,6 +126,7 @@ const GlobalStyle = createGlobalStyle`
     --color-blue: #4B60A5;
     --color-light-blue: #ABB4DD;
     --color-dark-blue: #364E84;
+    --color-olive: #9CC7AE;
     --color-green: #5C9592;
     --color-dark-green: #2F5B5B;
     --color-brown: #89716F;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   width: 100%;
-  height: calc(100vh - 5rem);
+  /* height: calc(100vh - 5rem); */
   margin: auto;
 
   @media screen and (max-width: 1360px) {
@@ -12,8 +12,7 @@ export const Container = styled.div`
 
   .content {
     margin: 0 auto;
-    padding: 8rem 0;
-    text-align: center;
+    padding: 5rem 0;
 
     @media screen and (max-width: 890px) {
       margin: 0 2rem;
@@ -23,6 +22,8 @@ export const Container = styled.div`
       font-size: 2.6rem;
       font-family: IBMPlexSansKR-Bold;
       margin-bottom: 2rem;
+      text-align: center;
+      cursor: default;
     }
   }
 
@@ -30,8 +31,8 @@ export const Container = styled.div`
     padding: 3rem 0;
     flex-basis: 30rem;
     background-color: var(--color-gray);
-    border: 1px solid;
-    height: calc(100vh - 5rem);
+    /* border: 1px solid; */
+    /* height: calc(100vh - 5rem); */
     overflow: auto;
 
     @media screen and (max-width: 1360px) {

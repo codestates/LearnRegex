@@ -4,12 +4,19 @@ import { BsCheck } from 'react-icons/bs';
 
 export const TestCaseElement = styled.span`
   background-color: var(--color-light-gray);
-  border-radius: 0.8rem;
+  border-radius: 0.3rem;
   text-align: left;
-  padding: 0.3rem 2rem 0.3rem 1.2rem;
-  border: 1px solid;
+  padding: 0.3rem 0 0.3rem 0.5rem;
+  /* border: 1px solid; */
   width: 100%;
-  /* position: relative; */
+  min-height: 2rem;
+  font-family: D2Coding;
+  cursor: default;
+
+  @media screen and (max-width: 768px) {
+    height: 2.7rem;
+    padding: 0.6rem 0 0.6rem 0.5rem;
+  }
 `;
 
 export const TaskElement = styled.button`
@@ -19,13 +26,20 @@ export const TaskElement = styled.button`
   margin-right: 0.5rem;
   width: 10rem;
   border-radius: 0.4rem;
+  height: 2rem;
+  cursor: default;
   /* border: 1px solid; */
+
+  @media screen and (max-width: 768px) {
+    width: 7rem;
+    height: 2.7rem;
+  }
 `;
 
 export const TestCaseBox = styled.div`
   /* background-color: blue; */
   display: flex;
-  margin: 0.5rem 0;
+  /* margin-bottom: rem; */
   /* position: relative; */
   flex-wrap: wrap;
 
@@ -43,22 +57,29 @@ export const TestCaseBox = styled.div`
   button {
     flex-shrink: 0;
     font-size: 1.6rem;
+
+    @media screen and (max-width: 768px) {
+      font-size: 1.4rem;
+    }
   }
 
   .capture {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    position: relative;
+    /* min-height: 2.8rem; */
+    /* min-height: 10rem; */
+
+    .groupElement {
+      margin: 0.7rem 0;
+    }
   }
 `;
 
 export const ClearCheckBox = styled.div`
-  height: 100%;
-  display: flex;
-  align-items: center;
   position: absolute;
-  right: 0;
-  margin-right: ${(prop) => prop.size}rem;
+  right: 0.5rem;
 `;
 
 export const CheckIcon = styled(BsCheck)`
@@ -87,15 +108,22 @@ export const InputText = styled.input.attrs({})`
   text-align: left;
   padding: 0.3rem 2rem 0.3rem 1.2rem;
   border: 1px solid;
+  font-family: D2Coding;
 `;
 
 export const Group = styled.span`
-  /* position: absolute; */
-  color: ${(prop) => `var(--color-${prop.color})`};
-  /* bottom: 0; */
+  background-color: ${(prop) => `var(--color-${prop.color})`};
+  border-radius: 0.4rem;
+  margin-right: 0.4rem;
+  padding: 0 0.5rem;
 `;
 
 export const ShowTestCaseContainer = styled.div`
-  border: 1px solid;
   width: 100%;
+  margin-bottom: 5rem;
+  /* border: 1px solid; */
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 3rem;
+  }
 `;
