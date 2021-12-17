@@ -1,6 +1,6 @@
 import React from 'react';
 import Interweave from 'interweave';
-import { TestCaseElement, TaskElement } from './QuizForm.styled';
+import { TestCaseElement, TaskElement, TestCaseBox, ClearCheckBox, MinusTestCaseButton, CheckIcon, Group } from '../styles/TestCase.styled';
 
 export const ShowTestCase = ({ testCases, inputRegex, handleIsCorrectRegTotal, handleInputCapture, handleTestCaseQuantity }) => {
   let color = 'black';
@@ -27,7 +27,7 @@ export const ShowTestCase = ({ testCases, inputRegex, handleIsCorrectRegTotal, h
     if (Array.isArray(matchArray)) {
       lastIndex = matchArray.index;
       highlightedTestCase += testCase.target.substring(startIndex, lastIndex);
-      highlightedTestCase += "<span class='found'>" + matchArray[0] + '</span>';
+      highlightedTestCase += "<Group class='found'>" + matchArray[0] + '</Group>';
       startIndex = myRegex.lastIndex;
     }
     highlightedTestCase += testCase.target.substring(startIndex, testCase.target.length);
@@ -76,33 +76,31 @@ export const ShowTestCase = ({ testCases, inputRegex, handleIsCorrectRegTotal, h
     // * 출력
     return (
       <>
-        <div>
+        <TestCaseBox iscorrectregtotal={isCorrectRegTotal}>
           <TaskElement color={color}>{testCase.task}</TaskElement>
-        </div>
-        <div iscorrectregtotal={isCorrectRegTotal}>
-          <TestCaseElement>
-            <Interweave content={regExpResult.highlightedTestCase} />
-          </TestCaseElement>
-          {isCorrectReg ? '✅' : '❌'}
-          {handleTestCaseQuantity ? (
-            <button type="button" onClick={handleTestCaseQuantity('delete', idx)}>
-              ➖
-            </button>
-          ) : (
-            <></>
-          )}
-
-          {testCase.task === 'capture' ? (
-            isCaptuerInput ? (
-              captureInputArray.map((el) => <span class="found">{el}</span>)
-            ) : (
-              testCase.groups.map((el, idx) => (isCorrectRegGroups[idx] ? <span class="found">{el}</span> : <span>{el}</span>))
-            )
-          ) : (
-            <></>
-          )}
-        </div>
-        <hr />
+          <div className="capture">
+            <TestCaseElement>
+              <Interweave content={regExpResult.highlightedTestCase} />
+            </TestCaseElement>
+            <div>
+              {testCase.task === 'capture' ? (
+                isCaptuerInput ? (
+                  // 퀴즈 등록, 수정
+                  captureInputArray.map((el) => <Group color={'blue'}>{el}</Group>)
+                ) : (
+                  // 학습하기
+                  testCase.groups.map((el, idx) => (isCorrectRegGroups[idx] ? <Group color={'blue'}>{el}</Group> : <Group>{el}</Group>))
+                )
+              ) : (
+                <></>
+              )}
+            </div>
+          </div>
+          <ClearCheckBox size={handleTestCaseQuantity ? 3.5 : 1}>
+            <CheckIcon color={isCorrectReg ? 'green' : 'red'} />
+          </ClearCheckBox>
+          {handleTestCaseQuantity ? <MinusTestCaseButton onClick={handleTestCaseQuantity('delete', idx)}>➖</MinusTestCaseButton> : <></>}
+        </TestCaseBox>
       </>
     );
   });

@@ -6,8 +6,8 @@ import { saveAnswerTutorial, saveAnswerQuiz } from '../modules/answer';
 import { clearList } from '../modules/list';
 import { requestQuizClear } from '../lib/requestQuiz';
 import ShowTestCase from './ShowTestCase';
-import styled from 'styled-components';
 import { Container } from './QuizForm.styled';
+import { ShowTestCaseContainer } from '../styles/TestCase.styled';
 
 function QuizForm({ data, orderPage }) {
   //TODO 리덕스 구조가 변경됐을 때 에러발생.
@@ -64,7 +64,9 @@ function QuizForm({ data, orderPage }) {
       <Container>
         <div>
           <h2>Test Case</h2>
-          <ShowTestCase testCases={data.testCase} inputRegex={inputRegex} handleIsCorrectRegTotal={handleIsCorrectRegTotal} />
+          <ShowTestCaseContainer>
+            <ShowTestCase testCases={data.testCase} inputRegex={inputRegex} handleIsCorrectRegTotal={handleIsCorrectRegTotal} />
+          </ShowTestCaseContainer>
         </div>
         <div>
           <h2>My Regexp</h2>

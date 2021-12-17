@@ -6,6 +6,8 @@ import styled from 'styled-components';
 import { checkUserIsLogin } from '../lib/checkIsLogin';
 import ShowTestCase from './ShowTestCase';
 import InputTestCase from './InputTestCase';
+import { Container } from './InputQuiz.styled';
+import { ShowTestCaseContainer } from '../styles/TestCase.styled';
 
 export const Input = styled.input.attrs({})`
   outline: none;
@@ -116,7 +118,7 @@ function InputQuiz({ data }) {
 
   return (
     <>
-      <div>
+      <Container>
         <div>
           <BackButton id={data ? data.id : '0'} />
         </div>
@@ -126,22 +128,24 @@ function InputQuiz({ data }) {
           </div>
           <div onClick={handleFocusTestCase('testCase')}>
             <h2>Test Case</h2>
-            {focusTestCase ? ( //
-              <InputTestCase //
-                testCases={content.testCase}
-                handleInputTestCase={handleInputTestCase}
-                handleTaskButton={handleTaskButton}
-                handleTestCaseQuantity={handleTestCaseQuantity}
-              />
-            ) : (
-              <ShowTestCase //
-                testCases={content.testCase}
-                inputRegex={content.answer}
-                handleIsCorrectRegTotal={handleIsCorrectRegTotal}
-                handleInputCapture={handleInputCapture}
-                handleTestCaseQuantity={handleTestCaseQuantity}
-              />
-            )}
+            <ShowTestCaseContainer>
+              {focusTestCase ? ( //
+                <InputTestCase //
+                  testCases={content.testCase}
+                  handleInputTestCase={handleInputTestCase}
+                  handleTaskButton={handleTaskButton}
+                  handleTestCaseQuantity={handleTestCaseQuantity}
+                />
+              ) : (
+                <ShowTestCase //
+                  testCases={content.testCase}
+                  inputRegex={content.answer}
+                  handleIsCorrectRegTotal={handleIsCorrectRegTotal}
+                  handleInputCapture={handleInputCapture}
+                  handleTestCaseQuantity={handleTestCaseQuantity}
+                />
+              )}
+            </ShowTestCaseContainer>
           </div>
           <button type="button" onClick={handleTestCaseQuantity('add')}>
             ➕
@@ -161,7 +165,7 @@ function InputQuiz({ data }) {
             </button>
           </div>
         </form>
-      </div>
+      </Container>
     </>
   );
 }
