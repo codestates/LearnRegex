@@ -4,10 +4,6 @@ import { BsCheckCircleFill } from 'react-icons/bs';
 import { BsCheckCircle } from 'react-icons/bs';
 import { Button } from '../../styles/button/CommonButton.styled';
 
-export const Container = styled.div`
-  display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
-`;
-
 export const CloseIcon = styled(MdCancel)`
   font-size: 3rem;
   transition: all ease 0.4s;

@@ -11,6 +11,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   border: 1px solid;
+  background-color: var(--color-white);
 `;
 
 function QuizForm({ data, orderPage }) {

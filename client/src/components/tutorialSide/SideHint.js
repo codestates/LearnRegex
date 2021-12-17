@@ -8,23 +8,13 @@ function SideHint({ tip, movePrev, moveNext, toggle }) {
 
   return (
     <>
-      <Container className="hint">
-        <div className="arrow">
-          <BackIcon onClick={movePrev} />
-          <FowardIcon onClick={moveNext} />
-        </div>
-        <div className="listIcon">
-          <ListIcon onClick={() => toggle(true)} />
-        </div>
-        <div className="title">
-          <span>Level {index + 1} of 30</span>
-          {clearList[index] ? <ClearIcon /> : ''}
-        </div>
-        <div className="hintBox">
-          <p>{tip.length > 0 ? tip[0].characterSet : ``}</p>
-          <span>{tip.length > 0 ? tip[0].explanation : ``}</span>
-        </div>
-      </Container>
+      <BackIcon onClick={movePrev} />
+      <FowardIcon onClick={moveNext} />
+      <ListIcon onClick={() => toggle(true)} />
+      <span>Level {index + 1} of 30</span>
+      {clearList[index] ? <ClearIcon /> : ''}
+      <p>{tip.length > 0 ? tip[0].characterSet : ``}</p>
+      <span>{tip.length > 0 ? tip[0].explanation : ``}</span>
     </>
   );
 }

@@ -41,7 +41,7 @@ function Tutorial() {
           <p>{list[current].title}</p>
           <QuizForm data={list[current]} orderPage={'tutorial'} />
         </div>
-        <div className="side">
+        <div className="sidebar">
           <TutorialSide list={list} movePrev={movePrev} moveNext={moveNext} moveIndex={moveIndex} />
         </div>
       </Container>

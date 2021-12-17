@@ -14,10 +14,11 @@ function TutorialSide({ list, movePrev, moveNext, moveIndex }) {
 
   return (
     <>
-      <Container>
+      {isOpen ? ( //
+        <SideList list={list} moveIndex={moveIndex} isOpen={isOpen} toggle={toggle} /> //
+      ) : (
         <SideHint tip={list[index].tip} movePrev={movePrev} moveNext={moveNext} toggle={toggle} />
-        <SideList list={list} moveIndex={moveIndex} isOpen={isOpen} toggle={toggle} />
-      </Container>
+      )}
     </>
   );
 }
