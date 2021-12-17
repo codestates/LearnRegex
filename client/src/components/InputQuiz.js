@@ -2,22 +2,12 @@ import React, { useState, useEffect } from 'react';
 import BackButton from '../components/BackButton';
 import { submitQuiz } from '../lib/requestQuiz';
 import { limitChar } from '../lib/limitChar';
-import styled from 'styled-components';
 import { checkUserIsLogin } from '../lib/checkIsLogin';
 import ShowTestCase from './ShowTestCase';
 import InputTestCase from './InputTestCase';
 import { Container } from './InputQuiz.styled';
 import { ShowTestCaseContainer } from '../styles/TestCase.styled';
-
-export const Input = styled.input.attrs({})`
-  outline: none;
-  border: 1px solid ${({ isEmpty }) => (isEmpty ? 'red' : 'black')};
-`;
-
-export const Textarea = styled.textarea.attrs({})`
-  outline: none;
-  border: 1px solid ${({ isEmpty }) => (isEmpty ? 'red' : 'black')};
-`;
+import { Input, Span, Textarea, SubmitButton, PlusTestCaseIcon, AnswerContainer } from './InputQuiz.styled';
 
 function InputQuiz({ data }) {
   if (!checkUserIsLogin()) window.location.replace('/');
@@ -119,52 +109,38 @@ function InputQuiz({ data }) {
   return (
     <>
       <Container>
-        <div>
-          <BackButton id={data ? data.id : '0'} />
-        </div>
-        <form onSubmit={(e) => e.preventDefault()}>
-          <div>
-            <Input isEmpty={isEmpty.title} type="text" value={content.title} placeholder="제목을 입력하세요" maxLength="20" onChange={handleInputValue('title')} />
-          </div>
-          <div onClick={handleFocusTestCase('testCase')}>
-            <h2>Test Case</h2>
-            <ShowTestCaseContainer>
-              {focusTestCase ? ( //
-                <InputTestCase //
-                  testCases={content.testCase}
-                  handleInputTestCase={handleInputTestCase}
-                  handleTaskButton={handleTaskButton}
-                  handleTestCaseQuantity={handleTestCaseQuantity}
-                />
-              ) : (
-                <ShowTestCase //
-                  testCases={content.testCase}
-                  inputRegex={content.answer}
-                  handleIsCorrectRegTotal={handleIsCorrectRegTotal}
-                  handleInputCapture={handleInputCapture}
-                  handleTestCaseQuantity={handleTestCaseQuantity}
-                />
-              )}
-            </ShowTestCaseContainer>
-          </div>
-          <button type="button" onClick={handleTestCaseQuantity('add')}>
-            ➕
-          </button>
-          <div onClick={handleFocusTestCase('answer')}>
-            <h2>정답 / 해설</h2>
-            <div>
-              <Input isEmpty={isEmpty.answer} type="text" value={content.answer} placeholder="정답을 쓰세요" size="50" maxLength="100" onChange={handleInputValue('answer')} />
-            </div>
-            <div>
-              <Textarea isEmpty={isEmpty.explanation} type="text" value={content.explanation} placeholder="해설을 쓰세요" maxLength="400" onChange={handleInputValue('explanation')} />
-            </div>
-          </div>
-          <div>
-            <button type="submit" onClick={() => handleSubmitQuiz()}>
-              {!!data ? '수정 완료' : '퀴즈 업로드'}
-            </button>
-          </div>
-        </form>
+        <BackButton id={data ? data.id : '0'} />
+        <Span margintop={3}>제목</Span>
+        <Input size={2.4} mobilesize={1.8} margin={2} isEmpty={isEmpty.title} value={content.title} placeholder="20자 미만까지 가능합니다 :)" maxLength="20" onChange={handleInputValue('title')} />
+        <Span>Test Case</Span>
+        <ShowTestCaseContainer onClick={handleFocusTestCase('testCase')}>
+          {focusTestCase ? ( //
+            <InputTestCase //
+              testCases={content.testCase}
+              handleInputTestCase={handleInputTestCase}
+              handleTaskButton={handleTaskButton}
+              handleTestCaseQuantity={handleTestCaseQuantity}
+            />
+          ) : (
+            <ShowTestCase //
+              testCases={content.testCase}
+              inputRegex={content.answer}
+              handleIsCorrectRegTotal={handleIsCorrectRegTotal}
+              handleInputCapture={handleInputCapture}
+              handleTestCaseQuantity={handleTestCaseQuantity}
+            />
+          )}
+        </ShowTestCaseContainer>
+        <PlusTestCaseIcon type="button" onClick={handleTestCaseQuantity('add')} />
+        <AnswerContainer onClick={handleFocusTestCase('answer')}>
+          <Span>정답</Span>
+          <Input margin={2} isEmpty={isEmpty.answer} value={content.answer} placeholder="20자 미만까지 가능합니다 :)" maxLength="100" onChange={handleInputValue('answer')} />
+          <Span>해설</Span>
+          <Textarea isEmpty={isEmpty.explanation} value={content.explanation} placeholder="400자 미만까지 가능합니다 :)" maxLength="400" onChange={handleInputValue('explanation')} />
+        </AnswerContainer>
+        <SubmitButton type="submit" onClick={() => handleSubmitQuiz()}>
+          {!!data ? '수정 완료' : '퀴즈 업로드'}
+        </SubmitButton>
       </Container>
     </>
   );
