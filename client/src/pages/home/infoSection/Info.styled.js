@@ -24,6 +24,7 @@ export const InfoWrapper = styled.div`
   @media screen and (max-width: 768px) {
     margin-top: 1rem;
     margin-bottom: 10rem;
+    height: 60rem;
   }
 `;
 
@@ -98,6 +99,7 @@ export const InfoBtnWapper = styled.div`
   justify-content: flex-start;
 `;
 
+/* 애니메이션 정의 */
 const upTransform = keyframes`
   from {
     opacity: 0;
@@ -108,10 +110,12 @@ const upTransform = keyframes`
     transform: translate(0, 0);
   }
 `;
+/* -------------------- */
 
 export const ImgWrapper = styled.div`
   max-width: 585px; // media-query large: 1170px / 2
   height: 100%;
+  max-height: 30rem;
   margin-right: 3rem;
   opacity: 0;
 
@@ -140,19 +144,16 @@ export const ImgWrapper = styled.div`
 
   @media screen and (max-width: 768px) {
     margin-bottom: 10rem;
-    ${({ whiteBg }) =>
+    /* ${({ whiteBg }) =>
       whiteBg
         ? null
         : css`
-            top: 0;
-          `}
+            top: -40px;
+          `} */
   }
 `;
 
 export const Img = styled.img`
   width: 100%;
-  margin-top: 0;
-  margin-right: 0;
-  margin-left: 1rem;
-  padding-right: 0;
+  margin: 0 0 1rem 0;
 `;
