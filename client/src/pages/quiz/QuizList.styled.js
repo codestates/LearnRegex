@@ -1,25 +1,30 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  /* width: 100%; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   margin: auto;
-  text-align: center;
   padding: 4rem 0;
 
-  @media screen and (max-width: 768px) {
-    width: 92%;
-    padding: 2rem 0;
-  }
+  .cardContainer {
+    /* width: 70%; */
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* margin: auto; */
+    align-items: center;
 
-  .box {
-    /* width: 100%; */
-    /* border: 1px solid; */
-    position: relative;
-    display: inline-block;
-    padding: 0 4rem 0.8rem 0;
+    @media screen and (max-width: 1200px) {
+      margin: 0 2em;
+      padding: 2rem 0;
+    }
 
     @media screen and (max-width: 768px) {
-      padding: 0 2rem 0.8rem 0;
+      margin: 0 2rem;
+      padding: 2rem 0;
     }
   }
 
@@ -30,9 +35,9 @@ export const Container = styled.div`
     width: 4.7rem;
     transition: all ease 0.4s;
 
-    @media screen and (max-width: 768px) {
+    /* @media screen and (max-width: 768px) {
       width: 5rem;
-    }
+    } */
   }
 
   img:hover {
@@ -59,10 +64,10 @@ export const P = styled.p`
   background: var(--color-dark-blue);
   color: var(--color-white);
 
-  @media screen and (max-width: 768px) {
+  /* @media screen and (max-width: 768px) {
     bottom: 2rem;
     right: 10rem;
-  }
+  } */
 
   :after {
     position: absolute;
@@ -78,12 +83,12 @@ export const P = styled.p`
     pointer-events: none;
     content: ' ';
 
-    @media screen and (max-width: 768px) {
+    /* @media screen and (max-width: 768px) {
       left: 100%;
       top: 20%;
       margin-left: 0;
       border-top-color: transparent;
       border-left-color: var(--color-dark-blue);
-    }
+    } */
   }
 `;

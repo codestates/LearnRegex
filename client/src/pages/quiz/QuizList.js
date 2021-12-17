@@ -25,16 +25,10 @@ function QuizList() {
   return (
     <>
       <Container>
-        <div className="box">
-          <img src="/assets/makeQuizIcon.png" alt="makeQuizIcon.png" onClick={handleAlert} />
-          <P arrow_box state={text.state}>
-            {text.text}
-          </P>
-        </div>
-        <div className="tmp">{!list ? 'loading' : list.map((el) => <QuizListElement key={el.id} data={el} />)}</div>
-        <div>
-          <Paginate />
-        </div>
+        <img src="/assets/makeQuizIcon.png" alt="makeQuizIcon.png" onClick={handleAlert} />
+        <P state={text.state}>{text.text}</P>
+        <div className="cardContainer">{!list ? 'loading' : list.map((el) => <QuizListElement key={el.id} data={el} />)}</div>
+        <Paginate />
       </Container>
     </>
   );

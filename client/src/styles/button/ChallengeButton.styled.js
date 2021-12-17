@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ChallengeButton = styled.button`
-  width: 13rem;
+  /* width: 13rem; */
   /* height: 100%; */
   height: 4rem;
   border-radius: 1.8rem;
@@ -13,18 +13,9 @@ export const ChallengeButton = styled.button`
   transition: all 0.3s ease 0s;
   letter-spacing: 2.5px;
 
-  @media screen and (max-width: 1170px) {
-    /* width: 10rem; */
-    width: 100%;
-  }
-
-  @media screen and (max-width: 940px) {
-    /* font-size: 1.2rem; */
-  }
-
   @media screen and (max-width: 768px) {
-    width: 13rem;
-    margin-top: 1.3rem;
+    /* width: 13rem; */
+    /* margin-top: 1.3rem; */
   }
 
   :hover {
