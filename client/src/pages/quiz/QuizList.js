@@ -31,7 +31,7 @@ function QuizList() {
             {text.text}
           </P>
         </div>
-        {!list ? <div>loading</div> : list.map((el) => <QuizListElement key={el.id} data={el} />)}
+        <div className="tmp">{!list ? 'loading' : list.map((el) => <QuizListElement key={el.id} data={el} />)}</div>
         <div>
           <Paginate />
         </div>

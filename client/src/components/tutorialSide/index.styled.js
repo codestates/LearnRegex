@@ -5,14 +5,6 @@ export const Container = styled.div`
   height: 100%;
   position: relative;
 
-  .header {
-    display: flex;
-    color: red;
-    border: 1px solid;
-    margin-left: auto;
-    align-items: center;
-  }
-
   .hint {
     width: 100%;
   }

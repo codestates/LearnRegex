@@ -3,7 +3,7 @@ import { Button } from '../../styles/button/CommonButton.styled';
 import { ShadowBox } from '../../styles/ShadowBox.styled';
 
 export const Container = styled.div`
-  width: 80%;
+  width: 100%;
   text-align: center;
   margin: auto;
   display: flex;

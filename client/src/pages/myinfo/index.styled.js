@@ -6,7 +6,7 @@ import { MdQuiz } from 'react-icons/md';
 import { Button } from '../../styles/button/CommonButton.styled';
 
 export const Container = styled.div`
-  width: 70%;
+  width: 100%;
   margin: auto;
   text-align: center;
   /* border: 1px solid; */

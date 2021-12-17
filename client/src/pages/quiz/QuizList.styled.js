@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 60%;
+  /* width: 100%; */
   margin: auto;
   text-align: center;
   padding: 4rem 0;
@@ -12,7 +12,7 @@ export const Container = styled.div`
   }
 
   .box {
-    width: 100%;
+    /* width: 100%; */
     /* border: 1px solid; */
     position: relative;
     display: inline-block;

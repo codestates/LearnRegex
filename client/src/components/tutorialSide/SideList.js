@@ -1,9 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setModal } from '../../modules/modal';
-import { BsCheckSquare } from 'react-icons/bs';
-import { BsCheckSquareFill } from 'react-icons/bs';
-import { Container, CloseIcon } from './SideList.styled';
+import { Container, CloseIcon, ClearIcon, NotClearIcon, ResetButton } from './SideList.styled';
 
 function SideList({ list, moveIndex, isOpen, toggle }) {
   const dispatch = useDispatch();
@@ -12,12 +10,11 @@ function SideList({ list, moveIndex, isOpen, toggle }) {
   return (
     <>
       <Container className="list" isOpen={isOpen}>
-        <div className="header">
-          <span>Choose a level</span>
+        <div className="closeIcon">
           <CloseIcon onClick={() => toggle(false)} />
         </div>
-        <div className="li">
-          <ol>
+        <div className="listBox">
+          <ul>
             {list.map((el, idx) => (
               <li
                 key={el.id}
@@ -26,16 +23,18 @@ function SideList({ list, moveIndex, isOpen, toggle }) {
                   toggle();
                 }}
               >
-                <div>
-                  <div>{clearList[idx] ? <BsCheckSquareFill size="50" color="green" /> : <BsCheckSquare size="50" />}</div>
-                  <div>{el.title}</div>
+                <div className="listTitle">
+                  <span list>
+                    {el.id}. {el.title}
+                  </span>
+                  {clearList[idx] ? <ClearIcon /> : <NotClearIcon />}
                 </div>
               </li>
             ))}
-          </ol>
+          </ul>
         </div>
-        <div className="button">
-          <button onClick={() => dispatch(setModal('deleteAnswerConfirm'))}>초기화</button>
+        <div className="buttonBox">
+          <ResetButton onClick={() => dispatch(setModal('deleteAnswerConfirm'))}>초기화</ResetButton>
         </div>
       </Container>
     </>

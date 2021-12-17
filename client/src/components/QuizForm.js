@@ -7,6 +7,11 @@ import { saveAnswerTutorial, saveAnswerQuiz } from '../modules/answer';
 import { clearList } from '../modules/list';
 import { requestQuizClear } from '../lib/requestQuiz';
 import ShowTestCase from './ShowTestCase';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  border: 1px solid;
+`;
 
 function QuizForm({ data, orderPage }) {
   //TODO 리덕스 구조가 변경됐을 때 에러발생.
@@ -60,7 +65,7 @@ function QuizForm({ data, orderPage }) {
   //! ------------------------ HTML 태그 출력 ------------------------
   return (
     <>
-      <div>
+      <Container>
         <div>
           <h2>Test Case</h2>
           <ShowTestCase testCases={data.testCase} inputRegex={inputRegex} handleIsCorrectRegTotal={handleIsCorrectRegTotal} />
@@ -80,7 +85,7 @@ function QuizForm({ data, orderPage }) {
             {orderPage === 'quizList' ? '정답 확인하기' : '도움이 필요합니다'}
           </button>
         </div>
-      </div>
+      </Container>
     </>
   );
 }
