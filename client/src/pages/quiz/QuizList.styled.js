@@ -9,35 +9,26 @@ export const Container = styled.div`
   padding: 4rem 0;
 
   .cardContainer {
-    /* width: 70%; */
+    width: 70rem;
     margin: 0 auto;
     height: 100%;
     display: flex;
     flex-direction: column;
-    /* margin: auto; */
     align-items: center;
+    position: relative;
 
     @media screen and (max-width: 1200px) {
+      width: auto;
       margin: 0 2em;
-      padding: 2rem 0;
-    }
-
-    @media screen and (max-width: 768px) {
-      margin: 0 2rem;
-      padding: 2rem 0;
     }
   }
 
   img {
     margin-left: auto;
-    display: flex;
+    margin-bottom: 2rem;
     cursor: pointer;
     width: 4.7rem;
     transition: all ease 0.4s;
-
-    /* @media screen and (max-width: 768px) {
-      width: 5rem;
-    } */
   }
 
   img:hover {
@@ -53,21 +44,17 @@ export const P = styled.p`
   /* 말풍선 적절한 top 과 margin-left 로 위치조정 */
   display: none;
   position: absolute;
-  width: ${({ state }) => (state === 'notice' ? '9rem' : '13rem')};
+  width: ${({ state }) => (state === 'notice' ? '7rem' : '12rem')};
   padding: 8px;
-  right: 11rem;
-  bottom: 1.2rem;
+  text-align: center;
+  right: 6rem;
+  top: 2rem;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
   border: 1px dashed var(--color-dark-blue);
   background: var(--color-dark-blue);
   color: var(--color-white);
-
-  /* @media screen and (max-width: 768px) {
-    bottom: 2rem;
-    right: 10rem;
-  } */
 
   :after {
     position: absolute;
@@ -82,13 +69,5 @@ export const P = styled.p`
     border-width: 10px;
     pointer-events: none;
     content: ' ';
-
-    /* @media screen and (max-width: 768px) {
-      left: 100%;
-      top: 20%;
-      margin-left: 0;
-      border-top-color: transparent;
-      border-left-color: var(--color-dark-blue);
-    } */
   }
 `;

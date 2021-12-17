@@ -3,11 +3,10 @@ import { ShadowBox } from '../styles/ShadowBox.styled';
 import { ChallengeButton } from '../styles/button/ChallengeButton.styled';
 
 export const Container = styled(ShadowBox)`
-  /* border: 1px solid; */
   display: flex;
+  width: 100%;
   flex-direction: column;
   margin-bottom: 2.5rem;
-  width: 70rem;
   padding: 2.4rem 3rem;
   height: 15rem;
   border-radius: 1.2rem;
@@ -15,53 +14,48 @@ export const Container = styled(ShadowBox)`
   box-shadow: 0px 16px 15px rgba(63, 63, 63, 0.4);
   transition: all 0.6s ease 0s;
 
-  @media screen and (max-width: 1200px) {
-    width: 100%;
+  span {
+    color: var(--color-blue);
   }
 
   @media screen and (max-width: 768px) {
-    /* width: 35rem; */
-    /* padding: 2.4rem 1rem;
-    height: 20rem; */
-    height: 25rem;
+    height: 20rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 `;
 
-export const Button = styled(ChallengeButton)``;
+export const Button = styled(ChallengeButton)`
+  width: 16rem;
+  margin-left: auto;
+  border-radius: 1.2rem;
+  margin-top: auto;
 
-const P = styled.p`
-  /* margin: 0 0 1rem 0; */
+  @media screen and (max-width: 768px) {
+    margin: 0;
+  }
 `;
+
+const P = styled.p``;
 
 export const Title = styled(P)`
   font-family: IBMPlexSansKR-SemiBold;
   font-size: 2rem;
-  /* margin-bottom: 0.6rem; */
-  /* cursor: pointer; */
-
-  @media screen and (max-width: 768px) {
-    /* font-size: rem; */
-    /* margin-bottom: 0.5rem; */
-    /* margin-top: 0.5rem; */
-  }
+  margin-bottom: 0.6rem;
+  //* 제목이 15자 이상인데 공백이 없으면 word-break: brack-all; 속성 주기
 `;
 
 export const Nickname = styled(P)`
   font-size: 1.4rem;
-
-  @media screen and (max-width: 768px) {
-    /* font-size: 1.5rem; */
-  }
+  margin-bottom: 0.6rem;
 `;
 
 export const Cnt = styled(P)`
   font-size: 1.2rem;
   color: var(--color-dark-gray);
-  /* position: absolute; */
-  /* bottom: 0; */
 
   @media screen and (max-width: 768px) {
-    /* font-size: 1.5rem; */
-    /* position: static; */
+    margin-bottom: 2rem;
   }
 `;

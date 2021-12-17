@@ -18,6 +18,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: var(--fontFamily);
     color: var(--color-black);
     background-color: rgba(240, 241, 242, 0.7);
+    word-break: keep-all;
 
     ${media.lessThan('medium')`
       font-size: var(--fontSize-root--small);
