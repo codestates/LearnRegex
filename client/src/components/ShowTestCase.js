@@ -1,7 +1,9 @@
 import React from 'react';
 import Interweave from 'interweave';
+import { TestCaseElement, TaskElement } from './QuizForm.styled';
 
 export const ShowTestCase = ({ testCases, inputRegex, handleIsCorrectRegTotal, handleInputCapture, handleTestCaseQuantity }) => {
+  let color = 'black';
   if (testCases.length === 0) return <></>;
   //! ------------------------ 정규표현식 생성 --------------------
   const createMyRegex = (inputRegex) => {
@@ -46,16 +48,20 @@ export const ShowTestCase = ({ testCases, inputRegex, handleIsCorrectRegTotal, h
 
     // * Task별로 구분
     if (testCase.task === 'match') {
+      color = 'green';
       if (isValidRegex) isCorrectReg = regExpResult.matchArray[0] === testCase.target;
     } else if (testCase.task === 'skip') {
+      color = 'red';
       if (!isValidRegex) isCorrectReg = true;
     } else if (testCase.task === 'capture' && isCaptuerInput) {
+      color = 'brown';
       if (isValidRegex) {
         captureInputArray = regExpResult.matchArray.slice(1);
         if (!!handleInputCapture) handleInputCapture(idx, captureInputArray);
         isCorrectReg = true;
       }
     } else if (testCase.task === 'capture') {
+      color = 'brown';
       if (isValidRegex) {
         isCorrectRegGroups = testCase.groups.map((group, idx) => group === regExpResult.matchArray[idx + 1]);
         isCorrectReg = isCorrectRegGroups.indexOf(false) === -1;
@@ -71,10 +77,12 @@ export const ShowTestCase = ({ testCases, inputRegex, handleIsCorrectRegTotal, h
     return (
       <>
         <div>
-          <h2>📍{testCase.task}</h2>
+          <TaskElement color={color}>{testCase.task}</TaskElement>
         </div>
         <div iscorrectregtotal={isCorrectRegTotal}>
-          <Interweave content={regExpResult.highlightedTestCase} />
+          <TestCaseElement>
+            <Interweave content={regExpResult.highlightedTestCase} />
+          </TestCaseElement>
           {isCorrectReg ? '✅' : '❌'}
           {handleTestCaseQuantity ? (
             <button type="button" onClick={handleTestCaseQuantity('delete', idx)}>

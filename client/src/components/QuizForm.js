@@ -1,18 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setModal } from '../modules/modal';
-import Interweave from 'interweave';
 import style from './devQuizFormStyle.css';
 import { saveAnswerTutorial, saveAnswerQuiz } from '../modules/answer';
 import { clearList } from '../modules/list';
 import { requestQuizClear } from '../lib/requestQuiz';
 import ShowTestCase from './ShowTestCase';
 import styled from 'styled-components';
-
-const Container = styled.div`
-  border: 1px solid;
-  background-color: var(--color-white);
-`;
+import { Container } from './QuizForm.styled';
 
 function QuizForm({ data, orderPage }) {
   //TODO 리덕스 구조가 변경됐을 때 에러발생.
