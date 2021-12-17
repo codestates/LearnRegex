@@ -1,4 +1,20 @@
+import styled from 'styled-components';
 import { ImArrowLeft2 } from 'react-icons/im';
+
+export const BackButtonIcon = styled(ImArrowLeft2)`
+  font-size: 3.8rem;
+  cursor: pointer;
+  transition: all ease 0.4s;
+  color: var(--color-dark-gray);
+
+  :hover {
+    color: var(--color-dark-blue);
+  }
+
+  @media screen and (max-width: 963px) {
+    font-size: 3rem;
+  }
+`;
 
 export default function BackButton({ id = '0' }) {
   const historyBack = () => {
@@ -10,7 +26,7 @@ export default function BackButton({ id = '0' }) {
 
   return (
     <>
-      <ImArrowLeft2 size="50" onClick={historyBack} />
+      <BackButtonIcon size="50" onClick={historyBack} />
     </>
   );
 }

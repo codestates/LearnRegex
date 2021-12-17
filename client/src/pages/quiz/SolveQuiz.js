@@ -5,6 +5,7 @@ import { getQuiz } from '../../modules/quiz/getquiz';
 import { deleteQuiz } from '../../lib/requestQuiz';
 import QuizForm from '../../components/QuizForm';
 import BackButton from '../../components/BackButton';
+import { Container, P } from './SolveQuiz.styled';
 
 function SolveQuiz() {
   const { id } = useParams('id');
@@ -23,30 +24,28 @@ function SolveQuiz() {
 
   return (
     <>
-      <div>
-        <div>
-          <BackButton id="0" />
+      <Container>
+        <div className="content">
+          {/* <BackButton id="0" />
+          <P size={2.6} family="Bold" margin={0.6}>
+            {data.title}
+          </P>
+          <P size={2} family="Medium" margin={2.5}>
+            {data.nickname}
+          </P>
+          {data.isMade ? (
+            <div className="modify">
+              <Link to={`/editquiz/${data.id}`}>
+                <span>수정</span>
+              </Link>
+              <span onClick={handleDelete}>삭제</span>
+            </div>
+          ) : (
+            <></>
+          )} */}
+          <QuizForm data={data} orderPage={'quizList'} />
         </div>
-        <div>
-          <div>
-            <div>제목: {data.title}</div>
-            <div>닉네임: {data.nickname}</div>
-            {data.isMade ? (
-              <div>
-                <Link to={`/editquiz/${data.id}`}>
-                  <button>수정</button>
-                </Link>
-                <button onClick={handleDelete}>삭제</button>
-              </div>
-            ) : (
-              ''
-            )}
-          </div>
-          <div>
-            <QuizForm data={data} orderPage={'quizList'} />
-          </div>
-        </div>
-      </div>
+      </Container>
     </>
   );
 }

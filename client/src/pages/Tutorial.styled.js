@@ -12,7 +12,7 @@ export const Container = styled.div`
 
   .content {
     margin: 0 auto;
-    padding: 5rem 0;
+    padding: 3.5rem 0;
 
     @media screen and (max-width: 890px) {
       margin: 0 2rem;
@@ -28,7 +28,7 @@ export const Container = styled.div`
   }
 
   .sidebar {
-    padding: 3rem 0;
+    padding: 1.4rem 0;
     flex-basis: 30rem;
     background-color: var(--color-gray);
     /* border: 1px solid; */

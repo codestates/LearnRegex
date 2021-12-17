@@ -2,12 +2,15 @@ import styled from 'styled-components';
 import { Button } from '../styles/button/CommonButton.styled';
 
 export const Container = styled.div`
-  /* border: 1px solid; */
+  border: 3px solid;
   box-shadow: 0px 5px 8px rgba(63, 63, 63, 0.4);
   padding: 5rem 2.4rem;
   background-color: var(--color-white);
   display: flex;
   flex-direction: column;
+  /* width: fit-content; */
+  /* width: 100%;
+  margin: 0 */
 `;
 
 export const Span = styled.span`
