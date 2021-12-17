@@ -611,7 +611,7 @@ export const dummyData = [
         explanation: '괄호 안 문자들을 제외',
       },
     ],
-    answer: `<([a-zA-Z]+)>([\w\s]*)<\/\1>`,
+    answer: `${'<([a-zA-Z]+)>([\\w\\s]*)<\\/\\1>'}`,
     explanation: ``,
   },
 
