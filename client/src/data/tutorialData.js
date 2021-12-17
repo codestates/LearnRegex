@@ -96,13 +96,18 @@ export const dummyData = [
         target: 'ab',
       },
       {
-        task: 'skip',
+        task: 'match',
         target: 'abc',
       },
     ],
-    tip: [],
+    tip: [
+      {
+        characterSet: `+`,
+        explanation: '앞 문자가 하나 또는 여러개 존재함',
+      },
+    ],
     answer: `\w+`,
-    explanation: `+는 앞 문자가 하나 또는 여러개 존재함을 의미합니다.`,
+    explanation: `한 개 이상의 문자가 존재하므로 문자 전체를 뜻하는 \w와 +기호를 입력합니다`,
   },
 
   {
@@ -122,9 +127,14 @@ export const dummyData = [
         target: 'ca',
       },
     ],
-    tip: [],
+    tip: [
+      {
+        characterSet: `?`,
+        explanation: '앞 문자가 없거나 하나만 존재함',
+      },
+    ],
     answer: `c?at?`,
-    explanation: `?는 앞 문자가 없거나 하나만 존재함을 의미합니다.`,
+    explanation: `a를 제외한, c 와 t는 존재하거나 존재하지 않는 경우 둘 다 포함하기 때문에 c 와 t 문자 뒤에 ? 기호를 입력합니다.`,
   },
 
   {
@@ -148,9 +158,14 @@ export const dummyData = [
         target: 'penpineappleapplepen',
       },
     ],
-    tip: [],
+    tip: [
+      {
+        characterSet: `*`,
+        explanation: '앞 문자가 없거나 하나 이상 존재함',
+      },
+    ],
     answer: `\w*`,
-    explanation: `*는 앞 문자가 없거나 있다면 하나 이상 존재함을 의미합니다.`,
+    explanation: `문자가 없거나, 하나 이상 존재하므로 문자 전체를 뜻하는 \w와 *기호를 입력합니다`,
   },
 
   {
@@ -176,14 +191,18 @@ export const dummyData = [
     ],
     tip: [
       {
+        characterSet: '{n, m}',
+        explanation: '앞 문자가 n 이상 m 이하 반복됨',
+      },
+      {
         characterSet: '{n}',
-        explanation: '앞 문자가 n번 반복됨을 의미함',
+        explanation: '앞 문자가 n번 반복됨',
       },
     ],
     answer: `\d{2,3}-\d{3,4}-\d{4}`,
-    explanation: `{n,m}는 앞 문자가 n 이상 m 이하 반복됨을 의미합니다.
-                  숫자를 입력해 반복 수를 지정합니다.
-                  단어 사이에 필수적으로 들어가는 - 기호를 직접 입력합니다.`,
+    explanation: `지역번호를 포함하는 전화번호 형식만 성립하기 때문에 앞 문자를 숫자 전체를 뜻하는 \d로 입력해주고
+                  반복 허용 범위를 2이상 3이하로 입력합니다. 그 후 공통으로 들어가는 -문자를 입력한 뒤
+                  첫 문자열과 같은 방법으로 나머지 문자열을 입력합니다.`,
   },
 
   {
@@ -203,10 +222,14 @@ export const dummyData = [
         target: 'easy',
       },
     ],
-    tip: [],
+    tip: [
+      {
+        characterSet: '{n,}',
+        explanation: '앞 문자가 최소 n번 이상 반복됨',
+      },
+    ],
     answer: `e{2,}asy`,
-    explanation: `{n,}는 앞 문자가 n 반복됨을 의미합니다.
-                  숫자를 입력해 반복 수를 지정합니다.`,
+    explanation: `문자열 제일 앞에 있는 e가 한 개 있는 경우는 피해야 하기 때문에 e의 반복 허용 범위를 2 이상으로 입력한 뒤 나머지 문자를 직접 입력합니다.`,
   },
 
   {
@@ -230,10 +253,15 @@ export const dummyData = [
         target: 'fat',
       },
     ],
-    tip: [],
+    tip: [
+      {
+        characterSet: '[abc]',
+        explanation: '괄호 안의 문자만 가용함',
+      },
+    ],
     answer: `[bce]at`,
-    explanation: `[]는 괄호 안의 문자만 가용함을 의미합니다.
-                  가용할 문자를 입력합니다.`,
+    explanation: `앞 문자가 f인 경우는 피해야 하기 때문에 전체 문자를 뜻하는 \w가 아닌 b,c,e만 가용 문자 목록으로 지정합니다.
+                  그 후 공통으로 포함된 at를 입력합니다.`,
   },
 
   {
@@ -267,10 +295,9 @@ export const dummyData = [
         explanation: '알파벳 소문자 범위',
       },
     ],
-    answer: `[A-Z]+[a-z]+`,
-    explanation: `[]는 괄호 안의 문자만 가용함을 의미합니다.
-                  가용할 범위를 입력합니다.
-                  가용 문자가 하나 이상 존재하므로 +기호를 사용합니다.`,
+    answer: `[A-Za-z]+`,
+    explanation: `가용 문자 목록을 범위로 지정할 수도 있습니다.
+                  문자열에 숫자가 들어간 경우는 피해야 하기 때문에 가용 문자 범위를 A-Za-z로 지정합니다.`,
   },
 
   {
@@ -300,10 +327,8 @@ export const dummyData = [
         explanation: '공백 문자(space)',
       },
     ],
-    answer: `[a-z가-힇 ]+`,
-    explanation: `[]는 괄호 안의 문자만 가용함을 의미합니다.
-                  가용할 범위를 입력합니다.
-                  가용 문자가 하나 이상 존재하므로 +기호를 사용합니다.`,
+    answer: `[a-z가-힇\s]+`,
+    explanation: `한글 단어와 알파벳 소문자, 공백 문자를 가용 문자 범위로 지정합니다.`,
   },
 
   {
@@ -331,11 +356,15 @@ export const dummyData = [
         target: 'eat',
       },
     ],
-    tip: [],
-    answer: `[^a-e]at`,
-    explanation: `[^]는 괄호 안의 문자는 예외함을 의미합니다.
-                  예외처리 할 범위를 입력합니다.
-                  공통으로 들어가는 at를 직접 입력합니다.`,
+    tip: [
+      {
+        characterSet: '[^abc]',
+        explanation: '괄호 안의 문자는 예외함',
+      },
+    ],
+    answer: `[^ae]at`,
+    explanation: `앞 문자가 c 와 e인 경우는 피해야 하기 때문에 예외 문자 목록으로 지정해줍니다.
+                  그 후 공통으로 포함된 at를 입력합니다`,
   },
 
   {
@@ -365,14 +394,14 @@ export const dummyData = [
     ],
     tip: [
       {
-        characterSet: 'a-z',
-        explanation: '괄호 안 문자들을 제외',
+        characterSet: '특수문자',
+        explanation: '제목에 적혀있는 특수문자 외에도 를 붙여서 사용합니다.',
       },
     ],
     answer: `[0\s\^\\\(\'\_\)\/\.\?]+`,
-    explanation: `특수문자는 \를 붙여서 나타냅니다.
-                  가용 할 문자를 입력합니다.
-                  가용 문자가 하나 이상 존재하므로 +를 사용합니다.`,
+    explanation: `포함할 특수 문자 들을 가용 문자 목록에 입력합니다.
+                  ASCII코드의 특수문자 범위를 알고 있다면 범위를 입력합니다.
+                  \를 붙여서 사용하지 않아도 되는 경우가 있지만 특수문자는 명시적으로 붙여서 사용하는것이 좋습니다.`,
   },
 
   {
@@ -400,10 +429,14 @@ export const dummyData = [
         target: 'computer',
       },
     ],
-    tip: [],
+    tip: [
+      {
+        characterSet: '.',
+        explanation: '모든 문자',
+      },
+    ],
     answer: `.+`,
-    explanation: `.은 모든 문자를 의미입니다.
-                  앞 문자가 하나 이상 존재하므로 +를 사용합니다.`,
+    explanation: `문자가 없는 경우는 없기 때문에 +를 사용합니다.`,
   },
 
   {
@@ -434,8 +467,7 @@ export const dummyData = [
       },
     ],
     answer: `^apple$`,
-    explanation: `^a는 a로 시작하는 문자열을 의미합니다.
-                  e$는 e로 끝나는 문자열을 의미합니다.`,
+    explanation: `문자열의 시작이 a, 문자열의 끝이 e이기 때문에 a와 e에 각각 ^, $ 기호를 사용한 뒤 두 문자 사이에 pple를 입력합니다.`,
   },
 
   {
@@ -460,12 +492,12 @@ export const dummyData = [
     ],
     tip: [
       {
-        characterSet: 'a-z',
-        explanation: '괄호 안 문자들을 제외',
+        characterSet: '(abc)',
+        explanation: '괄호 안 문자들을 한 그룹으로 묶음',
       },
     ],
     answer: `([a-z\s]+)`,
-    explanation: ``,
+    explanation: `문자열 전체가 그룹에 포함되어야 하고 문자가 최소 하나 이상 존재하기 때문에 괄호 안에 가용 문자 목록으로 소문자 알파벳과 공백문자를 입력합니다.`,
   },
 
   {
@@ -488,14 +520,11 @@ export const dummyData = [
         groups: ['pink pig', 'pig'],
       },
     ],
-    tip: [
-      {
-        characterSet: 'a-z',
-        explanation: '괄호 안 문자들을 제외',
-      },
-    ],
+    tip: [],
     answer: `([a-z]+\s([a-z]))`,
-    explanation: ``,
+    explanation: `그룹안에 또다른 그룹을 생성하여 중첩 그룹을 사용할 수 있습니다.
+                  전체 문자열을 한 그룹으로 묶은 뒤 testCase에 맞게 정규표현식을 작성합니다.
+                  그 후 그룹 내에서 공백문자 다음으로 오는 문자들을 한번 더 그룹으로 묶어줍니다.`,
   },
 
   {
@@ -517,12 +546,12 @@ export const dummyData = [
     ],
     tip: [
       {
-        characterSet: 'a-z',
-        explanation: '괄호 안 문자들을 제외',
+        characterSet: 'a|b',
+        explanation: 'a 또는 b 문자만 가용',
       },
     ],
     answer: `(tom|jerry)`,
-    explanation: ``,
+    explanation: `문자열이 tom 또는 jerry인 경우에만 통과해야 하기 때문에 tom 과 jerry를 그룹으로 묶은 뒤 | 기호를 사용합니다.`,
   },
 
   {
@@ -550,12 +579,13 @@ export const dummyData = [
     ],
     tip: [
       {
-        characterSet: 'a-z',
-        explanation: '괄호 안 문자들을 제외',
+        characterSet: 'a(?=bc)',
+        explanation: 'bc가 붙은 문자 a만 허용',
       },
     ],
     answer: `(\d+(?=cm))`,
-    explanation: ``,
+    explanation: `cm이 붙어있는 숫자만 통과해야 하기 때문에 후열 일치 조건문으로 (?=cm)을 입력한 뒤
+                  숫자 자릿수가 최소 한 자리 이상이기 때문에 + 기호를 사용합니다.`,
   },
 
   {
