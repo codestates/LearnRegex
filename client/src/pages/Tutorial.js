@@ -38,7 +38,7 @@ function Tutorial() {
         <div>
           <div>제목: {list[current].title}</div>
           <div>
-            <QuizForm data={list[current]} orderPage={'tutorial'} />
+            <QuizForm data={list[current]} orderPage={'tutorial'} moveNext={moveNext} />
           </div>
         </div>
         <div>
