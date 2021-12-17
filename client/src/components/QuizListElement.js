@@ -1,22 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { ChallengeButton } from '../styles/button/ChallengeButton.styled';
+import { useNavigate } from 'react-router-dom';
+import { Container, Title, Nickname, Cnt, Button } from './QuizListElement.styled';
 
 function QuizListElement({ data }) {
+  const navigate = useNavigate();
+
+  const handleLink = () => {
+    navigate(`/quiz/${data.id}`);
+  };
+
   return (
     <>
-      <div className="container">
-        <div>
-          <div>제목: {data.title}</div>
-          <div>출제자: {data.nickname}</div>
-          <div>이 퀴즈를 {data.count} 명이 풀었습니다!</div>
-        </div>
-        <div>
-          <ChallengeButton isClear={data.isClear}>
-            <Link to={`/quiz/${data.id}`}>도전하기</Link>
-          </ChallengeButton>
-        </div>
-      </div>
+      <Container>
+        <Title>{data.title}</Title>
+        <Nickname nickname>{data.nickname}</Nickname>
+        <Cnt cnt>
+          이 퀴즈를 <span>{data.count}</span>명이 풀었습니다!
+        </Cnt>
+        <Button isClear={data.isClear} onClick={handleLink}>
+          도전하기
+        </Button>
+      </Container>
     </>
   );
 }

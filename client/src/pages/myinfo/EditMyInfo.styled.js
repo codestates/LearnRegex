@@ -41,7 +41,9 @@ export const Container = styled.div`
   }
 `;
 
-export const Box = styled(ShadowBox)``;
+export const Box = styled(ShadowBox)`
+  background-color: var(--color-white);
+`;
 
 export const NewButton = styled(Button)`
   width: 12rem;

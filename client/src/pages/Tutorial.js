@@ -4,6 +4,7 @@ import TutorialSide from '../components/tutorialSide';
 import QuizForm from '../components/QuizForm';
 import { saveBookmark } from '../modules/bookmark';
 import { dummyData } from '../data/tutorialData';
+import { Container } from './Tutorial.styled';
 
 function Tutorial() {
   const { index } = useSelector((state) => state.bookmark);
@@ -32,19 +33,18 @@ function Tutorial() {
     dispatch(saveBookmark(current));
   }, [current]);
   console.log(current);
+
   return (
     <>
-      <div>
-        <div>
-          <div>제목: {list[current].title}</div>
-          <div>
-            <QuizForm data={list[current]} orderPage={'tutorial'} moveNext={moveNext} />
-          </div>
+      <Container>
+        <div className="content">
+          <p>{list[current].title}</p>
+          <QuizForm data={list[current]} orderPage={'tutorial'} moveNext={moveNext} />
         </div>
-        <div>
+        <div className="sidebar">
           <TutorialSide list={list} movePrev={movePrev} moveNext={moveNext} moveIndex={moveIndex} />
         </div>
-      </div>
+      </Container>
     </>
   );
 }

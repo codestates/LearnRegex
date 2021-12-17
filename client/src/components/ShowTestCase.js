@@ -1,7 +1,9 @@
 import React from 'react';
 import Interweave from 'interweave';
+import { TestCaseElement, TaskElement, TestCaseBox, ClearCheckBox, MinusTestCaseButton, CheckIcon, Group } from '../styles/TestCase.styled';
 
 export const ShowTestCase = ({ testCases, inputRegex, handleIsCorrectRegTotal, handleInputCapture, handleTestCaseQuantity }) => {
+  let color = 'black';
   if (testCases.length === 0) return <></>;
   //! ------------------------ 정규표현식 생성 --------------------
   const createMyRegex = (inputRegex) => {
@@ -25,7 +27,7 @@ export const ShowTestCase = ({ testCases, inputRegex, handleIsCorrectRegTotal, h
     if (Array.isArray(matchArray)) {
       lastIndex = matchArray.index;
       highlightedTestCase += testCase.target.substring(startIndex, lastIndex);
-      highlightedTestCase += "<span class='found'>" + matchArray[0] + '</span>';
+      highlightedTestCase += "<Group class='found'>" + matchArray[0] + '</Group>';
       startIndex = myRegex.lastIndex;
     }
     highlightedTestCase += testCase.target.substring(startIndex, testCase.target.length);
@@ -46,16 +48,20 @@ export const ShowTestCase = ({ testCases, inputRegex, handleIsCorrectRegTotal, h
 
     // * Task별로 구분
     if (testCase.task === 'match') {
+      color = 'green';
       if (isValidRegex) isCorrectReg = regExpResult.matchArray[0] === testCase.target;
     } else if (testCase.task === 'skip') {
+      color = 'red';
       if (!isValidRegex) isCorrectReg = true;
     } else if (testCase.task === 'capture' && isCaptuerInput) {
+      color = 'brown';
       if (isValidRegex) {
         captureInputArray = regExpResult.matchArray.slice(1);
         if (!!handleInputCapture) handleInputCapture(idx, captureInputArray);
         isCorrectReg = true;
       }
     } else if (testCase.task === 'capture') {
+      color = 'brown';
       if (isValidRegex) {
         isCorrectRegGroups = testCase.groups.map((group, idx) => group === regExpResult.matchArray[idx + 1]);
         isCorrectReg = isCorrectRegGroups.indexOf(false) === -1;
@@ -70,31 +76,31 @@ export const ShowTestCase = ({ testCases, inputRegex, handleIsCorrectRegTotal, h
     // * 출력
     return (
       <>
-        <div>
-          <h2>📍{testCase.task}</h2>
-        </div>
-        <div iscorrectregtotal={isCorrectRegTotal}>
-          <Interweave content={regExpResult.highlightedTestCase} />
-          {isCorrectReg ? '✅' : '❌'}
-          {handleTestCaseQuantity ? (
-            <button type="button" onClick={handleTestCaseQuantity('delete', idx)}>
-              ➖
-            </button>
-          ) : (
-            <></>
-          )}
-
-          {testCase.task === 'capture' ? (
-            isCaptuerInput ? (
-              captureInputArray.map((el) => <p class="found">{el}</p>)
-            ) : (
-              testCase.groups.map((el, idx) => (isCorrectRegGroups[idx] ? <p class="found">{el}</p> : <p>{el}</p>))
-            )
-          ) : (
-            <></>
-          )}
-        </div>
-        <hr />
+        <TestCaseBox iscorrectregtotal={isCorrectRegTotal}>
+          <TaskElement color={color}>{testCase.task}</TaskElement>
+          <div className="capture">
+            <TestCaseElement>
+              <Interweave content={regExpResult.highlightedTestCase} />
+            </TestCaseElement>
+            <div className="groupElement">
+              {testCase.task === 'capture' ? (
+                isCaptuerInput ? (
+                  // 퀴즈 등록, 수정
+                  captureInputArray.map((el) => <Group color={'olive'}>{el}</Group>)
+                ) : (
+                  // 학습하기
+                  testCase.groups.map((el, idx) => (isCorrectRegGroups[idx] ? <Group color={'olive'}>{el}</Group> : <Group color={'light-brown'}>{el}</Group>))
+                )
+              ) : (
+                <></>
+              )}
+            </div>
+            <ClearCheckBox>
+              <CheckIcon color={isCorrectReg ? 'green' : 'red'} />
+            </ClearCheckBox>
+          </div>
+          {handleTestCaseQuantity ? <MinusTestCaseButton onClick={handleTestCaseQuantity('delete', idx)} /> : <></>}
+        </TestCaseBox>
       </>
     );
   });

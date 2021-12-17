@@ -43,6 +43,7 @@ export const Container = styled.div`
 
 export const Box = styled(ShadowBox)`
   height: 33rem;
+  background-color: var(--color-white);
 `;
 
 export const NewButton = styled(Button)`

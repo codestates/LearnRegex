@@ -17,7 +17,8 @@ const GlobalStyle = createGlobalStyle`
     font-size: var(--fontSize-root--big);
     font-family: var(--fontFamily);
     color: var(--color-black);
-    background-color: var(--color-white);
+    background-color: rgba(240, 241, 242, 0.7);
+    word-break: keep-all;
 
     ${media.lessThan('medium')`
       font-size: var(--fontSize-root--small);
@@ -56,6 +57,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     ul {
+      margin: 0;
       padding: 0;
       list-style: none;
     }
@@ -118,11 +120,13 @@ const GlobalStyle = createGlobalStyle`
     --fontSize-root--small: 14px;
     --color-black: #3F3F44;
     --color-white: #FDFDFD;
+    --color-dark-gray: #85858D;
     --color-gray: #E6E6E6;
-    --color-light-gray: #A8AABC;
+    --color-light-gray: #F0F1F2;
     --color-blue: #4B60A5;
     --color-light-blue: #ABB4DD;
     --color-dark-blue: #364E84;
+    --color-olive: #9CC7AE;
     --color-green: #5C9592;
     --color-dark-green: #2F5B5B;
     --color-brown: #89716F;
