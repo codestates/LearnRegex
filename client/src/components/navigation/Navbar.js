@@ -6,7 +6,7 @@ import { clearSession } from '../../lib/clearSession';
 import { requestSignOut } from '../../lib/requestUserInfo';
 import { checkUserIsLogin, checkUserNickname } from '../../lib/checkIsLogin';
 import { FaBars } from 'react-icons/fa';
-import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtnWrap, NavSignInBtn, SubNavigation } from './Navbar.styled';
+import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtnWrap, NavSignInBtn, SubNavigation, SubNaviLink, SubNaviSignOut } from './Navbar.styled';
 
 const Navbar = ({ handleSidebar }) => {
   const dispatch = useDispatch();
@@ -53,10 +53,10 @@ const Navbar = ({ handleSidebar }) => {
               {isLogin ? <NavSignInBtn onClick={() => handleSubNavi()}>{nickname}</NavSignInBtn> : <NavSignInBtn onClick={() => dispatch(setModal('signIn'))}>로그인</NavSignInBtn>}
               {isOpen ? (
                 <SubNavigation>
-                  <Link to="/myinfo" onClick={() => handleSubNavi(false)}>
+                  <SubNaviLink to="/myinfo" onClick={() => handleSubNavi(false)}>
                     내 정보
-                  </Link>
-                  <div onClick={handleSignOut}>로그아웃</div>
+                  </SubNaviLink>
+                  <SubNaviSignOut onClick={handleSignOut}>로그아웃</SubNaviSignOut>
                 </SubNavigation>
               ) : null}
             </NavBtnWrap>
