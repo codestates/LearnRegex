@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 5rem);
   margin: auto;
 
   @media screen and (max-width: 1360px) {
@@ -39,16 +39,22 @@ export const Container = styled.div`
   .sidebar {
     padding: 4rem 0;
     flex-basis: 30rem;
-    /* width: 30%; */
     background-color: var(--color-gray);
-    /* padding: 2rem 0.7rem 1rem; */
     border: 1px solid;
-    height: 100%;
-    /* height: 75rem; */
+    height: calc(100vh - 5rem);
+    overflow: auto;
 
     @media screen and (max-width: 1360px) {
+      height: auto;
       flex-basis: auto;
+      overflow: visible;
       width: 100%;
+    }
+
+    @media screen and (max-width: 768px) {
+      height: auto;
+      overflow: visible;
+      margin-top: auto;
     }
   }
 `;
