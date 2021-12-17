@@ -90,11 +90,10 @@ export const NavLinks = styled(LinkR)`
   height: 100%;
   cursor: pointer;
 
-  // 스크롤 내려가면서 해당 NavLinks 아래에 border 생김
-  // 나중에 추가 예정
-  /* &.active {
-    border-bottom: 3px solid #01bf71;
-  } */
+  :hover {
+    transition: all 0.2s ease-in-out;
+    transform: translateY(-3px);
+  }
 `;
 
 export const NavBtnWrap = styled.nav`
@@ -121,13 +120,11 @@ export const NavSignInBtn = styled.button`
   border: none;
   cursor: pointer;
   text-decoration: none;
-  /* transition: ; */
 
-  /* &:hover{
-    transition: ;
-    background-color: #;
-    color: ;
-  } */
+  :hover {
+    transition: all 0.2s ease-in-out;
+    transform: translateY(-3px);
+  }
 `;
 
 export const SubNavigation = styled.div`

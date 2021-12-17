@@ -5,13 +5,10 @@ export const LinkButton = styled(LinkR)`
   border-radius: 50px;
   background-color: var(--color-blue);
   white-space: nowrap;
-  padding: ${({ big }) => (big ? '14px 48px' : '12px 30px')};
+  padding: 12px 30px;
   color: var(--color-white);
   font-size: 1.2rem;
   font-family: 'IBMPlexSansKR-SemiBold';
-  outline: none;
-  border: none;
-  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,6 +18,7 @@ export const LinkButton = styled(LinkR)`
   :hover {
     transition: all 0.2s ease-in-out;
     transform: translateY(-5px);
-    background-color: ${({ primary }) => (primary ? 'var(--color-blue)' : 'var(--color-light-blue)')};
+    background-color: var(--color-light-blue);
+    color: var(--color-black);
   }
 `;

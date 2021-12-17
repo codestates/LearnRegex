@@ -5,7 +5,7 @@ import { setModal } from '../../modules/modal';
 import { clearSession } from '../../lib/clearSession';
 import { requestSignOut } from '../../lib/requestUserInfo';
 import { checkUserIsLogin, checkUserNickname } from '../../lib/checkIsLogin';
-import { SidebarContainer, Icon, CloseIcon, SidebarWrapper, SidebarMenu, SidebarLink, SidebarBtnWrap, SidebarBtn, SubSidebar, SidebarSignOut } from './SidebarElements';
+import { SidebarContainer, Icon, CloseIcon, SidebarWrapper, SidebarMenu, SidebarLink, SidebarBtnWrap, SidebarBtn, SubSidebar, SidebarDevider, SidebarSignOut } from './Sidebar.styled';
 
 const Sidebar = ({ openSidebar, handleSidebar }) => {
   const dispatch = useDispatch();
@@ -35,6 +35,7 @@ const Sidebar = ({ openSidebar, handleSidebar }) => {
           </SidebarLink>
           {isLogin ? (
             <SubSidebar>
+              <SidebarDevider />
               <SidebarLink to="/myinfo">내 정보</SidebarLink>
               <SidebarSignOut onClick={handleSignOut}>로그아웃</SidebarSignOut>
             </SubSidebar>

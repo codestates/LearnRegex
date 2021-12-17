@@ -15,9 +15,7 @@ const InfoSection = ({ id, whiteBg, topLine, heading, description, link, buttonL
                 <Heading>{heading}</Heading>
                 <Subtitle>{description}</Subtitle>
                 <InfoBtnWapper>
-                  <LinkButton to={link} smooth={true} duration={500} spy={true} exact="true" offset={-80}>
-                    {buttonLabel}
-                  </LinkButton>
+                  <LinkButton to={link}>{buttonLabel}</LinkButton>
                 </InfoBtnWapper>
               </TextWrapper>
             </Column1>
