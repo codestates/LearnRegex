@@ -19,7 +19,10 @@ export const ModalWrapper = styled.div`
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   display: flex;
   border-radius: 16px;
-  width: 400px;
+  width: ${({ modaltype }) => {
+    if (modaltype === 'quizAnswer') return '600px';
+    else return '400px';
+  }};
   height: ${({ modaltype }) => {
     if (modaltype === 'emailCert') return '330px';
     else if (modaltype === 'findPassword') return '280px';
@@ -27,6 +30,7 @@ export const ModalWrapper = styled.div`
     else if (modaltype === 'toUserInfo') return '200px';
     else if (modaltype === 'toSignOut') return '200px';
     else if (modaltype === 'deleteUserConfirm') return '250px';
+    else if (modaltype === 'quizAnswer') return '300px';
     else return '550px';
   }};
   grid-template-columns: 1fr 1fr;
@@ -38,12 +42,16 @@ export const ModalContent = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 400px;
+  width: ${({ modaltype }) => {
+    if (modaltype === 'quizAnswer') return '600px';
+    else return '400px';
+  }};
   height: ${({ modaltype }) => {
     if (modaltype === 'emailCert') return '330px';
     else if (modaltype === 'findPassword') return '280px';
     else if (modaltype === 'toSignOut' || modaltype === 'toUserInfo' || modaltype === 'toHome') return '200px';
     else if (modaltype === 'deleteUserConfirm') return '250px';
+    else if (modaltype === 'quizAnswer') return '300px';
     else return '550px';
   }};
 `;
