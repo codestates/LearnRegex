@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navigation from './components/navigation';
-import Home from './pages/Home';
+import Home from './pages/home/Home';
 import Tutorial from './pages/Tutorial';
 import QuizList from './pages/quiz/QuizList';
 import MyInfo from './pages/myinfo';
@@ -10,7 +10,6 @@ import SetNewPassword from './pages/myinfo/SetNewPassword';
 import SolveQuiz from './pages/quiz/SolveQuiz';
 import EditQuiz from './pages/quiz/EditQuiz';
 import MakeQuiz from './pages/quiz/MakeQuiz';
-import Footer from './components/footer/Footer';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -29,7 +28,6 @@ function App() {
         <Route path="/makequiz" element={<MakeQuiz />} />
         <Route path="/editquiz/:id" element={<EditQuiz />} />
       </Routes>
-      <Footer />
     </>
   );
 }

@@ -25,7 +25,6 @@ function InputQuiz({ data }) {
   const [content, setContent] = useState({
     title: '',
     testCase: [makeTestCase()],
-    testCaseTarget: 'deprecated',
     answer: '',
     explanation: '',
   });
@@ -96,15 +95,14 @@ function InputQuiz({ data }) {
     const result = {
       title: content.title === '',
       testCase: content.testCase === '',
-      testCaseTarget: content.testCaseTarget === '',
       answer: content.answer === '',
       explanation: content.explanation === '',
     };
-    setIsEmpty({ ...result });
-    console.log(isCorrectRegTotal);
 
-    if (Object.values(result).indexOf(true) !== -1) alert('모든 칸을 채워주세요!');
-    else if (!isCorrectRegTotal) alert('정규표현식을 확인해주세요!');
+    if (Object.values(result).indexOf(true) !== -1) setIsEmpty({ ...result });
+    // alert('모든 칸을 채워주세요!');
+    else if (!isCorrectRegTotal || focusTestCase) setIsEmpty({ ...result, answer: true });
+    // alert('정규표현식을 확인해주세요!');
     else submitQuiz(data, content);
   };
 
@@ -112,7 +110,7 @@ function InputQuiz({ data }) {
 
   useEffect(() => {
     if (!!data) {
-      setContent({ ...content, title: data.title, testCase: data.testCase, testCaseTarget: data.testCaseTarget, answer: data.answer, explanation: data.explanation });
+      setContent({ ...content, title: data.title, testCase: data.testCase, answer: data.answer, explanation: data.explanation });
     }
   }, []);
 
@@ -120,7 +118,7 @@ function InputQuiz({ data }) {
     <>
       <div>
         <div>
-          <BackButton />
+          <BackButton id={data ? data.id : '0'} />
         </div>
         <form onSubmit={(e) => e.preventDefault()}>
           <div>

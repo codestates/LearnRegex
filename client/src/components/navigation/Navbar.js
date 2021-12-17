@@ -28,11 +28,15 @@ const Navbar = ({ handleSidebar }) => {
     }
   };
 
+  const handleLogo = () => {
+    navigate('/');
+  };
+
   return (
     <>
       <Nav>
         <NavbarContainer>
-          <NavLogo src="/assets/logo.png" alt="logo.png" />
+          <NavLogo src="/assets/logo.png" alt="logo.png" onClick={handleLogo} />
           <MobileIcon onClick={() => handleSidebar(true)}>
             <FaBars />
           </MobileIcon>
