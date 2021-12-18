@@ -10,7 +10,7 @@ import FindPassword from '../user/FindPassword';
 import DeleteUserConfirm from './DeleteUserConfirm';
 import DeleteAnswerConfirm from './DeleteAnswerConfirm';
 
-import { Background, ModalWrapper, ModalContent, CloseModalButton } from './index.styled';
+import { Background, ModalWrap, ModalContent, CloseModalButton } from './index.styled';
 
 const Modal = () => {
   const dispatch = useDispatch();
@@ -34,12 +34,12 @@ const Modal = () => {
   return (
     <>
       <Background>
-        <ModalWrapper modaltype={modalType}>
+        <ModalWrap modaltype={modalType}>
           <ModalContent modaltype={modalType}>
             <CloseModalButton modaltype={modalType} onClick={() => dispatch(setModal('close'))} />
             <SetContent />
           </ModalContent>
-        </ModalWrapper>
+        </ModalWrap>
       </Background>
     </>
   );

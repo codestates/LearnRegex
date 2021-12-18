@@ -14,7 +14,7 @@ export const Background = styled.div`
   align-items: center;
 `;
 
-export const ModalWrapper = styled.div`
+export const ModalWrap = styled.div`
   background: #fff;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   display: flex;

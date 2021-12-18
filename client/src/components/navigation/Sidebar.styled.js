@@ -34,7 +34,7 @@ export const Icon = styled.div`
   outline: none;
 `;
 
-export const SidebarWrapper = styled.div`
+export const SidebarWrap = styled.div`
   color: var(--color-blue);
 `;
 

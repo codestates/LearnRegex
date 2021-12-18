@@ -5,7 +5,7 @@ import { setModal } from '../../modules/modal';
 import { clearSession } from '../../lib/clearSession';
 import { requestSignOut } from '../../lib/requestUserInfo';
 import { checkUserIsLogin, checkUserNickname } from '../../lib/checkIsLogin';
-import { SidebarContainer, Icon, CloseIcon, SidebarWrapper, SidebarMenu, SidebarLink, SidebarBtnWrap, SidebarBtn, SubSidebar, SidebarDevider, SidebarSignOut } from './Sidebar.styled';
+import { SidebarContainer, Icon, CloseIcon, SidebarWrap, SidebarMenu, SidebarLink, SidebarBtnWrap, SidebarBtn, SubSidebar, SidebarDevider, SidebarSignOut } from './Sidebar.styled';
 
 const Sidebar = ({ openSidebar, handleSidebar }) => {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const Sidebar = ({ openSidebar, handleSidebar }) => {
       <Icon>
         <CloseIcon onClick={() => handleSidebar(false)} />
       </Icon>
-      <SidebarWrapper>
+      <SidebarWrap>
         <SidebarMenu onClick={() => handleSidebar(false)}>
           <SidebarBtnWrap>
             {isLogin ? <SidebarBtn onClick={() => (window.location.href = '/myinfo')}>{nickname}</SidebarBtn> : <SidebarBtn onClick={() => dispatch(setModal('signIn'))}>로그인</SidebarBtn>}
@@ -43,7 +43,7 @@ const Sidebar = ({ openSidebar, handleSidebar }) => {
             <></>
           )}
         </SidebarMenu>
-      </SidebarWrapper>
+      </SidebarWrap>
     </SidebarContainer>
   );
 };
