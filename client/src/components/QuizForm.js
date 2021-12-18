@@ -34,7 +34,7 @@ function QuizForm({ data, orderPage, moveNext }) {
     if (result !== isCorrectRegTotal) setIsCorrectRegTotal(result);
   };
 
-  //! ------------------------ 정답일 경우 서버 전송 ------------------------
+  //! ------------------------ 로컬 스토리지에 정규표현식 저장 ------------------------
   const saveLocal = (text) => {
     orderPage === 'tutorial' ? dispatch(saveAnswerTutorial(data.id, text)) : dispatch(saveAnswerQuiz(data.id, text));
   };
@@ -53,8 +53,12 @@ function QuizForm({ data, orderPage, moveNext }) {
       requestQuizClear(data.id);
     }
 
-    // 학습하기에서 문제를 풀었을 경우 상태 저장
-    if (orderPage === 'tutorial' && isCorrectRegTotal && !tutorialClearList[data.id - 1]) dispatch(clearList(data.id - 1));
+    // 학습하기에서 문제를 풀었을 경우 풀었는지 상태 저장
+    if (orderPage === 'tutorial' && isCorrectRegTotal && !tutorialClearList[data.id - 1]) {
+      console.log('문제풀었따!');
+      dispatch(clearList(data.id - 1));
+    }
+    // if (orderPage === 'tutorial' && isCorrectRegTotal) dispatch(clearList(data.id - 1));
   }, [isCorrectRegTotal]);
 
   //! ------------------------ HTML 태그 출력 ------------------------
