@@ -33,10 +33,15 @@ export const Container = styled.div`
   .sidebar {
     display: flex;
     flex-direction: column;
-    padding: 1.4rem 0;
+    padding: 1.4rem 2rem;
     flex-basis: 30rem;
     background-color: var(--color-gray);
     overflow: auto;
+
+    hr {
+      border: 2px solid var(--color-blue);
+      margin-bottom: 1.2rem;
+    }
 
     @media screen and (max-width: 1360px) {
       height: auto;
@@ -44,12 +49,7 @@ export const Container = styled.div`
       overflow: visible;
       width: 100%;
       margin-top: auto;
+      padding-bottom: 5rem;
     }
-
-    /* @media screen and (max-width: 768px) {
-      height: auto;
-      overflow: visible;
-      margin-top: auto;
-    } */
   }
 `;

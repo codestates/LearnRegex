@@ -5,7 +5,27 @@ import { AiOutlineUnorderedList } from 'react-icons/ai';
 import { BsCheckCircle } from 'react-icons/bs';
 import { BsCheckCircleFill } from 'react-icons/bs';
 
-export const Container = styled.div``;
+export const Header = styled.div`
+  margin-left: auto;
+  /* margin-right: 2rem; */
+  /* min-height: rem; */
+
+  @media screen and (max-width: 768px) {
+    min-height: 3.6rem;
+  }
+`;
+
+export const LevelContainer = styled.div`
+  display: flex;
+`;
+
+export const Span = styled.span`
+  font-size: ${(prop) => prop.size}rem;
+  font-family: ${(prop) => `IBMPlexSansKR-${prop.family}`};
+  min-height: ${(prop) => prop.height}rem;
+  background-color: ${(prop) => `var(--color-${prop.color})`};
+  cursor: default;
+`;
 
 export const FowardIcon = styled(IoIosArrowForward)`
   font-size: 3.8rem;
@@ -42,6 +62,7 @@ export const ListIcon = styled(AiOutlineUnorderedList)`
   cursor: pointer;
   transition: all ease 0.4s;
   color: var(--color-dark-gray);
+  margin-left: 1rem;
 
   :hover {
     color: var(--color-dark-blue);
@@ -56,6 +77,7 @@ export const ClearIcon = styled(BsCheckCircleFill)`
   font-size: 2.1rem;
   transition: all ease 0.4s;
   color: var(--color-green);
+  margin-left: 0.3rem;
 
   @media screen and (max-width: 768px) {
     font-size: 1.9rem;
