@@ -69,7 +69,7 @@ function QuizForm({ data, orderPage, moveNext }) {
         <ShowTestCaseContainer>
           <ShowTestCase testCases={data.testCase} inputRegex={inputRegex} handleIsCorrectRegTotal={handleIsCorrectRegTotal} />
         </ShowTestCaseContainer>
-        <Span margin={1.5}>My Regexp</Span>
+        <Span margin={1.5}>My Regex</Span>
         <Input value={inputRegex} placeholder="정규표현식을 입력하세요!" onChange={handleAnswer} size="100" />
         <AnswerButton
           onClick={() => {
