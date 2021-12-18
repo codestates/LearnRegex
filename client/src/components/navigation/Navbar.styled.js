@@ -1,13 +1,5 @@
 import styled from 'styled-components';
-
-// Link to Router
-import { Link as LinkR } from 'react-router-dom';
-
-// Link to Scroll
-// 랜딩페이지에서 스크롤 애니메이션 (추후 변동 가능성 있음)
-// 사용하지 않을 시 styled(LinkS) -> styled(LinkR)로 변경하거나
-// styled(Link)로 통일
-import { Link as LinkS } from 'react-scroll';
+import { Link } from 'react-router-dom';
 
 export const Nav = styled.nav`
   background: var(--color-white);
@@ -81,7 +73,7 @@ export const NavItem = styled.li`
   height: 100%;
 `;
 
-export const NavLinks = styled(LinkR)`
+export const NavLinks = styled(Link)`
   color: var(--color-blue);
   display: flex;
   align-items: center;
@@ -90,11 +82,10 @@ export const NavLinks = styled(LinkR)`
   height: 100%;
   cursor: pointer;
 
-  // 스크롤 내려가면서 해당 NavLinks 아래에 border 생김
-  // 나중에 추가 예정
-  /* &.active {
-    border-bottom: 3px solid #01bf71;
-  } */
+  :hover {
+    transition: all 0.2s ease-in-out;
+    transform: translateY(-3px);
+  }
 `;
 
 export const NavBtnWrap = styled.nav`
@@ -121,20 +112,36 @@ export const NavSignInBtn = styled.button`
   border: none;
   cursor: pointer;
   text-decoration: none;
-  /* transition: ; */
-
-  /* &:hover{
-    transition: ;
-    background-color: #;
-    color: ;
-  } */
 `;
 
 export const SubNavigation = styled.div`
-  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-light-blue);
+  color: var(--color-white);
   position: absolute;
-  top: 50px;
-  background-color: #000;
-  width: 100px;
+  top: 2.8rem;
+  width: 6.3rem;
+  height: 4rem;
   text-decoration: none;
+  cursor: pointer;
+  border-radius: 0.8rem;
+`;
+
+export const SubNaviLink = styled(Link)`
+  width: 100%;
+  :hover {
+    color: var(--color-black);
+    opacity: 0.7;
+  }
+`;
+
+export const SubNaviSignOut = styled.div`
+  width: 100%;
+  :hover {
+    color: var(--color-black);
+    opacity: 0.7;
+  }
 `;

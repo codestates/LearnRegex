@@ -6,20 +6,9 @@ export const HeroContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0 30px;
-  height: 100vh;
+  height: 95vh;
   position: relative;
   z-index: 1;
-
-  /* :before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(150deg, rgba(180, 180, 180, 0.3) 0%, rgba(180, 180, 180, 0.3) 100%), linear-gradient(180deg, rgba(180, 180, 180, 0.3) 0%, transparent 100%);
-    z-index: 2;
-  } */
 `;
 
 export const HeroBg = styled.div`
@@ -34,16 +23,11 @@ export const HeroBg = styled.div`
 `;
 
 export const VideoBg = styled.video`
+  height: 100%;
   width: 100%;
-  heigth: 100%;
   -o-object-fit: cover;
   object-fit: cover;
   opacity: 0.7;
-  /* background: var(--color-black); */
-
-  @media (min-width: 768px) and (max-width: 1170px) {
-    /* 동영상 반응형 비율 조절 */
-  }
 `;
 
 export const HeroContent = styled.div`
@@ -66,18 +50,18 @@ export const HeroH1 = styled.h1`
   text-align: center;
 
   @media screen and (max-width: 768px) {
-    font-size: 2.4rem;
+    font-size: 3.5rem;
+    word-break: keep-all;
   }
 
   @media screen and (max-width: 480px) {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 `;
 
 export const HeroP = styled.p`
   margin-top: 1rem;
   color: var(--color-black);
-  /* background-color: rgba(051, 102, 153, 0.1); */
   font-size: 2rem;
   font-family: 'IBMPlexSansKR-SemiBold';
   text-align: center;
@@ -88,7 +72,7 @@ export const HeroP = styled.p`
   }
 
   @media screen and (max-width: 480px) {
-    font-size: 1.125rem;
+    font-size: 1.3rem;
   }
 `;
 

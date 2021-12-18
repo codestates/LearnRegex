@@ -1,21 +1,14 @@
 import styled from 'styled-components';
 import { FaTimes } from 'react-icons/fa';
-
-// Link to Router
-import { Link as LinkR } from 'react-router-dom';
-
-// Link to Scroll
-// 랜딩페이지에서 스크롤 애니메이션 (추후 변동 가능성 있음)
-// 사용하지 않을 시 styled(LinkS) -> styled(LinkR)로 변경하거나
-// styled(Link)로 통일
-import { Link as LinkS } from 'react-router-dom';
+import { BsThreeDots } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 export const SidebarContainer = styled.aside`
   position: fixed;
   z-index: 999;
   width: 100%;
   height: 100%;
-  background: #000;
+  background: var(--color-gray);
   display: grid;
   align-items: center;
   top: 0;
@@ -27,7 +20,7 @@ export const SidebarContainer = styled.aside`
 `;
 
 export const CloseIcon = styled(FaTimes)`
-  color: #fff;
+  color: var(--color-blue);
 `;
 
 export const Icon = styled.div`
@@ -42,7 +35,7 @@ export const Icon = styled.div`
 `;
 
 export const SidebarWrapper = styled.div`
-  color: #fff;
+  color: var(--color-blue);
 `;
 
 export const SidebarMenu = styled.ul`
@@ -56,22 +49,23 @@ export const SidebarMenu = styled.ul`
   }
 `;
 
-export const SidebarLink = styled(LinkS)`
+export const SidebarLink = styled(Link)`
   display: felx;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
+  font-family: 'IBMPlexSansKR-Bold';
   text-decoration: none;
   list-style: none;
   transition: 0.2s ease-in-out;
   text-decoration: none;
-  color: #fff;
+  color: var(--color-blue);
   cursor: pointer;
 
-  /* &:hover {
-    color:;
-    tansition:;
-  } */
+  :hover {
+    transition: all 0.2s ease-in-out;
+    transform: translateY(-3px);
+  }
 `;
 
 export const SidebarBtnWrap = styled.div`
@@ -80,47 +74,57 @@ export const SidebarBtnWrap = styled.div`
 `;
 
 export const SidebarBtn = styled.button`
-  border-radius: 40px;
-  background: #fff;
+  width: 10rem;
+  height: 70%;
+  border-radius: 50px;
+  background-color: var(--color-blue);
   white-space: nowrap;
-  padding: 10px 40px;
-  color: #000;
-  font-size: 25px;
-  outline: none;
-  border: none;
-  cursor: pointer;
+  padding: 12px 30px;
+  color: var(--color-white);
+  font-size: 1.5rem;
+  font-family: 'IBMPlexSansKR-Bold';
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: all 0.2s ease-in-out;
-  text-decoration: none;
+  box-shadow: 0px 5px 8px rgba(051, 102, 153, 0.5);
 
-  /* &:hover {
+  :hover {
     transition: all 0.2s ease-in-out;
-    background: ;
-    color: ;
-  } */
+    transform: translateY(-5px);
+    background-color: var(--color-light-blue);
+    color: var(--color-black);
+  }
 `;
 
-export const SidebarSignOut = styled.div`
-  display: felx;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  text-decoration: none;
-  list-style: none;
-  transition: 0.2s ease-in-out;
-  text-decoration: none;
-  color: #fff;
-  cursor: pointer;
+export const SidebarDevider = styled(BsThreeDots)`
+  font-size: 3.5rem;
+  color: var(--color-light-gray);
 `;
 
 export const SubSidebar = styled.div`
-  /* display: felx;
-  align-items: center;
-  justify-content: center;
   font-size: 1.5rem;
   text-decoration: none;
   list-style: none;
   transition: 0.2s ease-in-out;
   text-decoration: none;
   color: #fff;
-  cursor: pointer; */
+  cursor: pointer;
+`;
+
+export const SidebarSignOut = styled.div`
+  font-size: 1.5rem;
+  font-family: 'IBMPlexSansKR-Bold';
+  text-decoration: none;
+  list-style: none;
+  transition: 0.2s ease-in-out;
+  text-decoration: none;
+  color: var(--color-light-gray);
+  cursor: pointer;
+  margin-top: 1.5rem;
+
+  :hover {
+    transition: all 0.2s ease-in-out;
+    transform: translateY(-3px);
+  }
 `;
