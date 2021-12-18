@@ -5,7 +5,7 @@ import { saveAnswerTutorial, saveAnswerQuiz } from '../modules/answer';
 import { clearList } from '../modules/list';
 import { requestQuizClear } from '../lib/requestQuiz';
 import ShowTestCase from './ShowTestCase';
-import { Container, Span, Input, AnswerButton } from './QuizForm.styled';
+import { Container, Span, Input, AnswerButton, NextButtonWrap, NextButton, SolveThis } from './QuizForm.styled';
 import { ShowTestCaseContainer } from '../styles/TestCase.styled';
 
 function QuizForm({ data, orderPage, moveNext }) {
@@ -82,17 +82,19 @@ function QuizForm({ data, orderPage, moveNext }) {
             ? '정답 확인하기' //
             : '도움이 필요합니다'}
         </AnswerButton>
-        {moveNext ? (
-          isCorrectRegTotal ? ( //
-            <button onClick={moveNext} className="isCorrectRegTotal">
-              다음 문제로!
-            </button>
+        <NextButtonWrap>
+          {moveNext ? (
+            isCorrectRegTotal ? ( //
+              <NextButton onClick={moveNext} className="isCorrectRegTotal">
+                다음 문제로!
+              </NextButton>
+            ) : (
+              <SolveThis>풀어봅시다.</SolveThis>
+            )
           ) : (
-            <button>풀어봅시다.</button>
-          )
-        ) : (
-          <></>
-        )}
+            <></>
+          )}
+        </NextButtonWrap>
       </Container>
     </>
   );
