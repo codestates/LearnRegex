@@ -8,7 +8,7 @@ import { Button } from '../../styles/button/CommonButton.styled';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0 4rem;
+  padding: 2rem 4rem;
   width: 100%;
   /* margin: 2rem 0; */
   /* border: 1px solid; */

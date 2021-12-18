@@ -111,7 +111,7 @@ function InputQuiz({ data }) {
       <Container>
         <BackButton id={data ? data.id : '0'} />
         <Span margintop={3}>제목</Span>
-        <Input size={1.8} mobilesize={1.8} margin={2} isEmpty={isEmpty.title} value={content.title} placeholder="20자 미만까지 가능합니다 :)" maxLength="20" onChange={handleInputValue('title')} />
+        <Input size={1.8} mobilesize={1.8} margin={2} isEmpty={isEmpty.title} value={content.title} placeholder="20자 이하까지 가능합니다 :)" maxLength="20" onChange={handleInputValue('title')} />
         <Span>Test Case</Span>
         <ShowTestCaseContainer onClick={handleFocusTestCase('testCase')}>
           {focusTestCase ? ( //
@@ -134,9 +134,9 @@ function InputQuiz({ data }) {
         <PlusTestCaseIcon type="button" onClick={handleTestCaseQuantity('add')} />
         <AnswerContainer onClick={handleFocusTestCase('answer')}>
           <Span>정답</Span>
-          <Input margin={2} isEmpty={isEmpty.answer} value={content.answer} placeholder="20자 미만까지 가능합니다 :)" maxLength="100" onChange={handleInputValue('answer')} />
+          <Input margin={2} isEmpty={isEmpty.answer} value={content.answer} placeholder="40자 이하까지 가능합니다 :)" maxLength="40" onChange={handleInputValue('answer')} />
           <Span>해설</Span>
-          <Textarea isEmpty={isEmpty.explanation} value={content.explanation} placeholder="200자 미만까지 가능합니다 :)" maxLength="200" onChange={handleInputValue('explanation')} />
+          <Textarea isEmpty={isEmpty.explanation} value={content.explanation} placeholder="200자 이하까지 가능합니다 :)" maxLength="200" onChange={handleInputValue('explanation')} />
         </AnswerContainer>
         <SubmitButton type="submit" onClick={() => handleSubmitQuiz()}>
           {!!data ? '수정 완료' : '퀴즈 업로드'}
