@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: var(--fontSize-root--big);
     font-family: var(--fontFamily);
     color: var(--color-black);
-    background-color: rgba(240, 241, 242, 0.7);
+    background-color: var(--color-white);
     word-break: keep-all;
 
     
