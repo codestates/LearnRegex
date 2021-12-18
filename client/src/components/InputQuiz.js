@@ -111,7 +111,7 @@ function InputQuiz({ data }) {
       <Container>
         <BackButton id={data ? data.id : '0'} />
         <Span margintop={3}>제목</Span>
-        <Input size={2.4} mobilesize={1.8} margin={2} isEmpty={isEmpty.title} value={content.title} placeholder="20자 미만까지 가능합니다 :)" maxLength="20" onChange={handleInputValue('title')} />
+        <Input size={1.8} mobilesize={1.8} margin={2} isEmpty={isEmpty.title} value={content.title} placeholder="20자 미만까지 가능합니다 :)" maxLength="20" onChange={handleInputValue('title')} />
         <Span>Test Case</Span>
         <ShowTestCaseContainer onClick={handleFocusTestCase('testCase')}>
           {focusTestCase ? ( //

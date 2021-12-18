@@ -20,17 +20,15 @@ export const ModalWrapper = styled.div`
   display: flex;
   border-radius: 16px;
   width: ${({ modaltype }) => {
-    if (modaltype === 'quizAnswer') return '600px';
+    if (modaltype === 'quizAnswer' || modaltype === 'tutorialAnswer') return '500px';
     else return '400px';
   }};
   height: ${({ modaltype }) => {
     if (modaltype === 'emailCert') return '330px';
     else if (modaltype === 'findPassword') return '280px';
-    else if (modaltype === 'toHome') return '200px';
-    else if (modaltype === 'toUserInfo') return '200px';
-    else if (modaltype === 'toSignOut') return '200px';
+    else if (modaltype === 'toHome' || modaltype === 'toUserInfo' || modaltype === 'toSignOut') return '200px';
     else if (modaltype === 'deleteUserConfirm') return '250px';
-    else if (modaltype === 'quizAnswer') return '300px';
+    else if (modaltype === 'quizAnswer' || modaltype === 'tutorialAnswer') return '380px';
     else return '550px';
   }};
   grid-template-columns: 1fr 1fr;
@@ -43,15 +41,15 @@ export const ModalContent = styled.div`
   justify-content: center;
   align-items: center;
   width: ${({ modaltype }) => {
-    if (modaltype === 'quizAnswer') return '600px';
+    if (modaltype === 'quizAnswer' || modaltype === 'tutorialAnswer') return '600px';
     else return '400px';
   }};
   height: ${({ modaltype }) => {
     if (modaltype === 'emailCert') return '330px';
     else if (modaltype === 'findPassword') return '280px';
-    else if (modaltype === 'toSignOut' || modaltype === 'toUserInfo' || modaltype === 'toHome') return '200px';
+    else if (modaltype === 'toHome' || modaltype === 'toUserInfo' || modaltype === 'toSignOut') return '200px';
     else if (modaltype === 'deleteUserConfirm') return '250px';
-    else if (modaltype === 'quizAnswer') return '300px';
+    else if (modaltype === 'quizAnswer' || modaltype === 'tutorialAnswer') return '380px';
     else return '550px';
   }};
 `;

@@ -10,11 +10,17 @@ export const Container = styled.div`
   .content {
     margin: 0 auto;
     padding: 3.5rem 0;
+    width: 70rem;
 
-    @media screen and (max-width: 960px) {
+    @media screen and (max-width: 1180px) {
       width: auto;
       margin: 0 2rem;
     }
+
+    /* @media screen and (max-width: 960px) {
+      width: auto;
+      margin: 0 2rem;
+    } */
   }
 
   .modify {
@@ -26,6 +32,11 @@ export const Container = styled.div`
     span {
       margin-left: 0.5rem;
       cursor: pointer;
+      font-size: 1.2rem;
+
+      @media screen and (max-width: 768px) {
+        font-size: 1.3rem;
+      }
     }
   }
 `;

@@ -13,6 +13,8 @@ export const TestCaseElement = styled.span`
   font-family: D2Coding;
   cursor: default;
 
+  /* color: ${(prop) => `var(--color-${prop.color})`}; */
+
   @media screen and (max-width: 768px) {
     height: 2.7rem;
     padding: 0.6rem 0 0.6rem 0.5rem;
@@ -116,7 +118,9 @@ export const Group = styled.span`
   background-color: ${(prop) => `var(--color-${prop.color})`};
   border-radius: 0.4rem;
   margin-right: 0.4rem;
-  padding: 0 0.5rem;
+  padding: 0.3rem 0.5rem;
+  font-family: D2Coding;
+  cursor: default;
 `;
 
 export const ShowTestCaseContainer = styled.div`

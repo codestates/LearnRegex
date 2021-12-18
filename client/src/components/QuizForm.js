@@ -65,7 +65,7 @@ function QuizForm({ data, orderPage, moveNext }) {
         <ShowTestCaseContainer>
           <ShowTestCase testCases={data.testCase} inputRegex={inputRegex} handleIsCorrectRegTotal={handleIsCorrectRegTotal} />
         </ShowTestCaseContainer>
-        <Span>My Regexp</Span>
+        <Span margin={1.5}>My Regexp</Span>
         <Input value={inputRegex} placeholder="정규표현식을 입력하세요!" onChange={handleAnswer} size="100" />
         <AnswerButton
           onClick={() => {
@@ -79,18 +79,17 @@ function QuizForm({ data, orderPage, moveNext }) {
             : '도움이 필요합니다'}
         </AnswerButton>
         {moveNext ? (
-            isCorrectRegTotal ? ( //
-              <button onClick={moveNext} className="isCorrectRegTotal">
-                다음 문제로!
-              </button>
-            ) : (
-              <button>풀어봅시다.</button>
-            )
+          isCorrectRegTotal ? ( //
+            <button onClick={moveNext} className="isCorrectRegTotal">
+              다음 문제로!
+            </button>
           ) : (
-            <></>
-          )}
+            <button>풀어봅시다.</button>
+          )
+        ) : (
+          <></>
+        )}
       </Container>
-
     </>
   );
 }
