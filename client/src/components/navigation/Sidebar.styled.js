@@ -61,6 +61,7 @@ export const SidebarLink = styled(Link)`
   text-decoration: none;
   color: var(--color-blue);
   cursor: pointer;
+  margin-top: 1rem;
 
   :hover {
     transition: all 0.2s ease-in-out;
@@ -99,7 +100,7 @@ export const SidebarBtn = styled.button`
 
 export const SidebarDevider = styled(BsThreeDots)`
   font-size: 3.5rem;
-  color: var(--color-light-gray);
+  color: var(--color-dark-gray);
 `;
 
 export const SubSidebar = styled.div`
@@ -119,7 +120,7 @@ export const SidebarSignOut = styled.div`
   list-style: none;
   transition: 0.2s ease-in-out;
   text-decoration: none;
-  color: var(--color-light-gray);
+  color: var(--color-blue);
   cursor: pointer;
   margin-top: 1.5rem;
 
