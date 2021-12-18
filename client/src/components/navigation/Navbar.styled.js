@@ -132,6 +132,7 @@ export const SubNavigation = styled.div`
 
 export const SubNaviLink = styled(Link)`
   width: 100%;
+  padding-bottom: 0.5rem;
   :hover {
     color: var(--color-black);
     opacity: 0.7;

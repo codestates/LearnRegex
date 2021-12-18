@@ -27,7 +27,7 @@ export const ModalWrapper = styled.div`
     if (modaltype === 'emailCert') return '330px';
     else if (modaltype === 'findPassword') return '280px';
     else if (modaltype === 'toHome' || modaltype === 'toUserInfo' || modaltype === 'toSignOut') return '200px';
-    else if (modaltype === 'deleteUserConfirm') return '250px';
+    else if (modaltype === 'deleteUserConfirm' || modaltype === 'deleteAnswerConfirm') return '250px';
     else if (modaltype === 'quizAnswer' || modaltype === 'tutorialAnswer') return '380px';
     else return '550px';
   }};
@@ -48,7 +48,7 @@ export const ModalContent = styled.div`
     if (modaltype === 'emailCert') return '330px';
     else if (modaltype === 'findPassword') return '280px';
     else if (modaltype === 'toHome' || modaltype === 'toUserInfo' || modaltype === 'toSignOut') return '200px';
-    else if (modaltype === 'deleteUserConfirm') return '250px';
+    else if (modaltype === 'deleteUserConfirm' || modaltype === 'deleteAnswerConfirm') return '250px';
     else if (modaltype === 'quizAnswer' || modaltype === 'tutorialAnswer') return '380px';
     else return '550px';
   }};

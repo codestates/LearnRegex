@@ -83,14 +83,10 @@ function QuizForm({ data, orderPage, moveNext }) {
             : '도움이 필요합니다'}
         </AnswerButton>
         <NextButtonWrap>
-          {moveNext ? (
-            isCorrectRegTotal ? ( //
-              <NextButton onClick={moveNext} className="isCorrectRegTotal">
-                다음 문제로!
-              </NextButton>
-            ) : (
-              <SolveThis>풀어봅시다.</SolveThis>
-            )
+          {moveNext && isCorrectRegTotal ? (
+            <NextButton onClick={moveNext} className="isCorrectRegTotal">
+              다음 문제로!
+            </NextButton>
           ) : (
             <></>
           )}

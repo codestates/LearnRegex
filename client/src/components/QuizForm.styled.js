@@ -55,10 +55,11 @@ export const NextButton = styled(Button)`
   /* align-items: center; */
   justify-content: center;
   margin: auto;
+  background-color: var(--color-olive);
 
   :hover {
-    background-color: var(--color-light-blue);
-    color: var(--color-black);
+    background-color: var(--color-green);
+    color: var(--color-white);
     opacity: 0.7;
   }
 `;

@@ -1,9 +1,9 @@
 import React from 'react';
+import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { setModal } from '../../modules/modal';
 import { requestDeleteUserInfo } from '../../lib/requestUserInfo';
 import { Button } from '../../styles/button/CommonButton.styled';
-import styled from 'styled-components';
 
 const Container = styled.div`
   width: 100%;
