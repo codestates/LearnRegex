@@ -68,6 +68,8 @@ export const Span = styled.span`
   margin-right: ${(prop) => prop.marginright}rem;
   margin-bottom: ${(prop) => prop.marginbottom}rem;
   margin-top: ${(prop) => prop.margintop}rem;
+
+  cursor: default;
 `;
 
 export const NewButton = styled(Button)`

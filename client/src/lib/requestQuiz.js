@@ -10,7 +10,6 @@ export function deleteQuiz(id) {
   axios
     .delete(`${process.env.REACT_APP_SERVER_ADDR}/quiz?quizId=${id}`)
     .then((res) => {
-      alert('퀴즈 삭제되었습니다!');
       document.location.href = `/quizlist`;
     })
     .catch((err) => {
@@ -25,7 +24,6 @@ export function submitQuiz(data, content) {
       .patch(`${process.env.REACT_APP_SERVER_ADDR}/quiz?quizId=${data.id}`, content)
       .then((res) => {
         console.log('patch 요청 성공');
-        // alert('퀴즈 수정 되었습니다!');
         document.location.href = `/quiz/${data.id}`;
       })
       .catch((err) => {
@@ -40,7 +38,6 @@ export function submitQuiz(data, content) {
       .then((res) => {
         checkIsLogin(res);
         console.log('post 요청 성공');
-        alert('퀴즈 등록 되었습니다!');
         document.location.href = `/quizlist`;
       })
       .catch((err) => {

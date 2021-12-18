@@ -31,7 +31,7 @@ export const TaskElement = styled.button`
   width: 10rem;
   border-radius: 0.4rem;
   height: 2rem;
-  cursor: default;
+  cursor: pointer;
   /* border: 1px solid; */
 
   @media screen and (max-width: 768px) {

@@ -25,6 +25,8 @@ export const Container = styled.div`
     font-family: IBMPlexSansKR-Bold;
     margin: 2.8rem 0;
     color: var(--color-dark-blue);
+
+    cursor: default;
   }
 
   .tmp {
@@ -72,6 +74,8 @@ export const Span = styled.div`
         letter-spacing: 2px;
         font-family: IBMPlexSansKR-SemiBold;
         padding: 0.6rem 0 0 0;
+
+    cursor: default;
         `;
       return css;
     } else {
@@ -82,6 +86,8 @@ export const Span = styled.div`
         padding: 0 0.6rem;
         padding: 0.6rem 0 0 1rem;
         text-align: left;
+
+    cursor: default;
       `;
       return css;
     }
