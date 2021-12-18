@@ -1,10 +1,10 @@
 const SAVE_ANSWER_TUTORIAL = 'SAVE_ANSWER_TUTORIAL';
 const SAVE_ANSWER_QUIZ = 'SAVE_ANSWER_QUIZ';
-const RESET_ANSWER_TUTIRAL = 'RESET_ANSWER_TUTIRAL';
+const RESET_ANSWER_TUTORIAL = 'RESET_ANSWER_TUTORIAL';
 
 export const saveAnswerTutorial = (id, text) => ({ type: SAVE_ANSWER_TUTORIAL, payload: { [id]: text } });
 export const saveAnswerQuiz = (id, text) => ({ type: SAVE_ANSWER_QUIZ, payload: { [id]: text } });
-export const resetAnswerTutiral = () => ({ type: RESET_ANSWER_TUTIRAL });
+export const resetAnswerTutorial = () => ({ type: RESET_ANSWER_TUTORIAL });
 
 //! const initialState = { tutorial: {1: "qwer", 10: "asdf"}, quiz: {1: "qwer", 2: "1234"} };
 
@@ -27,7 +27,7 @@ export default function answer(state = initialState, action) {
         ...state,
         quiz: { ...state.quiz, [targetId]: action.payload[targetId] },
       };
-    case RESET_ANSWER_TUTIRAL:
+    case RESET_ANSWER_TUTORIAL:
       return {
         ...state,
         tutorial: {},

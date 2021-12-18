@@ -3,7 +3,8 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   width: 100%;
-  /* height: calc(100vh - 5rem); */
+  height: 100%;
+  min-height: calc(100vh - 5rem);
   margin: auto;
 
   @media screen and (max-width: 1360px) {
@@ -11,10 +12,12 @@ export const Container = styled.div`
   }
 
   .content {
+    width: 50rem;
     margin: 0 auto;
     padding: 3.5rem 0;
 
-    @media screen and (max-width: 890px) {
+    @media screen and (max-width: 1360px) {
+      width: auto;
       margin: 0 2rem;
     }
 
@@ -28,24 +31,30 @@ export const Container = styled.div`
   }
 
   .sidebar {
-    padding: 1.4rem 0;
+    display: flex;
+    flex-direction: column;
+    padding: 1.4rem 2rem;
     flex-basis: 30rem;
     background-color: var(--color-gray);
-    /* border: 1px solid; */
-    /* height: calc(100vh - 5rem); */
     overflow: auto;
+
+    hr {
+      border: 2px solid var(--color-blue);
+      margin-bottom: 1.2rem;
+      width: 100%;
+    }
+
+    li {
+      cursor: pointer;
+    }
 
     @media screen and (max-width: 1360px) {
       height: auto;
       flex-basis: auto;
       overflow: visible;
       width: 100%;
-    }
-
-    @media screen and (max-width: 768px) {
-      height: auto;
-      overflow: visible;
       margin-top: auto;
+      padding-bottom: 5rem;
     }
   }
 `;

@@ -13,6 +13,8 @@ export const TestCaseElement = styled.span`
   font-family: D2Coding;
   cursor: default;
 
+  /* color: ${(prop) => `var(--color-${prop.color})`}; */
+
   @media screen and (max-width: 768px) {
     height: 2.7rem;
     padding: 0.6rem 0 0.6rem 0.5rem;
@@ -103,12 +105,12 @@ export const MinusTestCaseButton = styled(FaMinusCircle)`
 
 export const InputText = styled.input.attrs({})`
   outline: none;
-  border: 1px solid ${({ isEmpty }) => (isEmpty ? 'red' : 'black')};
+  border: ${({ isEmpty }) => (isEmpty ? '1px solid red' : '')};
   background-color: var(--color-light-gray);
   border-radius: 0.8rem;
   text-align: left;
   padding: 0.3rem 2rem 0.3rem 1.2rem;
-  border: 1px solid;
+  /* border: 1px solid; */
   font-family: D2Coding;
 `;
 
@@ -116,7 +118,9 @@ export const Group = styled.span`
   background-color: ${(prop) => `var(--color-${prop.color})`};
   border-radius: 0.4rem;
   margin-right: 0.4rem;
-  padding: 0 0.5rem;
+  padding: 0.3rem 0.5rem;
+  font-family: D2Coding;
+  cursor: default;
 `;
 
 export const ShowTestCaseContainer = styled.div`

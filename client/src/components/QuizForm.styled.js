@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Button } from '../styles/button/CommonButton.styled';
+import { ShadowBox } from '../styles/ShadowBox.styled';
 
 export const Container = styled.div`
   /* border: 3px solid; */
@@ -19,6 +20,8 @@ export const Span = styled.span`
   color: var(--color-blue);
   margin-bottom: 0.5rem;
   cursor: default;
+
+  margin-top: ${(prop) => prop.margin}rem;
 `;
 
 export const Input = styled.input.attrs({})`
@@ -28,6 +31,7 @@ export const Input = styled.input.attrs({})`
   margin-bottom: 3rem;
   background-color: var(--color-light-gray);
   font-family: D2Coding;
+  font-size: 1.4rem;
 `;
 
 export const AnswerButton = styled(Button)`

@@ -5,4 +5,5 @@ export const ShadowBox = styled.div`
   width: 35rem;
   height: 28rem;
   padding: 3rem 0 2rem;
+  border-radius: 0.5rem;
 `;

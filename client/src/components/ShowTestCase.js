@@ -1,5 +1,6 @@
 import React from 'react';
 import Interweave from 'interweave';
+import devQuizFormStyle from './devQuizFormStyle.css';
 import { TestCaseElement, TaskElement, TestCaseBox, ClearCheckBox, MinusTestCaseButton, CheckIcon, Group } from '../styles/TestCase.styled';
 
 export const ShowTestCase = ({ testCases, inputRegex, handleIsCorrectRegTotal, handleInputCapture, handleTestCaseQuantity }) => {
@@ -27,7 +28,7 @@ export const ShowTestCase = ({ testCases, inputRegex, handleIsCorrectRegTotal, h
     if (Array.isArray(matchArray)) {
       lastIndex = matchArray.index;
       highlightedTestCase += testCase.target.substring(startIndex, lastIndex);
-      highlightedTestCase += "<Group class='found'>" + matchArray[0] + '</Group>';
+      highlightedTestCase += "<span class='found'>" + matchArray[0] + '</span>';
       startIndex = myRegex.lastIndex;
     }
     highlightedTestCase += testCase.target.substring(startIndex, testCase.target.length);

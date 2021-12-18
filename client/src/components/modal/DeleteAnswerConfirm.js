@@ -1,14 +1,15 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setModal } from '../../modules/modal';
-import { resetAnswerTutiral } from '../../modules/answer';
+import { resetAnswerTutorial } from '../../modules/answer';
+import { resetClearList } from '../../modules/list';
 
 const DeleteAnswerConfirm = () => {
   const dispatch = useDispatch();
 
-  const handleReset = () => {
-    dispatch(resetAnswerTutiral());
-    dispatch(setModal('alert'));
+  const handleReset = async () => {
+    await dispatch(resetAnswerTutorial());
+    await dispatch(resetClearList());
     window.location.replace('/tutorial');
   };
 
