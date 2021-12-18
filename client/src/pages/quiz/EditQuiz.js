@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import InputQuiz from '../../components/InputQuiz';
 import { getQuiz } from '../../modules/quiz/getquiz';
 import { checkUserIsLogin } from '../../lib/checkIsLogin';
+import { Container } from './MakeQuiz.styled';
 
 function EditQuiz() {
   if (!checkUserIsLogin()) window.location.replace('/');
@@ -20,8 +21,9 @@ function EditQuiz() {
 
   return (
     <>
-      <h3>InputQuiz</h3>
-      <InputQuiz data={data} />
+      <Container>
+        <InputQuiz data={data} />
+      </Container>
     </>
   );
 }

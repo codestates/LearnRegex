@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { Button } from '../styles/button/CommonButton.styled';
 
 export const Container = styled.div`
-  border: 3px solid;
-  box-shadow: 0px 5px 8px rgba(63, 63, 63, 0.4);
+  /* border: 3px solid; */
+  box-shadow: 0px 5px 8px rgba(171, 180, 221, 0.4);
   padding: 5rem 2.4rem;
   background-color: var(--color-white);
   display: flex;

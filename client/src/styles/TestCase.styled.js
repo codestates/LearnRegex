@@ -42,6 +42,7 @@ export const TestCaseBox = styled.div`
   /* margin-bottom: rem; */
   /* position: relative; */
   flex-wrap: wrap;
+  margin-bottom: 0.7rem;
 
   span {
     flex-grow: 1;
@@ -120,10 +121,6 @@ export const Group = styled.span`
 
 export const ShowTestCaseContainer = styled.div`
   width: 100%;
-  margin-bottom: 5rem;
+  /* margin-bottom: 5rem; */
   /* border: 1px solid; */
-
-  @media screen and (max-width: 768px) {
-    margin-bottom: 3rem;
-  }
 `;

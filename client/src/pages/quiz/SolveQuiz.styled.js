@@ -1,26 +1,15 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  /* display: flex; */
   width: 100%;
   margin: auto;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 
   .content {
-    width: fit-content;
     margin: 0 auto;
     padding: 3.5rem 0;
-    border: 3px solid red;
-    /* display: inline; */
-    /* width: inherit; */
-    /* width: 100%; */
-    /* max-width: 100%; */
-    /* max-width: 100%; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* width: 30rem;
-    /* padding: 2rem 0 4rem; */
 
     @media screen and (max-width: 960px) {
       width: auto;
@@ -29,8 +18,10 @@ export const Container = styled.div`
   }
 
   .modify {
+    display: flex;
+    justify-content: flex-end;
     margin-bottom: 0.7rem;
-    margin-left: auto;
+    /* margin-left: auto; */
 
     span {
       margin-left: 0.5rem;

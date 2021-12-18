@@ -26,7 +26,7 @@ function SolveQuiz() {
     <>
       <Container>
         <div className="content">
-          {/* <BackButton id="0" />
+          <BackButton id="0" />
           <P size={2.6} family="Bold" margin={0.6}>
             {data.title}
           </P>
@@ -42,7 +42,7 @@ function SolveQuiz() {
             </div>
           ) : (
             <></>
-          )} */}
+          )}
           <QuizForm data={data} orderPage={'quizList'} />
         </div>
       </Container>
