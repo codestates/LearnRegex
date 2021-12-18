@@ -54,7 +54,7 @@ export const SummaryCard = styled.div`
   align-items: center;
   border-radius: 10px;
   max-height: 23rem;
-  min-height: 28rem;
+  min-height: 25rem;
   padding: 1.8rem;
   margin: 0 0.4rem;
   box-shadow: 0 3px 5px 0 rgba(051, 102, 153, 0.5);
