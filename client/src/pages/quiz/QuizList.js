@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import QuizListElement from '../../components/QuizListElement';
 import Paginate from '../../components/Paginate';
-import { Container, P } from './QuizList.styled';
+import { Container, P, EditIcon } from './QuizList.styled';
 
 function QuizList() {
   const { isLogin } = useSelector((state) => state.isLogin);
@@ -26,7 +26,7 @@ function QuizList() {
     <>
       <Container>
         <div className="cardContainer">
-          <img src="/assets/makeQuizIcon.png" alt="makeQuizIcon.png" onClick={handleAlert} />
+          <EditIcon onClick={handleAlert} />
           <P state={text.state}>{text.text}</P>
           {!list ? 'loading' : list.map((el) => <QuizListElement key={el.id} data={el} />)}
         </div>
