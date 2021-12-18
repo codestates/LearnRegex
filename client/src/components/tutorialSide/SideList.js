@@ -1,7 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setModal } from '../../modules/modal';
-import { Container, CloseIcon, ClearIcon, NotClearIcon, ResetButton } from './SideList.styled';
+import { HeaderContainer, TitleContainer, CloseIcon, ClearIcon, NotClearIcon, ResetButton } from './SideList.styled';
+import { Span } from './SideHint.styled';
 
 function SideList({ list, moveIndex, isOpen, toggle }) {
   const dispatch = useDispatch();
@@ -9,7 +10,13 @@ function SideList({ list, moveIndex, isOpen, toggle }) {
 
   return (
     <>
-      <CloseIcon onClick={() => toggle(false)} />
+      <HeaderContainer>
+        <Span size={2} family={'Semibold'}>
+          Choose a Level
+        </Span>
+        <CloseIcon onClick={() => toggle(false)} />
+      </HeaderContainer>
+      <hr />
       <ul>
         {list.map((el, idx) => (
           <li
@@ -19,10 +26,13 @@ function SideList({ list, moveIndex, isOpen, toggle }) {
               toggle();
             }}
           >
-            <span list>
-              {el.id}. {el.title}
-            </span>
-            {clearList[idx] ? <ClearIcon /> : <NotClearIcon />}
+            <TitleContainer>
+              {/* {el.id}-&nbsp; */}
+              <Span padding={0.1} size={1.2} cursor={'pointer'} color={'dark-gray'} hovercolor={'black'} hoverbackcolor={'light-blue'}>
+                {el.id}.&nbsp;&nbsp;{el.title}
+              </Span>
+              {clearList[idx] ? <ClearIcon /> : <NotClearIcon />}
+            </TitleContainer>
           </li>
         ))}
       </ul>

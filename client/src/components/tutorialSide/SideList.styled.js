@@ -4,8 +4,25 @@ import { BsCheckCircleFill } from 'react-icons/bs';
 import { BsCheckCircle } from 'react-icons/bs';
 import { Button } from '../../styles/button/CommonButton.styled';
 
+export const HeaderContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 0;
+  margin-bottom: 0.7rem;
+  min-height: 3rem;
+`;
+
+export const TitleContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* margin-left: 0; */
+  margin-bottom: 1rem;
+`;
+
 export const CloseIcon = styled(MdCancel)`
-  font-size: 3rem;
+  font-size: 2.5rem;
   transition: all ease 0.4s;
   cursor: pointer;
   color: var(--color-dark-gray);
@@ -16,18 +33,23 @@ export const CloseIcon = styled(MdCancel)`
 `;
 
 export const NotClearIcon = styled(BsCheckCircle)`
-  font-size: 2.1rem;
+  font-size: 1.4rem;
   transition: all ease 0.4s;
+  margin-left: 0.3rem;
+  opacity: 0.6;
 `;
 
 export const ClearIcon = styled(BsCheckCircleFill)`
-  font-size: 2.1rem;
+  font-size: 1.4rem;
   transition: all ease 0.4s;
   color: var(--color-green);
+  margin-left: 0.3rem;
 `;
 
 export const ResetButton = styled(Button)`
   background-color: var(--color-dark-gray);
+  align-self: center;
+  /* margin: 0 auto; */
 
   :hover {
     background-color: var(--color-blue);

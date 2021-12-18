@@ -26,6 +26,7 @@ export const Span = styled.span`
   color: ${(prop) => `var(--color-${prop.color})`};
   font-family: ${(prop) => `IBMPlexSansKR-${prop.family}`};
   white-space: pre-line;
+  word-break: break-all;
 `;
 
 const QuizAnswer = () => {

@@ -105,12 +105,12 @@ export const MinusTestCaseButton = styled(FaMinusCircle)`
 
 export const InputText = styled.input.attrs({})`
   outline: none;
-  border: 1px solid ${({ isEmpty }) => (isEmpty ? 'red' : 'black')};
+  border: ${({ isEmpty }) => (isEmpty ? '1px solid red' : '')};
   background-color: var(--color-light-gray);
   border-radius: 0.8rem;
   text-align: left;
   padding: 0.3rem 2rem 0.3rem 1.2rem;
-  border: 1px solid;
+  /* border: 1px solid; */
   font-family: D2Coding;
 `;
 

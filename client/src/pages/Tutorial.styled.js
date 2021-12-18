@@ -41,6 +41,11 @@ export const Container = styled.div`
     hr {
       border: 2px solid var(--color-blue);
       margin-bottom: 1.2rem;
+      width: 100%;
+    }
+
+    li {
+      cursor: pointer;
     }
 
     @media screen and (max-width: 1360px) {

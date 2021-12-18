@@ -73,7 +73,7 @@ function InputQuiz({ data }) {
     let newTestCase = content.testCase.slice();
     if (key === 'add' && newTestCase.length < 5) {
       newTestCase.push(makeTestCase());
-    } else if (key === 'delete' && !!idx && newTestCase.length > 1) {
+    } else if (key === 'delete' && !isNaN(idx) && newTestCase.length > 1) {
       const front = newTestCase.slice().splice(0, idx);
       const back = newTestCase.slice().splice(idx + 1);
       newTestCase = [...front, ...back];
@@ -136,7 +136,7 @@ function InputQuiz({ data }) {
           <Span>정답</Span>
           <Input margin={2} isEmpty={isEmpty.answer} value={content.answer} placeholder="20자 미만까지 가능합니다 :)" maxLength="100" onChange={handleInputValue('answer')} />
           <Span>해설</Span>
-          <Textarea isEmpty={isEmpty.explanation} value={content.explanation} placeholder="400자 미만까지 가능합니다 :)" maxLength="400" onChange={handleInputValue('explanation')} />
+          <Textarea isEmpty={isEmpty.explanation} value={content.explanation} placeholder="200자 미만까지 가능합니다 :)" maxLength="200" onChange={handleInputValue('explanation')} />
         </AnswerContainer>
         <SubmitButton type="submit" onClick={() => handleSubmitQuiz()}>
           {!!data ? '수정 완료' : '퀴즈 업로드'}

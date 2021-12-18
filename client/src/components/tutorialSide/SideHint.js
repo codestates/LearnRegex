@@ -9,16 +9,16 @@ function SideHint({ tip, movePrev, moveNext, toggle }) {
   return (
     <>
       <Header>
-        <BackIcon onClick={movePrev} />
-        <FowardIcon onClick={moveNext} />
-        <ListIcon onClick={() => toggle(true)} />
-      </Header>
-      <LevelContainer>
         <Span size={2} family={'Semibold'}>
           Level {index + 1} of 30
         </Span>
         {clearList[index] ? <ClearIcon /> : <></>}
-      </LevelContainer>
+        <LevelContainer>
+          <BackIcon onClick={movePrev} />
+          <FowardIcon onClick={moveNext} />
+          <ListIcon onClick={() => toggle(true)} />
+        </LevelContainer>
+      </Header>
       <hr />
       <Span size={1.6} family={'Medium'} height={2.7}>
         {tip.length > 0 ? tip[0].characterSet : <Span size={1.2}>힌트가 없습니다.</Span>}
