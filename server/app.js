@@ -11,6 +11,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(helmet());
+
+// ! DevOnly 서버 통신 딜레이 부여
+app.use(async function (req, res, next) {
+  await setTimeout(function () {
+    console.log('getSleep');
+    next();
+  }, 1500);
+});
+
 app.use(
   cors({
     origin: true,
