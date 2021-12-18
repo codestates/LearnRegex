@@ -6,7 +6,8 @@ import dotenv from 'dotenv';
 import { EditMyInfo } from './EditMyInfo';
 import { EditMyPassword } from './EditMyPassword';
 import { checkUserIsLogin } from '../../lib/checkIsLogin';
-import { Container, NewButton, Span, Box } from './modify.styled';
+import { Container, Content, ContentWrap, ButtonElement, InfoContainer, SpanElement } from './modify.styled';
+import { NewButton } from '../../styles/EditMyInfo.styled';
 dotenv.config();
 
 const MyInfo = () => {
@@ -50,38 +51,34 @@ const MyInfo = () => {
     return (
       <>
         <Container>
-          <Box>
-            <div className="contentBox">
-              <div className="content">
-                <Span category>
-                  <span>이메일</span>
-                </Span>
-                <Span>
-                  <span>{myInfo.socialType === 'local' ? myInfo.email : myInfo.socialType + ' 로그인'}</span>
-                </Span>
-              </div>
-              <div className="content">
-                <Span category>
-                  <span>닉네임</span>
-                </Span>
-                <Span>
-                  <span>{myInfo.nickname}</span>
-                </Span>
-              </div>
-            </div>
-            <div className="buttonBox">
-              <NewButton onClick={handleEditMyInfo}>프로필 수정</NewButton>
-            </div>
-          </Box>
-          <Box>
-            <div className="buttonBox">{myInfo.socialType === 'local' ? <NewButton onClick={handleEditMyPassword}>비밀번호 수정</NewButton> : <p>비밀번호 수정 불가능</p>}</div>
-            <hr />
-            <div className="buttonBox">
-              <NewButton danger onClick={handleDeleteMyInfo}>
-                회원 탈퇴
+          <ContentWrap>
+            <Content padding>
+              <InfoContainer>
+                <SpanElement category backcolor={'light-blue'} color={'white'} category size={1.1} family={'Medium'}>
+                  이메일
+                </SpanElement>
+                <SpanElement>{myInfo.socialType === 'local' ? myInfo.email : myInfo.socialType + ' 로그인'}</SpanElement>
+              </InfoContainer>
+              <InfoContainer>
+                <SpanElement category backcolor={'light-blue'} color={'white'} category size={1.1} family={'Medium'}>
+                  닉네임
+                </SpanElement>
+                <SpanElement>{myInfo.nickname}</SpanElement>
+              </InfoContainer>
+              <NewButton editInfo onClick={handleEditMyInfo}>
+                프로필 수정
               </NewButton>
-            </div>
-          </Box>
+            </Content>
+            <Content>
+              <ButtonElement>{myInfo.socialType === 'local' ? <NewButton onClick={handleEditMyPassword}>비밀번호 수정</NewButton> : <SpanElement>비밀번호 수정 불가능</SpanElement>}</ButtonElement>
+              <hr />
+              <ButtonElement>
+                <NewButton danger onClick={handleDeleteMyInfo}>
+                  회원 탈퇴
+                </NewButton>
+              </ButtonElement>
+            </Content>
+          </ContentWrap>
         </Container>
       </>
     );

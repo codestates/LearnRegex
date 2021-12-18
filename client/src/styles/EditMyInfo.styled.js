@@ -72,6 +72,13 @@ export const Span = styled.span`
 
 export const NewButton = styled(Button)`
   width: 12rem;
+  background-color: ${({ danger }) => (danger ? `var(--color-dark-gray)` : ``)};
+  /* 
+  :hover {
+    background-color: ${({ danger }) => (danger ? `var(--color-light-gray)` : ``)};
+  } */
+
+  margin-top: ${({ editInfo }) => (editInfo ? '3rem' : '')};
 
   @media screen and (max-width: 768px) {
     width: 12rem;

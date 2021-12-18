@@ -1,83 +1,115 @@
 import styled from 'styled-components';
-import { Button } from '../../styles/button/CommonButton.styled';
-import { ShadowBox } from '../../styles/ShadowBox.styled';
+import { ContentContainer, Span } from '../../styles/EditMyInfo.styled';
 
 export const Container = styled.div`
-  width: 100%;
-  text-align: center;
-  margin: auto;
   display: flex;
+  margin: 7rem auto;
+  width: 100%;
   justify-content: center;
-  padding: 12rem 0 12rem 0;
   /* border: 1px solid; */
-  align-items: center;
 
-  .contentBox {
-    margin-top: 6rem;
-  }
-
-  .content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1.3rem;
-  }
   hr {
+    width: 100%;
     border: dashed 1px;
     color: var(--color-light-blue);
   }
+`;
 
-  .buttonBox {
-    display: flex;
-    height: 50%;
-    justify-content: center;
-    align-items: center;
-    /* border: 1px solid; */
+export const InfoContainer = styled.div`
+  /* border: 1px solid; */
+  /* margin: 1rem; */
+  /* padding: 1rem; */
+  /* margin-bottom: 1.5rem; */
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  margin: 1.2rem 0;
 
-    p {
-      color: var(--color-red);
-    }
+  border-bottom: 1px solid var(--color-light-blue);
+
+  width: 100%;
+`;
+
+export const ContentWrap = styled.div`
+  display: flex;
+
+  @media screen and (max-width: 1140px) {
+    flex-direction: column;
   }
 `;
 
-export const Box = styled(ShadowBox)`
-  width: 30rem;
-  margin: 0 2rem;
-  padding: 0;
-  background-color: var(--color-white);
+export const Content = styled(ContentContainer)`
+  width: 28rem;
+  margin: 0 5rem 3rem;
+  padding: ${({ padding }) => (padding ? '0 4rem' : '0')};
 `;
 
-export const NewButton = styled(Button)`
-  width: 12rem;
-  ${({ danger }) => {
-    return danger ? `background-color: var(--color-dark-gray);` : `background-color: var(--color-blue);`;
-  }}
-  margin: 0;
+export const ButtonElement = styled.div`
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
-export const Span = styled.div`
-  ${({ category }) => {
-    if (category) {
-      const css = `
-        width: 5.8rem;
-        height: 2.4rem;
-        background-color: var(--color-light-blue);
-        color: var(--color-white);
-        letter-spacing: 2px;
-        font-family: IBMPlexSansKR-SemiBold;
-        padding: 0.6rem 0 0 0;
-        `;
-      return css;
-    } else {
-      const css = `
-        width: 15rem;
-        height: 2.4rem;
-        border-bottom: 2px solid rgba(230, 230, 230, 0.6);
-        padding: 0 0.6rem;
-        padding: 0.6rem 0 0 1rem;
-        text-align: left;
-      `;
-      return css;
-    }
-  }}
+// export const SpanElement = styled(Span)`
+
+// `;
+
+export const SpanElement = styled(Span)`
+  background-color: ${(prop) => `var(--color-${prop.backcolor})`};
+  color: ${(prop) => `var(--color-${prop.color})`};
+  padding: ${({ category }) => (category ? '0.3rem 1.2rem' : '0 0.7rem')};
 `;
+
+// export const Container = styled.div`
+//   width: 100%;
+//   text-align: center;
+//   margin: auto;
+//   display: flex;
+//   justify-content: center;
+//   padding: 12rem 0 12rem 0;
+//   /* border: 1px solid; */
+//   align-items: center;
+
+//   .contentBox {
+//     margin-top: 6rem;
+//   }
+
+//   .content {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     margin: 1.3rem;
+//   }
+//   hr {
+//     border: dashed 1px;
+//     color: var(--color-light-blue);
+//   }
+
+//   .buttonBox {
+//     display: flex;
+//     height: 50%;
+//     justify-content: center;
+//     align-items: center;
+//     /* border: 1px solid; */
+
+//     p {
+//       color: var(--color-red);
+//     }
+//   }
+// `;
+
+// export const Box = styled(ShadowBox)`
+//   width: 30rem;
+//   margin: 0 2rem;
+//   padding: 0;
+//   background-color: var(--color-white);
+// `;
+
+// export const NewButton = styled(Button)`
+//   width: 12rem;
+//   ${({ danger }) => {
+//     return danger ? `background-color: var(--color-dark-gray);` : `background-color: var(--color-blue);`;
+//   }}
+//   margin: 0;
+// `;
