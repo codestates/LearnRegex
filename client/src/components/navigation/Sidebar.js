@@ -24,25 +24,21 @@ const Sidebar = ({ openSidebar, handleSidebar }) => {
       <Icon>
         <CloseIcon onClick={() => handleSidebar(false)} />
       </Icon>
-      <SidebarWrap>
-        <SidebarMenu onClick={() => handleSidebar(false)}>
-          <SidebarBtnWrap>
-            {isLogin ? <SidebarBtn onClick={() => (window.location.href = '/myinfo')}>{nickname}</SidebarBtn> : <SidebarBtn onClick={() => dispatch(setModal('signIn'))}>로그인</SidebarBtn>}
-          </SidebarBtnWrap>
-          <SidebarLink to="/tutorial">학습하기</SidebarLink>
-          <SidebarLink to="/quizlist" onClick={() => clearSession()}>
-            퀴즈
-          </SidebarLink>
-          {isLogin ? (
-            <SubSidebar>
-              <SidebarDevider />
-              <SidebarLink to="/myinfo">내 정보</SidebarLink>
-              <SidebarSignOut onClick={handleSignOut}>로그아웃</SidebarSignOut>
-            </SubSidebar>
-          ) : (
-            <></>
-          )}
-        </SidebarMenu>
+      <SidebarWrap isLogin={isLogin}>
+        {isLogin ? <SidebarBtn onClick={() => (window.location.href = '/myinfo')}>{nickname}</SidebarBtn> : <SidebarBtn onClick={() => dispatch(setModal('signIn'))}>로그인</SidebarBtn>}
+        <SidebarLink to="/tutorial">학습하기</SidebarLink>
+        <SidebarLink to="/quizlist" onClick={() => clearSession()}>
+          퀴즈
+        </SidebarLink>
+        {isLogin ? (
+          <>
+            <SidebarDevider />
+            <SidebarLink to="/myinfo">내 정보</SidebarLink>
+            <SidebarSignOut onClick={handleSignOut}>로그아웃</SidebarSignOut>
+          </>
+        ) : (
+          <></>
+        )}
       </SidebarWrap>
     </SidebarContainer>
   );

@@ -5,7 +5,7 @@ import { saveAnswerTutorial, saveAnswerQuiz } from '../modules/answer';
 import { clearList } from '../modules/list';
 import { requestQuizClear } from '../lib/requestQuiz';
 import ShowTestCase from './ShowTestCase';
-import { Container, Span, Input, AnswerButton, NextButtonWrap, NextButton, SolveThis } from './QuizForm.styled';
+import { Container, Span, Input, AnswerButton, NextButtonWrap, NextButton } from './QuizForm.styled';
 import { ShowTestCaseContainer } from '../styles/TestCase.styled';
 
 function QuizForm({ data, orderPage, moveNext }) {

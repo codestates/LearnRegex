@@ -16,7 +16,6 @@ export const SidebarContainer = styled.aside`
   transition: 0.3s ease-in-out;
   opacity: ${({ openSidebar }) => (openSidebar ? '100%' : '0')};
   top: ${({ openSidebar }) => (openSidebar ? '0' : '-100%')};
-  /* top: 0; */
 `;
 
 export const CloseIcon = styled(FaTimes)`
@@ -36,22 +35,16 @@ export const Icon = styled.div`
 
 export const SidebarWrap = styled.div`
   color: var(--color-blue);
-`;
-
-export const SidebarMenu = styled.ul`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(4, 80px);
-  text-align: center;
-
-  @media screen and (max-width: 480px) {
-    grid-template-rows: repeat(5, 60px);
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: ${({ isLogin }) => (isLogin ? '40%' : '20%')};
 `;
 
 export const SidebarLink = styled(Link)`
-  display: felx;
-  align-items: center;
+  display: flex;
+  align-items: flex-start;
   justify-content: center;
   font-size: 1.5rem;
   font-family: 'IBMPlexSansKR-Bold';
@@ -61,26 +54,19 @@ export const SidebarLink = styled(Link)`
   text-decoration: none;
   color: var(--color-blue);
   cursor: pointer;
-  margin-top: 1rem;
-
   :hover {
     transition: all 0.2s ease-in-out;
     transform: translateY(-3px);
   }
 `;
 
-export const SidebarBtnWrap = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
 export const SidebarBtn = styled.button`
   width: 10rem;
-  height: 70%;
+  height: 4rem;
   border-radius: 50px;
   background-color: var(--color-blue);
   white-space: nowrap;
-  padding: 12px 30px;
+  padding: 8px 10px;
   color: var(--color-white);
   font-size: 1.5rem;
   font-family: 'IBMPlexSansKR-Bold';
@@ -101,9 +87,14 @@ export const SidebarBtn = styled.button`
 export const SidebarDevider = styled(BsThreeDots)`
   font-size: 3.5rem;
   color: var(--color-dark-gray);
+  text-align: center;
 `;
 
 export const SubSidebar = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-size: 1.5rem;
   text-decoration: none;
   list-style: none;
@@ -122,10 +113,10 @@ export const SidebarSignOut = styled.div`
   text-decoration: none;
   color: var(--color-blue);
   cursor: pointer;
-  margin-top: 1.5rem;
 
   :hover {
     transition: all 0.2s ease-in-out;
     transform: translateY(-3px);
+    color: var(--color-red);
   }
 `;
