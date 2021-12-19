@@ -12,20 +12,35 @@ export const Container = styled.div`
   /* border: 1px solid; */
   padding: 6.7rem 0 12rem 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+
+  @media screen and (max-width: 768px) {
+    /* width: auto; */
+    /* margin: 0 0.2rem; */
+  }
 
   p {
     font-size: 2rem;
     font-family: IBMPlexSansKR-Bold;
     margin: 2.8rem 0;
     color: var(--color-dark-blue);
+
+    cursor: default;
   }
 
   .tmp {
-    padding: 1rem 2rem 0.5rem 2rem;
+    /* width: 70% */
+    margin: auto;
+    padding: 1rem 2rem 0.5rem;
     /* border: 1px solid; */
     box-shadow: 0px 5px 8px rgba(171, 180, 221, 0.4);
     background-color: var(--color-white);
+
+    @media screen and (max-width: 768px) {
+      width: auto;
+      margin: 0 2rem;
+    }
   }
 
   .content {
@@ -59,6 +74,8 @@ export const Span = styled.div`
         letter-spacing: 2px;
         font-family: IBMPlexSansKR-SemiBold;
         padding: 0.6rem 0 0 0;
+
+    cursor: default;
         `;
       return css;
     } else {
@@ -69,6 +86,8 @@ export const Span = styled.div`
         padding: 0 0.6rem;
         padding: 0.6rem 0 0 1rem;
         text-align: left;
+
+    cursor: default;
       `;
       return css;
     }

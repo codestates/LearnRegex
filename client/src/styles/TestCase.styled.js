@@ -6,18 +6,20 @@ export const TestCaseElement = styled.span`
   background-color: var(--color-light-gray);
   border-radius: 0.3rem;
   text-align: left;
-  padding: 0.3rem 0 0.3rem 0.5rem;
+  padding: 0.3rem 2rem 0.3rem 0.5rem;
   /* border: 1px solid; */
   width: 100%;
   min-height: 2rem;
   font-family: D2Coding;
   cursor: default;
 
+  word-break: break-all;
+
   /* color: ${(prop) => `var(--color-${prop.color})`}; */
 
   @media screen and (max-width: 768px) {
-    height: 2.7rem;
-    padding: 0.6rem 0 0.6rem 0.5rem;
+    height: 100%;
+    padding: 0.6rem 2.4rem 0.6rem 0.5rem;
   }
 `;
 
@@ -29,7 +31,7 @@ export const TaskElement = styled.button`
   width: 10rem;
   border-radius: 0.4rem;
   height: 2rem;
-  cursor: default;
+  cursor: pointer;
   /* border: 1px solid; */
 
   @media screen and (max-width: 768px) {
@@ -43,13 +45,13 @@ export const TestCaseBox = styled.div`
   display: flex;
   /* margin-bottom: rem; */
   /* position: relative; */
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   margin-bottom: 0.7rem;
 
   span {
     flex-grow: 1;
     font-size: 1.3rem;
-    /* flex-shrink: 0; */
+    /* flex-shrink: 1; */
   }
 
   input {
@@ -71,10 +73,13 @@ export const TestCaseBox = styled.div`
     flex-direction: column;
     flex-grow: 1;
     position: relative;
+    margin-right: 0.4rem;
+    /* flex-shrink: 1; */
     /* min-height: 2.8rem; */
     /* min-height: 10rem; */
 
     .groupElement {
+      word-break: break-all;
       margin: 0.7rem 0;
     }
   }
@@ -93,10 +98,12 @@ export const CheckIcon = styled(BsCheck)`
 
 export const MinusTestCaseButton = styled(FaMinusCircle)`
   transition: color 0.4s;
-  margin-left: 0.5rem;
+  /* margin-left: 0.4rem; */
   color: var(--color-dark-gray);
   font-size: 2rem;
   cursor: pointer;
+  /* flex-basis: 6rem; */
+  min-width: 2rem;
 
   :hover {
     color: var(--color-pink);

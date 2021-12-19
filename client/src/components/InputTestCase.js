@@ -18,7 +18,7 @@ export const InputTestCase = ({ testCases, handleInputTestCase, handleTaskButton
               <TaskElement color={color} onClick={handleTaskButton(idx)}>
                 {testCase.task}
               </TaskElement>
-              <InputText value={testCase.target} placeholder="testCase를 입력하세요" maxLength="400" onChange={handleInputTestCase(idx)} />
+              <InputText value={testCase.target} placeholder="testCase를 입력하세요" maxLength="40" onChange={handleInputTestCase(idx)} />
               <MinusTestCaseButton onClick={handleTestCaseQuantity('delete', idx)} />
             </TestCaseBox>
           </>

@@ -16,6 +16,7 @@ export const Container = styled(ShadowBox)`
 
   span {
     color: var(--color-blue);
+    cursor: default;
   }
 
   @media screen and (max-width: 768px) {
@@ -37,7 +38,9 @@ export const Button = styled(ChallengeButton)`
   }
 `;
 
-const P = styled.p``;
+const P = styled.p`
+  cursor: default;
+`;
 
 export const Title = styled(P)`
   font-family: IBMPlexSansKR-SemiBold;

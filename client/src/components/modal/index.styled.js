@@ -23,7 +23,7 @@ export const ModalWrapper = styled.div`
     if (modaltype === 'quizAnswer' || modaltype === 'tutorialAnswer') return '500px';
     else return '400px';
   }};
-  height: ${({ modaltype }) => {
+  min-height: ${({ modaltype }) => {
     if (modaltype === 'emailCert') return '330px';
     else if (modaltype === 'findPassword') return '280px';
     else if (modaltype === 'toHome' || modaltype === 'toUserInfo' || modaltype === 'toSignOut') return '200px';
@@ -31,6 +31,7 @@ export const ModalWrapper = styled.div`
     else if (modaltype === 'quizAnswer' || modaltype === 'tutorialAnswer') return '380px';
     else return '550px';
   }};
+  height: fit-content;
   grid-template-columns: 1fr 1fr;
   position: relative;
 `;
@@ -44,7 +45,7 @@ export const ModalContent = styled.div`
     if (modaltype === 'quizAnswer' || modaltype === 'tutorialAnswer') return '600px';
     else return '400px';
   }};
-  height: ${({ modaltype }) => {
+  min-height: ${({ modaltype }) => {
     if (modaltype === 'emailCert') return '330px';
     else if (modaltype === 'findPassword') return '280px';
     else if (modaltype === 'toHome' || modaltype === 'toUserInfo' || modaltype === 'toSignOut') return '200px';
@@ -52,6 +53,7 @@ export const ModalContent = styled.div`
     else if (modaltype === 'quizAnswer' || modaltype === 'tutorialAnswer') return '380px';
     else return '550px';
   }};
+  /* height: 100%; */
 `;
 
 export const CloseModalButton = styled(MdClose)`

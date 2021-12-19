@@ -4,7 +4,8 @@ import { useDispatch } from 'react-redux';
 import { setModal } from '../../modules/modal';
 import { requestEditUserInfo } from '../../lib/requestUserInfo';
 import { isValidEditUserInfo, isValidEmail, isValidNickname } from '../../lib/validationFunction';
-import { Container, InputBox, Input, NewButton, Box } from './EditMyInfo.styled';
+import { Container } from './EditMyInfo.styled';
+import { InputInfoContainer, ContentContainer, Input, Span, NewButton, ButtonContainer, InputContainer, InfoContainer } from '../../styles/EditMyInfo.styled';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -62,31 +63,43 @@ export const EditMyInfo = ({ myInfo }) => {
   return (
     <>
       <Container>
-        <Box>
-          <p>프로필 수정</p>
-          <div className="content">
-            <span>이메일</span>
-            <InputBox>
-              {myInfo.socialType === 'local' ? ( //
-                <Input type="text" onChange={handleInputValue('email')} value={inputUserInfo.email} onKeyUp={handleKeyUp}></Input>
-              ) : (
-                <span>{myInfo.socialType + ' 로그인'}</span>
-              )}
-              <p>&nbsp;&nbsp;{errorMessage.email}</p>
-            </InputBox>
-          </div>
-          <div className="content">
-            <span>닉네임</span>
-            <InputBox>
-              <Input type="text" onChange={handleInputValue('nickname')} value={inputUserInfo.nickname} onKeyUp={handleKeyUp}></Input>
-              <p>&nbsp;&nbsp;{errorMessage.nickname}&nbsp;</p>
-            </InputBox>
-          </div>
-          <div className="buttonBox">
+        <ContentContainer>
+          <Span size={2.5} family={'Bold'} color={'dark-blue'} marginbottom={3}>
+            프로필 수정
+          </Span>
+          <InputInfoContainer>
+            <InfoContainer>
+              <Span size={1.3} family={'Medium'} marginright={0.7} margintop={0.7}>
+                이메일
+              </Span>
+              <InputContainer>
+                {myInfo.socialType === 'local' ? ( //
+                  <Input type="text" onChange={handleInputValue('email')} value={inputUserInfo.email} onKeyUp={handleKeyUp}></Input>
+                ) : (
+                  <Span>{myInfo.socialType + ' 로그인'}</Span>
+                )}
+                <Span margintop={0.5} color={'red'}>
+                  &nbsp;{errorMessage.email}
+                </Span>
+              </InputContainer>
+            </InfoContainer>
+            <InfoContainer>
+              <Span size={1.3} family={'Medium'} marginright={0.7} margintop={0.7}>
+                닉네임
+              </Span>
+              <InputContainer>
+                <Input type="text" onChange={handleInputValue('nickname')} value={inputUserInfo.nickname} onKeyUp={handleKeyUp}></Input>
+                <Span margintop={0.5} color={'red'}>
+                  &nbsp;{errorMessage.nickname}
+                </Span>
+              </InputContainer>
+            </InfoContainer>
+          </InputInfoContainer>
+          <ButtonContainer>
             <NewButton onClick={handleSubmit}>수정 완료</NewButton>
             <NewButton onClick={() => navigate('/myinfo')}>취소</NewButton>
-          </div>
-        </Box>
+          </ButtonContainer>
+        </ContentContainer>
       </Container>
     </>
   );
