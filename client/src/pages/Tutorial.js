@@ -15,11 +15,11 @@ function Tutorial() {
 
   //! ------------------------ 리스트 이동 함수 ------------------------
   const movePrev = () => {
-    current === 0 ? alert('첫번째 문제입니다!') : setCurrent(current - 1);
+    if (current > 0) setCurrent(current - 1);
   };
 
   const moveNext = () => {
-    current === list.length - 1 ? alert('마지막 문제입니다!') : setCurrent(current + 1);
+    if (current < list.length - 1) setCurrent(current + 1);
   };
 
   const moveIndex = (id) => {

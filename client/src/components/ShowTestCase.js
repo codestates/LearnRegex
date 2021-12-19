@@ -78,7 +78,9 @@ export const ShowTestCase = ({ testCases, inputRegex, handleIsCorrectRegTotal, h
     return (
       <>
         <TestCaseBox iscorrectregtotal={isCorrectRegTotal}>
-          <TaskElement color={color}>{testCase.task}</TaskElement>
+          <TaskElement cursor={'default'} color={color}>
+            {testCase.task}
+          </TaskElement>
           <div className="capture">
             <TestCaseElement>
               <Interweave content={regExpResult.highlightedTestCase} />

@@ -12,11 +12,11 @@ function Paginate() {
 
   // * -------- 페이지 이동 --------
   const movePrev = () => {
-    current > 0 ? setCurrent(current - 1) : alert('첫번째 페이지입니다.');
+    if (current > 0) setCurrent(current - 1);
   };
 
   const moveNext = () => {
-    current < page.length - 1 ? setCurrent(current + 1) : alert('마지막 페이지입니다.');
+    if (current < page.length - 1) setCurrent(current + 1);
   };
 
   const moveIndex = (idx) => {

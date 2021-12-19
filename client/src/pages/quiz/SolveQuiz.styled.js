@@ -34,8 +34,13 @@ export const Container = styled.div`
       cursor: pointer;
       font-size: 1.2rem;
 
+      transition: all 0.3s ease 0s;
+
       @media screen and (max-width: 768px) {
         font-size: 1.3rem;
+      }
+      :hover {
+        transform: translateY(-1.5px);
       }
     }
   }

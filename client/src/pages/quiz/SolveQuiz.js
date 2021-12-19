@@ -35,9 +35,10 @@ function SolveQuiz() {
           </P>
           {data.isMade ? (
             <div className="modify">
-              <Link to={`/editquiz/${data.id}`}>
-                <span>수정</span>
-              </Link>
+              <span>
+                <Link to={`/editquiz/${data.id}`}>수정</Link>
+              </span>
+
               <span onClick={handleDelete}>삭제</span>
             </div>
           ) : (
