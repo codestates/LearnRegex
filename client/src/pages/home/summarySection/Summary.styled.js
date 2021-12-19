@@ -63,7 +63,6 @@ export const SummaryCard = styled.div`
   &:hover {
     transform: scale(1.03);
     transition: all 0.2s ease-in-out;
-    cursor: pointer;
   }
 
   @media screen and (max-width: 768px) {
