@@ -8,9 +8,19 @@ export const dummyData = [
         target: 'apple',
       },
     ],
-    tip: [],
+    tip: [
+      {
+        characterSet: 'Learn REGEX에 오신 여러분 환영합니다!',
+        explanation: `REGEX(Regular Expression, 정규표현식)이란 문자열을 처리하는 방법 중의 하나로 특정한 조건의 문자를 '검색'하거나 '치환'하는 과정을 매우 간편하게 처리 할 수 있도록 하는 수단입니다.
+                      지금부터 저희와 함께 정규표현식에서 쓰이는 여러가지 문법을 단계별로 배워봅시다!`,
+      },
+      {
+        characterSet: 'match',
+        explanation: `My Regex에 작성한 정규표현식과 'match'의 값이 일치해야합니다.`,
+      },
+    ],
     answer: 'apple',
-    explanation: `특정 단어를 직접 입력합니다`,
+    explanation: `특정 단어를 직접 입력합니다.`,
   },
 
   {
