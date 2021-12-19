@@ -4,12 +4,15 @@ import { useSelector } from 'react-redux';
 import QuizListElement from '../../components/QuizListElement';
 import Paginate from '../../components/Paginate';
 import { Container, P, EditIcon } from './QuizList.styled';
+import QuizListElementSkeleton from '../../components/QuizListElementSkeleton';
 
 function QuizList() {
   const { isLogin } = useSelector((state) => state.isLogin);
   const { list } = useSelector((state) => state.getquizzes.list);
   const navigate = useNavigate();
   const [text, setText] = useState({ state: 'notice', text: '퀴즈 만들기!' });
+
+  const skeletonList = new Array(4).fill();
 
   const handleAlert = () => {
     if (!!isLogin) {
@@ -28,7 +31,8 @@ function QuizList() {
         <div className="cardContainer">
           <EditIcon onClick={handleAlert} />
           <P state={text.state}>{text.text}</P>
-          {!list ? 'loading' : list.map((el) => <QuizListElement key={el.id} data={el} />)}
+          {!list ? skeletonList.map(() => <QuizListElementSkeleton />) : list.map((el) => <QuizListElement key={el.id} data={el} />)}
+          {/* {true ? skeletonList.map(() => <QuizListElementSkeleton />) : list.map((el) => <QuizListElement key={el.id} data={el} />)} */}
         </div>
         <Paginate />
       </Container>
