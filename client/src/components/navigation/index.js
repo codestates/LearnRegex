@@ -15,7 +15,6 @@ const Navigation = () => {
 
   //! Sidebar 상태 변경 함수
   const handleSidebar = (boolean) => {
-    console.log(openSidebar);
     setOpenSidebar(boolean);
   };
 
