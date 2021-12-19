@@ -54,7 +54,6 @@ function InputQuiz({ data }) {
     newTestCase[idx].target = e.target.value;
     setContent({ ...content, testCase: newTestCase });
   };
-  console.log(content);
 
   const handleInputCapture = (idx, group) => {
     let newTestCase = content.testCase.slice();
@@ -107,7 +106,6 @@ function InputQuiz({ data }) {
       setContent({ ...content, title: data.title, testCase: data.testCase, answer: data.answer, explanation: data.explanation });
     }
   }, []);
-
   return (
     <>
       <Container>
@@ -135,9 +133,13 @@ function InputQuiz({ data }) {
             />
           )}
         </ShowTestCaseContainer>
-        <PlusTestCaseIcon type="button" onClick={handleTestCaseQuantity('add')} />
+        {content.testCase.length < 5 ? ( //
+          <PlusTestCaseIcon type="button" onClick={handleTestCaseQuantity('add')} />
+        ) : (
+          <></>
+        )}
         <AnswerContainer onClick={handleFocusTestCase('answer')}>
-          <Span>정답</Span>
+          <Span margintop={1.5}>정답</Span>
           <Input margin={2} isEmpty={isEmpty.answer} value={content.answer} placeholder="40자 이하까지 가능합니다 :)" maxLength="40" onChange={handleInputValue('answer')} />
           <Span>해설</Span>
           <Textarea isEmpty={isEmpty.explanation} value={content.explanation} placeholder="200자 이하까지 가능합니다 :)" maxLength="200" onChange={handleInputValue('explanation')} />

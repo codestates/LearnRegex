@@ -6,6 +6,31 @@ function SideHint({ length, tip, movePrev, moveNext, toggle }) {
   const { index } = useSelector((state) => state.bookmark);
   const clearList = useSelector((state) => state.list);
 
+  // console.log(tip);
+
+  const Tips = () => {
+    console.log('this is tips');
+    if (!Array.isArray(tip)) {
+      console.log(tip);
+      return <></>;
+    }
+    return (
+      <>
+        {tip.map((el) => {
+          return (
+            <>
+              {console.log(el.characterSet)}
+              <Span size={1.6} family={'Medium'} height={2.3}>
+                {el.characterSet}
+              </Span>
+              <Span margin={1}>{el.explanation}</Span>
+            </>
+          );
+        })}
+      </>
+    );
+  };
+
   return (
     <>
       <Header>
@@ -20,10 +45,7 @@ function SideHint({ length, tip, movePrev, moveNext, toggle }) {
         </LevelContainer>
       </Header>
       <hr />
-      <Span size={1.6} family={'Medium'} height={2.7}>
-        {tip.length > 0 ? tip[0].characterSet : <Span size={1.2}>힌트가 없습니다.</Span>}
-      </Span>
-      <Span>{tip.length > 0 ? tip[0].explanation : ''}</Span>
+      <Tips />
     </>
   );
 }

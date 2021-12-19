@@ -68,7 +68,7 @@ export const PlusTestCaseIcon = styled(AiFillPlusSquare)`
   font-size: 2.8rem;
   cursor: pointer;
   justify-content: center;
-  margin: 0 auto 2rem;
+  margin: 0 auto;
 
   :hover {
     color: var(--color-dark-blue);
