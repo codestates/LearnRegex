@@ -5,7 +5,7 @@ import { saveAnswerTutorial, saveAnswerQuiz } from '../modules/answer';
 import { clearList } from '../modules/list';
 import { requestQuizClear } from '../lib/requestQuiz';
 import ShowTestCase from './ShowTestCase';
-import { Container, Span, Input, AnswerButton } from './QuizForm.styled';
+import { Container, Span, Input, AnswerButton, NextButtonWrap, NextButton } from './QuizForm.styled';
 import { ShowTestCaseContainer } from '../styles/TestCase.styled';
 
 function QuizForm({ data, orderPage, moveNext }) {
@@ -69,7 +69,7 @@ function QuizForm({ data, orderPage, moveNext }) {
         <ShowTestCaseContainer>
           <ShowTestCase testCases={data.testCase} inputRegex={inputRegex} handleIsCorrectRegTotal={handleIsCorrectRegTotal} />
         </ShowTestCaseContainer>
-        <Span margin={1.5}>My Regexp</Span>
+        <Span margin={1.5}>My Regex</Span>
         <Input value={inputRegex} placeholder="정규표현식을 입력하세요!" onChange={handleAnswer} size="100" />
         <AnswerButton
           onClick={() => {
@@ -82,17 +82,15 @@ function QuizForm({ data, orderPage, moveNext }) {
             ? '정답 확인하기' //
             : '도움이 필요합니다'}
         </AnswerButton>
-        {moveNext ? (
-          isCorrectRegTotal ? ( //
-            <button onClick={moveNext} className="isCorrectRegTotal">
+        <NextButtonWrap>
+          {moveNext && isCorrectRegTotal ? (
+            <NextButton onClick={moveNext} className="isCorrectRegTotal">
               다음 문제로!
-            </button>
+            </NextButton>
           ) : (
-            <button>풀어봅시다.</button>
-          )
-        ) : (
-          <></>
-        )}
+            <></>
+          )}
+        </NextButtonWrap>
       </Container>
     </>
   );

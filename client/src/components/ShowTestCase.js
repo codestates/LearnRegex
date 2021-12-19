@@ -57,7 +57,7 @@ export const ShowTestCase = ({ testCases, inputRegex, handleIsCorrectRegTotal, h
     } else if (testCase.task === 'capture' && isCaptuerInput) {
       color = 'brown';
       if (isValidRegex) {
-        captureInputArray = regExpResult.matchArray.slice(1);
+        captureInputArray = regExpResult.matchArray.slice(1, 6);
         if (!!handleInputCapture) handleInputCapture(idx, captureInputArray);
         isCorrectReg = true;
       }

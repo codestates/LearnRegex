@@ -81,7 +81,7 @@ export const SummaryH1 = styled.h1`
   font-size: 2.8rem;
   font-family: 'IBMPlexSansKR-Bold';
   color: var(--color-black);
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
 
   @media screen and (max-width: 480px) {
     font-size: 2rem;

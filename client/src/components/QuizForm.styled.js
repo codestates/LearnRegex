@@ -41,3 +41,29 @@ export const AnswerButton = styled(Button)`
   justify-content: center;
   margin: auto;
 `;
+
+export const NextButtonWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+`;
+
+export const NextButton = styled(Button)`
+  width: 10rem;
+  height: 3rem;
+  /* align-items: center; */
+  justify-content: center;
+  margin: auto;
+  background-color: var(--color-olive);
+
+  :hover {
+    background-color: var(--color-green);
+    color: var(--color-white);
+    opacity: 0.7;
+  }
+`;
+
+export const SolveThis = styled.div`
+  color: var(--color-blue);
+`;

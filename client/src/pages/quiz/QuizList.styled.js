@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { FiEdit } from 'react-icons/fi';
 
 export const Container = styled.div`
   width: 100%;
@@ -22,20 +23,22 @@ export const Container = styled.div`
       margin: 0 2em;
     }
   }
+}
+`;
 
-  img {
-    margin-left: auto;
-    margin-bottom: 2rem;
-    cursor: pointer;
-    width: 4.7rem;
-    transition: all ease 0.4s;
-  }
+export const EditIcon = styled(FiEdit)`
+  margin-left: auto;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  font-size: 4rem;
+  transition: all ease 0.4s;
+  color: var(--color-blue);
 
-  img:hover {
+  :hover {
     transform: scale(1.1, 1.1);
   }
 
-  img:hover + p {
+  :hover + p {
     display: block;
   }
 `;
@@ -47,8 +50,8 @@ export const P = styled.p`
   width: ${({ state }) => (state === 'notice' ? '7rem' : '12rem')};
   padding: 8px;
   text-align: center;
-  right: 6rem;
-  top: 2rem;
+  right: 5rem;
+  top: 1.5rem;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
