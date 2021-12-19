@@ -14,12 +14,12 @@ const SummarySection = () => {
         <SummaryCard>
           <SummaryIcon src="assets/svg-4.svg" />
           <SummaryH2>How many?</SummaryH2>
-          <SummaryP>내가 낸 문제, 몇명이 해결했을까 궁금하시다면 ! 퀴즈 리스트 하단에서 체크할 수 있어요.</SummaryP>
+          <SummaryP>내가 낸 문제, 몇명이 해결했을까 궁금하시다면! 퀴즈 리스트에서 체크할 수 있어요.</SummaryP>
         </SummaryCard>
         <SummaryCard>
           <SummaryIcon src="assets/svg-5.svg" />
           <SummaryH2>My Info</SummaryH2>
-          <SummaryP>나는 몇 개의 퀴즈를 등록하고 도전했을까요 ? 닉네임을 클릭해 내 정보 페이지로 가봅시다 !</SummaryP>
+          <SummaryP>나는 몇 개의 퀴즈를 등록하고 도전했을까요? 닉네임을 클릭해 내 정보 페이지로 가봅시다!</SummaryP>
         </SummaryCard>
       </SummaryWrapper>
     </SummaryContainer>

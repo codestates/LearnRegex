@@ -46,7 +46,6 @@ const DeleteUserConfirm = () => {
 
   const handleDeleteUser = async () => {
     const result = await requestDeleteUserInfo();
-    // console.log('탈퇴모달: ', result);
     if (result) {
       dispatch(setModal('close'));
       window.location.replace('/');
