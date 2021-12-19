@@ -12,7 +12,7 @@ function SolveQuizSkeleton() {
         <SkeletonElement width={'100%'} height={'2rem'} margin={'0 0 1.8rem'}></SkeletonElement>
         <SkeletonElement width={'11rem'} height={'2.8rem'} margin={'2.4rem 0 0.6rem'}></SkeletonElement>
         <SkeletonElement width={'100%'} height={'5rem'}></SkeletonElement>
-        <SkeletonElement width={'14rem'} height={'3rem'} margin={'auto 0 0'} alignself={'center'}></SkeletonElement>
+        <SkeletonElement width={'14rem'} height={'3rem'} margin={'auto 0 0'} alignself={'center'} mobilealignself={'center'}></SkeletonElement>
       </QuizFormSkeletonContainer>
     </>
   );

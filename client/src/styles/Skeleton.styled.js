@@ -11,6 +11,14 @@ export const Container = styled.div`
   background-color: var(--color-white);
   box-shadow: 0px 16px 15px rgba(63, 63, 63, 0.4);
   transition: all 0.6s ease 0s;
+
+  @media screen and (max-width: 768px) {
+    align-items: ${(prop) => prop.mobilealignitems};
+    height: 20rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
 `;
 
 export const SkeletonElement = styled.div`
@@ -32,6 +40,14 @@ export const SkeletonElement = styled.div`
       background-position: 100% 0, /* move highlight to right */ 0 0;
     }
   }
+
+  @media screen and (max-width: 768px) {
+    width: ${(prop) => prop.mobilewidth};
+    height: ${(prop) => prop.mobileheight};
+    margin: ${(prop) => prop.mobilemargin};
+    align-self: unset;
+    align-self: ${(prop) => prop.mobilealignself};
+  }
 `;
 
 export const Header = styled.div`
@@ -42,6 +58,10 @@ export const Header = styled.div`
   border-radius: 1.2rem;
   transition: all 0.6s ease 0s;
   margin-bottom: 2.5rem;
+
+  @media screen and (max-width: 768px) {
+    align-items: center;
+  }
 `;
 
 export const QuizFormSkeletonContainer = styled(Container)`
@@ -50,4 +70,8 @@ export const QuizFormSkeletonContainer = styled(Container)`
   height: 35rem;
   padding: 5rem 2.4rem;
   /* margin: auto; */
+
+  @media screen and (max-width: 768px) {
+    align-items: unset;
+  }
 `;

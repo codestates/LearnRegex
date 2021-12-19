@@ -5,7 +5,7 @@ import { getQuiz } from '../../modules/quiz/getquiz';
 import { deleteQuiz } from '../../lib/requestQuiz';
 import QuizForm from '../../components/QuizForm';
 import BackButton from '../../components/BackButton';
-import { Container, P } from './SolveQuiz.styled';
+import { Container, P, Span } from './SolveQuiz.styled';
 import SolveQuizSkeleton from '../../components/SolveQuizSkeleton';
 
 function SolveQuiz() {
@@ -47,11 +47,13 @@ function SolveQuiz() {
           </P>
           {data.isMade ? (
             <div className="modify">
-              <span>
+              <Span translateY>
                 <Link to={`/editquiz/${data.id}`}>수정</Link>
-              </span>
-
-              <span onClick={handleDelete}>삭제</span>
+              </Span>
+              <Span cursor={'default'}>/</Span>
+              <Span translateY cursor={'pointer'} onClick={handleDelete}>
+                삭제
+              </Span>
             </div>
           ) : (
             <></>

@@ -16,33 +16,28 @@ export const Container = styled.div`
       width: auto;
       margin: 0 2rem;
     }
-
-    /* @media screen and (max-width: 960px) {
-      width: auto;
-      margin: 0 2rem;
-    } */
   }
 
   .modify {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 0.7rem;
-    /* margin-left: auto; */
+  }
+`;
 
-    span {
-      margin-left: 0.5rem;
-      cursor: pointer;
-      font-size: 1.2rem;
+export const Span = styled.span`
+  margin-left: 0.5rem;
+  cursor: ${(prop) => prop.cursor};
+  font-size: 1.2rem;
+  transition: all 0.3s ease 0s;
 
-      transition: all 0.3s ease 0s;
+  @media screen and (max-width: 768px) {
+    font-size: 1.3rem;
+  }
 
-      @media screen and (max-width: 768px) {
-        font-size: 1.3rem;
-      }
-      :hover {
-        transform: translateY(-1.5px);
-      }
-    }
+  :hover {
+    /* transform: translateY(-1.5px); */
+    transform: ${(prop) => (prop.translateY ? `translateY(-1.3px)` : ``)};
   }
 `;
 
