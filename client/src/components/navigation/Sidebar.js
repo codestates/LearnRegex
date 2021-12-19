@@ -24,7 +24,7 @@ const Sidebar = ({ openSidebar, handleSidebar }) => {
       <Icon>
         <CloseIcon onClick={() => handleSidebar(false)} />
       </Icon>
-      <SidebarWrap isLogin={isLogin}>
+      <SidebarWrap isLogin={isLogin} onClick={() => handleSidebar(false)}>
         {isLogin ? <SidebarBtn onClick={() => (window.location.href = '/myinfo')}>{nickname}</SidebarBtn> : <SidebarBtn onClick={() => dispatch(setModal('signIn'))}>로그인</SidebarBtn>}
         <SidebarLink to="/tutorial">학습하기</SidebarLink>
         <SidebarLink to="/quizlist" onClick={() => clearSession()}>
