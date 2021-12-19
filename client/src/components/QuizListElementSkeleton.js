@@ -4,10 +4,10 @@ function QuizListElementSkeleton() {
   return (
     <>
       <Container>
-        <SkeletonElement width={25} height={3}></SkeletonElement>
-        <SkeletonElement width={5} height={1.6}></SkeletonElement>
-        <SkeletonElement width={18} height={1}></SkeletonElement>
-        <SkeletonElement width={12} height={3} alignself={'flex-end'}></SkeletonElement>
+        <SkeletonElement width={'25rem'} height={'3rem'} margin={'0 0 0.5rem'}></SkeletonElement>
+        <SkeletonElement width={'5rem'} height={'1.6rem'} margin={'0 0 0.5rem'}></SkeletonElement>
+        <SkeletonElement width={'18rem'} height={'1rem'} margin={'0 0 0.5rem'}></SkeletonElement>
+        <SkeletonElement width={'12rem'} height={'3rem'} margin={'0 0 0.5rem'} alignself={'flex-end'}></SkeletonElement>
       </Container>
     </>
   );

@@ -8,23 +8,24 @@ const GET_QUIZZES_ERROR = 'GET_QUIZZES_ERROR';
 
 export const getQuizzes = (idx) => async (dispatch) => {
   dispatch({ type: GET_QUIZZES, idx });
-  setTimeout(async () => {
-    console.log('대기중');
-    try {
-      const result = await axios.get(`${process.env.REACT_APP_SERVER_ADDR}/quiz?page=${idx + 1}`);
-      const list = result.data.quizs;
-      const pages = result.data.pages;
-      checkIsLogin(result);
+  try {
+    const result = await axios.get(`${process.env.REACT_APP_SERVER_ADDR}/quiz?page=${idx + 1}`);
+    const list = result.data.quizs;
+    const pages = result.data.pages;
+    checkIsLogin(result);
+    setTimeout(() => {
       dispatch({ type: GET_QUIZZES_SUCCESS, list, pages });
-    } catch (error) {
-      // 에러코드 406이면 재귀
-      if (error.response.status === 406) dispatch(getQuizzes());
-      else {
-        checkIsLogin(error);
+    }, 1000);
+  } catch (error) {
+    // 에러코드 406이면 재귀
+    if (error.response.status === 406) dispatch(getQuizzes());
+    else {
+      checkIsLogin(error);
+      setTimeout(() => {
         dispatch({ type: GET_QUIZZES_ERROR, error });
-      }
+      }, 1000);
     }
-  }, 1000);
+  }
 };
 
 const initialState = {

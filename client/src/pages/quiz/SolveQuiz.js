@@ -6,6 +6,7 @@ import { deleteQuiz } from '../../lib/requestQuiz';
 import QuizForm from '../../components/QuizForm';
 import BackButton from '../../components/BackButton';
 import { Container, P } from './SolveQuiz.styled';
+import SolveQuizSkeleton from '../../components/SolveQuizSkeleton';
 
 function SolveQuiz() {
   const { id } = useParams('id');
@@ -16,7 +17,18 @@ function SolveQuiz() {
     dispatch(getQuiz(id));
   }, [id]);
 
-  if (!data) return <div>loading....</div>;
+  // if (!data) return <div></div>;
+  if (!data)
+    return (
+      <>
+        <Container>
+          <div className="content">
+            <BackButton id="0" />
+            <SolveQuizSkeleton />
+          </div>
+        </Container>
+      </>
+    );
 
   const handleDelete = () => {
     deleteQuiz(id);
