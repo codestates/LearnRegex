@@ -8,6 +8,7 @@ import Footer from '../../components/footer/Footer';
 
 const LandingContainer = styled.div`
   background-color: var(--color-white);
+  cursor: default;
 `;
 
 const Home = () => {
