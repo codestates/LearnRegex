@@ -3,7 +3,7 @@ export const homeObjOne = {
   whiteBg: true,
   topLine: '학습하기 Tutorial',
   heading: '단계별 학습으로 정규표현식과 친해져요',
-  description: '내가 입력하는 정규표현식에 따라 match & skip 학습하기 학습하기 학습하기 학습하기 학습하기 학습하기 학습하기 학습하기 학습하기 학습하기 학습하기 학습하기',
+  description: '어쩌구 저쩌구 수정하자',
   buttonLabel: '학습하기 페이지로',
   imgStart: false,
   img: '/assets/svg-1.svg',
