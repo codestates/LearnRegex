@@ -12,7 +12,9 @@ export const getQuiz = (id) => async (dispatch) => {
     const result = await axios.get(`${process.env.REACT_APP_SERVER_ADDR}/quiz/info?quizId=${id}`);
     const quiz = result.data.quiz;
     checkIsLogin(result);
-    dispatch({ type: GET_QUIZ_SUCCESS, quiz });
+    setTimeout(() => {
+      dispatch({ type: GET_QUIZ_SUCCESS, quiz });
+    }, 1000);
   } catch (error) {
     checkIsLogin(error);
     dispatch({ type: GET_QUIZ_ERROR, error });

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { FaMinusCircle } from 'react-icons/fa';
 import { BsCheck } from 'react-icons/bs';
 
@@ -31,13 +31,55 @@ export const TaskElement = styled.button`
   width: 10rem;
   border-radius: 0.4rem;
   height: 2rem;
-  cursor: pointer;
-  /* border: 1px solid; */
+  cursor: ${(prop) => prop.cursor};
+  animation: ${(prop) => (prop.isStart === true ? animation(prop.blinkColor) : '')};
+  /* -webkit-animation: ${(prop) => prop.startStyle} 1s linear infinite; */
+  transition: all ease 0.3s;
+  letter-spacing: 2px;
+
+  :hover {
+    transform: ${({ inputQuiz }) => (inputQuiz ? `translateY(-1.3px)` : '')};
+  }
 
   @media screen and (max-width: 768px) {
     width: 7rem;
     height: 2.7rem;
   }
+
+  /* @keyframes blink {
+    0% {
+      background-color: var(--color-green);
+      opacity: 0.5;
+    }
+    100% {
+      background-color: var(--color-green);
+    }
+  } */
+
+  /* for Chrome, Safari */
+  /* @-webkit-keyframes blink {
+    0% {
+      background-color: var(--color-olive);
+      opacity: 0.5;
+    }
+    100% {
+      background-color: var(--color-green);
+    }
+  } */
+`;
+
+const blinkTaskElement = (color) => keyframes`
+  0% {
+    background-color: ${() => `var(--color${color})`};
+    opacity: 0.5;
+  }
+  100% {
+    background-color: ${() => `var(--color${color})`};
+  }
+`;
+
+const animation = (color) => css`
+  ${blinkTaskElement(color)} 1s ease infinite;
 `;
 
 export const TestCaseBox = styled.div`

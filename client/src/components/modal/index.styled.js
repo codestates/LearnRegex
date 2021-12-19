@@ -54,6 +54,7 @@ export const ModalContent = styled.div`
     else return '550px';
   }};
   /* height: 100%; */
+  cursor: default;
 `;
 
 export const CloseModalButton = styled(MdClose)`

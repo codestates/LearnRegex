@@ -11,12 +11,14 @@ function TutorialSide({ list, movePrev, moveNext, moveIndex }) {
     setIsOpen(boolean);
   };
 
+  console.log(list.length);
+
   return (
     <>
       {isOpen ? ( //
         <SideList list={list} moveIndex={moveIndex} isOpen={isOpen} toggle={toggle} /> //
       ) : (
-        <SideHint tip={list[index].tip} movePrev={movePrev} moveNext={moveNext} toggle={toggle} />
+        <SideHint length={list.length} tip={list[index].tip} movePrev={movePrev} moveNext={moveNext} toggle={toggle} />
       )}
     </>
   );

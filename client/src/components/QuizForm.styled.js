@@ -12,6 +12,7 @@ export const Container = styled.div`
   /* width: fit-content; */
   /* width: 100%;
   margin: 0 */
+  min-height: 35rem;
 `;
 
 export const Span = styled.span`

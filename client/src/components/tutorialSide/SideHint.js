@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Header, Span, LevelContainer, FowardIcon, BackIcon, ListIcon, ClearIcon } from './SideHint.styled';
 
-function SideHint({ tip, movePrev, moveNext, toggle }) {
+function SideHint({ length, tip, movePrev, moveNext, toggle }) {
   const { index } = useSelector((state) => state.bookmark);
   const clearList = useSelector((state) => state.list);
 
@@ -35,7 +35,7 @@ function SideHint({ tip, movePrev, moveNext, toggle }) {
     <>
       <Header>
         <Span size={2} family={'Semibold'}>
-          Level {index + 1} of 30
+          Level {index + 1} of {length}
         </Span>
         {clearList[index] ? <ClearIcon /> : <></>}
         <LevelContainer>

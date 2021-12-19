@@ -13,13 +13,17 @@ export const getQuizzes = (idx) => async (dispatch) => {
     const list = result.data.quizs;
     const pages = result.data.pages;
     checkIsLogin(result);
-    dispatch({ type: GET_QUIZZES_SUCCESS, list, pages });
+    setTimeout(() => {
+      dispatch({ type: GET_QUIZZES_SUCCESS, list, pages });
+    }, 1000);
   } catch (error) {
     // 에러코드 406이면 재귀
     if (error.response.status === 406) dispatch(getQuizzes());
     else {
       checkIsLogin(error);
-      dispatch({ type: GET_QUIZZES_ERROR, error });
+      setTimeout(() => {
+        dispatch({ type: GET_QUIZZES_ERROR, error });
+      }, 1000);
     }
   }
 };

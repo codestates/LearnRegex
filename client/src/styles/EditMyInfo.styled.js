@@ -68,8 +68,23 @@ export const Span = styled.span`
   margin-right: ${(prop) => prop.marginright}rem;
   margin-bottom: ${(prop) => prop.marginbottom}rem;
   margin-top: ${(prop) => prop.margintop}rem;
-
+  ${({ oauth }) => {
+    const css = `
+        width: 100%;
+        height: 2.5rem;
+        background-color: var(--color-gray);
+        border-radius: 7px;
+        padding: 0 0.6rem;
+        min-width: 17rem;
+        padding-top: 0.7rem;
+          `;
+    return oauth ? css : '';
+  }}
   cursor: default;
+
+  @media screen and (max-width: 768px) {
+    margin-top: ${(prop) => prop.mobilemargintop}rem;
+  }
 `;
 
 export const NewButton = styled(Button)`

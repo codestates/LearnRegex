@@ -67,7 +67,7 @@ export const SetNewPassword = () => {
           </Span>
           <InputInfoContainer>
             <InfoContainer>
-              <Span size={1.3} family={'Medium'} marginright={0.7} margintop={0.7}>
+              <Span size={1.3} family={'Medium'} marginright={0.7} margintop={0.7} mobilemargintop={0.6}>
                 새로운 비밀번호
               </Span>
               <InputContainer>
@@ -78,7 +78,7 @@ export const SetNewPassword = () => {
               </InputContainer>
             </InfoContainer>
             <InfoContainer>
-              <Span size={1.3} family={'Medium'} marginright={0.7} margintop={0.7}>
+              <Span size={1.3} family={'Medium'} marginright={0.7} margintop={0.7} mobilemargintop={0.6}>
                 비밀번호 재입력
               </Span>
               <InputContainer>

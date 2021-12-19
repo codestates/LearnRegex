@@ -69,14 +69,14 @@ export const EditMyInfo = ({ myInfo }) => {
           </Span>
           <InputInfoContainer>
             <InfoContainer>
-              <Span size={1.3} family={'Medium'} marginright={0.7} margintop={0.7}>
+              <Span size={1.3} family={'Medium'} marginright={0.7} margintop={0.7} mobilemargintop={0.6}>
                 이메일
               </Span>
               <InputContainer>
                 {myInfo.socialType === 'local' ? ( //
                   <Input type="text" onChange={handleInputValue('email')} value={inputUserInfo.email} onKeyUp={handleKeyUp}></Input>
                 ) : (
-                  <Span>{myInfo.socialType + ' 로그인'}</Span>
+                  <Span oauth>{myInfo.socialType + ' 로그인'}</Span>
                 )}
                 <Span margintop={0.5} color={'red'}>
                   &nbsp;{errorMessage.email}
@@ -84,7 +84,7 @@ export const EditMyInfo = ({ myInfo }) => {
               </InputContainer>
             </InfoContainer>
             <InfoContainer>
-              <Span size={1.3} family={'Medium'} marginright={0.7} margintop={0.7}>
+              <Span size={1.3} family={'Medium'} marginright={0.7} margintop={0.7} mobilemargintop={0.6}>
                 닉네임
               </Span>
               <InputContainer>

@@ -5,7 +5,8 @@ import { getQuiz } from '../../modules/quiz/getquiz';
 import { deleteQuiz } from '../../lib/requestQuiz';
 import QuizForm from '../../components/QuizForm';
 import BackButton from '../../components/BackButton';
-import { Container, P } from './SolveQuiz.styled';
+import { Container, P, Span } from './SolveQuiz.styled';
+import SolveQuizSkeleton from '../../components/SolveQuizSkeleton';
 
 function SolveQuiz() {
   const { id } = useParams('id');
@@ -16,7 +17,18 @@ function SolveQuiz() {
     dispatch(getQuiz(id));
   }, [id]);
 
-  if (!data) return <div>loading....</div>;
+  // if (!data) return <div></div>;
+  if (!data)
+    return (
+      <>
+        <Container>
+          <div className="content">
+            <BackButton id="0" />
+            <SolveQuizSkeleton />
+          </div>
+        </Container>
+      </>
+    );
 
   const handleDelete = () => {
     deleteQuiz(id);
@@ -35,10 +47,13 @@ function SolveQuiz() {
           </P>
           {data.isMade ? (
             <div className="modify">
-              <Link to={`/editquiz/${data.id}`}>
-                <span>수정</span>
-              </Link>
-              <span onClick={handleDelete}>삭제</span>
+              <Span translateY>
+                <Link to={`/editquiz/${data.id}`}>수정</Link>
+              </Span>
+              <Span cursor={'default'}>/</Span>
+              <Span translateY cursor={'pointer'} onClick={handleDelete}>
+                삭제
+              </Span>
             </div>
           ) : (
             <></>
