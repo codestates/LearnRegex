@@ -32,7 +32,12 @@ export const TaskElement = styled.button`
   border-radius: 0.4rem;
   height: 2rem;
   cursor: ${(prop) => prop.cursor};
-  animation: ${(prop) => (prop.isStart === true ? animation(prop.blinkColor) : '')};
+  ${(prop) =>
+    prop.isStart === true
+      ? css`
+          animation: ${blinkTaskElement(prop.blinkColor)} 1s ease infinite;
+        `
+      : ''};
   /* -webkit-animation: ${(prop) => prop.startStyle} 1s linear infinite; */
   transition: all ease 0.3s;
   letter-spacing: 2px;
@@ -45,27 +50,6 @@ export const TaskElement = styled.button`
     width: 7rem;
     height: 2.7rem;
   }
-
-  /* @keyframes blink {
-    0% {
-      background-color: var(--color-green);
-      opacity: 0.5;
-    }
-    100% {
-      background-color: var(--color-green);
-    }
-  } */
-
-  /* for Chrome, Safari */
-  /* @-webkit-keyframes blink {
-    0% {
-      background-color: var(--color-olive);
-      opacity: 0.5;
-    }
-    100% {
-      background-color: var(--color-green);
-    }
-  } */
 `;
 
 const blinkTaskElement = (color) => keyframes`
@@ -78,15 +62,12 @@ const blinkTaskElement = (color) => keyframes`
   }
 `;
 
-const animation = (color) => css`
-  ${blinkTaskElement(color)} 1s ease infinite;
-`;
+// const animation = (color) => css`
+//   ${blinkTaskElement(color)} 1s ease infinite;
+// `;
 
 export const TestCaseBox = styled.div`
-  /* background-color: blue; */
   display: flex;
-  /* margin-bottom: rem; */
-  /* position: relative; */
   flex-wrap: nowrap;
   margin-bottom: 0.7rem;
 
