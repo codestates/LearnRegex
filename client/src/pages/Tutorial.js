@@ -28,8 +28,6 @@ function Tutorial() {
   //! ------------------------ 리스트 이동 함수 ------------------------
 
   useEffect(() => {
-    // console.log(current);
-    // console.log('튜토리얼!');
     dispatch(saveBookmark(current));
   }, [current]);
   console.log(current);

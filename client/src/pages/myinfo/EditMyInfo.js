@@ -12,7 +12,6 @@ dotenv.config();
 export const EditMyInfo = ({ myInfo }) => {
   const dispatch = useDispatch();
 
-  // export const EditUserInfo = () => {
   const [inputUserInfo, setInputUserInfo] = useState({
     email: myInfo.email,
     nickname: myInfo.nickname,

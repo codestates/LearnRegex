@@ -32,7 +32,6 @@ function QuizList() {
           <EditIcon onClick={handleAlert} />
           <P state={text.state}>{text.text}</P>
           {!list ? skeletonList.map((ed, idx) => <QuizListElementSkeleton key={idx} />) : list.map((el) => <QuizListElement key={el.id} data={el} />)}
-          {/* {true ? skeletonList.map(() => <QuizListElementSkeleton />) : list.map((el) => <QuizListElement key={el.id} data={el} />)} */}
         </div>
         <Paginate />
       </Container>

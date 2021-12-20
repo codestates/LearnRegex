@@ -46,7 +46,6 @@ export const Title = styled(P)`
   font-family: IBMPlexSansKR-SemiBold;
   font-size: 2rem;
   margin-bottom: 0.6rem;
-  //* 제목이 15자 이상인데 공백이 없으면 word-break: brack-all; 속성 주기
 `;
 
 export const Nickname = styled(P)`

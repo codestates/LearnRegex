@@ -16,18 +16,21 @@ function InputQuiz({ data }) {
   const makeTestCase = () => {
     return { task: 'match', target: '', groups: [] };
   };
+
   const [content, setContent] = useState({
     title: '',
     testCase: [makeTestCase()],
     answer: '',
     explanation: '',
   });
+
   const [isEmpty, setIsEmpty] = useState({
     title: false,
     testCase: false,
     answer: false,
     explanation: false,
   });
+
   const [focusTestCase, setFocusTestCase] = useState(true);
   const [isCorrectRegTotal, setIsCorrectRegTotal] = useState(false);
 
@@ -93,9 +96,7 @@ function InputQuiz({ data }) {
     };
 
     if (Object.values(result).indexOf(true) !== -1) setIsEmpty({ ...result });
-    // alert('모든 칸을 채워주세요!');
     else if (!isCorrectRegTotal || focusTestCase) setIsEmpty({ ...result, answer: true });
-    // alert('정규표현식을 확인해주세요!');
     else submitQuiz(data, content);
   };
 

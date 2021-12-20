@@ -18,8 +18,6 @@ export const BackButtonIcon = styled(ImArrowLeft2)`
 
 export default function BackButton({ id = '0' }) {
   const historyBack = () => {
-    // if (id === '0') window.location.replace('/quizlist');
-    // else window.location.replace(`/quiz/${id}`);
     if (id === '0') window.location.href = '/quizlist';
     else window.location.href = `/quiz/${id}`;
   };

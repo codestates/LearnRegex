@@ -6,14 +6,11 @@ function SideHint({ length, tip, movePrev, moveNext, toggle }) {
   const { index } = useSelector((state) => state.bookmark);
   const clearList = useSelector((state) => state.list);
 
-  // console.log(tip);
-
   const Tips = () => {
-    console.log('this is tips');
     if (!Array.isArray(tip)) {
-      console.log(tip);
       return <></>;
     }
+
     return (
       <>
         {tip.map((el) => {

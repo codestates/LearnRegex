@@ -5,7 +5,9 @@ import { TestCaseElement, TaskElement, TestCaseBox, ClearCheckBox, MinusTestCase
 
 export const ShowTestCase = ({ testCases, inputRegex, handleIsCorrectRegTotal, handleInputCapture, handleTestCaseQuantity }) => {
   let color = 'black';
+
   if (testCases.length === 0) return <></>;
+
   //! ------------------------ 정규표현식 생성 --------------------
   const createMyRegex = (inputRegex) => {
     // * Make new RegExp

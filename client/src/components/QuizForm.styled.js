@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Button } from '../styles/button/CommonButton.styled';
-import { ShadowBox } from '../styles/ShadowBox.styled';
 
 export const Container = styled.div`
   /* border: 3px solid; */
@@ -9,9 +8,6 @@ export const Container = styled.div`
   background-color: var(--color-white);
   display: flex;
   flex-direction: column;
-  /* width: fit-content; */
-  /* width: 100%;
-  margin: 0 */
   min-height: 35rem;
 `;
 
@@ -38,7 +34,6 @@ export const Input = styled.input.attrs({})`
 export const AnswerButton = styled(Button)`
   width: 15rem;
   height: 3.2rem;
-  /* align-items: center; */
   justify-content: center;
   margin: auto;
 `;
@@ -53,7 +48,6 @@ export const NextButtonWrap = styled.div`
 export const NextButton = styled(Button)`
   width: 10rem;
   height: 3rem;
-  /* align-items: center; */
   justify-content: center;
   margin: auto;
   background-color: var(--color-olive);

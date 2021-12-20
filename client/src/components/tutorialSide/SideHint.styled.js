@@ -10,13 +10,6 @@ export const Header = styled.div`
   align-items: center;
   margin-bottom: 0.7rem;
   min-height: 3rem;
-  /* margin-left: auto; */
-  /* margin-right: 2rem; */
-  /* min-height: rem; */
-
-  @media screen and (max-width: 768px) {
-    /* min-height: 3.6rem; */
-  }
 `;
 
 export const LevelContainer = styled.div`
@@ -35,8 +28,6 @@ export const Span = styled.span`
     transition: all ease 0.3s;
     color: ${(prop) => `var(--color-${prop.hovercolor})`};
     background-color: ${(prop) => `var(--color-${prop.hoverbackcolor})`};
-    /* font-family: ${(prop) => `IBMPlexSansKR-${prop.hoverfamily}`}; */
-    /* padding: ${(prop) => prop.padding}rem 0; */
     border-radius: 0.3rem;
     padding: ${(prop) => prop.padding}rem;
   }
@@ -77,7 +68,6 @@ export const ListIcon = styled(AiOutlineUnorderedList)`
   cursor: pointer;
   transition: all ease 0.4s;
   color: var(--color-dark-gray);
-  /* margin-left: 1rem; */
 
   :hover {
     color: var(--color-dark-blue);

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import InputQuiz from '../../components/InputQuiz';
 import { getQuiz } from '../../modules/quiz/getquiz';
 import { checkUserIsLogin } from '../../lib/checkIsLogin';
@@ -15,7 +15,7 @@ function EditQuiz() {
   useEffect(() => {
     const quiz = getQuiz(id);
     console.log(quiz);
-    if (!data) window.history.back(); // window.location.replace(`/quiz/${id}`);
+    if (!data) window.history.back();
     dispatch(quiz);
   }, [id]);
 

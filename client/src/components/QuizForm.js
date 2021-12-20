@@ -28,9 +28,7 @@ function QuizForm({ data, orderPage, moveNext }) {
 
   const handleIsCorrectRegTotal = (e) => {
     const result = e.indexOf(false) === -1;
-    console.log(isCorrectRegTotal);
 
-    // if (isCorrectRegTotal) return;
     if (result !== isCorrectRegTotal) setIsCorrectRegTotal(result);
   };
 
@@ -58,7 +56,6 @@ function QuizForm({ data, orderPage, moveNext }) {
       console.log('문제풀었따!');
       dispatch(clearList(data.id - 1));
     }
-    // if (orderPage === 'tutorial' && isCorrectRegTotal) dispatch(clearList(data.id - 1));
   }, [isCorrectRegTotal]);
 
   //! ------------------------ HTML 태그 출력 ------------------------

@@ -10,8 +10,6 @@ export const Container = styled.div`
   flex-direction: column;
   padding: 2rem 4rem;
   width: 100%;
-  /* margin: 2rem 0; */
-  /* border: 1px solid; */
 
   button {
     justify-content: center;
@@ -24,7 +22,7 @@ export const Span = styled.span`
   margin-bottom: ${(prop) => prop.margin}rem;
   font-size: ${(prop) => prop.size}rem;
   color: ${(prop) => `var(--color-${prop.color})`};
-  font-family: ${(prop) => `IBMPlexSansKR-${prop.family}`};
+  font-family: ${(prop) => prop.family};
   white-space: pre-line;
   word-break: break-all;
 `;
@@ -40,13 +38,13 @@ const QuizAnswer = () => {
   return (
     <>
       <Container>
-        <Span size={2} margin={0.3} color={'blue'} family="Semibold">
+        <Span size={2} margin={0.3} color={'blue'} family={'IBMPlexSansKR-Semibold'}>
           정답
         </Span>
-        <Span size={1.2} margin={1.4}>
+        <Span size={1.2} margin={1.4} family={'D2Coding'}>
           {modalType === 'quizAnswer' ? answer : tutorialAnswer}
         </Span>
-        <Span size={2} margin={0.3} color={'blue'} family="Semibold">
+        <Span size={2} margin={0.3} color={'blue'} family={'IBMPlexSansKR-Semibold'}>
           해설
         </Span>
         <Span margin={2}>{modalType === 'quizAnswer' ? explanation : tutorialExplanation}</Span>

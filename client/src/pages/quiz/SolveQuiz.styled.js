@@ -36,7 +36,6 @@ export const Span = styled.span`
   }
 
   :hover {
-    /* transform: translateY(-1.5px); */
     transform: ${(prop) => (prop.translateY ? `translateY(-1.3px)` : ``)};
   }
 `;

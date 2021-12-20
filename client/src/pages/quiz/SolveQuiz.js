@@ -17,7 +17,6 @@ function SolveQuiz() {
     dispatch(getQuiz(id));
   }, [id]);
 
-  // if (!data) return <div></div>;
   if (!data)
     return (
       <>

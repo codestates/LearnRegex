@@ -69,7 +69,6 @@ export const QuizFormSkeletonContainer = styled(Container)`
   box-shadow: 0px 5px 8px rgba(171, 180, 221, 0.4);
   height: 35rem;
   padding: 5rem 2.4rem;
-  /* margin: auto; */
 
   @media screen and (max-width: 768px) {
     align-items: unset;

@@ -11,8 +11,6 @@ function TutorialSide({ list, movePrev, moveNext, moveIndex }) {
     setIsOpen(boolean);
   };
 
-  console.log(list.length);
-
   return (
     <>
       {isOpen ? ( //
