@@ -7,6 +7,7 @@ import QuizForm from '../components/QuizForm';
 import { saveBookmark } from '../modules/bookmark';
 import { dummyData } from '../data/tutorialData';
 import { Container } from './Tutorial.styled';
+import { setModal } from '../modules/modal';
 
 function Tutorial() {
   const { index } = useSelector((state) => state.bookmark);
@@ -20,7 +21,8 @@ function Tutorial() {
   };
 
   const moveNext = () => {
-    if (current < list.length - 1) setCurrent(current + 1);
+    if (index === list.length - 1) dispatch(setModal('tutorialFinish'));
+    else if (current < list.length - 1) setCurrent(current + 1);
   };
 
   const moveIndex = (id) => {

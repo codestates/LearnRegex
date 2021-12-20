@@ -16,10 +16,12 @@ function SideHint({ length, tip, movePrev, moveNext, toggle }) {
         {tip.map((el, idx) => {
           return (
             <>
-              <Span key={idx} size={1.6} family={'Medium'} height={2.3}>
+              <Span key={idx} size={1.6} family={'Medium'} height={2.3} margin={0.3}>
                 {el.characterSet}
               </Span>
-              <Span margin={1}>{el.explanation}</Span>
+              <Span margin={1.4} letterspacing={0.7}>
+                {el.explanation}
+              </Span>
             </>
           );
         })}
