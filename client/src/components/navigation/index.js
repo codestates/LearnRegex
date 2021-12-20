@@ -20,10 +20,10 @@ const Navigation = () => {
 
   useEffect(() => {
     const url = new URL(window.location.href);
-    const urlParserReg = /(?<=state=)([a-z]+)/;
+    const urlParserReg = /state=([a-z]+)/;
 
     if (urlParserReg.test(url.search)) {
-      const state = urlParserReg.exec(url.search)[0];
+      const state = urlParserReg.exec(url.search)[1];
 
       if (state === 'kakao') {
         kakaoCallback(url);
