@@ -27,7 +27,6 @@ function SideList({ list, moveIndex, isOpen, toggle }) {
             }}
           >
             <TitleContainer>
-              {/* {el.id}-&nbsp; */}
               <Span padding={0.1} size={1.2} cursor={'pointer'} color={'dark-gray'} hovercolor={'black'} hoverbackcolor={'light-blue'}>
                 {el.id}.&nbsp;&nbsp;{el.title}
               </Span>

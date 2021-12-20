@@ -5,6 +5,7 @@ import { setModal } from '../../modules/modal';
 import { resetAnswerTutorial } from '../../modules/answer';
 import { Button } from '../../styles/button/CommonButton.styled';
 import { resetClearList } from '../../modules/list';
+import { saveBookmark } from '../../modules/bookmark';
 
 const Container = styled.div`
   width: 100%;
@@ -48,6 +49,7 @@ const DeleteAnswerConfirm = () => {
   const handleReset = async () => {
     await dispatch(resetAnswerTutorial());
     await dispatch(resetClearList());
+    await dispatch(saveBookmark(0));
     window.location.replace('/tutorial');
   };
 
@@ -56,9 +58,9 @@ const DeleteAnswerConfirm = () => {
       <Container>
         <p>작성한 정답이 모두 초기화 됩니다.</p>
         <p>정말 초기화 하시겠습니까?</p>
-        <ResetButton onClick={handleReset}>예</ResetButton>
-        <ResetButton danger onClick={() => dispatch(setModal('close'))}>
-          아니오
+        <ResetButton onClick={() => dispatch(setModal('close'))}>아니오</ResetButton>
+        <ResetButton danger onClick={handleReset}>
+          예
         </ResetButton>
       </Container>
     </>
