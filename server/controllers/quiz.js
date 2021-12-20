@@ -120,6 +120,9 @@ module.exports = {
       const { title, testCase, answer, explanation } = req.body;
       const userId = req.userId;
 
+      // if (title.length > 20) {
+      //   res.status
+      // }
       // 추가해야 하는 정보가 하나라도 빠졌을 경우
       if (!(title && testCase && answer && explanation)) {
         return res.status(400).send({ message: 'empty information' });
@@ -191,6 +194,7 @@ module.exports = {
       }
 
       await users_quiz.create({ userId, quizId });
+      await quiz.update({ count: quizInfo.count + 1 }, { where: { id: quizId } });
 
       return res.status(200).send('success');
     } catch (err) {
