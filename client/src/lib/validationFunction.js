@@ -69,7 +69,6 @@ export const isValidOnlyEmail = async (email) => {
 };
 
 export const isValidNickname = async (nickname, myInfoNickname) => {
-  console.log(nickname, myInfoNickname);
   const strByte = getByte(nickname);
   if (!nickname) {
     return '닉네임을 입력해주세요.';
@@ -126,11 +125,9 @@ const isUniqueEmail = async (email) => {
   return await axios
     .post(`${process.env.REACT_APP_SERVER_ADDR}/user/validinfo`, { email: email })
     .then((res) => {
-      console.log(res);
       return true;
     })
     .catch((err) => {
-      console.log(err);
       return false;
     });
 };
@@ -140,11 +137,9 @@ const isUniqueNickname = async (nickname) => {
   return await axios
     .post(`${process.env.REACT_APP_SERVER_ADDR}/user/validinfo`, { nickname: nickname })
     .then((res) => {
-      console.log(res);
       return true;
     })
     .catch((err) => {
-      console.log(err);
       return false;
     });
 };

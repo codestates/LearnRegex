@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { checkIsLogin } from '../lib/checkIsLogin';
 import axios from 'axios';
 axios.defaults['withCredentials'] = true;
@@ -12,7 +14,6 @@ export const requestSignIn = async (userInfo) => {
       `${process.env.REACT_APP_SERVER_ADDR}/user/signin`, //
       { email, password }
     );
-    console.log(serverResult);
     checkIsLogin(serverResult);
     return true;
   } catch (error) {
@@ -30,7 +31,6 @@ export const requestSignUp = async (userInfo) => {
       `${process.env.REACT_APP_SERVER_ADDR}/user/signup`, //
       { email, password, nickname }
     );
-    console.log(serverResult);
     return true;
   } catch (error) {
     return false;
@@ -62,7 +62,6 @@ export const requestEditUserPassword = async (userInfo) => {
       `${process.env.REACT_APP_SERVER_ADDR}/myinfo/password`, //client
       { oldPassword, newPassword }
     );
-    console.log(serverResult);
     checkIsLogin(serverResult);
     return true;
   } catch (error) {
@@ -73,13 +72,8 @@ export const requestEditUserPassword = async (userInfo) => {
 };
 
 export const requestDeleteUserInfo = async () => {
-  // const { oldPassword, newPassword } = userInfo;
   try {
-    const serverResult = await axios.delete(
-      `${process.env.REACT_APP_SERVER_ADDR}/myinfo` //client
-      // { oldPassword, newPassword }
-    );
-    console.log(serverResult);
+    const serverResult = await axios.delete(`${process.env.REACT_APP_SERVER_ADDR}/myinfo`);
     checkIsLogin(serverResult);
     return true;
   } catch (error) {
@@ -93,7 +87,6 @@ export const requestSignOut = async () => {
     const serverResult = await axios.post(
       `${process.env.REACT_APP_SERVER_ADDR}/user/signout` //
     );
-    console.log(serverResult);
     checkIsLogin(serverResult);
     return true;
   } catch (error) {
@@ -131,7 +124,6 @@ export const requestSetNewPassword = async (userInfo) => {
           `${process.env.REACT_APP_SERVER_ADDR}/email/resetpassword`,
           { newPassword, token } //
         );
-        console.log(serverResult);
         return true;
       }
     }
@@ -148,7 +140,6 @@ export const requestFindPassword = async (userInfo) => {
       `${process.env.REACT_APP_SERVER_ADDR}/myinfo`,
       { email } //
     );
-    console.log(serverResult);
     return true;
   } catch (error) {
     return false;

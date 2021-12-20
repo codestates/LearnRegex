@@ -5,7 +5,7 @@ import { setModal } from '../../modules/modal';
 import { clearSession } from '../../lib/clearSession';
 import { requestSignOut } from '../../lib/requestUserInfo';
 import { checkUserIsLogin, checkUserNickname } from '../../lib/checkIsLogin';
-import { SidebarContainer, Icon, CloseIcon, SidebarWrap, SidebarMenu, SidebarLink, SidebarBtnWrap, SidebarBtn, SubSidebar, SidebarDevider, SidebarSignOut } from './Sidebar.styled';
+import { SidebarContainer, Icon, CloseIcon, SidebarWrap, SidebarLink, SidebarBtn, SidebarDevider, SidebarSignOut } from './Sidebar.styled';
 
 const Sidebar = ({ openSidebar, handleSidebar }) => {
   const dispatch = useDispatch();

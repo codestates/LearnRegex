@@ -47,7 +47,6 @@ export const EditMyInfo = ({ myInfo }) => {
     // * 유효성 처리
     const errorResult = await isValidEditUserInfo(inputUserInfo, { email: myInfo.email, nickname: myInfo.nickname });
     setErrorMessage(errorResult);
-    console.log(errorResult);
     if (Object.values(errorResult).find((el) => el !== '')) return;
 
     // * 서버 통신
@@ -55,7 +54,7 @@ export const EditMyInfo = ({ myInfo }) => {
     if (serverResult === true) {
       if (myInfo.email !== inputUserInfo.email) dispatch(setModal('emailCert'));
       else dispatch(setModal('toUserInfo'));
-    } else console.log('error!');
+    } else return;
     navigate('/myinfo');
   };
 

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -14,7 +16,6 @@ function EditQuiz() {
 
   useEffect(() => {
     const quiz = getQuiz(id);
-    console.log(quiz);
     if (!data) window.history.back();
     dispatch(quiz);
   }, [id]);

@@ -6,7 +6,6 @@ import GlobalStyle from './styles';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from './modules';
-import logger from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import ReduxThunk from 'redux-thunk';
 import { BrowserRouter } from 'react-router-dom';
@@ -14,7 +13,7 @@ import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import ScrollToTop from './components/ScrollToTop';
 
-export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(ReduxThunk, logger)));
+export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(ReduxThunk)));
 const persistor = persistStore(store);
 
 ReactDOM.render(

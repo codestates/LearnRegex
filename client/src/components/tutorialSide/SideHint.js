@@ -13,11 +13,10 @@ function SideHint({ length, tip, movePrev, moveNext, toggle }) {
 
     return (
       <>
-        {tip.map((el) => {
+        {tip.map((el, idx) => {
           return (
             <>
-              {console.log(el.characterSet)}
-              <Span size={1.6} family={'Medium'} height={2.3}>
+              <Span key={idx} size={1.6} family={'Medium'} height={2.3}>
                 {el.characterSet}
               </Span>
               <Span margin={1}>{el.explanation}</Span>

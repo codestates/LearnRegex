@@ -29,7 +29,6 @@ module.exports = {
         result.isValidPassword = false;
       }
     }
-    console.log(result);
     return result;
   },
   confliction: async ({ userId, email, nickname }) => {

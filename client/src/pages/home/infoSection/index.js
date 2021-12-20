@@ -3,7 +3,6 @@ import { LinkButton } from '../../../styles/button/LinkButton.styled';
 import { InfoContainer, InfoWrapper, InfoRow, Column1, TextWrapper, TopLine, Heading, Subtitle, InfoBtnWapper, Column2, ImgWrapper, Img } from './Info.styled';
 
 const InfoSection = ({ id, whiteBg, topLine, heading, description, link, buttonLabel, imgStart, img, alt, scrollY }) => {
-  console.log(scrollY);
   return (
     <>
       <InfoContainer id={id} whiteBg={whiteBg}>

@@ -14,7 +14,7 @@ export const InputTestCase = ({ testCases, handleInputTestCase, handleTaskButton
         else color = 'yellow';
         return (
           <>
-            <TestCaseBox>
+            <TestCaseBox key={idx}>
               <TaskElement inputQuiz color={color} onClick={handleTaskButton(idx)} isStart={idx === 0 ? true : false}>
                 {testCase.task}
               </TaskElement>

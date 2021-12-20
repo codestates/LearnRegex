@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useState, useEffect } from 'react';
 import BackButton from '../components/BackButton';
 import { submitQuiz } from '../lib/requestQuiz';
@@ -81,7 +83,6 @@ function InputQuiz({ data }) {
       const back = newTestCase.slice().splice(idx + 1);
       newTestCase = [...front, ...back];
     }
-    console.log(newTestCase);
     setContent({ ...content, testCase: newTestCase });
   };
 

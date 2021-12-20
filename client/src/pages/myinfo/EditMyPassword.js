@@ -50,13 +50,11 @@ export const EditMyPassword = () => {
     // * 유효성 처리
     const errorResult = await isValidEditUserPassword(inputUserInfo);
     setErrorMessage(errorResult);
-    console.log(errorResult);
     if (Object.values(errorResult).find((el) => el !== '')) return;
 
     if (inputUserInfo.newPassword === inputUserInfo.confirm) {
       // * 서버 통신
       const serverResult = await requestEditUserPassword(inputUserInfo);
-      console.log(serverResult);
       if (serverResult === true) dispatch(setModal('toSignOut'));
       else if (serverResult === 'invalid oldPassword') {
         setErrorMessage({ ...errorResult, oldPassword: '잘못된 비밀번호입니다.' });
