@@ -12,6 +12,7 @@ import ReduxThunk from 'redux-thunk';
 import { BrowserRouter } from 'react-router-dom';
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
+import ScrollToTop from './components/ScrollToTop';
 
 export const store = createStore(
   rootReducer, // logger 를 사용하는 경우, logger가 가장 마지막에 와야합니다.
@@ -23,6 +24,7 @@ ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
+        <ScrollToTop />
         <App />
         <GlobalStyle />
       </PersistGate>

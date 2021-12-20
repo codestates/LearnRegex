@@ -54,14 +54,16 @@ export const TaskElement = styled.button`
 
 const blinkTaskElement = (color) => keyframes`
   0% {
-    background-color: ${() => `var(--color${color})`};
+    background-color: var(--color-${color});
     opacity: 0.5;
   }
   100% {
-    background-color: ${() => `var(--color${color})`};
+    background-color: var(--color-${color});
   }
-`;
+  `;
 
+// background-color: ${() => `var(--color-${color})`};
+// background-color: ${() => `var(--color-${color})`};
 // const animation = (color) => css`
 //   ${blinkTaskElement(color)} 1s ease infinite;
 // `;

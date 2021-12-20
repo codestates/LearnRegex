@@ -31,7 +31,7 @@ function QuizList() {
         <div className="cardContainer">
           <EditIcon onClick={handleAlert} />
           <P state={text.state}>{text.text}</P>
-          {!list ? skeletonList.map(() => <QuizListElementSkeleton />) : list.map((el) => <QuizListElement key={el.id} data={el} />)}
+          {!list ? skeletonList.map((ed, idx) => <QuizListElementSkeleton key={idx} />) : list.map((el) => <QuizListElement key={el.id} data={el} />)}
           {/* {true ? skeletonList.map(() => <QuizListElementSkeleton />) : list.map((el) => <QuizListElement key={el.id} data={el} />)} */}
         </div>
         <Paginate />
