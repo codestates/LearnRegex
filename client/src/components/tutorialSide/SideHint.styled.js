@@ -26,6 +26,8 @@ export const Span = styled.span`
   white-space: pre-line;
   word-break: keep-all;
 
+  letter-spacing: ${(prop) => prop.letterspacing}px;
+
   :hover {
     transition: all ease 0.3s;
     color: ${(prop) => `var(--color-${prop.hovercolor})`};
