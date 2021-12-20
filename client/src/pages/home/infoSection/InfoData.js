@@ -3,7 +3,7 @@ export const homeObjOne = {
   whiteBg: true,
   topLine: '학습하기 Tutorial',
   heading: '단계별 학습으로 정규표현식과 친해져요',
-  description: 'match, skip, capture 카테고리를 고려하여 정규표현식을 작성해보세요. "다음 문제로!" 버튼이 나타나면 클릭해보세요!',
+  description: '정규표현식이 처음이어도 괜찮아요! 기초 개념부터 실전에 쓰이는 예제들까지 저희가 모두 준비했습니다.',
   buttonLabel: '학습하기 페이지로',
   imgStart: false,
   img: '/assets/svg-1.svg',
