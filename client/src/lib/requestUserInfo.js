@@ -111,11 +111,11 @@ export const requestGetMyInfo = async () => {
 export const requestSetNewPassword = async (userInfo) => {
   const { newPassword } = userInfo;
   const url = new URL(window.location.href);
-  const urlParserReg = /(?<=state=)([a-z]+)/;
+  const urlParserReg = /state=([a-z]+)/;
 
   try {
     if (urlParserReg.test(url.search)) {
-      const state = urlParserReg.exec(url.search)[0];
+      const state = urlParserReg.exec(url.search)[1];
 
       if (state === 'findpassword') {
         const token = url.search.split('=')[1].split('&')[0];
