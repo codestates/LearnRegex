@@ -30,6 +30,8 @@ export const Span = styled.span`
   color: ${(prop) => `var(--color-${prop.color})`};
   cursor: ${({ cursor }) => (cursor ? cursor : 'default')};
   margin-bottom: ${(prop) => prop.margin}rem;
+  white-space: pre-line;
+  word-break: keep-all;
 
   :hover {
     transition: all ease 0.3s;
