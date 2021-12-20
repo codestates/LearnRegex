@@ -10,9 +10,8 @@ import { ShowTestCaseContainer } from '../styles/TestCase.styled';
 import { Input, Span, Textarea, SubmitButton, PlusTestCaseIcon, AnswerContainer } from './InputQuiz.styled';
 
 function InputQuiz({ data }) {
-  const [isStart, setIsStart] = useState(true);
-
   if (!checkUserIsLogin()) window.location.replace('/');
+
   const makeTestCase = () => {
     return { task: 'match', target: '', groups: [] };
   };
@@ -121,8 +120,6 @@ function InputQuiz({ data }) {
               handleInputTestCase={handleInputTestCase}
               handleTaskButton={handleTaskButton}
               handleTestCaseQuantity={handleTestCaseQuantity}
-              isStart={isStart}
-              setIsStart={setIsStart}
             />
           ) : (
             <ShowTestCase //

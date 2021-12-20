@@ -1,17 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { TestCaseBox, TaskElement, MinusTestCaseButton, InputText } from '../styles/TestCase.styled';
 
 // ! ---------------------------- 테스트케이스 입력창 -----------------
-export const InputTestCase = ({ isStart, setIsStart, testCases, handleInputTestCase, handleTaskButton, handleTestCaseQuantity }) => {
+export const InputTestCase = ({ testCases, handleInputTestCase, handleTaskButton, handleTestCaseQuantity }) => {
   let color = 'black';
-
-  useEffect(() => {
-    if (isStart === true) {
-      setTimeout(() => {
-        setIsStart(false);
-      }, 3000);
-    }
-  }, []);
 
   return (
     <>
@@ -23,7 +15,7 @@ export const InputTestCase = ({ isStart, setIsStart, testCases, handleInputTestC
         return (
           <>
             <TestCaseBox>
-              <TaskElement inputQuiz color={color} onClick={handleTaskButton(idx)} blinkColor={color} isStart={idx === 0 ? isStart : false}>
+              <TaskElement inputQuiz color={color} onClick={handleTaskButton(idx)} isStart={idx === 0 ? true : false}>
                 {testCase.task}
               </TaskElement>
               <InputText value={testCase.target} placeholder="testCase를 입력하세요" maxLength="40" onChange={handleInputTestCase(idx)} />

@@ -31,7 +31,7 @@ export const TaskElement = styled.button`
   ${(prop) =>
     prop.isStart === true
       ? css`
-          animation: ${blinkTaskElement(prop.blinkColor)} 1s ease infinite;
+          animation: ${blinkTaskElement} 1s ease 3;
         `
       : ''};
   transition: all ease 0.3s;
@@ -47,13 +47,11 @@ export const TaskElement = styled.button`
   }
 `;
 
-const blinkTaskElement = (color) => keyframes`
+const blinkTaskElement = keyframes`
   0% {
-    background-color: var(--color-${color});
     opacity: 0.5;
   }
   100% {
-    background-color: var(--color-${color});
   }
   `;
 
