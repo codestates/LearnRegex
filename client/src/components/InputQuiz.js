@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useState, useEffect } from 'react';
 import BackButton from '../components/BackButton';
 import { submitQuiz } from '../lib/requestQuiz';
@@ -10,24 +12,26 @@ import { ShowTestCaseContainer } from '../styles/TestCase.styled';
 import { Input, Span, Textarea, SubmitButton, PlusTestCaseIcon, AnswerContainer } from './InputQuiz.styled';
 
 function InputQuiz({ data }) {
-  const [isStart, setIsStart] = useState(true);
-
   if (!checkUserIsLogin()) window.location.replace('/');
+
   const makeTestCase = () => {
     return { task: 'match', target: '', groups: [] };
   };
+
   const [content, setContent] = useState({
     title: '',
     testCase: [makeTestCase()],
     answer: '',
     explanation: '',
   });
+
   const [isEmpty, setIsEmpty] = useState({
     title: false,
     testCase: false,
     answer: false,
     explanation: false,
   });
+
   const [focusTestCase, setFocusTestCase] = useState(true);
   const [isCorrectRegTotal, setIsCorrectRegTotal] = useState(false);
 
@@ -79,7 +83,6 @@ function InputQuiz({ data }) {
       const back = newTestCase.slice().splice(idx + 1);
       newTestCase = [...front, ...back];
     }
-    console.log(newTestCase);
     setContent({ ...content, testCase: newTestCase });
   };
 
@@ -93,9 +96,7 @@ function InputQuiz({ data }) {
     };
 
     if (Object.values(result).indexOf(true) !== -1) setIsEmpty({ ...result });
-    // alert('모든 칸을 채워주세요!');
     else if (!isCorrectRegTotal || focusTestCase) setIsEmpty({ ...result, answer: true });
-    // alert('정규표현식을 확인해주세요!');
     else submitQuiz(data, content);
   };
 
@@ -120,8 +121,6 @@ function InputQuiz({ data }) {
               handleInputTestCase={handleInputTestCase}
               handleTaskButton={handleTaskButton}
               handleTestCaseQuantity={handleTestCaseQuantity}
-              isStart={isStart}
-              setIsStart={setIsStart}
             />
           ) : (
             <ShowTestCase //

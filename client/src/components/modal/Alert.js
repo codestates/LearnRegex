@@ -12,7 +12,6 @@ const Container = styled.div`
   text-align: center;
 
   p {
-    /* font-family: IBMPlexSansKR-SemiBold; */
     font-size: 1.7rem;
     margin: 2.4rem 0;
   }

@@ -53,12 +53,10 @@ export const ModalContent = styled.div`
     else if (modaltype === 'quizAnswer' || modaltype === 'tutorialAnswer') return '380px';
     else return '550px';
   }};
-  /* height: 100%; */
   cursor: default;
 `;
 
 export const CloseModalButton = styled(MdClose)`
-  /* display: none; */
   cursor: pointer;
   ${({ modaltype }) => {
     if (modaltype === 'signIn' || modaltype === 'signUp' || modaltype === 'findPassword') {

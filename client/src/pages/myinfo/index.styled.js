@@ -9,31 +9,22 @@ export const Container = styled.div`
   width: 100%;
   margin: auto;
   text-align: center;
-  /* border: 1px solid; */
   padding: 6.7rem 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  @media screen and (max-width: 768px) {
-    /* width: auto; */
-    /* margin: 0 0.2rem; */
-  }
 
   p {
     font-size: 2rem;
     font-family: IBMPlexSansKR-Bold;
     margin: 2.8rem 0;
     color: var(--color-dark-blue);
-
     cursor: default;
   }
 
   .tmp {
-    /* width: 70% */
     margin: auto;
     padding: 1rem 2rem 0.5rem;
-    /* border: 1px solid; */
     box-shadow: 0px 5px 8px rgba(171, 180, 221, 0.4);
     background-color: var(--color-white);
 

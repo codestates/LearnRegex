@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setModal } from '../../modules/modal';

@@ -79,7 +79,6 @@ const FindPassword = () => {
     const serverResult = await requestFindPassword(inputUserInfo);
     if (serverResult === true) dispatch(setModal('emailCert'));
     else {
-      console.log('error!');
       setErrorMessage({ ...errorMessage, email: '이메일을 다시 확인해주세요.' });
     }
   };

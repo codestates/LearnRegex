@@ -7,15 +7,11 @@ export const TestCaseElement = styled.span`
   border-radius: 0.3rem;
   text-align: left;
   padding: 0.3rem 2rem 0.3rem 0.5rem;
-  /* border: 1px solid; */
   width: 100%;
   min-height: 2rem;
   font-family: D2Coding;
   cursor: default;
-
   word-break: break-all;
-
-  /* color: ${(prop) => `var(--color-${prop.color})`}; */
 
   @media screen and (max-width: 768px) {
     height: 100%;
@@ -35,10 +31,9 @@ export const TaskElement = styled.button`
   ${(prop) =>
     prop.isStart === true
       ? css`
-          animation: ${blinkTaskElement(prop.blinkColor)} 1s ease infinite;
+          animation: ${blinkTaskElement} 1s ease 5;
         `
       : ''};
-  /* -webkit-animation: ${(prop) => prop.startStyle} 1s linear infinite; */
   transition: all ease 0.3s;
   letter-spacing: 2px;
 
@@ -52,19 +47,15 @@ export const TaskElement = styled.button`
   }
 `;
 
-const blinkTaskElement = (color) => keyframes`
+const blinkTaskElement = keyframes`
   0% {
-    background-color: ${() => `var(--color${color})`};
+    outline: 3px solid #64BE78;
     opacity: 0.5;
   }
   100% {
-    background-color: ${() => `var(--color${color})`};
+    /* opacity: 1; */
   }
-`;
-
-// const animation = (color) => css`
-//   ${blinkTaskElement(color)} 1s ease infinite;
-// `;
+  `;
 
 export const TestCaseBox = styled.div`
   display: flex;
@@ -74,7 +65,6 @@ export const TestCaseBox = styled.div`
   span {
     flex-grow: 1;
     font-size: 1.3rem;
-    /* flex-shrink: 1; */
   }
 
   input {
@@ -97,9 +87,6 @@ export const TestCaseBox = styled.div`
     flex-grow: 1;
     position: relative;
     margin-right: 0.4rem;
-    /* flex-shrink: 1; */
-    /* min-height: 2.8rem; */
-    /* min-height: 10rem; */
 
     .groupElement {
       word-break: break-all;
@@ -121,11 +108,9 @@ export const CheckIcon = styled(BsCheck)`
 
 export const MinusTestCaseButton = styled(FaMinusCircle)`
   transition: color 0.4s;
-  /* margin-left: 0.4rem; */
   color: var(--color-dark-gray);
   font-size: 2rem;
   cursor: pointer;
-  /* flex-basis: 6rem; */
   min-width: 2rem;
 
   :hover {
@@ -140,7 +125,6 @@ export const InputText = styled.input.attrs({})`
   border-radius: 0.8rem;
   text-align: left;
   padding: 0.3rem 2rem 0.3rem 1.2rem;
-  /* border: 1px solid; */
   font-family: D2Coding;
 `;
 
@@ -155,6 +139,4 @@ export const Group = styled.span`
 
 export const ShowTestCaseContainer = styled.div`
   width: 100%;
-  /* margin-bottom: 5rem; */
-  /* border: 1px solid; */
 `;

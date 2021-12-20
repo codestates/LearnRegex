@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setModal } from '../modules/modal';
@@ -28,9 +30,7 @@ function QuizForm({ data, orderPage, moveNext }) {
 
   const handleIsCorrectRegTotal = (e) => {
     const result = e.indexOf(false) === -1;
-    console.log(isCorrectRegTotal);
 
-    // if (isCorrectRegTotal) return;
     if (result !== isCorrectRegTotal) setIsCorrectRegTotal(result);
   };
 
@@ -55,10 +55,8 @@ function QuizForm({ data, orderPage, moveNext }) {
 
     // 학습하기에서 문제를 풀었을 경우 풀었는지 상태 저장
     if (orderPage === 'tutorial' && isCorrectRegTotal && !tutorialClearList[data.id - 1]) {
-      console.log('문제풀었따!');
       dispatch(clearList(data.id - 1));
     }
-    // if (orderPage === 'tutorial' && isCorrectRegTotal) dispatch(clearList(data.id - 1));
   }, [isCorrectRegTotal]);
 
   //! ------------------------ HTML 태그 출력 ------------------------

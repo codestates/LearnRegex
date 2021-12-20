@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getQuizzes } from '../modules/quiz/getquizzes';
@@ -10,7 +12,7 @@ function Paginate() {
 
   const page = new Array(pages || 1).fill(true);
 
-  // * -------- 페이지 이동 --------
+  // * -------- 페이지 이동 함수 --------
   const movePrev = () => {
     if (current > 0) setCurrent(current - 1);
   };
@@ -22,7 +24,7 @@ function Paginate() {
   const moveIndex = (idx) => {
     setCurrent(idx);
   };
-  // * -------- 페이지 이동 --------
+  // * -------- 페이지 이동 함수 --------
 
   useEffect(() => {
     sessionStorage.setItem('current', current);

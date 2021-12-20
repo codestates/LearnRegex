@@ -40,7 +40,7 @@ export const FooterInnerWrap = styled.div`
   }
 `;
 
-export const RepoWikiWrap = styled.a`
+export const RepoWikiWrap = styled.div`
   justify-self: start;
   text-decoration: none;
   font-size: 1rem;

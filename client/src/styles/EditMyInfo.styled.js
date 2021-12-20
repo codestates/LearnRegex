@@ -9,7 +9,6 @@ export const ContentContainer = styled(ShadowBox)`
   align-items: center;
   margin: auto;
   background-color: var(--color-white);
-  /* width: auto; */
   height: auto;
   min-height: 30rem;
   padding: 4rem 2rem;
@@ -46,8 +45,6 @@ export const InfoContainer = styled.div`
   align-items: flex-start;
   justify-content: flex-end;
   width: 100%;
-  /* margin-left: auto; */
-  /* margin-bottom: 2rem; */
   margin-bottom: 1rem;
 `;
 
@@ -90,11 +87,6 @@ export const Span = styled.span`
 export const NewButton = styled(Button)`
   width: 12rem;
   background-color: ${({ danger }) => (danger ? `var(--color-dark-gray)` : ``)};
-  /* 
-  :hover {
-    background-color: ${({ danger }) => (danger ? `var(--color-light-gray)` : ``)};
-  } */
-
   margin-top: ${({ editInfo }) => (editInfo ? '3rem' : '')};
 
   @media screen and (max-width: 768px) {

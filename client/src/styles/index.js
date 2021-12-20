@@ -21,7 +21,6 @@ const GlobalStyle = createGlobalStyle`
 
     
     @media (max-width: 768px) {
-    /* screen width is less than 768px (medium) */
     font-size: var(--fontSize-root--small);
     }
 

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import Interweave from 'interweave';
 import devQuizFormStyle from './devQuizFormStyle.css';
@@ -5,7 +7,9 @@ import { TestCaseElement, TaskElement, TestCaseBox, ClearCheckBox, MinusTestCase
 
 export const ShowTestCase = ({ testCases, inputRegex, handleIsCorrectRegTotal, handleInputCapture, handleTestCaseQuantity }) => {
   let color = 'black';
+
   if (testCases.length === 0) return <></>;
+
   //! ------------------------ 정규표현식 생성 --------------------
   const createMyRegex = (inputRegex) => {
     // * Make new RegExp
@@ -76,35 +80,47 @@ export const ShowTestCase = ({ testCases, inputRegex, handleIsCorrectRegTotal, h
 
     // * 출력
     return (
-      <>
-        <TestCaseBox iscorrectregtotal={isCorrectRegTotal}>
-          <TaskElement cursor={'default'} color={color}>
-            {testCase.task}
-          </TaskElement>
-          <div className="capture">
-            <TestCaseElement>
-              <Interweave content={regExpResult.highlightedTestCase} />
-            </TestCaseElement>
-            <div className="groupElement">
-              {testCase.task === 'capture' ? (
-                isCaptuerInput ? (
-                  // 퀴즈 등록, 수정
-                  captureInputArray.map((el) => <Group color={'olive'}>{el}</Group>)
-                ) : (
-                  // 학습하기
-                  testCase.groups.map((el, idx) => (isCorrectRegGroups[idx] ? <Group color={'olive'}>{el}</Group> : <Group color={'light-brown'}>{el}</Group>))
-                )
+      <TestCaseBox iscorrectregtotal={isCorrectRegTotal} key={idx}>
+        <TaskElement cursor={'default'} color={color}>
+          {testCase.task}
+        </TaskElement>
+        <div className="capture">
+          <TestCaseElement>
+            <Interweave content={regExpResult.highlightedTestCase} />
+          </TestCaseElement>
+          <div className="groupElement">
+            {testCase.task === 'capture' ? (
+              isCaptuerInput ? (
+                // 퀴즈 등록, 수정
+                captureInputArray.map((el, idx) => (
+                  <Group key={idx} color={'olive'}>
+                    {el}
+                  </Group>
+                ))
               ) : (
-                <></>
-              )}
-            </div>
-            <ClearCheckBox>
-              <CheckIcon color={isCorrectReg ? 'green' : 'red'} />
-            </ClearCheckBox>
+                // 학습하기
+                testCase.groups.map((el, idx) =>
+                  isCorrectRegGroups[idx] ? (
+                    <Group key={idx} color={'olive'}>
+                      {el}
+                    </Group>
+                  ) : (
+                    <Group key={idx} color={'light-brown'}>
+                      {el}
+                    </Group>
+                  )
+                )
+              )
+            ) : (
+              <></>
+            )}
           </div>
-          {handleTestCaseQuantity ? <MinusTestCaseButton onClick={handleTestCaseQuantity('delete', idx)} /> : <></>}
-        </TestCaseBox>
-      </>
+          <ClearCheckBox>
+            <CheckIcon color={isCorrectReg ? 'green' : 'red'} />
+          </ClearCheckBox>
+        </div>
+        {handleTestCaseQuantity ? <MinusTestCaseButton onClick={handleTestCaseQuantity('delete', idx)} /> : <></>}
+      </TestCaseBox>
     );
   });
 };

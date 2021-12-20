@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import TutorialSide from '../components/tutorialSide';
@@ -8,7 +10,6 @@ import { Container } from './Tutorial.styled';
 
 function Tutorial() {
   const { index } = useSelector((state) => state.bookmark);
-  useSelector((state) => console.log(state.bookmark));
   const [current, setCurrent] = useState(index);
   const [list, setList] = useState(dummyData);
   const dispatch = useDispatch();
@@ -28,11 +29,8 @@ function Tutorial() {
   //! ------------------------ 리스트 이동 함수 ------------------------
 
   useEffect(() => {
-    // console.log(current);
-    // console.log('튜토리얼!');
     dispatch(saveBookmark(current));
   }, [current]);
-  console.log(current);
 
   return (
     <>

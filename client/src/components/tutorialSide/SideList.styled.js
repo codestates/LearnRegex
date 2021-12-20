@@ -17,7 +17,6 @@ export const TitleContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* margin-left: 0; */
   margin-bottom: 1rem;
 `;
 
@@ -49,7 +48,6 @@ export const ClearIcon = styled(BsCheckCircleFill)`
 export const ResetButton = styled(Button)`
   background-color: var(--color-dark-gray);
   align-self: center;
-  /* margin: 0 auto; */
 
   :hover {
     background-color: var(--color-blue);

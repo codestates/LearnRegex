@@ -4,7 +4,6 @@ import { Button } from '../styles/button/CommonButton.styled';
 import { AiFillPlusSquare } from 'react-icons/ai';
 
 export const Container = styled(ShadowBox)`
-  /* border: 4px solid; */
   background-color: var(--color-white);
   display: flex;
   flex-direction: column;
@@ -26,7 +25,6 @@ export const Container = styled(ShadowBox)`
 
 export const Input = styled.input.attrs({})`
   border: ${({ isEmpty }) => (isEmpty ? `2px solid var(--color-red)` : `2px solid var(--color-light-blue)`)};
-  /* border: 2px solid ${({ isEmpty }) => (isEmpty ? 'red' : 'black')}; */
   font-size: ${(prop) => prop.size}rem;
   margin-bottom: ${(prop) => prop.margin}rem;
   margin-top: ${(prop) => prop.top}rem;

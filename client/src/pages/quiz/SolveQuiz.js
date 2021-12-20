@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
@@ -17,7 +19,6 @@ function SolveQuiz() {
     dispatch(getQuiz(id));
   }, [id]);
 
-  // if (!data) return <div></div>;
   if (!data)
     return (
       <>
