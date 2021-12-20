@@ -9,6 +9,7 @@ import EmailCert from './EmailCert';
 import FindPassword from '../user/FindPassword';
 import DeleteUserConfirm from './DeleteUserConfirm';
 import DeleteAnswerConfirm from './DeleteAnswerConfirm';
+import TutorialFinish from './TutorialFinish';
 
 import { Background, ModalWrap, ModalContent, CloseModalButton } from './index.styled';
 
@@ -29,6 +30,7 @@ const Modal = () => {
     else if (modalType === 'deleteUserConfirm') return <DeleteUserConfirm />;
     else if (modalType === 'deleteAnswerConfirm') return <DeleteAnswerConfirm />;
     else if (modalType === 'tutorialAnswer') return <QuizAnswer />;
+    else if (modalType === 'tutorialFinish') return <TutorialFinish />;
   };
 
   return (
